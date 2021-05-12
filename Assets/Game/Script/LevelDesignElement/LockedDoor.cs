@@ -17,7 +17,7 @@ public class LockedDoor : MonoBehaviour
     {
         if (isActivated)
         {
-            Debug.Log("open");
+            Debug.Log("open"); // fonciton d'ouverture
         }
         else
         {
