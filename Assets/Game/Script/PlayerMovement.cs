@@ -123,7 +123,6 @@ public class PlayerMovement : MonoBehaviour
         }
         
         controller.Move(fallVector * Time.deltaTime);
-        Debug.Log(fallVector);
         
         if (controller.isGrounded && slopeAngle <= controller.slopeLimit)
         {
