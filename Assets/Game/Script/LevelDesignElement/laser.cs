@@ -8,6 +8,8 @@ public class Laser : MonoBehaviour
     public float distance;
     public bool defineOpen;
     public GameObject lockedObject;
+    public bool itKilled;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,7 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+     
         Debug.DrawRay(transform.position,transform.forward,Color.green);
         RaycastHit hit;
         if (Physics.Raycast(transform.position,transform.forward, out hit ))
@@ -25,6 +28,11 @@ public class Laser : MonoBehaviour
             {
                 Debug.Log("test");
                 lockedObject.GetComponent<LockedDoor>().isActivated = defineOpen;
+            }
+
+            if (itKilled && hit.collider.gameObject.CompareTag("Player"))
+            {
+                Debug.Log("mort");
             }
             
             DrawRay(transform.position,hit.point);

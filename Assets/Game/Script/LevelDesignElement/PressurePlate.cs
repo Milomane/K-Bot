@@ -8,6 +8,8 @@ public class PressurePlate : MonoBehaviour
     public GameObject lockedObject;
     public List<GameObject> onPlate = new List<GameObject>();
     public int limit;
+    public bool defineOpen;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +21,12 @@ public class PressurePlate : MonoBehaviour
     {
         if (onPlate.Count < limit)
         {
-            lockedObject.GetComponent<LockedDoor>().isActivated = false;
+            lockedObject.GetComponent<LockedDoor>().isActivated = !defineOpen;
         }
 
         if (onPlate.Count >= limit)
         {
-            lockedObject.GetComponent<LockedDoor>().isActivated = true; 
+            lockedObject.GetComponent<LockedDoor>().isActivated = defineOpen; 
         }
     }
 
