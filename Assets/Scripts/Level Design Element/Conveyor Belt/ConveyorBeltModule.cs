@@ -10,6 +10,11 @@ public class ConveyorBeltModule : MonoBehaviour
     public Transform endPoint;
 
     public List<GameObject> onBelt;
+
+    public GameObject controlBoard;
+
+    public bool conveyorActivation;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +24,12 @@ public class ConveyorBeltModule : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i <= onBelt.Count -1; i++)
+        if (conveyorActivation)
         {
-            onBelt[i].transform.position = Vector3.MoveTowards(onBelt[i].transform.position, endPoint.position, speed * Time.deltaTime);
+            for (int i = 0; i <= onBelt.Count -1; i++)
+            {
+                onBelt[i].transform.position = Vector3.MoveTowards(onBelt[i].transform.position, endPoint.position, speed * Time.deltaTime);
+            }
         }
     }
 
@@ -33,5 +41,15 @@ public class ConveyorBeltModule : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         onBelt.Remove(other.gameObject);
+    }
+
+    public void DesactivationBoard()
+    {
+        
+    }
+
+    public void ActivationBoard()
+    {
+        
     }
 }
