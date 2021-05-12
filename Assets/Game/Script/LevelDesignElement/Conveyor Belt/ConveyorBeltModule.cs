@@ -11,8 +11,6 @@ public class ConveyorBeltModule : MonoBehaviour
 
     public List<GameObject> onBelt;
 
-    public GameObject controlBoard;
-
     public bool conveyorActivation;
     
     // Start is called before the first frame update
@@ -45,11 +43,11 @@ public class ConveyorBeltModule : MonoBehaviour
 
     public void DesactivationBoard()
     {
-        
+        conveyorActivation = false;
     }
 
     public void ActivationBoard()
     {
-        
+        conveyorActivation = true;
     }
 }
