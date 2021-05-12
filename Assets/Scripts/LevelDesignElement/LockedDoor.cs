@@ -21,7 +21,7 @@ public class LockedDoor : MonoBehaviour
         }
         else
         {
-            Debug.Log("nique");
+            Debug.Log("closed");
         }
     }
 }

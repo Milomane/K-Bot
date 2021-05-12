@@ -6,7 +6,8 @@ public class Laser : MonoBehaviour
 {
     public LineRenderer laser;
     public float distance;
-    
+    public bool defineOpen;
+    public GameObject lockedObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class Laser : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Target"))
             {
                 Debug.Log("test");
+                lockedObject.GetComponent<LockedDoor>().isActivated = defineOpen;
             }
             
             DrawRay(transform.position,hit.point);
