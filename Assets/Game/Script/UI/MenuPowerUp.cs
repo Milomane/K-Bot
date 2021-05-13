@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ public class MenuPowerUp : MonoBehaviour
 
     public Image background;
 
-    public Text description;
+    public TextMeshProUGUI description;
 
     [SerializeField] private int idPowerUp;
     
@@ -25,7 +26,6 @@ public class MenuPowerUp : MonoBehaviour
     {
         background.color = hoverColor;
         UpdateDescription();
-        PlayerDeathHandler.ChangePowerUp(idPowerUp - 1);
         // description.SetActive(true);
     }
 
@@ -39,23 +39,23 @@ public class MenuPowerUp : MonoBehaviour
     {
         switch (idPowerUp)
         {
+            case 0 :
+                description.text = "1";
+                break;
             case 1 :
-                description.text = "Normal";
+                description.text = "2";
                 break;
             case 2 :
-                description.text = "Explosion";
+                description.text = "3";
                 break;
             case 3 :
-                description.text = "Spring";
+                description.text = "4";
                 break;
             case 4 :
-                description.text = "Generator";
+                description.text = "5";
                 break;
             case 5 :
-                description.text = "Lamp";
-                break;
-            case 6 :
-                description.text = "Glue";
+                description.text = "6";
                 break;
         }
     }
