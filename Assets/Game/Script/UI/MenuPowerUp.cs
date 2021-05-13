@@ -18,6 +18,7 @@ public class MenuPowerUp : MonoBehaviour
     [SerializeField] private int idPowerUp;
 
     public bool canBeSelect;
+    private bool lastCant;
     
     // Start is called before the first frame update
     void Start()
@@ -31,13 +32,10 @@ public class MenuPowerUp : MonoBehaviour
         UpdateDescription();
         PlayerDeathHandler.ChangePowerUp(idPowerUp);*/
         
-        if (!canBeSelect)
+        if (canBeSelect)
         {
             background.color = hoverColor;
             UpdateDescription();
-        }
-        else
-        {
             PlayerDeathHandler.ChangePowerUp(idPowerUp);
         }
         // description.SetActive(true);
