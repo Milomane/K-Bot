@@ -25,6 +25,7 @@ public class MenuPowerUp : MonoBehaviour
     {
         background.color = hoverColor;
         UpdateDescription();
+        PlayerDeathHandler.ChangePowerUp(idPowerUp - 1);
         // description.SetActive(true);
     }
 
@@ -39,22 +40,22 @@ public class MenuPowerUp : MonoBehaviour
         switch (idPowerUp)
         {
             case 1 :
-                description.text = "1";
+                description.text = "Normal";
                 break;
             case 2 :
-                description.text = "2";
+                description.text = "Explosion";
                 break;
             case 3 :
-                description.text = "3";
+                description.text = "Spring";
                 break;
             case 4 :
-                description.text = "4";
+                description.text = "Generator";
                 break;
             case 5 :
-                description.text = "5";
+                description.text = "Lamp";
                 break;
             case 6 :
-                description.text = "6";
+                description.text = "Glue";
                 break;
         }
     }
