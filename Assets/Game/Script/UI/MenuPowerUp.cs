@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,6 +16,8 @@ public class MenuPowerUp : MonoBehaviour
     public TextMeshProUGUI description;
 
     [SerializeField] private int idPowerUp;
+
+    public bool canBeSelect;
     
     // Start is called before the first frame update
     void Start()
@@ -24,9 +27,19 @@ public class MenuPowerUp : MonoBehaviour
 
     public void Select()
     {
-        background.color = hoverColor;
+        /*background.color = hoverColor;
         UpdateDescription();
-        PlayerDeathHandler.ChangePowerUp(idPowerUp);
+        PlayerDeathHandler.ChangePowerUp(idPowerUp);*/
+        
+        if (!canBeSelect)
+        {
+            background.color = hoverColor;
+            UpdateDescription();
+        }
+        else
+        {
+            PlayerDeathHandler.ChangePowerUp(idPowerUp);
+        }
         // description.SetActive(true);
     }
 
@@ -41,10 +54,10 @@ public class MenuPowerUp : MonoBehaviour
         switch (idPowerUp)
         {
             case 0 :
-                description.text = "1";
+                description.text = "Default death";
                 break;
             case 1 :
-                description.text = "2";
+                description.text = "Explosion";
                 break;
             case 2 :
                 description.text = "3";
