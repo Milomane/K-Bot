@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -131,6 +131,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 254969960}
     m_Modifications:
     - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: idPowerUp
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: baseColor.b
       value: 0.7169812
       objectReference: {fileID: 0}
@@ -145,7 +149,7 @@ PrefabInstance:
     - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 2116736490}
+      objectReference: {fileID: 2116736492}
     - target: {fileID: 3880122744608139720, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: m_FillAmount
       value: 0.16666667
@@ -261,6 +265,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 254969960}
     m_Modifications:
     - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: idPowerUp
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: baseColor.b
       value: 0.7169812
       objectReference: {fileID: 0}
@@ -275,7 +283,7 @@ PrefabInstance:
     - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 2116736490}
+      objectReference: {fileID: 2116736492}
     - target: {fileID: 3880122744608139720, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: m_FillAmount
       value: 0.16666667
@@ -555,6 +563,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 254969960}
     m_Modifications:
     - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: idPowerUp
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: baseColor.b
       value: 0.7169812
       objectReference: {fileID: 0}
@@ -569,7 +581,7 @@ PrefabInstance:
     - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 2116736490}
+      objectReference: {fileID: 2116736492}
     - target: {fileID: 3880122744608139720, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: m_FillAmount
       value: 0.1666
@@ -826,6 +838,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 254969960}
     m_Modifications:
     - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: idPowerUp
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: baseColor.b
       value: 0.7169812
       objectReference: {fileID: 0}
@@ -840,7 +856,7 @@ PrefabInstance:
     - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 2116736490}
+      objectReference: {fileID: 2116736492}
     - target: {fileID: 3880122744608139720, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: m_FillAmount
       value: 0.1666
@@ -956,6 +972,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 254969960}
     m_Modifications:
     - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: idPowerUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: baseColor.b
       value: 0.7169812
       objectReference: {fileID: 0}
@@ -970,7 +990,7 @@ PrefabInstance:
     - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 2116736490}
+      objectReference: {fileID: 2116736492}
     - target: {fileID: 3880122744608139720, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: m_FillAmount
       value: 0.16666667
@@ -1281,7 +1301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.3, y: 0}
+  m_AnchoredPosition: {x: 0.000018358, y: 0}
   m_SizeDelta: {x: 43.6515, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2116736492
@@ -1334,6 +1354,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 254969960}
     m_Modifications:
     - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: idPowerUp
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: baseColor.b
       value: 0.7169812
       objectReference: {fileID: 0}
@@ -1348,7 +1372,7 @@ PrefabInstance:
     - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: description
       value: 
-      objectReference: {fileID: 2116736490}
+      objectReference: {fileID: 2116736492}
     - target: {fileID: 3880122744608139720, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: m_FillAmount
       value: 0.1666
