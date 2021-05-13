@@ -26,6 +26,7 @@ public class MenuPowerUp : MonoBehaviour
     {
         background.color = hoverColor;
         UpdateDescription();
+        PlayerDeathHandler.ChangePowerUp(idPowerUp);
         // description.SetActive(true);
     }
 
