@@ -185,7 +185,7 @@ MonoBehaviour:
     eventPrefab: {fileID: 0}
   selectedDeath: 0
   model: {fileID: 2739104150574953896}
-  respawnMachine: {fileID: 0}
+  repairStation: {fileID: 0}
 --- !u!114 &2739104149046315133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
   groundDirection: {fileID: 2739104149709233275}
   fallDirection: {fileID: 2739104150749100573}
   showGroundNormal: 0
-  showFallNormal: 1
+  showFallNormal: 0
   isGrounded: 0
 --- !u!143 &2739104149046315132
 CharacterController:

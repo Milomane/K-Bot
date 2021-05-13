@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class PlayerDeathHandler : MonoBehaviour
     public static PlayerDeathHandler instance;
 
     [SerializeField] private Death[] deaths;
-    public DeathType selectedDeath = DeathType.normal;
+    public static DeathType selectedDeath = DeathType.normal;
 
     public GameObject model;
 
@@ -107,5 +108,37 @@ public class PlayerDeathHandler : MonoBehaviour
         
         // Retake control
         model.GetComponent<Renderer>().material.color = Color.red;
+    }
+
+    public static void ChangePowerUp(int powerUpId)
+    {
+        switch (powerUpId)
+        {
+            case 0:
+                selectedDeath = DeathType.normal;
+                break;
+            case 1:
+                selectedDeath = DeathType.explosion;
+                break;
+            case 2:
+                selectedDeath = DeathType.spring;
+                break;
+            case 3:
+                selectedDeath = DeathType.generator;
+                break;
+            case 4:
+                selectedDeath = DeathType.lamp;
+                break;
+            case 5:
+                selectedDeath = DeathType.glue;
+                break;
+            case 6:
+                selectedDeath = DeathType.crunshed;
+                break;
+            default:
+                Debug.LogError("Error in change power up, not a valid ID");
+                return;
+            
+        }
     }
 }
