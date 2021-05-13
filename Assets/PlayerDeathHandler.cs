@@ -138,7 +138,8 @@ public class PlayerDeathHandler : MonoBehaviour
             default:
                 Debug.LogError("Error in change power up, not a valid ID");
                 return;
-            
         }
+        
+        CanvasEventManager.instance.deathTypeSelected = selectedDeath;
     }
 }

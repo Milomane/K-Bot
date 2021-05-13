@@ -7,8 +7,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private bool cameraCanMove;
-    private CinemachineVirtualCamera cinemachineVirtualCamera;
+    [SerializeField] private CinemachineFreeLook cinemachineFreeLookCamera;
+    
+    private bool lockCamera;
+    private bool lockMovement;
+    
+    private bool showMenu;
 
     void Start()
     {
@@ -16,6 +20,42 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        bool needToShowMenu = false;
+        bool needToLockCamera = false;
         
+        // Active the selector if the button is pressed
+        CanvasEventManager.instance.selectorActive = Input.GetButton("Selector");
+        if (Input.GetButton("Selector"))
+        {
+            needToShowMenu = true;
+        }
+
+        if (needToShowMenu)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            needToLockCamera = true;
+        }
+        else
+        {
+            if (Cursor.lockState == CursorLockMode.Confined)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
+
+        if (needToLockCamera || lockCamera)
+        {
+            cinemachineFreeLookCamera.m_YAxis.m_InputAxisName = "";
+            cinemachineFreeLookCamera.m_XAxis.m_InputAxisName = "";
+            cinemachineFreeLookCamera.m_YAxis.m_InputAxisValue = 0;
+            cinemachineFreeLookCamera.m_XAxis.m_InputAxisValue = 0;
+        }
+        else
+        {
+            cinemachineFreeLookCamera.m_YAxis.m_InputAxisName = "Mouse Y";
+            cinemachineFreeLookCamera.m_XAxis.m_InputAxisName = "Mouse X";
+        }
     }
 }
