@@ -13,9 +13,11 @@ public class PlayerDeathHandler : MonoBehaviour
     public static DeathType selectedDeath = DeathType.normal;
 
     public GameObject model;
-
     public GameObject repairStation;
-    
+
+    private Queue<GameObject> corpses;
+
+
     public enum DeathType
     {
         normal,
@@ -54,10 +56,23 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public IEnumerator DeathEnumerator(DeathType deathType)
     {
+        
+        
+        // Animation player
+        model.GetComponent<Renderer>().material.color = Color.magenta;
+        
+        // Wait for the player animation to end
+        yield return new WaitForSeconds(1);
+
+        // Instantiate what's handle the effect after death
+        GameObject eventObject = Instantiate(deaths[(int)deathType].eventPrefab, transform.position, quaternion.identity);
+        GameObject particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, quaternion.identity);
+        
         // Switch for special event if needed
         switch (deathType)
         {
             case DeathType.normal:
+                // Enqueue the event object TODO <------------------------------------
                 break;
             case DeathType.explosion:
                 break;
@@ -75,16 +90,6 @@ public class PlayerDeathHandler : MonoBehaviour
                 Debug.LogError("Error in StartDeath, wrong value for death");
                 yield break;
         }
-        
-        // Animation player
-        model.GetComponent<Renderer>().material.color = Color.magenta;
-        
-        // Wait for the player animation to end
-        yield return new WaitForSeconds(1);
-
-        // Instantiate what's handle the effect after death
-        Instantiate(deaths[(int)deathType].eventPrefab, transform.position, quaternion.identity);
-        Instantiate(deaths[(int)deathType].particlePrefab, transform.position, quaternion.identity);
         
         // Make player invisible
         model.SetActive(false);
