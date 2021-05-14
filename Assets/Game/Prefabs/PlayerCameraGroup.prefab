@@ -157,6 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cinemachineFreeLookCamera: {fileID: 2739104150438956285}
+  playerMovement: {fileID: 2739104149046315133}
+  showSelectorMenu: 0
+  stopMovement: 0
 --- !u!114 &547677056443778337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +187,7 @@ MonoBehaviour:
     eventPrefab: {fileID: 2904319733779538178, guid: b8f755de735a6734aa76821d2a32f94d, type: 3}
   - particlePrefab: {fileID: 0}
     eventPrefab: {fileID: 0}
-  CorpseDestructionParticlePrefab: {fileID: 7043752475002646823, guid: 53b3b2dc9f8b2644c8eddf6a2af56b57, type: 3}
+  maxBody: 3
   model: {fileID: 2739104150574953896}
   repairStation: {fileID: 0}
 --- !u!114 &2739104149046315133
@@ -212,6 +215,7 @@ MonoBehaviour:
   jumping: 0
   groundDirection: {fileID: 2739104149709233275}
   fallDirection: {fileID: 2739104150749100573}
+  stopMovement: 0
   showGroundNormal: 0
   showFallNormal: 0
   isGrounded: 0

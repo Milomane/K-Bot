@@ -10,12 +10,14 @@ public class PlayerDeathHandler : MonoBehaviour
     public static PlayerDeathHandler instance;
 
     [SerializeField] private Death[] deaths;
+
+    [SerializeField] private int maxBody = 3;
     public static DeathType selectedDeath = DeathType.normal;
 
     public GameObject model;
     public GameObject repairStation;
 
-    private Queue<GameObject> corpses;
+    private Queue<GameObject> bodys;
 
 
     public enum DeathType
@@ -39,6 +41,7 @@ public class PlayerDeathHandler : MonoBehaviour
     void Start()
     {
         instance = this;
+        bodys = new Queue<GameObject>();
     }
 
     void Update()
@@ -72,15 +75,18 @@ public class PlayerDeathHandler : MonoBehaviour
         switch (deathType)
         {
             case DeathType.normal:
-                // Enqueue the event object TODO <------------------------------------
+                bodys.Enqueue(eventObject);
                 break;
             case DeathType.explosion:
                 break;
             case DeathType.spring:
+                bodys.Enqueue(eventObject);
                 break;
             case DeathType.generator:
+                bodys.Enqueue(eventObject);
                 break;
             case DeathType.lamp:
+                bodys.Enqueue(eventObject);
                 break;
             case DeathType.glue:
                 break;
@@ -89,6 +95,12 @@ public class PlayerDeathHandler : MonoBehaviour
             default :
                 Debug.LogError("Error in StartDeath, wrong value for death");
                 yield break;
+        }
+        
+        // Destroy other event if needed
+        if (bodys.Count > maxBody)
+        {
+            DestroyOldestBody();
         }
         
         // Make player invisible
@@ -146,5 +158,18 @@ public class PlayerDeathHandler : MonoBehaviour
         }
         
         CanvasEventManager.instance.deathTypeSelected = selectedDeath;
+    }
+
+    public void DestroyOldestBody()
+    {
+        bodys.Dequeue().GetComponent<EventDeath>().DestroyBody();
+    }
+
+    public void DestroyAllBody()
+    {
+        while (bodys.Count > 0)
+        {
+            bodys.Dequeue().GetComponent<EventDeath>().DestroyBody();
+        }
     }
 }
