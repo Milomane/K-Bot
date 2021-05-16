@@ -18,6 +18,7 @@ public class MenuPowerUp : MonoBehaviour
     [SerializeField] private int idPowerUp;
 
     public bool canBeSelect;
+    
     private bool lastCant;
     
     // Start is called before the first frame update
@@ -58,16 +59,16 @@ public class MenuPowerUp : MonoBehaviour
                 description.text = "Explosion";
                 break;
             case 2 :
-                description.text = "3";
+                description.text = "Boing";
                 break;
             case 3 :
-                description.text = "4";
+                description.text = "Generator";
                 break;
             case 4 :
-                description.text = "5";
+                description.text = "Light";
                 break;
             case 5 :
-                description.text = "6";
+                description.text = "Loading...";
                 break;
         }
     }
