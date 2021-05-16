@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -9,12 +10,16 @@ public class PlayerDeathHandler : MonoBehaviour
     public static PlayerDeathHandler instance;
 
     [SerializeField] private Death[] deaths;
-    public DeathType selectedDeath = DeathType.normal;
+
+    [SerializeField] private int maxBody = 3;
+    public static DeathType selectedDeath = DeathType.normal;
 
     public GameObject model;
-
     public GameObject repairStation;
-    
+
+    private Queue<GameObject> bodys;
+
+
     public enum DeathType
     {
         normal,
@@ -36,6 +41,7 @@ public class PlayerDeathHandler : MonoBehaviour
     void Start()
     {
         instance = this;
+        bodys = new Queue<GameObject>();
     }
 
     void Update()
@@ -53,18 +59,34 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public IEnumerator DeathEnumerator(DeathType deathType)
     {
+        
+        
+        // Animation player
+        model.GetComponent<Renderer>().material.color = Color.magenta;
+        
+        // Wait for the player animation to end
+        yield return new WaitForSeconds(1);
+
+        // Instantiate what's handle the effect after death
+        GameObject eventObject = Instantiate(deaths[(int)deathType].eventPrefab, transform.position, quaternion.identity);
+        GameObject particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, quaternion.identity);
+        
         // Switch for special event if needed
         switch (deathType)
         {
             case DeathType.normal:
+                bodys.Enqueue(eventObject);
                 break;
             case DeathType.explosion:
                 break;
             case DeathType.spring:
+                bodys.Enqueue(eventObject);
                 break;
             case DeathType.generator:
+                bodys.Enqueue(eventObject);
                 break;
             case DeathType.lamp:
+                bodys.Enqueue(eventObject);
                 break;
             case DeathType.glue:
                 break;
@@ -75,15 +97,11 @@ public class PlayerDeathHandler : MonoBehaviour
                 yield break;
         }
         
-        // Animation player
-        model.GetComponent<Renderer>().material.color = Color.magenta;
-        
-        // Wait for the player animation to end
-        yield return new WaitForSeconds(1);
-
-        // Instantiate what's handle the effect after death
-        Instantiate(deaths[(int)deathType].eventPrefab, transform.position, quaternion.identity);
-        Instantiate(deaths[(int)deathType].particlePrefab, transform.position, quaternion.identity);
+        // Destroy other event if needed
+        if (bodys.Count > maxBody)
+        {
+            DestroyOldestBody();
+        }
         
         // Make player invisible
         model.SetActive(false);
@@ -107,5 +125,51 @@ public class PlayerDeathHandler : MonoBehaviour
         
         // Retake control
         model.GetComponent<Renderer>().material.color = Color.red;
+    }
+
+    public static void ChangePowerUp(int powerUpId)
+    {
+        switch (powerUpId)
+        {
+            case 0:
+                selectedDeath = DeathType.normal;
+                break;
+            case 1:
+                selectedDeath = DeathType.explosion;
+                break;
+            case 2:
+                selectedDeath = DeathType.spring;
+                break;
+            case 3:
+                selectedDeath = DeathType.generator;
+                break;
+            case 4:
+                selectedDeath = DeathType.lamp;
+                break;
+            case 5:
+                selectedDeath = DeathType.glue;
+                break;
+            case 6:
+                selectedDeath = DeathType.crunshed;
+                break;
+            default:
+                Debug.LogError("Error in change power up, not a valid ID");
+                return;
+        }
+        
+        CanvasEventManager.instance.deathTypeSelected = selectedDeath;
+    }
+
+    public void DestroyOldestBody()
+    {
+        bodys.Dequeue().GetComponent<EventDeath>().DestroyBody();
+    }
+
+    public void DestroyAllBody()
+    {
+        while (bodys.Count > 0)
+        {
+            bodys.Dequeue().GetComponent<EventDeath>().DestroyBody();
+        }
     }
 }

@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundDirection;
     [SerializeField] private Transform fallDirection;
 
+    public bool stopMovement;
+
     //Movement
     private float turnSmoothVelocity;
     private float verticalVelocity;
@@ -64,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     {
         GroundDirection();
         
-        if (controller.isGrounded && slopeAngle <= controller.slopeLimit)
+        if (controller.isGrounded && slopeAngle <= controller.slopeLimit && !stopMovement)
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +13,12 @@ public class MenuPowerUp : MonoBehaviour
 
     public Image background;
 
-    public Text description;
+    public TextMeshProUGUI description;
 
     [SerializeField] private int idPowerUp;
+
+    public bool canBeSelect;
+    private bool lastCant;
     
     // Start is called before the first frame update
     void Start()
@@ -23,8 +28,16 @@ public class MenuPowerUp : MonoBehaviour
 
     public void Select()
     {
-        background.color = hoverColor;
+        /*background.color = hoverColor;
         UpdateDescription();
+        PlayerDeathHandler.ChangePowerUp(idPowerUp);*/
+        
+        if (canBeSelect)
+        {
+            background.color = hoverColor;
+            UpdateDescription();
+            PlayerDeathHandler.ChangePowerUp(idPowerUp);
+        }
         // description.SetActive(true);
     }
 
@@ -38,22 +51,22 @@ public class MenuPowerUp : MonoBehaviour
     {
         switch (idPowerUp)
         {
+            case 0 :
+                description.text = "Default death";
+                break;
             case 1 :
-                description.text = "1";
+                description.text = "Explosion";
                 break;
             case 2 :
-                description.text = "2";
-                break;
-            case 3 :
                 description.text = "3";
                 break;
-            case 4 :
+            case 3 :
                 description.text = "4";
                 break;
-            case 5 :
+            case 4 :
                 description.text = "5";
                 break;
-            case 6 :
+            case 5 :
                 description.text = "6";
                 break;
         }

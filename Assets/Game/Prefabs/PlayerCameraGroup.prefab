@@ -156,6 +156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98cef1a43976534aabeac74175a3da9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cinemachineFreeLookCamera: {fileID: 2739104150438956285}
+  playerMovement: {fileID: 2739104149046315133}
+  showSelectorMenu: 0
+  stopMovement: 0
 --- !u!114 &547677056443778337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,21 +175,21 @@ MonoBehaviour:
   deaths:
   - particlePrefab: {fileID: 7043752475002646823, guid: 83defd2acae22f3448a78bd689f572e0, type: 3}
     eventPrefab: {fileID: 2904319733779538178, guid: 491c578db213cee468f4bd5bdee2ea06, type: 3}
+  - particlePrefab: {fileID: 7043752475002646823, guid: 7522b38c17b517544ad29f0d03c6a56c, type: 3}
+    eventPrefab: {fileID: 2904319733779538178, guid: 678487ec76822ef44a47f880db8e3a3e, type: 3}
+  - particlePrefab: {fileID: 7043752475002646823, guid: 3f55a44f9c842df48906efd4c5e3be1a, type: 3}
+    eventPrefab: {fileID: 2904319733779538178, guid: bc32f76d738fa2d40b3bb22bf1908d27, type: 3}
+  - particlePrefab: {fileID: 7043752475002646823, guid: 0fa8775d6a6ef6d47b5bfa33059f6d91, type: 3}
+    eventPrefab: {fileID: 2904319733779538178, guid: a283920dd003dec44b6bd47b5c18915b, type: 3}
+  - particlePrefab: {fileID: 7043752475002646823, guid: 50aa12bfe0568ff44a7159f8278d74c7, type: 3}
+    eventPrefab: {fileID: 2904319733779538178, guid: 6e7acbbb447d61b45901efb7e07da1fe, type: 3}
+  - particlePrefab: {fileID: 7043752475002646823, guid: e261b366a1dc6bb4d9802a420293da7b, type: 3}
+    eventPrefab: {fileID: 2904319733779538178, guid: b8f755de735a6734aa76821d2a32f94d, type: 3}
   - particlePrefab: {fileID: 0}
     eventPrefab: {fileID: 0}
-  - particlePrefab: {fileID: 0}
-    eventPrefab: {fileID: 0}
-  - particlePrefab: {fileID: 0}
-    eventPrefab: {fileID: 0}
-  - particlePrefab: {fileID: 0}
-    eventPrefab: {fileID: 0}
-  - particlePrefab: {fileID: 0}
-    eventPrefab: {fileID: 0}
-  - particlePrefab: {fileID: 0}
-    eventPrefab: {fileID: 0}
-  selectedDeath: 0
+  maxBody: 3
   model: {fileID: 2739104150574953896}
-  respawnMachine: {fileID: 0}
+  repairStation: {fileID: 0}
 --- !u!114 &2739104149046315133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,8 +215,9 @@ MonoBehaviour:
   jumping: 0
   groundDirection: {fileID: 2739104149709233275}
   fallDirection: {fileID: 2739104150749100573}
+  stopMovement: 0
   showGroundNormal: 0
-  showFallNormal: 1
+  showFallNormal: 0
   isGrounded: 0
 --- !u!143 &2739104149046315132
 CharacterController:
@@ -1745,8 +1750,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
