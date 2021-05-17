@@ -33,7 +33,7 @@ public class PlateformeModule : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (plateformeActivation)
         {
@@ -46,11 +46,10 @@ public class PlateformeModule : MonoBehaviour
             {
                 UpdateTarget();
             }
-
         }
         
     }
-
+    
     private void MovePlatforme()
     {
         Vector3 heading = currentTarget - transform.position;
