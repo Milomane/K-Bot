@@ -6,18 +6,30 @@ using UnityEngine;
 public class PlateformeModule : MonoBehaviour
 {
     public bool plateformeActivation;
+    public bool automatic;
 
     public float speed;
-    public int valueTransform;
-    public List<Transform> transformList;
+    public Vector3[] points;
+    public int pointNumber;
+    private Vector3 currentTarget;
 
-    public Transform nextStep;
+    public float tolerance;
+    public float delayTime;
+    private float delayStart;
+    
 
     public GameObject player;
+    public Transform playerGroup;
     // Start is called before the first frame update
     void Start()
     {
-        nextStep = transformList[valueTransform];
+
+        if (points.Length > 0)
+        {
+            currentTarget = points[0];
+        }
+
+        tolerance = speed * Time.deltaTime;
     }
 
     // Update is called once per frame
@@ -25,33 +37,54 @@ public class PlateformeModule : MonoBehaviour
     {
         if (plateformeActivation)
         {
-            if (transform.position != nextStep.position)
+            
+            if (transform.position != currentTarget)
             {
-                transform.position = Vector3.MoveTowards(transform.position, nextStep.position, speed * Time.deltaTime);
-            }
-            else if (transform.position == nextStep.position && valueTransform <= transformList.Count -1)
-            {
-                ValueIncrease();
+                MovePlatforme();
             }
             else
             {
-                valueTransform = 0;
-                transform.position = transformList[valueTransform].position;  
+                UpdateTarget();
             }
 
         }
+        
+    }
 
-        if (transformList[valueTransform] != null)
+    private void MovePlatforme()
+    {
+        Vector3 heading = currentTarget - transform.position;
+        transform.position += (heading / heading.magnitude) * speed * Time.deltaTime;
+
+        if (heading.magnitude < tolerance)
         {
-            nextStep = transformList[valueTransform];
+            transform.position = currentTarget;
+            delayStart = Time.time;
+        }
+    }
+    private void UpdateTarget()
+    {
+        if (automatic)
+        {
+            if (Time.time - delayStart > delayTime)
+            {
+                NextPlatforme();
+            }
+        }
+    }
+
+    private void NextPlatforme()
+    {
+        pointNumber++;
+        if (pointNumber >= points.Length)
+        {
+            pointNumber = 0;
         }
 
+        currentTarget = points[pointNumber];
     }
-
-    private void ValueIncrease()
-    {
-        valueTransform += 1;
-    }
+    
+    
     public void DesactivationBoard()
     {
         plateformeActivation = false;
@@ -67,6 +100,8 @@ public class PlateformeModule : MonoBehaviour
         {
             Debug.Log("oui");
             player = other.gameObject;
+            playerGroup = player.transform.parent;
+            playerGroup.transform.parent = transform;
         }
     }
 
@@ -75,7 +110,9 @@ public class PlateformeModule : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("non");
+            playerGroup.transform.parent = null;
             player = null;
+            playerGroup = null;
         }
     }
 }
