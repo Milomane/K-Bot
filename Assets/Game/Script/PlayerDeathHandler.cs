@@ -21,7 +21,7 @@ public class PlayerDeathHandler : MonoBehaviour
     public bool canDie = true;
 
     public bool dieing;
-    private Queue<GameObject> bodys;
+    public Queue<GameObject> bodys;
    
 
 
@@ -188,5 +188,28 @@ public class PlayerDeathHandler : MonoBehaviour
         {
             bodys.Dequeue().GetComponent<EventDeath>().DestroyBody();
         }
+    }
+
+    public void DestroySelectedBody(GameObject target)
+    {
+      
+        for (int i = 0; i < bodys.Count; i++)
+        {
+            GameObject corpse = bodys.Dequeue();
+            
+            if (corpse == target)
+            {
+               corpse.GetComponent<EventDeath>().DestroyBody();
+               Debug.Log(bodys.Count);
+            }
+            else
+            {
+              bodys.Enqueue(corpse);
+          
+            }
+        }
+
+        
+       
     }
 }

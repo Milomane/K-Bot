@@ -31,7 +31,7 @@ public class Laser : MonoBehaviour
                 lockedObject.GetComponent<LockedDoor>().isActivated = defineOpen;
             }
 
-            if (itKilled && hit.collider.gameObject.CompareTag("Player") && player.GetComponent<PlayerDeathHandler>().dieing)
+            if (itKilled && hit.collider.gameObject.CompareTag("Player") && player.GetComponent<PlayerDeathHandler>().dieing == false)
             {
                 player.GetComponent<PlayerDeathHandler>().StartDeath(PlayerDeathHandler.selectedDeath);
             }
@@ -39,7 +39,7 @@ public class Laser : MonoBehaviour
             if (itKilled && hit.collider.gameObject.CompareTag("Corpse"))
             {
                 Transform test = hit.collider.gameObject.transform.parent;
-                Destroy(test.gameObject);
+                player.GetComponent<PlayerDeathHandler>().DestroySelectedBody(test.gameObject);
             }
             
             DrawRay(transform.position,hit.point);
