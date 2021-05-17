@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
-    public TMP_Text text;
+    public TMP_Text textBox;
     public string[] dialogue;
-  [SerializeField]  private int _actualLine ;
+    [SerializeField]  private int _actualLine;
+    public float speed;
     public GameObject player;
+
+    public bool running;
     // Start is called before the first frame update
     void Start()
     {
-        
+        textBox.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,27 +23,47 @@ public class Dialogue : MonoBehaviour
     {
         float dist = Vector3.Distance(transform.position, player.transform.position);
 
-    /*    if (_actualLine >= dialogue.Length )
+        if ( dist <= 2)
         {
-           
-        }*/
-        
-        if ( dist <= 2 && _actualLine <= dialogue.Length)
-        {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Submit") && running == false)
             {
-                text.gameObject.SetActive(true);
-                text.text = dialogue[_actualLine];
-                _actualLine++;
+                if (_actualLine <= dialogue.Length-1)
+                {
+                    player.GetComponent<PlayerController>().stopMovement = true;
+                    NextLine();
+                    textBox.gameObject.SetActive(true);
+                }
+                else
+                {
+                    player.GetComponent<PlayerController>().stopMovement = false;
+                    StopCoroutine(TypeDialog());
+                    textBox.text = null;
+                    _actualLine = 0;
+                    running = false;
+                    textBox.gameObject.SetActive(false);
+                }
             }
         }
-        
-        else
+    }
+    IEnumerator TypeDialog()
+    {
+        running = true;
+        foreach (char c in dialogue[_actualLine].ToCharArray())
         {
-            text.gameObject.SetActive(false);
-            _actualLine = 0;
-            text.text = null;
+            textBox.text += c;
+            yield return new WaitForSeconds(speed);
+            
         }
-        
+        yield return 
+        running = false;
+    }
+    void NextLine()
+    {
+        if (_actualLine <= dialogue.Length-1)
+        {
+            textBox.text = null;
+            StartCoroutine(TypeDialog());
+            _actualLine++;
+        }
     }
 }
