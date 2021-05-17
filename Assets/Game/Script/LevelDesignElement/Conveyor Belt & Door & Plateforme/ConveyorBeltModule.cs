@@ -10,6 +10,7 @@ public class ConveyorBeltModule : MonoBehaviour
     public Transform endPoint;
 
     public List<GameObject> onBelt;
+    public GameObject player;
 
     public bool conveyorActivation;
     
@@ -28,17 +29,40 @@ public class ConveyorBeltModule : MonoBehaviour
             {
                 onBelt[i].transform.position = Vector3.MoveTowards(onBelt[i].transform.position, endPoint.position, speed * Time.deltaTime);
             }
+
+            if (player != null)
+            {
+                float speedPlayer = speed * 6.6f;
+                player.transform.position =
+                    Vector3.MoveTowards(player.transform.position, endPoint.position, speedPlayer * Time.deltaTime);
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        onBelt.Add(other.gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("oui");
+            player = other.gameObject;
+        }
+        else
+        {
+            onBelt.Add(other.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        onBelt.Remove(other.gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("non");
+            player = null;
+        }
+        else
+        {
+            onBelt.Remove(other.gameObject);
+        }
     }
 
     public void DesactivationBoard()
