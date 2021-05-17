@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -13,13 +14,14 @@ public class PlayerDeathHandler : MonoBehaviour
 
     [SerializeField] private int maxBody = 3;
     public static DeathType selectedDeath = DeathType.normal;
+    [SerializeField] private TextMeshProUGUI nbBodiesAvailable;
 
     public GameObject model;
     public GameObject repairStation;
     public bool canDie = true;
 
-    private bool dieing;
-    private Queue<GameObject> bodys;
+    public bool dieing;
+    public Queue<GameObject> bodys;
    
 
 
@@ -49,6 +51,11 @@ public class PlayerDeathHandler : MonoBehaviour
 
     void Update()
     {
+        if (nbBodiesAvailable != null)
+        {
+            nbBodiesAvailable.text = bodys.Count.ToString();
+        }
+        
         if (Input.GetButtonDown("Kill") && canDie && !dieing)
         {
             StartDeath(selectedDeath);
@@ -181,5 +188,28 @@ public class PlayerDeathHandler : MonoBehaviour
         {
             bodys.Dequeue().GetComponent<EventDeath>().DestroyBody();
         }
+    }
+
+    public void DestroySelectedBody(GameObject target)
+    {
+      
+        for (int i = 0; i < bodys.Count; i++)
+        {
+            GameObject corpse = bodys.Dequeue();
+            
+            if (corpse == target)
+            {
+               corpse.GetComponent<EventDeath>().DestroyBody();
+               Debug.Log(bodys.Count);
+            }
+            else
+            {
+              bodys.Enqueue(corpse);
+          
+            }
+        }
+
+        
+       
     }
 }
