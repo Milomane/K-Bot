@@ -16,6 +16,7 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public GameObject model;
     public GameObject repairStation;
+    public bool canDie = true;
 
     private Queue<GameObject> bodys;
 
@@ -46,7 +47,7 @@ public class PlayerDeathHandler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Kill"))
+        if (Input.GetButtonDown("Kill") && canDie)
         {
             StartDeath(selectedDeath);
         }
