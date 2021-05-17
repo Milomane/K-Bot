@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     
     public bool showSelectorMenu;
     public bool stopMovement;
+    public bool controlCursor;
 
     void Start()
     {
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
             needToShowMenu = true;
         }
 
-        if (needToShowMenu || showSelectorMenu)
+        if (needToShowMenu || showSelectorMenu || controlCursor)
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;

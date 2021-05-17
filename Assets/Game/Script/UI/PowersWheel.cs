@@ -41,7 +41,5 @@ public class PowersWheel : MonoBehaviour
             menuPowerUp = menuItems[selection].GetComponent<MenuPowerUp>();
             menuPowerUp.Select();
         }
-        
-        Debug.Log(currentAngle);
     }
 }
