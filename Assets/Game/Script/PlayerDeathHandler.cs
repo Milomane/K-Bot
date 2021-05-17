@@ -53,7 +53,7 @@ public class PlayerDeathHandler : MonoBehaviour
     {
         if (nbBodiesAvailable != null)
         {
-            nbBodiesAvailable.text = bodys.Count.ToString();
+            nbBodiesAvailable.text = (maxBody - bodys.Count).ToString();
         }
         
         if (Input.GetButtonDown("Kill") && canDie && !dieing)
