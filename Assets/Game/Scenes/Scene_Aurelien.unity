@@ -917,6 +917,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imagePressCanvas: {fileID: 932800845}
+  timerDoorOn: 0
+  activationTimer: 0
+  timerDoor: 0
+  timer: 0
   objectsList:
   - {fileID: 1113419118}
   - {fileID: 1147853688}
@@ -1090,6 +1094,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imagePressCanvas: {fileID: 143783775}
+  timerDoorOn: 0
+  activationTimer: 0
+  timerDoor: 0
+  timer: 0
   objectsList:
   - {fileID: 2084405967}
 --- !u!65 &197109502
@@ -1889,7 +1897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2739104148891114721, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14317727
+      value: 0.14317729
       objectReference: {fileID: 0}
     - target: {fileID: 2739104148891114721, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1941,7 +1949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2739104149832183296, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.16072397
+      value: 0.16072395
       objectReference: {fileID: 0}
     - target: {fileID: 2739104149832183296, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1949,7 +1957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2739104149832183296, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.033435423
+      value: -0.033435427
       objectReference: {fileID: 0}
     - target: {fileID: 2739104150438956282, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1989,7 +1997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2739104150639852782, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.03343543
+      value: -0.033435427
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
@@ -3689,6 +3697,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imagePressCanvas: {fileID: 73173603}
+  timerDoorOn: 1
+  activationTimer: 0
+  timerDoor: 6
+  timer: 0
   objectsList:
   - {fileID: 1333232185}
   - {fileID: 1917572406}

@@ -7,6 +7,8 @@ public class ControlerDesk : MonoBehaviour
 {
     public GameObject imagePressCanvas;
     private bool ActivationOn;
+    public bool timerDoorOn, activationTimer;
+    public float timerDoor, timer;
     
     public List<GameObject> objectsList;
     
@@ -19,6 +21,21 @@ public class ControlerDesk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (activationTimer)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                for (int i = 0; i <= objectsList.Count - 1; i++)
+                {
+                    objectsList[i].GetComponent<DoorModule>().doorActivation = false;
+                    objectsList[i].GetComponent<DoorModule>().DesactivationBoard();
+                }
+
+                activationTimer = false;
+
+            }
+        }
         if (ActivationOn)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -46,6 +63,12 @@ public class ControlerDesk : MonoBehaviour
                         else
                         {
                             objectsList[i].GetComponent<DoorModule>().ActivationBoard();
+                            if (timerDoorOn)
+                            {
+                                Debug.Log("timer");
+                                timer = timerDoor;
+                                activationTimer = true;
+                            }
                         }
                     }
                     else if (objectsList[i].GetComponent<PlateformeModule>() == true)
@@ -57,6 +80,7 @@ public class ControlerDesk : MonoBehaviour
                         else
                         {
                             objectsList[i].GetComponent<PlateformeModule>().ActivationBoard();
+                            
                         }
                     }
                     else
