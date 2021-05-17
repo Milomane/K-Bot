@@ -18,7 +18,9 @@ public class PlayerDeathHandler : MonoBehaviour
     public GameObject repairStation;
     public bool canDie = true;
 
+    private bool dieing;
     private Queue<GameObject> bodys;
+   
 
 
     public enum DeathType
@@ -47,9 +49,14 @@ public class PlayerDeathHandler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Kill") && canDie)
+        if (Input.GetButtonDown("Kill") && canDie && !dieing)
         {
             StartDeath(selectedDeath);
+        }
+
+        if (Input.GetButtonDown("ResetRobot") && !dieing)
+        {
+            DestroyAllBody();
         }
     }
 
@@ -60,7 +67,7 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public IEnumerator DeathEnumerator(DeathType deathType)
     {
-        
+        dieing = true;
         
         // Animation player
         model.GetComponent<Renderer>().material.color = Color.magenta;
@@ -126,6 +133,8 @@ public class PlayerDeathHandler : MonoBehaviour
         
         // Retake control
         model.GetComponent<Renderer>().material.color = Color.red;
+        
+        dieing = false;
     }
 
     public static void ChangePowerUp(int powerUpId)
