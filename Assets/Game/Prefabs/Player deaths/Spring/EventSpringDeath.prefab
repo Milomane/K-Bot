@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4090496900403953850}
   - component: {fileID: 1990507606616446212}
   - component: {fileID: 2711855174840932919}
+  - component: {fileID: 7529135431920971570}
   m_Layer: 0
   m_Name: Spring
-  m_TagString: Untagged
+  m_TagString: Spring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281141056173632403}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2761107422654865824}
@@ -96,6 +97,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7529135431920971570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281141056173632403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434dcb84771a9b047bcc68053a8e0ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  springForce: 15
+  testAnimator: {fileID: 892194939089967689}
 --- !u!1 &2904319733779538178
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +169,7 @@ GameObject:
   - component: {fileID: 2761107422654865824}
   - component: {fileID: 6940694119388064082}
   - component: {fileID: 1539218579965071502}
-  - component: {fileID: 4664467190918429518}
+  - component: {fileID: 892194939089967689}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -225,17 +240,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4664467190918429518
-CapsuleCollider:
+--- !u!95 &892194939089967689
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8223302267247388664}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c09a17a5d7be1c439e6dc07650c95df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
