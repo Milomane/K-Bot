@@ -22,7 +22,8 @@ public class NoSuicideZone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("ne peut plus mourir"); // fonction
+           GameObject player = other.gameObject;
+           player.GetComponent<PlayerDeathHandler>().canDie = false;
         }
     }
 
@@ -30,7 +31,8 @@ public class NoSuicideZone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log(" peut mourir"); // fonction
+            GameObject player = other.gameObject;
+            player.GetComponent<PlayerDeathHandler>().canDie = true;
         }
     }
 }

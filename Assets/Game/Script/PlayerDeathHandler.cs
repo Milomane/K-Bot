@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -13,12 +14,15 @@ public class PlayerDeathHandler : MonoBehaviour
 
     [SerializeField] private int maxBody = 3;
     public static DeathType selectedDeath = DeathType.normal;
+    [SerializeField] private TextMeshProUGUI nbBodiesAvailable;
 
     public GameObject model;
     public GameObject repairStation;
     public bool canDie = true;
 
-    private Queue<GameObject> bodys;
+    public bool dieing;
+    public Queue<GameObject> bodys;
+   
 
 
     public enum DeathType
@@ -47,9 +51,19 @@ public class PlayerDeathHandler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Kill") && canDie)
+        if (nbBodiesAvailable != null)
+        {
+            nbBodiesAvailable.text = bodys.Count.ToString();
+        }
+        
+        if (Input.GetButtonDown("Kill") && canDie && !dieing)
         {
             StartDeath(selectedDeath);
+        }
+
+        if (Input.GetButtonDown("ResetRobot") && !dieing)
+        {
+            DestroyAllBody();
         }
     }
 
@@ -60,7 +74,7 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public IEnumerator DeathEnumerator(DeathType deathType)
     {
-        
+        dieing = true;
         
         // Animation player
         model.GetComponent<Renderer>().material.color = Color.magenta;
@@ -126,6 +140,8 @@ public class PlayerDeathHandler : MonoBehaviour
         
         // Retake control
         model.GetComponent<Renderer>().material.color = Color.red;
+        
+        dieing = false;
     }
 
     public static void ChangePowerUp(int powerUpId)
@@ -172,5 +188,28 @@ public class PlayerDeathHandler : MonoBehaviour
         {
             bodys.Dequeue().GetComponent<EventDeath>().DestroyBody();
         }
+    }
+
+    public void DestroySelectedBody(GameObject target)
+    {
+      
+        for (int i = 0; i < bodys.Count; i++)
+        {
+            GameObject corpse = bodys.Dequeue();
+            
+            if (corpse == target)
+            {
+               corpse.GetComponent<EventDeath>().DestroyBody();
+               Debug.Log(bodys.Count);
+            }
+            else
+            {
+              bodys.Enqueue(corpse);
+          
+            }
+        }
+
+        
+       
     }
 }
