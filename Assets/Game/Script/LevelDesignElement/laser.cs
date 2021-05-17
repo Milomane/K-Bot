@@ -31,7 +31,7 @@ public class Laser : MonoBehaviour
                 lockedObject.GetComponent<LockedDoor>().isActivated = defineOpen;
             }
 
-            if (itKilled && hit.collider.gameObject.CompareTag("Player") && player.GetComponent<PlayerDeathHandler>().dei)
+            if (itKilled && hit.collider.gameObject.CompareTag("Player") && player.GetComponent<PlayerDeathHandler>().dieing)
             {
                 player.GetComponent<PlayerDeathHandler>().StartDeath(PlayerDeathHandler.selectedDeath);
             }

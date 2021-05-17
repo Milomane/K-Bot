@@ -20,7 +20,7 @@ public class PlayerDeathHandler : MonoBehaviour
     public GameObject repairStation;
     public bool canDie = true;
 
-    private bool dieing;
+    public bool dieing;
     private Queue<GameObject> bodys;
    
 
