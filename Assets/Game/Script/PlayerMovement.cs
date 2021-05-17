@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     //Jump
     private float jumpSpeed;
     private Vector3 jumpDirection;
+    private float springCd;
     
 
     //Ground
@@ -126,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
         
         controller.Move(fallVector * Time.deltaTime);
         
-        if (controller.isGrounded && slopeAngle <= controller.slopeLimit)
+        if (controller.isGrounded && slopeAngle <= controller.slopeLimit && springCd < 0)
         {
             if (jumping)
                 jumping = false;
@@ -138,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         
         jumpCd -= Time.deltaTime;
+        springCd -= Time.deltaTime;
     }
 
     void Jump()
@@ -150,6 +152,17 @@ public class PlayerMovement : MonoBehaviour
         
         verticalVelocity = jumpForce;
         jumpCd = secureJumpCd;
+    }
+
+    public void SpringJump(float springForce)
+    {
+        jumping = true;
+
+        jumpDirection = moveDirection;
+        jumpSpeed = currentSpeed;
+        
+        verticalVelocity = springForce;
+        springCd = .1f;
     }
 
     void GroundDirection()
@@ -209,6 +222,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if (hit.collider.tag == "Spring")
+        {
+            Debug.Log(hit.normal);
+        }
+        if (hit.collider.tag == "Spring" && hit.normal.y > .4f && hit.normal.x < .5f && hit.normal.z < .5f && jumping)
+        {
+            SpringJump(hit.collider.GetComponent<Spring>().springForce);
+            
+            hit.collider.GetComponent<Spring>().UseSpring();
+        }
+            
+        
         collisionPoint = hit.point;
     }
 }
