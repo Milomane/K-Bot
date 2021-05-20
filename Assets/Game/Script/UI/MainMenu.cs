@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
     // Options
     public void Options()
     {
-        Debug.Log("Option");
+        //Debug.Log("Option");
     }
 
     // Quit

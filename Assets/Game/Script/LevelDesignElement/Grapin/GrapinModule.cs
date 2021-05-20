@@ -20,10 +20,42 @@ public class GrapinModule : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (transform.position == initialPoint.transform.position)
+        if (transform.position == initialPoint.position)
         {
             readyMoveX = true;
             readyMoveZ = true;
+        }
+
+        if (transform.position == finalPointX.position)
+        {
+            if (horizontalMoveX)
+            {
+                horizontalMoveX = false;
+            }
+            else if (!horizontalMoveX)
+            {
+                horizontalMoveX = true;
+            }
+        }
+        if (transform.position == finalPointZ.position)
+        {
+            if (horizontalMoveZ)
+            {
+                horizontalMoveZ = false;
+            }
+            else if (!horizontalMoveZ)
+            {
+                horizontalMoveZ = true;
+            }
+        }
+    }
+
+    public void LeavePlate()
+    {
+        if (transform.position == initialPoint.position)
+        {
+            horizontalMoveX = false;
+            horizontalMoveZ = false;
         }
     }
 
@@ -34,14 +66,7 @@ public class GrapinModule : MonoBehaviour
             readyMoveZ = false;
         }
         
-        if (horizontalMoveX)
-        {
-            horizontalMoveX = false;
-        }
-        else if (!horizontalMoveX)
-        {
-            horizontalMoveX = true;
-        }
+        
     }
     
     public void MoveZEnter()
@@ -49,15 +74,6 @@ public class GrapinModule : MonoBehaviour
         if (readyMoveX && readyMoveZ)
         {
             readyMoveX = false;
-        }
-
-        if (horizontalMoveZ)
-        {
-            horizontalMoveZ = false;
-        }
-        else if (!horizontalMoveZ)
-        {
-            horizontalMoveZ = true;
         }
     }
 
@@ -67,12 +83,13 @@ public class GrapinModule : MonoBehaviour
         {
             if (horizontalMoveZ)
             {
-                transform.position = Vector3.MoveTowards(transform.position, finalPointZ.position,
+                transform.position = Vector3.MoveTowards(transform.position, initialPoint.position,
                     speedMovement * Time.deltaTime);
             }
             else if (!horizontalMoveZ)
             {
-                transform.position = Vector3.MoveTowards(transform.position, initialPoint.position,
+                
+                transform.position = Vector3.MoveTowards(transform.position, finalPointZ.position,
                     speedMovement * Time.deltaTime);
             }
         }
@@ -84,12 +101,12 @@ public class GrapinModule : MonoBehaviour
         {
             if (horizontalMoveX)
             {
-                transform.position = Vector3.MoveTowards(transform.position, finalPointX.position,
+                transform.position = Vector3.MoveTowards(transform.position, initialPoint.position,
                     speedMovement * Time.deltaTime);
             }
             else if (!horizontalMoveX)
             {
-                transform.position = Vector3.MoveTowards(transform.position, initialPoint.position,
+                transform.position = Vector3.MoveTowards(transform.position, finalPointX.position,
                     speedMovement * Time.deltaTime);
             }
         }

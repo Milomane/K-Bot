@@ -38,6 +38,34 @@ public class GrapinPlaque : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (module != null)
+        {
+            if (grappin)
+            {
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    
+                }
+            }
+            else if (moveX)
+            {
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    module.LeavePlate();
+                }
+            }
+            else if (moveZ)
+            {
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    module.LeavePlate();
+                }
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (module != null)
