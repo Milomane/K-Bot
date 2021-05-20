@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movements")]
     [SerializeField] private float baseSpeed = 6f;
     [SerializeField] private float sprintSpeed = 10f;
+    [SerializeField] private float inAirSpeed = 3f;
     [SerializeField] private float turnSmoothTime = .1f;
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float terminalVelocity = -25;
@@ -20,6 +21,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float airFriction = 2f;
     [SerializeField] private float secureJumpCd = .1f;
     public bool jumping;
+    
+    [Header("Accelerations")]
+    [SerializeField] private float baseSpeedAcceleration = 12f;
+    [SerializeField] private float sprintSpeedAcceleration = 20f;
+    [SerializeField] private float inAirSpeedAcceleration = 6f;
+
+    [SerializeField] private float groundFriction = .05f;
 
     [Header("Ground")] 
     [SerializeField] private Transform groundDirection;
@@ -35,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private float targetAngle;
     private float currentSpeed;
     private Vector3 moveDirection;
+    private Vector3 moveSpeed;
     
     //Jump
     
@@ -75,18 +84,33 @@ public class PlayerMovement : MonoBehaviour
         if (controller.isGrounded && slopeAngle <= controller.slopeLimit && !stopMovement)
         {
             // Set speed to sprint
-            if (Input.GetButton("Sprint"))
-                currentSpeed = sprintSpeed;
+
+            if (inputNormalized != Vector3.zero)
+            {
+                if (Input.GetButton("Sprint"))
+                {
+                    currentSpeed += sprintSpeedAcceleration * Time.deltaTime;
+                    Mathf.Clamp(currentSpeed, 0, sprintSpeed);
+                }
+                else
+                {
+                    currentSpeed += baseSpeedAcceleration * Time.deltaTime;
+                    Mathf.Clamp(currentSpeed, 0, sprintSpeed);
+                }
+            }
             else
-                currentSpeed = baseSpeed;
-            
+                currentSpeed = Mathf.Lerp(currentSpeed, 0, (1/groundFriction) * Time.deltaTime);
         }
         else if (!controller.isGrounded || slopeAngle > controller.slopeLimit)
         {
             // Decrease input and current speed with air friction if in air
-            inputNormalized = Vector2.Lerp(inputNormalized, Vector2.zero, (1/airFriction)*Time.deltaTime);
-            currentSpeed = Mathf.Lerp(currentSpeed, 0, (1/airFriction)*Time.deltaTime);
+            //inputNormalized = Vector2.Lerp(inputNormalized, Vector2.zero, (1/airFriction)*Time.deltaTime);
+            currentSpeed = Mathf.Lerp(currentSpeed, 0, (1/airFriction) * Time.deltaTime);
+            if (currentSpeed < 0)
+                currentSpeed = 0;
         }
+        
+        
 
         if (jumping)
         {
@@ -123,7 +147,6 @@ public class PlayerMovement : MonoBehaviour
         {
             verticalVelocity = Mathf.Lerp(verticalVelocity, terminalVelocity, .25f);
         }
-            
 
         // Calc fall direction because au slopes
         Vector3 fallVector;
