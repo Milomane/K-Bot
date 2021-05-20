@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+    
     [SerializeField] private CinemachineFreeLook cinemachineFreeLookCamera;
     [SerializeField] private PlayerMovement playerMovement;
     
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        instance = this;
     }
     void Update()
     {

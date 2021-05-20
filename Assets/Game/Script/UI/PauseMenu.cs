@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
     
     // Player
-    [SerializeField] private PlayerController playerController;
+    private PlayerController playerController;
+
+    public void Start()
+    {
+        playerController = PlayerController.instance;
+    }
 
     // Update is called once per frame
     void Update()

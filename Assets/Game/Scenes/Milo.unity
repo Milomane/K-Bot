@@ -9828,6 +9828,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.25008
       objectReference: {fileID: 0}
+    - target: {fileID: 8262415353762596651, guid: ad00efb3f7efebb43934667b04d616d1, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1935434268}
     - target: {fileID: 9183285158051652140, guid: ad00efb3f7efebb43934667b04d616d1, type: 3}
       propertyPath: m_Name
       value: CurrentPowerUp
@@ -29072,6 +29076,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+--- !u!114 &1935434268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2739104149046315135, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
+  m_PrefabInstance: {fileID: 2739104148989212334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98cef1a43976534aabeac74175a3da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &2001057794
 Mesh:
   m_ObjectHideFlags: 0
