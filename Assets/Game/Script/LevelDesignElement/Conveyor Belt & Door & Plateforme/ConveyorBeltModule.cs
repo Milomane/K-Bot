@@ -21,7 +21,7 @@ public class ConveyorBeltModule : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (conveyorActivation)
         {
@@ -34,7 +34,7 @@ public class ConveyorBeltModule : MonoBehaviour
             {
                 float speedPlayer = speed * 6.6f;
                 player.transform.position =
-                    Vector3.MoveTowards(player.transform.position, endPoint.position, speedPlayer * Time.deltaTime);
+                    Vector3.MoveTowards(player.transform.position, endPoint.position, speed * Time.deltaTime);
             }
         }
     }
