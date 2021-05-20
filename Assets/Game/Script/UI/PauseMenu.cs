@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
     
     // Player
-    [SerializeField] private PlayerController playerController;
+    private PlayerController playerController;
+
+    public void Start()
+    {
+        playerController = PlayerController.instance;
+    }
 
     // Update is called once per frame
     void Update()
@@ -47,17 +53,20 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = true;
     }
 
+    // Options
     public void Options()
     {
         Debug.Log("Options");
     }
 
+    // Main menu
     public void LoadMenu()
     {
         SceneManager.LoadScene(0);
     }
     
-    public void QuitMenu()
+    // Quit the game
+    public void QuitGame()
     {
         Application.Quit();
     }
