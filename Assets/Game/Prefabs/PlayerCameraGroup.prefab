@@ -221,7 +221,7 @@ MonoBehaviour:
   sprintSpeedAcceleration: 24
   inAirSpeedAcceleration: 8
   groundDeceleration: 18
-  airDeceleration: 0.2
+  airDeceleration: 0.5
   groundDirection: {fileID: 2739104149709233275}
   fallDirection: {fileID: 2739104150749100573}
   stopMovement: 0
@@ -229,11 +229,7 @@ MonoBehaviour:
   showFallNormal: 0
   isGrounded: 0
   testVectorTransform: {fileID: 0}
-  testVector: {x: 0, y: 0, z: 0}
-  testVectorTargetValue: {x: 0, y: 0, z: 0}
-  testVectorLerpSpeed: 0
-  testValue: 0
-  testActive: 0
+  realSpeed: 0
 --- !u!143 &2739104149046315132
 CharacterController:
   m_ObjectHideFlags: 0

@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentDeceleration;
     private Vector3 moveDirection;
     private Vector3 moveSpeed;
-    
+
     //Jump
     
     private Vector3 jumpDirection;
@@ -67,11 +67,7 @@ public class PlayerMovement : MonoBehaviour
     public bool showFallNormal;
     public bool isGrounded;
     public Transform testVectorTransform;
-    public Vector3 testVector;
-    public Vector3 testVectorTargetValue;
-    public float testVectorLerpSpeed;
-    public float testValue;
-    public bool testActive;
+    public float realSpeed;
 
     void Update()
     {
@@ -151,14 +147,14 @@ public class PlayerMovement : MonoBehaviour
             float changeApplied = currentAcceleration;
             float vectorDistance = Vector3.Distance(moveSpeed, moveDirection);
             moveSpeed = Vector3.Lerp(moveSpeed, moveDirection * currentSpeed, Mathf.Clamp(changeApplied * Time.deltaTime / vectorDistance, 0, 1));
-            moveSpeed = Vector3.ClampMagnitude(moveSpeed, currentSpeed);
         }
         else if (Time.deltaTime != 0)
         {
             moveSpeed = Vector3.Lerp(moveSpeed, Vector3.zero, Mathf.Clamp(currentDeceleration * Time.deltaTime / moveSpeed.magnitude, 0, 1));
-            moveSpeed = Vector3.ClampMagnitude(moveSpeed, currentSpeed);
         }
+        moveSpeed = Vector3.ClampMagnitude(moveSpeed, sprintSpeed);
 
+        realSpeed = moveSpeed.magnitude;
         // MOVE CHARACTER CONTROLLER 
         controller.Move(moveSpeed * forwardMult * Time.deltaTime);
 
@@ -306,14 +302,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(testVectorTransform.position, .05f);
-        Vector3 linePos = testVector;
-        if (testActive)
-        {
-            testValue += testVectorLerpSpeed * Time.deltaTime;
-            if (testValue > 1) testValue = 1;
-            linePos = Vector3.Lerp(testVector, testVectorTargetValue, testValue);
-        }
-        
-        Gizmos.DrawLine(testVectorTransform.position, testVectorTransform.position + linePos);
+        Gizmos.DrawLine(testVectorTransform.position, testVectorTransform.position + moveSpeed);
     }
 }
