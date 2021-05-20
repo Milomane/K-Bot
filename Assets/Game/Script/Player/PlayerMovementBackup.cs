@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovementBackup : MonoBehaviour
 {
     [Header("Refs")]
     [SerializeField] private CharacterController controller;
@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float terminalVelocity = -25;
     [SerializeField] private float jumpForce = 100f;
+    [SerializeField] private float airFriction = 2f;
     [SerializeField] private float secureJumpCd = .1f;
     public bool jumping;
     
@@ -26,8 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sprintSpeedAcceleration = 20f;
     [SerializeField] private float inAirSpeedAcceleration = 6f;
 
-    [SerializeField] private float groundDeceleration = .05f;
-    [SerializeField] private float airDeceleration = 2f;
+    [SerializeField] private float groundFriction = .05f;
 
     [Header("Ground")] 
     [SerializeField] private Transform groundDirection;
@@ -42,8 +42,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 inputNormalized;
     private float targetAngle;
     private float currentSpeed;
-    private float currentAcceleration;
-    private float currentDeceleration;
     private Vector3 moveDirection;
     private Vector3 moveSpeed;
     
@@ -84,8 +82,6 @@ public class PlayerMovement : MonoBehaviour
     {
         GroundDirection();
         
-        Debug.Log("Move speed : " + moveSpeed);
-        
         // INPUTS
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -93,32 +89,31 @@ public class PlayerMovement : MonoBehaviour
         
         if (controller.isGrounded && slopeAngle <= controller.slopeLimit && !stopMovement)
         {
+            // Set speed to sprint
+
             if (inputNormalized != Vector3.zero)
             {
-                // Check for sprint
                 if (Input.GetButton("Sprint"))
                 {
-                    // Set speed to sprint speed
-                    currentSpeed = sprintSpeed;
-                    currentAcceleration = sprintSpeedAcceleration;
+                    currentSpeed += sprintSpeedAcceleration * Time.deltaTime;
+                    currentSpeed = Mathf.Clamp(currentSpeed, 0, sprintSpeed);
                 }
                 else
                 {
-                    // Set speed to base speed
-                    currentSpeed = baseSpeed;
-                    currentAcceleration = baseSpeedAcceleration;
+                    currentSpeed += baseSpeedAcceleration * Time.deltaTime;
+                    currentSpeed = Mathf.Clamp(currentSpeed, 0, baseSpeed);
                 }
             }
-
-            currentDeceleration = groundDeceleration;
+            else
+                currentSpeed = Mathf.Lerp(currentSpeed, 0, (1/groundFriction) * Time.deltaTime);
         }
         else if (!controller.isGrounded || slopeAngle > controller.slopeLimit)
         {
             // Decrease input and current speed with air friction if in air
             //inputNormalized = Vector2.Lerp(inputNormalized, Vector2.zero, (1/airFriction)*Time.deltaTime);
-            currentSpeed = inAirSpeed;
-            currentAcceleration = inAirSpeedAcceleration;
-            currentDeceleration = airDeceleration;
+            currentSpeed = Mathf.Lerp(currentSpeed, 0, (1/airFriction) * Time.deltaTime);
+            if (currentSpeed < 0)
+                currentSpeed = 0;
         }
         
         
@@ -132,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (inputNormalized.magnitude >= .1f)
         {
-            // Smooth player angle and define moveDirection and DEFINE TARGET ANGLE
+            // Smooth Rotate player and define moveDirection
             targetAngle = Mathf.Atan2(inputNormalized.x, inputNormalized.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -145,22 +140,9 @@ public class PlayerMovement : MonoBehaviour
             /*if (controller.isGrounded)
                 moveDirection = Vector3.zero;                    HERE*/
         }
-
-        if (inputNormalized.magnitude > .1f && Time.deltaTime != 0)
-        {
-            float changeApplied = currentAcceleration;
-            float vectorDistance = Vector3.Distance(moveSpeed, moveDirection);
-            moveSpeed = Vector3.Lerp(moveSpeed, moveDirection * currentSpeed, Mathf.Clamp(changeApplied * Time.deltaTime / vectorDistance, 0, 1));
-            moveSpeed = Vector3.ClampMagnitude(moveSpeed, currentSpeed);
-        }
-        else if (Time.deltaTime != 0)
-        {
-            moveSpeed = Vector3.Lerp(moveSpeed, Vector3.zero, Mathf.Clamp(currentDeceleration * Time.deltaTime / moveSpeed.magnitude, 0, 1));
-            moveSpeed = Vector3.ClampMagnitude(moveSpeed, currentSpeed);
-        }
-
+        
         // MOVE CHARACTER CONTROLLER 
-        controller.Move(moveSpeed * forwardMult * Time.deltaTime);
+        controller.Move(moveDirection.normalized * currentSpeed * forwardMult * Time.deltaTime);
 
         // Calc vertical velocity with gravity
         if (!isGrounded && verticalVelocity > terminalVelocity)

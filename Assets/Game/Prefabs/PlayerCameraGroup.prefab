@@ -215,19 +215,25 @@ MonoBehaviour:
   gravity: -18.62
   terminalVelocity: -25
   jumpForce: 8
-  airFriction: 8
   secureJumpCd: 0.1
   jumping: 0
-  baseSpeedAcceleration: 12
-  sprintSpeedAcceleration: 20
-  inAirSpeedAcceleration: 6
-  groundFriction: 0.1
+  baseSpeedAcceleration: 16
+  sprintSpeedAcceleration: 24
+  inAirSpeedAcceleration: 8
+  groundDeceleration: 18
+  airDeceleration: 0.2
   groundDirection: {fileID: 2739104149709233275}
   fallDirection: {fileID: 2739104150749100573}
   stopMovement: 0
   showGroundNormal: 0
   showFallNormal: 0
   isGrounded: 0
+  testVectorTransform: {fileID: 0}
+  testVector: {x: 0, y: 0, z: 0}
+  testVectorTargetValue: {x: 0, y: 0, z: 0}
+  testVectorLerpSpeed: 0
+  testValue: 0
+  testActive: 0
 --- !u!143 &2739104149046315132
 CharacterController:
   m_ObjectHideFlags: 0

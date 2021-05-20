@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool stopMovement;
     public bool controlCursor;
 
-    void Start()
+    void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         instance = this;
