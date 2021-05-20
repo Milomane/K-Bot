@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEditor;
-using UnityEditor.ShaderGraph.Serialization;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
