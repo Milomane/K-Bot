@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
     
     //Jump
-    private float jumpSpeed;
+    
     private Vector3 jumpDirection;
     private float springCd;
     
@@ -67,12 +67,14 @@ public class PlayerMovement : MonoBehaviour
     {
         GroundDirection();
         
+        // INPUTS
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        inputNormalized = new Vector3(horizontal, 0f, vertical).normalized;
+        
         if (controller.isGrounded && slopeAngle <= controller.slopeLimit && !stopMovement)
         {
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
-            inputNormalized = new Vector3(horizontal, 0f, vertical).normalized;
-
+            // Set speed to sprint
             if (Input.GetButton("Sprint"))
                 currentSpeed = sprintSpeed;
             else
@@ -81,15 +83,21 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (!controller.isGrounded || slopeAngle > controller.slopeLimit)
         {
+            // Decrease input and current speed with air friction if in air
             inputNormalized = Vector2.Lerp(inputNormalized, Vector2.zero, (1/airFriction)*Time.deltaTime);
             currentSpeed = Mathf.Lerp(currentSpeed, 0, (1/airFriction)*Time.deltaTime);
         }
-        
+
         if (jumping)
+        {
+            // Apply jump direction to move direction while jumping
             moveDirection = jumpDirection;
+        }
+            
         
         if (inputNormalized.magnitude >= .1f)
         {
+            // Smooth Rotate player and define moveDirection
             targetAngle = Mathf.Atan2(inputNormalized.x, inputNormalized.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -98,13 +106,15 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            // If the player is not moving and grounded, the move direction reset
             if (controller.isGrounded)
                 moveDirection = Vector3.zero;
         }
         
+        // MOVE CHARACTER CONTROLLER 
         controller.Move(moveDirection.normalized * currentSpeed * forwardMult * Time.deltaTime);
 
-        // Gravity
+        // Calc vertical velocity with gravity
         if (!isGrounded && verticalVelocity > terminalVelocity)
         {
             verticalVelocity += gravity * Time.deltaTime;
@@ -115,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
         }
             
 
+        // Calc fall direction because au slopes
         Vector3 fallVector;
         if (verticalVelocity <= 0)
         { 
@@ -125,19 +136,25 @@ public class PlayerMovement : MonoBehaviour
             fallVector = fallDirection.up * verticalVelocity;
         }
         
+        // Move Character controller down
         controller.Move(fallVector * Time.deltaTime);
         
+        // Enter if grounded and the slope is not to sharp
+        // Also check for
         if (controller.isGrounded && slopeAngle <= controller.slopeLimit && springCd < 0)
         {
+            // Stop jumping and stop velocity
             if (jumping)
                 jumping = false;
             verticalVelocity = -2f;
         }
         
         // Jump
+        // Start jump if player is on ground and he press jump
         if (controller.isGrounded && Input.GetButtonDown("Jump") && jumpCd <= 0)
             Jump();
         
+        // Decrease both timer
         jumpCd -= Time.deltaTime;
         springCd -= Time.deltaTime;
     }
@@ -147,10 +164,11 @@ public class PlayerMovement : MonoBehaviour
         if (!jumping)
             jumping = true;
 
+        // Apply actual direction for the jump and set vertical velocity
         jumpDirection = moveDirection;
-        jumpSpeed = currentSpeed;
-        
         verticalVelocity = jumpForce;
+        
+        // Start jump timer
         jumpCd = secureJumpCd;
     }
 
@@ -159,7 +177,6 @@ public class PlayerMovement : MonoBehaviour
         jumping = true;
 
         jumpDirection = moveDirection;
-        jumpSpeed = currentSpeed;
         
         verticalVelocity = springForce;
         springCd = .1f;
@@ -222,6 +239,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        // Handle Springs
         if (hit.collider.tag == "Spring")
         {
             Debug.Log(hit.normal);
