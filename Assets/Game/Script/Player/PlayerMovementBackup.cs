@@ -18,7 +18,6 @@ public class PlayerMovementBackup : MonoBehaviour
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float terminalVelocity = -25;
     [SerializeField] private float jumpForce = 100f;
-    [SerializeField] private float airFriction = 2f;
     [SerializeField] private float secureJumpCd = .1f;
     public bool jumping;
     
@@ -27,7 +26,8 @@ public class PlayerMovementBackup : MonoBehaviour
     [SerializeField] private float sprintSpeedAcceleration = 20f;
     [SerializeField] private float inAirSpeedAcceleration = 6f;
 
-    [SerializeField] private float groundFriction = .05f;
+    [SerializeField] private float groundDeceleration = .05f;
+    [SerializeField] private float airDeceleration = 2f;
 
     [Header("Ground")] 
     [SerializeField] private Transform groundDirection;
@@ -42,9 +42,11 @@ public class PlayerMovementBackup : MonoBehaviour
     private Vector3 inputNormalized;
     private float targetAngle;
     private float currentSpeed;
+    private float currentAcceleration;
+    private float currentDeceleration;
     private Vector3 moveDirection;
     private Vector3 moveSpeed;
-    
+
     //Jump
     
     private Vector3 jumpDirection;
@@ -64,12 +66,7 @@ public class PlayerMovementBackup : MonoBehaviour
     public bool showGroundNormal;
     public bool showFallNormal;
     public bool isGrounded;
-    public Transform testVectorTransform;
-    public Vector3 testVector;
-    public Vector3 testVectorTargetValue;
-    public float testVectorLerpSpeed;
-    public float testValue;
-    public bool testActive;
+    public float realSpeed;
 
     void Update()
     {
@@ -89,31 +86,34 @@ public class PlayerMovementBackup : MonoBehaviour
         
         if (controller.isGrounded && slopeAngle <= controller.slopeLimit && !stopMovement)
         {
-            // Set speed to sprint
-
             if (inputNormalized != Vector3.zero)
             {
+                // Check for sprint
                 if (Input.GetButton("Sprint"))
                 {
-                    currentSpeed += sprintSpeedAcceleration * Time.deltaTime;
-                    currentSpeed = Mathf.Clamp(currentSpeed, 0, sprintSpeed);
+                    // Set speed to sprint speed
+                    currentSpeed = sprintSpeed;
+                    currentAcceleration = sprintSpeedAcceleration;
                 }
                 else
                 {
-                    currentSpeed += baseSpeedAcceleration * Time.deltaTime;
-                    currentSpeed = Mathf.Clamp(currentSpeed, 0, baseSpeed);
+                    // Set speed to base speed
+                    currentSpeed = baseSpeed;
+                    currentAcceleration = baseSpeedAcceleration;
                 }
             }
-            else
-                currentSpeed = Mathf.Lerp(currentSpeed, 0, (1/groundFriction) * Time.deltaTime);
+
+            currentDeceleration = groundDeceleration;
+            controller.stepOffset = .3f;
         }
         else if (!controller.isGrounded || slopeAngle > controller.slopeLimit)
         {
             // Decrease input and current speed with air friction if in air
             //inputNormalized = Vector2.Lerp(inputNormalized, Vector2.zero, (1/airFriction)*Time.deltaTime);
-            currentSpeed = Mathf.Lerp(currentSpeed, 0, (1/airFriction) * Time.deltaTime);
-            if (currentSpeed < 0)
-                currentSpeed = 0;
+            currentSpeed = inAirSpeed;
+            currentAcceleration = inAirSpeedAcceleration;
+            currentDeceleration = airDeceleration;
+            controller.stepOffset = 0f;
         }
         
         
@@ -127,7 +127,7 @@ public class PlayerMovementBackup : MonoBehaviour
         
         if (inputNormalized.magnitude >= .1f)
         {
-            // Smooth Rotate player and define moveDirection
+            // Smooth player angle and define moveDirection and DEFINE TARGET ANGLE
             targetAngle = Mathf.Atan2(inputNormalized.x, inputNormalized.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -140,9 +140,22 @@ public class PlayerMovementBackup : MonoBehaviour
             /*if (controller.isGrounded)
                 moveDirection = Vector3.zero;                    HERE*/
         }
-        
+
+        if (inputNormalized.magnitude > .1f && Time.deltaTime != 0)
+        {
+            float changeApplied = currentAcceleration;
+            float vectorDistance = Vector3.Distance(moveSpeed, moveDirection);
+            moveSpeed = Vector3.Lerp(moveSpeed, moveDirection * currentSpeed, Mathf.Clamp(changeApplied * Time.deltaTime / vectorDistance, 0, 1));
+        }
+        else if (Time.deltaTime != 0)
+        {
+            moveSpeed = Vector3.Lerp(moveSpeed, Vector3.zero, Mathf.Clamp(currentDeceleration * Time.deltaTime / moveSpeed.magnitude, 0, 1));
+        }
+        moveSpeed = Vector3.ClampMagnitude(moveSpeed, sprintSpeed);
+
+        realSpeed = moveSpeed.magnitude;
         // MOVE CHARACTER CONTROLLER 
-        controller.Move(moveDirection.normalized * currentSpeed * forwardMult * Time.deltaTime);
+        controller.Move(moveSpeed * forwardMult * Time.deltaTime);
 
         // Calc vertical velocity with gravity
         if (!isGrounded && verticalVelocity > terminalVelocity)
@@ -280,22 +293,6 @@ public class PlayerMovementBackup : MonoBehaviour
             hit.collider.GetComponent<Spring>().UseSpring();
         }
             
-        
         collisionPoint = hit.point;
-    }
-
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(testVectorTransform.position, .05f);
-        Vector3 linePos = testVector;
-        if (testActive)
-        {
-            testValue += testVectorLerpSpeed * Time.deltaTime;
-            if (testValue > 1) testValue = 1;
-            linePos = Vector3.Lerp(testVector, testVectorTargetValue, testValue);
-        }
-        
-        Gizmos.DrawLine(testVectorTransform.position, testVectorTransform.position + linePos);
     }
 }

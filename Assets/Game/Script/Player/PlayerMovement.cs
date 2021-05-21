@@ -54,12 +54,13 @@ public class PlayerMovement : MonoBehaviour
     
 
     //Ground
-    private Vector3 forwardDirection, collisionPoint;
+    private Vector3 forwardDirection, collisionPoint, wallCollisionPoint;
     private float slopeAngle, forwardAngle;
     private float forwardMult;
     private float fallMult;
-    private Ray groundRay;
+    private Ray groundRay, wallRay;
     private RaycastHit groundHit;
+    private RaycastHit wallHit;
     
     //Debug
     [Header("Debug")] 
@@ -78,8 +79,6 @@ public class PlayerMovement : MonoBehaviour
     void Locomotion()
     {
         GroundDirection();
-        
-        Debug.Log("Move speed : " + moveSpeed);
         
         // INPUTS
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -106,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             currentDeceleration = groundDeceleration;
+            controller.stepOffset = .3f;
         }
         else if (!controller.isGrounded || slopeAngle > controller.slopeLimit)
         {
@@ -114,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = inAirSpeed;
             currentAcceleration = inAirSpeedAcceleration;
             currentDeceleration = airDeceleration;
+            controller.stepOffset = 0f;
         }
         
         
@@ -273,6 +274,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void WallDirection()
+    {
+        wallRay.origin = wallCollisionPoint - moveDirection.normalized * 0.05f;
+        wallRay.direction = moveDirection;
+
+        if (Physics.Raycast(wallRay, out wallHit, 0.55f))
+        {
+        }
+    }
+
     void DebugGround()
     {
         groundDirection.GetChild(0).gameObject.SetActive(showGroundNormal);
@@ -293,7 +304,10 @@ public class PlayerMovement : MonoBehaviour
             hit.collider.GetComponent<Spring>().UseSpring();
         }
             
-        
         collisionPoint = hit.point;
+        if (hit.normal.y == 0)
+        {
+            wallCollisionPoint = hit.point;
+        }
     }
 }
