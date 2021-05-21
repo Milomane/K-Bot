@@ -52,7 +52,13 @@ public class AudioManager : MonoBehaviour
     { 
         Sound s = GetSoundFromAudioManager(name);
         s.source.Play(); 
-    } 
+    }
+
+    public void PlayOneShot(string name)
+    {
+        Sound s = GetSoundFromAudioManager(name);
+        s.source.PlayOneShot(s.clip);
+    }
  
     // Stop a sound
     public void Stop(string name) 

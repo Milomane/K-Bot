@@ -16,6 +16,7 @@ using UnityEngine.UI;
 
     void Start()
     {
+        // Resolutions
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
@@ -64,5 +65,10 @@ using UnityEngine.UI;
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+    }
+
+    public void BackButton()
+    {
+        FindObjectOfType<AudioManager>().PlayOneShot("ClickButton");
     }
 }
