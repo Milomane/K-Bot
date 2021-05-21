@@ -5,7 +5,10 @@ using UnityEngine;
 public class LockedDoor : MonoBehaviour
 {
     public bool isActivated;
-    
+
+    public Vector3 open;
+
+    public Vector3 closed;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +20,11 @@ public class LockedDoor : MonoBehaviour
     {
         if (isActivated)
         {
-            Debug.Log("open"); // fonciton d'ouverture
+           transform.rotation = Quaternion.Euler(open);
         }
         else
         {
-            Debug.Log("closed");
+            transform.rotation = Quaternion.Euler(closed);
         }
     }
 }

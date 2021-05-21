@@ -27,7 +27,7 @@ public class Laser : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Target"))
             {
-                Debug.Log("test");
+                
                 lockedObject.GetComponent<LockedDoor>().isActivated = defineOpen;
             }
 
@@ -47,6 +47,7 @@ public class Laser : MonoBehaviour
         else
         {
             DrawRay(transform.position, transform.forward * distance);
+            lockedObject.GetComponent<LockedDoor>().isActivated = !defineOpen;  
         }
     }
 
