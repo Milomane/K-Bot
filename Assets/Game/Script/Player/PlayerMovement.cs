@@ -66,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
     public bool showGroundNormal;
     public bool showFallNormal;
     public bool isGrounded;
-    public Transform testVectorTransform;
     public float realSpeed;
 
     void Update()
@@ -296,12 +295,5 @@ public class PlayerMovement : MonoBehaviour
             
         
         collisionPoint = hit.point;
-    }
-
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(testVectorTransform.position, .05f);
-        Gizmos.DrawLine(testVectorTransform.position, testVectorTransform.position + moveSpeed);
     }
 }
