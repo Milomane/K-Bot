@@ -70,4 +70,16 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
     }
+    
+    public void PlayHoverSound()
+    {
+        Debug.Log("Hover");
+        FindObjectOfType<AudioManager>().Play("HoverButton");
+    }
+    
+    public void PlayClickSound()
+    {
+        Debug.Log("Click");
+        FindObjectOfType<AudioManager>().Play("ClickButton");
+    }
 }
