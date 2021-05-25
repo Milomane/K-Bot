@@ -53,14 +53,15 @@ public class PlayerMovement : MonoBehaviour
     private float springCd;
     
 
-    //Ground
+    //Ground and wall
     private Vector3 forwardDirection, collisionPoint, wallCollisionPoint;
-    private float slopeAngle, forwardAngle;
+    private float slopeAngle, forwardAngle, wallAngle;
     private float forwardMult;
     private float fallMult;
     private Ray groundRay, wallRay;
     private RaycastHit groundHit;
     private RaycastHit wallHit;
+    public bool isHittingWall;
     
     //Debug
     [Header("Debug")] 
@@ -68,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     public bool showFallNormal;
     public bool isGrounded;
     public float realSpeed;
+    
 
     void Update()
     {
@@ -79,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
     void Locomotion()
     {
         GroundDirection();
+        
         
         // INPUTS
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -109,6 +112,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (!controller.isGrounded || slopeAngle > controller.slopeLimit)
         {
+            WallDirection();
+            
             // Decrease input and current speed with air friction if in air
             //inputNormalized = Vector2.Lerp(inputNormalized, Vector2.zero, (1/airFriction)*Time.deltaTime);
             currentSpeed = inAirSpeed;
@@ -151,6 +156,16 @@ public class PlayerMovement : MonoBehaviour
         else if (Time.deltaTime != 0)
         {
             moveSpeed = Vector3.Lerp(moveSpeed, Vector3.zero, Mathf.Clamp(currentDeceleration * Time.deltaTime / moveSpeed.magnitude, 0, 1));
+        }
+
+        if (isHittingWall)
+        {
+            /*float alpha = Vector3.Angle(Vector3.forward, wallDirectionInVector3);*/
+            
+            Vector3 wallDirectionVector = new Vector3(Mathf.Cos(Mathf.Deg2Rad * wallAngle), 0, Mathf.Cos(Mathf.Deg2Rad * wallAngle));
+
+            moveSpeed = Vector3.Scale(moveSpeed, wallDirectionVector);
+            isHittingWall = false;
         }
         moveSpeed = Vector3.ClampMagnitude(moveSpeed, sprintSpeed);
 
@@ -279,8 +294,19 @@ public class PlayerMovement : MonoBehaviour
         wallRay.origin = wallCollisionPoint - moveDirection.normalized * 0.05f;
         wallRay.direction = moveDirection;
 
-        if (Physics.Raycast(wallRay, out wallHit, 0.55f))
+        if (Physics.Raycast(wallRay, out wallHit, 0.15f))
         {
+            wallAngle = Vector3.Angle(moveDirection.normalized, wallHit.normal) - 90;
+
+            Debug.Log("Wall forward angle : " + wallAngle);
+
+
+            float wallDistance = Vector3.Distance(wallRay.origin, wallHit.point);
+            if (wallDistance <= .1f)
+            {
+                Vector3 wallCross = Vector3.Cross(wallHit.normal, moveDirection.normalized);
+                Debug.Log("wallCross : " + wallCross);
+            }
         }
     }
 
@@ -305,9 +331,14 @@ public class PlayerMovement : MonoBehaviour
         }
             
         collisionPoint = hit.point;
-        if (hit.normal.y == 0)
+        if (!isGrounded)
         {
             wallCollisionPoint = hit.point;
+            isHittingWall = true;
+        }
+        else
+        {
+            isHittingWall = false;
         }
     }
 }
