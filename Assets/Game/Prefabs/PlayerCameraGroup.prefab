@@ -219,12 +219,13 @@ MonoBehaviour:
   jumping: 0
   baseSpeedAcceleration: 16
   sprintSpeedAcceleration: 24
-  inAirSpeedAcceleration: 8
+  inAirSpeedAcceleration: 2
   groundDeceleration: 18
   airDeceleration: 0.5
   groundDirection: {fileID: 2739104149709233275}
   fallDirection: {fileID: 2739104150749100573}
   stopMovement: 0
+  isHittingWall: 0
   showGroundNormal: 0
   showFallNormal: 0
   isGrounded: 0
