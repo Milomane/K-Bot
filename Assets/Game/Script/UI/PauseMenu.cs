@@ -13,15 +13,26 @@ public class PauseMenu : MonoBehaviour
     
     // Player
     private PlayerController playerController;
+    
+    // Timer
+    [SerializeField] private float timerSoundHoverButton = 0.5f;
+    [SerializeField] private float timerValueInit;
 
     public void Start()
     {
+        timerValueInit = timerSoundHoverButton;
         playerController = PlayerController.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Timer
+        if (timerSoundHoverButton > 0f)
+        {
+            timerSoundHoverButton -= Time.deltaTime;
+        }
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gameIsPaused)
@@ -74,7 +85,11 @@ public class PauseMenu : MonoBehaviour
     public void PlayHoverSound()
     {
         Debug.Log("Hover");
-        FindObjectOfType<AudioManager>().Play("HoverButton");
+        if (timerSoundHoverButton <= 0f)
+        {
+            FindObjectOfType<AudioManager>().Play("HoverButton");
+            timerSoundHoverButton = timerValueInit;
+        }
     }
     
     public void PlayClickSound()

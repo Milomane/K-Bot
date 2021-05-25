@@ -3,7 +3,8 @@ using System.Collections.Generic;
  using TMPro;
  using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
+ using UnityEngine.PlayerLoop;
+ using UnityEngine.UI;
 
  public class OptionsMenu : MonoBehaviour
 {
@@ -13,9 +14,15 @@ using UnityEngine.UI;
 
     // Displays of resolutions
     private Resolution[] resolutions;
+    
+    // Timer
+    [SerializeField] private float timerSoundHoverButton = 0.5f;
+    [SerializeField] private float timerValueInit;
 
     void Start()
     {
+        timerValueInit = timerSoundHoverButton;
+        
         // Resolutions
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -40,6 +47,15 @@ using UnityEngine.UI;
         // Change the value with the current resolution
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+    }
+
+    void Update()
+    {
+        // Timer 
+        if (timerSoundHoverButton > 0f)
+        {
+            timerSoundHoverButton -= Time.deltaTime;
+        }
     }
     
     // Volume
@@ -70,7 +86,11 @@ using UnityEngine.UI;
     public void PlayHoverSound()
     {
         Debug.Log("Hover");
-        FindObjectOfType<AudioManager>().Play("HoverButton");
+        if (timerSoundHoverButton <= 0f)
+        {
+            FindObjectOfType<AudioManager>().Play("HoverButton");
+            timerSoundHoverButton = timerValueInit;
+        }
     }
     
     public void PlayClickSound()
