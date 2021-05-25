@@ -66,6 +66,18 @@ using UnityEngine.UI;
     {
         Screen.fullScreen = isFullscreen;
     }
+    
+    public void PlayHoverSound()
+    {
+        Debug.Log("Hover");
+        FindObjectOfType<AudioManager>().Play("HoverButton");
+    }
+    
+    public void PlayClickSound()
+    {
+        Debug.Log("Click");
+        FindObjectOfType<AudioManager>().Play("ClickButton");
+    }
 
     public void BackButton()
     {

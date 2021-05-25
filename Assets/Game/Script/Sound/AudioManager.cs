@@ -57,7 +57,7 @@ public class AudioManager : MonoBehaviour
     public void PlayOneShot(string name)
     {
         Sound s = GetSoundFromAudioManager(name);
-        s.source.PlayOneShot(s.clip);
+        s.source.PlayOneShot(s.clip); // TODO : trouver le bon code pour PlayOneShot
     }
  
     // Stop a sound

@@ -43,5 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2a8407ac04d2347a15aaa485de604d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: HoverButton
+    clip: {fileID: 8300000, guid: fd1d86c5ba20a2d4694c181c3a2b12b7, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: ClickButton
+    clip: {fileID: 8300000, guid: 4fa59063985d2db418a9ebac5278beb3, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   audioMixerGroup: {fileID: 24300002, guid: 7566020c04dbc75478fcb0812821a8aa, type: 2}
