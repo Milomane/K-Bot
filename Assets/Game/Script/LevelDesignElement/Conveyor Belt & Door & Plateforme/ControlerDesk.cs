@@ -54,6 +54,10 @@ public class ControlerDesk : MonoBehaviour
                             objectsList[i].GetComponent<ConveyorBeltModule>().ActivationBoard();
                         }
                     }
+                    else if (objectsList[i].GetComponent<ConveyorRotator>() == true)
+                    {
+                        
+                    }
                     else if (objectsList[i].GetComponent<DoorModule>() == true)
                     {
                         if (objectsList[i].GetComponent<DoorModule>().doorActivation == true)
