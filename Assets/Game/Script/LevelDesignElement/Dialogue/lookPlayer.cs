@@ -5,7 +5,11 @@ using UnityEngine.Animations;
 
 public class lookPlayer : MonoBehaviour
 {
-    public GameObject player;
+    public Camera cam;
+
+    public Vector3 test;
+
+    public GameObject target;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +19,6 @@ public class lookPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player.transform);
+        transform.position = cam.WorldToScreenPoint(target.transform.position + Vector3.up);
     }
 }
