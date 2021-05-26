@@ -5,23 +5,19 @@ using UnityEngine;
 
 public class Acid : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public GameObject player;
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")) // destroy the player
         {
             other.gameObject.GetComponent<PlayerDeathHandler>().StartDeath(PlayerDeathHandler.DeathType.crunshed);
+        }
+
+        if (other.CompareTag("Corpse")) // destroy the player body
+        {
+            Transform test = other.gameObject.transform.parent;
+            player.GetComponent<PlayerDeathHandler>().DestroySelectedBody(test.gameObject);
         }
     }
 }

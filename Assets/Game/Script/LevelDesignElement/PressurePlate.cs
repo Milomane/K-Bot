@@ -11,22 +11,16 @@ public class PressurePlate : MonoBehaviour
     public bool defineOpen;
 
     public GameObject player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame 
     void Update()
     {
-        if (player.GetComponent<PlayerDeathHandler>().dieing)
+        if (player.GetComponent<PlayerDeathHandler>().dieing) // remove player when suicide
         {
-            
             onPlate.Remove(player);
         }
 
-        foreach (GameObject obj in onPlate)
+        foreach (GameObject obj in onPlate) // remove destroy object from list
         {
             if (obj == null)
             {
@@ -34,12 +28,12 @@ public class PressurePlate : MonoBehaviour
             }
         }
         
-        if (onPlate.Count < limit + 1)
+        if (onPlate.Count < limit + 1) // 
         {
             lockedObject.GetComponent<LockedDoor>().isActivated = !defineOpen;
         }
 
-        if (onPlate.Count >= limit + 1)
+        if (onPlate.Count >= limit + 1) // 
         {
             lockedObject.GetComponent<LockedDoor>().isActivated = defineOpen; 
         }

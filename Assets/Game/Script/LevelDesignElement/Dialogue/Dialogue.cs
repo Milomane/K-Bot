@@ -23,17 +23,17 @@ public class Dialogue : MonoBehaviour
     {
         float dist = Vector3.Distance(transform.position, player.transform.position);
 
-        if ( dist <= distNeed)
+        if ( dist <= distNeed) // verify if the player is close enogh to talk to a pnj
         {
-            if (Input.GetButtonDown("Submit") && running == false)
+            if (Input.GetButtonDown("Submit") && running == false) 
             {
-                if (_actualLine <= dialogue.Length-1)
+                if (_actualLine <= dialogue.Length-1) // change the text line
                 {
                     player.GetComponent<PlayerController>().stopMovement = true;
                     NextLine();
                     textBox.gameObject.SetActive(true);
                 }
-                else
+                else // close text box
                 {
                     player.GetComponent<PlayerController>().stopMovement = false;
                     StopCoroutine(TypeDialog());
@@ -45,7 +45,7 @@ public class Dialogue : MonoBehaviour
             }
         }
     }
-    IEnumerator TypeDialog()
+    IEnumerator TypeDialog() // type text character by character
     {
         running = true;
         foreach (char c in dialogue[_actualLine].ToCharArray())
