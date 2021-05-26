@@ -7,7 +7,7 @@ public class EventDeath : MonoBehaviour
 {
     [SerializeField] private bool doParticleAtDestruction;
     [SerializeField] private GameObject particleAtDestruction;
-    [SerializeField] private GameObject body;
+    public GameObject body;
 
     public void DestroyBody()
     {

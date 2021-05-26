@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     
     public bool showSelectorMenu;
     public bool stopMovement;
+    public bool brutStopMovement;
     public bool controlCursor;
 
     void Awake()
@@ -26,9 +27,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         playerMovement.stopMovement = stopMovement;
+        playerMovement.brutStopMovement = brutStopMovement;
         
         MenuUpdate();
-        
     }
 
     private void MenuUpdate()

@@ -10,7 +10,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField]  private int _actualLine;
     public float speed;
     public GameObject player;
-
+    public float distNeed;
     public bool running;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class Dialogue : MonoBehaviour
     {
         float dist = Vector3.Distance(transform.position, player.transform.position);
 
-        if ( dist <= 2)
+        if ( dist <= distNeed)
         {
             if (Input.GetButtonDown("Submit") && running == false)
             {

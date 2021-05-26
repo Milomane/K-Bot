@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 5317445663764748190}
   - component: {fileID: 6327593092801665858}
   - component: {fileID: 6882463665852067636}
+  - component: {fileID: 3632203939632277867}
   m_Layer: 0
   m_Name: Frame
   m_TagString: Corpse
@@ -159,3 +160,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3632203939632277867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070900260757224921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8d8e5526dc9254fbd7da74854adb01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 6882463665852067636}
+  constraints: 2
