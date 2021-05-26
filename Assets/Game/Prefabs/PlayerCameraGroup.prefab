@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c70a3da7c9c6644fab623d93d625bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 2739104149046315135}
   deaths:
   - particlePrefab: {fileID: 7043752475002646823, guid: 83defd2acae22f3448a78bd689f572e0, type: 3}
     eventPrefab: {fileID: 2904319733779538178, guid: 491c578db213cee468f4bd5bdee2ea06, type: 3}
@@ -219,7 +220,7 @@ MonoBehaviour:
   jumping: 0
   baseSpeedAcceleration: 16
   sprintSpeedAcceleration: 24
-  inAirSpeedAcceleration: 2
+  inAirSpeedAcceleration: 5
   groundDeceleration: 18
   airDeceleration: 0.5
   groundDirection: {fileID: 2739104149709233275}

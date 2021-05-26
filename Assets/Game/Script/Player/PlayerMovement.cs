@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform fallDirection;
 
     public bool stopMovement;
+    public bool brutStopMovement;
 
     //Movement
     private float turnSmoothVelocity;
@@ -81,14 +83,14 @@ public class PlayerMovement : MonoBehaviour
     void Locomotion()
     {
         GroundDirection();
-        
-        
+
         // INPUTS
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         inputNormalized = new Vector3(horizontal, 0f, vertical).normalized;
         
-        if (controller.isGrounded && slopeAngle <= controller.slopeLimit && !stopMovement)
+        
+        if (controller.isGrounded && slopeAngle <= controller.slopeLimit)
         {
             if (inputNormalized != Vector3.zero)
             {
@@ -131,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
         }
             
         
-        if (inputNormalized.magnitude >= .1f)
+        if (inputNormalized.magnitude >= .1f && !stopMovement)
         {
             // Smooth player angle and define moveDirection and DEFINE TARGET ANGLE
             targetAngle = Mathf.Atan2(inputNormalized.x, inputNormalized.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
@@ -147,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
                 moveDirection = Vector3.zero;                    HERE*/
         }
 
-        if (inputNormalized.magnitude > .1f && Time.deltaTime != 0)
+        if (inputNormalized.magnitude > .1f && Time.deltaTime != 0 && !stopMovement)
         {
             float changeApplied = currentAcceleration;
             float vectorDistance = Vector3.Distance(moveSpeed, moveDirection);
@@ -171,7 +173,8 @@ public class PlayerMovement : MonoBehaviour
 
         realSpeed = moveSpeed.magnitude;
         // MOVE CHARACTER CONTROLLER 
-        controller.Move(moveSpeed * forwardMult * Time.deltaTime);
+        if (!brutStopMovement)
+            controller.Move(moveSpeed * forwardMult * Time.deltaTime);
 
         // Calc vertical velocity with gravity
         if (!isGrounded && verticalVelocity > terminalVelocity)
@@ -195,7 +198,8 @@ public class PlayerMovement : MonoBehaviour
         }
         
         // Move Character controller down
-        controller.Move(fallVector * Time.deltaTime);
+        if (!brutStopMovement)
+            controller.Move(fallVector * Time.deltaTime);
         
         // Enter if grounded and the slope is not to sharp
         // Also check for
@@ -209,7 +213,7 @@ public class PlayerMovement : MonoBehaviour
         
         // Jump
         // Start jump if player is on ground and he press jump
-        if (controller.isGrounded && Input.GetButtonDown("Jump") && jumpCd <= 0)
+        if (controller.isGrounded && Input.GetButtonDown("Jump") && jumpCd <= 0 && !stopMovement)
             Jump();
         
         // Decrease both timer
@@ -298,14 +302,11 @@ public class PlayerMovement : MonoBehaviour
         {
             wallAngle = Vector3.Angle(moveDirection.normalized, wallHit.normal) - 90;
 
-            Debug.Log("Wall forward angle : " + wallAngle);
-
 
             float wallDistance = Vector3.Distance(wallRay.origin, wallHit.point);
             if (wallDistance <= .1f)
             {
                 Vector3 wallCross = Vector3.Cross(wallHit.normal, moveDirection.normalized);
-                Debug.Log("wallCross : " + wallCross);
             }
         }
     }
@@ -318,20 +319,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        collisionPoint = hit.point;
+        
         // Handle Springs
-        if (hit.collider.tag == "Spring")
-        {
-            Debug.Log(hit.normal);
-        }
         if (hit.collider.tag == "Spring" && hit.normal.y > .4f && hit.normal.x < .5f && hit.normal.z < .5f && jumping)
         {
             SpringJump(hit.collider.GetComponent<Spring>().springForce);
             
             hit.collider.GetComponent<Spring>().UseSpring();
-        }
-            
-        collisionPoint = hit.point;
-        if (!isGrounded)
+        } else if (!isGrounded)
         {
             wallCollisionPoint = hit.point;
             isHittingWall = true;

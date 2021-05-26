@@ -1,14 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class PlayerDeathHandler : MonoBehaviour
 {
     public static PlayerDeathHandler instance;
+
+    [SerializeField] private PlayerController playerController;
 
     [SerializeField] private Death[] deaths;
 
@@ -22,6 +26,8 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public bool dieing;
     public Queue<GameObject> bodys;
+
+    private Rigidbody rbToStop;
    
 
 
@@ -75,22 +81,28 @@ public class PlayerDeathHandler : MonoBehaviour
     public IEnumerator DeathEnumerator(DeathType deathType)
     {
         dieing = true;
+        playerController.stopMovement = true;
         
         // Animation player
         model.GetComponent<Renderer>().material.color = Color.magenta;
         
         // Wait for the player animation to end
         yield return new WaitForSeconds(1);
+        playerController.brutStopMovement = true;
 
         // Instantiate what's handle the effect after death
         GameObject eventObject = Instantiate(deaths[(int)deathType].eventPrefab, transform.position, quaternion.identity);
         GameObject particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, quaternion.identity);
+
+        float maxRbAngular = 1;
         
         // Switch for special event if needed
         switch (deathType)
         {
             case DeathType.normal:
                 bodys.Enqueue(eventObject);
+                maxRbAngular = eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity;
+                eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity = 0;
                 break;
             case DeathType.explosion:
                 break;
@@ -102,6 +114,29 @@ public class PlayerDeathHandler : MonoBehaviour
                 break;
             case DeathType.lamp:
                 bodys.Enqueue(eventObject);
+                break;
+            case DeathType.glue:
+                break;
+            case DeathType.crunshed:
+                break;
+            default :
+                Debug.LogError("Error in StartDeath, wrong value for death");
+                yield break;
+        }
+        
+        yield return new WaitForSeconds(.1f);
+        switch (deathType)
+        {
+            case DeathType.normal:
+                eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity = maxRbAngular;
+                break;
+            case DeathType.explosion:
+                break;
+            case DeathType.spring:
+                break;
+            case DeathType.generator:
+                break;
+            case DeathType.lamp:
                 break;
             case DeathType.glue:
                 break;
@@ -141,7 +176,19 @@ public class PlayerDeathHandler : MonoBehaviour
         // Retake control
         model.GetComponent<Renderer>().material.color = Color.red;
         
+        playerController.stopMovement = false;
+        playerController.brutStopMovement = false;
         dieing = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if (rbToStop != null)
+        {
+            rbToStop.angularVelocity = Vector3.zero;
+            rbToStop = null;
+        }
+            
     }
 
     public static void ChangePowerUp(int powerUpId)
@@ -208,8 +255,5 @@ public class PlayerDeathHandler : MonoBehaviour
           
             }
         }
-
-        
-       
     }
 }
