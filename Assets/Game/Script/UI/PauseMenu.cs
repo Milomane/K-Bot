@@ -13,6 +13,10 @@ public class PauseMenu : MonoBehaviour
     
     // Player
     private PlayerController playerController;
+    
+    // Timer
+    [SerializeField] private float timerSoundHoverButton = 0.5f;
+    [SerializeField] private bool canPlaySound = true;
 
     public void Start()
     {
@@ -70,16 +74,25 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    private IEnumerator WaitForSound()
+    {
+        canPlaySound = false;
+        yield return new WaitForSecondsRealtime(timerSoundHoverButton);
+        canPlaySound = true;
+    }
     
     public void PlayHoverSound()
     {
-        Debug.Log("Hover");
-        FindObjectOfType<AudioManager>().Play("HoverButton");
+        if (canPlaySound)
+        {
+            StartCoroutine(WaitForSound());
+            FindObjectOfType<AudioManager>().Play("HoverButton");
+        }
     }
     
     public void PlayClickSound()
     {
-        Debug.Log("Click");
         FindObjectOfType<AudioManager>().Play("ClickButton");
     }
 }
