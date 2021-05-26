@@ -1773,6 +1773,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1938932606593033239, guid: e8e75a7836817cf4489025725f0efbcc, type: 3}
+      propertyPath: sounds.Array.data[0].isLoop
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e75a7836817cf4489025725f0efbcc, type: 3}
 --- !u!1 &639074409
@@ -4599,8 +4603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d32206739cbd24fac2b58e39d40037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerSoundHoverButton: 0.5
-  timerValueInit: 0
+  timerSoundHoverButton: 0.2
 --- !u!1 &1828684252
 GameObject:
   m_ObjectHideFlags: 0
@@ -5261,6 +5264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 7566020c04dbc75478fcb0812821a8aa, type: 2}
   resolutionDropdown: {fileID: 87817704}
+  timerSoundHoverButton: 0.5
 --- !u!1 &2070464070
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,23 +16,16 @@ public class PauseMenu : MonoBehaviour
     
     // Timer
     [SerializeField] private float timerSoundHoverButton = 0.5f;
-    [SerializeField] private float timerValueInit;
+    [SerializeField] private bool canPlaySound = true;
 
     public void Start()
     {
-        timerValueInit = timerSoundHoverButton;
         playerController = PlayerController.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Timer
-        if (timerSoundHoverButton > 0f)
-        {
-            timerSoundHoverButton -= Time.deltaTime;
-        }
-        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gameIsPaused)
@@ -81,20 +74,25 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    private IEnumerator WaitForSound()
+    {
+        canPlaySound = false;
+        yield return new WaitForSecondsRealtime(timerSoundHoverButton);
+        canPlaySound = true;
+    }
     
     public void PlayHoverSound()
     {
-        Debug.Log("Hover");
-        if (timerSoundHoverButton <= 0f)
+        if (canPlaySound)
         {
+            StartCoroutine(WaitForSound());
             FindObjectOfType<AudioManager>().Play("HoverButton");
-            timerSoundHoverButton = timerValueInit;
         }
     }
     
     public void PlayClickSound()
     {
-        Debug.Log("Click");
         FindObjectOfType<AudioManager>().Play("ClickButton");
     }
 }

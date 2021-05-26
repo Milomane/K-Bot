@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private float timerSoundHoverButton = 0.5f;
-    [SerializeField] private float timerValueInit;
+    private float timerValueInit;
 
     void Start()
     {
@@ -41,7 +41,6 @@ public class MainMenu : MonoBehaviour
 
     public void PlayHoverSound()
     {
-        Debug.Log("Hover");
         if (timerSoundHoverButton <= 0f)
         {
             FindObjectOfType<AudioManager>().Play("HoverButton");
@@ -51,7 +50,6 @@ public class MainMenu : MonoBehaviour
     
     public void PlayClickSound()
     {
-        Debug.Log("Click");
         FindObjectOfType<AudioManager>().Play("ClickButton");
     }
 }

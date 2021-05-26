@@ -17,7 +17,7 @@ using UnityEngine.Audio;
     
     // Timer
     [SerializeField] private float timerSoundHoverButton = 0.5f;
-    [SerializeField] private float timerValueInit;
+    private float timerValueInit;
 
     void Start()
     {
@@ -85,7 +85,6 @@ using UnityEngine.Audio;
     
     public void PlayHoverSound()
     {
-        Debug.Log("Hover");
         if (timerSoundHoverButton <= 0f)
         {
             FindObjectOfType<AudioManager>().Play("HoverButton");
@@ -95,7 +94,6 @@ using UnityEngine.Audio;
     
     public void PlayClickSound()
     {
-        Debug.Log("Click");
         FindObjectOfType<AudioManager>().Play("ClickButton");
     }
 
