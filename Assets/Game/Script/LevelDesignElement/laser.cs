@@ -37,7 +37,7 @@ public class Laser : MonoBehaviour
 
             if (itKilled && hit.collider.gameObject.CompareTag("Player") && player.GetComponent<PlayerDeathHandler>().dieing == false)
             {
-                player.GetComponent<PlayerDeathHandler>().StartDeath(PlayerDeathHandler.selectedDeath);
+                player.GetComponent<PlayerDeathHandler>().StartDeath(PlayerDeathHandler.DeathType.crunshed);
             }
 
             if (itKilled && hit.collider.gameObject.CompareTag("Corpse"))
