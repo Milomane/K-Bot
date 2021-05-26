@@ -7,11 +7,16 @@ public class PlateformeModule : MonoBehaviour
 {
     public bool plateformeActivation;
     public bool automatic;
+    public bool playerDetection;
 
     public float speed;
+    public float pointHeight, valueHeight, value;
     public Vector3[] points;
     public int pointNumber;
+    [SerializeField]
     private Vector3 currentTarget;
+    private Vector3 heading;
+    
 
     public float tolerance;
     public float delayTime;
@@ -23,6 +28,7 @@ public class PlateformeModule : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pointHeight = 10f;
 
         if (points.Length > 0)
         {
@@ -35,6 +41,20 @@ public class PlateformeModule : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (playerDetection)
+        {
+            valueHeight -= value * Time.deltaTime;
+            currentTarget.y = valueHeight;
+            if (currentTarget.y <= 0.5f)
+            {
+                currentTarget.y = 0.5f;
+            }
+        }
+        else if (!playerDetection)
+        {
+            currentTarget.y = pointHeight;
+        }
+        
         if (plateformeActivation)
         {
             
@@ -48,11 +68,13 @@ public class PlateformeModule : MonoBehaviour
             }
         }
         
+        
     }
     
     private void MovePlatforme()
     {
-        Vector3 heading = currentTarget - transform.position;
+        heading = currentTarget - transform.position;
+        
         transform.position += (heading / heading.magnitude) * speed * Time.deltaTime;
 
         if (heading.magnitude < tolerance)
@@ -98,6 +120,7 @@ public class PlateformeModule : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("oui");
+            playerDetection = true;
             player = other.gameObject;
             playerGroup = player.transform.parent;
             playerGroup.transform.parent = transform;
@@ -109,6 +132,7 @@ public class PlateformeModule : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("non");
+            playerDetection = false;
             playerGroup.transform.parent = null;
             player = null;
             playerGroup = null;

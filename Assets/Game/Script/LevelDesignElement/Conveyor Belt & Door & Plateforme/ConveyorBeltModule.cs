@@ -32,9 +32,10 @@ public class ConveyorBeltModule : MonoBehaviour
 
             if (player != null)
             {
-                float speedPlayer = speed * 6.6f;
-                player.transform.position =
-                    Vector3.MoveTowards(player.transform.position, endPoint.position, speed * Time.deltaTime);
+                //Vector3 movDiff = endPoint.position - transform.position;
+                //Vector3 movDir = movDiff.normalized * speed * Time.deltaTime;
+                //player.GetComponent<CharacterController>().Move(movDir);
+                player.transform.position = Vector3.MoveTowards(player.transform.position, endPoint.position, speed * Time.deltaTime);
             }
         }
     }

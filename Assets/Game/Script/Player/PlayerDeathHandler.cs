@@ -90,9 +90,14 @@ public class PlayerDeathHandler : MonoBehaviour
         yield return new WaitForSeconds(1);
         playerController.brutStopMovement = true;
 
+        GameObject eventObject = null;
+        GameObject particleObject = null;
+        
         // Instantiate what's handle the effect after death
-        GameObject eventObject = Instantiate(deaths[(int)deathType].eventPrefab, transform.position, quaternion.identity);
-        GameObject particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, quaternion.identity);
+        if (deaths[(int)deathType].eventPrefab != null)
+            eventObject = Instantiate(deaths[(int)deathType].eventPrefab, transform.position, quaternion.identity);
+        if (deaths[(int)deathType].particlePrefab != null)
+            particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, quaternion.identity);
 
         float maxRbAngular = 1;
         
