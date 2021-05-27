@@ -18,7 +18,7 @@ public class GrapinPlaque : MonoBehaviour
             {
                 if (other.gameObject.CompareTag("Player"))
                 {
-                    
+                    module.Down();
                 }
             }
             else if (moveX)
@@ -46,7 +46,7 @@ public class GrapinPlaque : MonoBehaviour
             {
                 if (other.gameObject.CompareTag("Player"))
                 {
-                    
+                    module.ObjectRecup();
                 }
             }
             else if (moveX)
@@ -74,7 +74,7 @@ public class GrapinPlaque : MonoBehaviour
             {
                 if (other.gameObject.CompareTag("Player"))
                 {
-                    
+                    module.DropObject();
                 }
             }
             else if (moveX)

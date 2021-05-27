@@ -1,16 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GrapinModule : MonoBehaviour
 {
-    public Transform initialPoint, finalPointZ, finalPointX;
+    public Transform initialPoint, finalPointZ, finalPointX, upPoint, downPoint;
     
     public bool horizontalMoveZ, horizontalMoveX;
 
-    private bool readyMoveZ, readyMoveX;
+    private bool readyMoveZ, readyMoveX, readyMoveHorizontal;
 
     public float speedMovement;
+
+    public bool DownOn, recupObjet;
+
+    public GameObject objet;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +25,10 @@ public class GrapinModule : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (transform.position == upPoint.position)
+        {
+            readyMoveHorizontal = true;
+        }
         if (transform.position == initialPoint.position)
         {
             readyMoveX = true;
@@ -47,6 +56,11 @@ public class GrapinModule : MonoBehaviour
             {
                 horizontalMoveZ = true;
             }
+        }
+
+        if (!DownOn)
+        {
+            Up();
         }
     }
 
@@ -79,7 +93,7 @@ public class GrapinModule : MonoBehaviour
 
     public void MoveZ()
     {
-        if (readyMoveZ)
+        if (readyMoveZ && readyMoveHorizontal)
         {
             if (horizontalMoveZ)
             {
@@ -97,7 +111,7 @@ public class GrapinModule : MonoBehaviour
     }
     public void MoveX()
     {
-        if (readyMoveX)
+        if (readyMoveX && readyMoveHorizontal)
         {
             if (horizontalMoveX)
             {
@@ -111,5 +125,47 @@ public class GrapinModule : MonoBehaviour
             }
         }
         
+    }
+
+    public void Up()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, upPoint.position,
+            speedMovement * Time.deltaTime);
+        //grappin close bite
+    }
+
+    public void Down()
+    {
+        DownOn = true;
+        transform.position = Vector3.MoveTowards(transform.position, downPoint.position,
+            speedMovement * Time.deltaTime);
+        readyMoveHorizontal = false;
+        //grappin open bite
+    }
+
+    public void ObjectRecup()
+    {
+        recupObjet = true;
+        DownOn = false;
+    }
+
+    public void DropObject()
+    {
+        recupObjet = false;
+        if (objet != null)
+        {
+            objet.transform.parent = null;
+        }
+        
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (recupObjet)
+        {
+            objet = other.gameObject;
+            objet.transform.parent = transform;
+
+        }
     }
 }
