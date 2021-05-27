@@ -172,6 +172,7 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = Vector3.ClampMagnitude(moveSpeed, sprintSpeed);
 
         realSpeed = moveSpeed.magnitude;
+        
         // MOVE CHARACTER CONTROLLER 
         if (!brutStopMovement)
             controller.Move(moveSpeed * forwardMult * Time.deltaTime);
