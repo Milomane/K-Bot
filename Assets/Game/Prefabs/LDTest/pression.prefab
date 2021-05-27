@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5943207534365932610}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.751163, y: -1.011, z: 0}
   m_LocalScale: {x: 2, y: 0.3, z: 2}
   m_Children:
@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 20, z: 1}
-  m_Center: {x: 0, y: 9.5, z: 0}
+  m_Size: {x: 1, y: 7, z: 1}
+  m_Center: {x: 0, y: 3.5, z: 0}
 --- !u!54 &5943207534365932608
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   lockedObject: {fileID: 0}
   onPlate: []
   limit: 3
-  defineOpen: 1
+  defineOpen: 0
   player: {fileID: 0}
 --- !u!1 &5943207535227127871
 GameObject:
