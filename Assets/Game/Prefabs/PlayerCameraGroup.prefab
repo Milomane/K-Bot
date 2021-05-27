@@ -160,6 +160,7 @@ MonoBehaviour:
   playerMovement: {fileID: 2739104149046315133}
   showSelectorMenu: 0
   stopMovement: 0
+  brutStopMovement: 0
   controlCursor: 0
 --- !u!114 &547677056443778337
 MonoBehaviour:
@@ -187,7 +188,7 @@ MonoBehaviour:
     eventPrefab: {fileID: 2904319733779538178, guid: 6e7acbbb447d61b45901efb7e07da1fe, type: 3}
   - particlePrefab: {fileID: 7043752475002646823, guid: e261b366a1dc6bb4d9802a420293da7b, type: 3}
     eventPrefab: {fileID: 2904319733779538178, guid: b8f755de735a6734aa76821d2a32f94d, type: 3}
-  - particlePrefab: {fileID: 0}
+  - particlePrefab: {fileID: 7043752475002646823, guid: 53b3b2dc9f8b2644c8eddf6a2af56b57, type: 3}
     eventPrefab: {fileID: 0}
   maxBody: 3
   nbBodiesAvailable: {fileID: 0}
@@ -226,6 +227,7 @@ MonoBehaviour:
   groundDirection: {fileID: 2739104149709233275}
   fallDirection: {fileID: 2739104150749100573}
   stopMovement: 0
+  brutStopMovement: 0
   isHittingWall: 0
   showGroundNormal: 0
   showFallNormal: 0

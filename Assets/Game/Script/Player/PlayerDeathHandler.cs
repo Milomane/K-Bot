@@ -18,7 +18,7 @@ public class PlayerDeathHandler : MonoBehaviour
 
     [SerializeField] private int maxBody = 3;
     public static DeathType selectedDeath = DeathType.normal;
-    [SerializeField] private TextMeshProUGUI nbBodiesAvailable;
+    private TextMeshProUGUI nbBodiesAvailable;
 
     public GameObject model;
     public GameObject repairStation;
@@ -53,6 +53,7 @@ public class PlayerDeathHandler : MonoBehaviour
     {
         instance = this;
         bodys = new Queue<GameObject>();
+        nbBodiesAvailable = GameObject.FindWithTag("NbBodiesTxt").GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -90,9 +91,14 @@ public class PlayerDeathHandler : MonoBehaviour
         yield return new WaitForSeconds(1);
         playerController.brutStopMovement = true;
 
+        GameObject eventObject = null;
+        GameObject particleObject = null;
+        
         // Instantiate what's handle the effect after death
-        GameObject eventObject = Instantiate(deaths[(int)deathType].eventPrefab, transform.position, quaternion.identity);
-        GameObject particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, quaternion.identity);
+        if (deaths[(int)deathType].eventPrefab != null)
+            eventObject = Instantiate(deaths[(int)deathType].eventPrefab, transform.position, quaternion.identity);
+        if (deaths[(int)deathType].particlePrefab != null)
+            particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, quaternion.identity);
 
         float maxRbAngular = 1;
         

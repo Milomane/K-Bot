@@ -10,22 +10,14 @@ public class Laser : MonoBehaviour
     public GameObject lockedObject;
     public bool itKilled;
     public GameObject player;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-     
-        Debug.DrawRay(transform.position,transform.forward,Color.green);
         RaycastHit hit;
         if (Physics.Raycast(transform.position,transform.forward, out hit ))
         {
-            if (hit.collider.gameObject.CompareTag("Target"))
+            if (hit.collider.gameObject.CompareTag("Target")) // verify if touch a target and activate 
             {
                 
                 lockedObject.GetComponent<LockedDoor>().isActivated = defineOpen;
@@ -35,12 +27,12 @@ public class Laser : MonoBehaviour
                 lockedObject.GetComponent<LockedDoor>().isActivated = !defineOpen;
             }
 
-            if (itKilled && hit.collider.gameObject.CompareTag("Player") && player.GetComponent<PlayerDeathHandler>().dieing == false)
+            if (itKilled && hit.collider.gameObject.CompareTag("Player") && player.GetComponent<PlayerDeathHandler>().dieing == false) // kill the player
             {
-                player.GetComponent<PlayerDeathHandler>().StartDeath(PlayerDeathHandler.selectedDeath);
+                player.GetComponent<PlayerDeathHandler>().StartDeath(PlayerDeathHandler.DeathType.crunshed);
             }
 
-            if (itKilled && hit.collider.gameObject.CompareTag("Corpse"))
+            if (itKilled && hit.collider.gameObject.CompareTag("Corpse")) // destroy the player body
             {
                 Transform test = hit.collider.gameObject.transform.parent;
                 player.GetComponent<PlayerDeathHandler>().DestroySelectedBody(test.gameObject);
