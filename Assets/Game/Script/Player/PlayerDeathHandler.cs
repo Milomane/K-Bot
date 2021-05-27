@@ -96,9 +96,9 @@ public class PlayerDeathHandler : MonoBehaviour
         
         // Instantiate what's handle the effect after death
         if (deaths[(int)deathType].eventPrefab != null)
-            eventObject = Instantiate(deaths[(int)deathType].eventPrefab, transform.position, quaternion.identity);
+            eventObject = Instantiate(deaths[(int)deathType].eventPrefab, transform.position, transform.rotation);
         if (deaths[(int)deathType].particlePrefab != null)
-            particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, quaternion.identity);
+            particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, transform.rotation);
 
         float maxRbAngular = 1;
         

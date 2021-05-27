@@ -13,4 +13,5 @@ public class Spring : MonoBehaviour
     {
         testAnimator.SetTrigger("Use");
     }
+    
 }
