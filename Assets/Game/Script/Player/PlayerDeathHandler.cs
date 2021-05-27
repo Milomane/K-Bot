@@ -18,7 +18,7 @@ public class PlayerDeathHandler : MonoBehaviour
 
     [SerializeField] private int maxBody = 3;
     public static DeathType selectedDeath = DeathType.normal;
-    [SerializeField] private TextMeshProUGUI nbBodiesAvailable;
+    private TextMeshProUGUI nbBodiesAvailable;
 
     public GameObject model;
     public GameObject repairStation;
@@ -53,6 +53,7 @@ public class PlayerDeathHandler : MonoBehaviour
     {
         instance = this;
         bodys = new Queue<GameObject>();
+        nbBodiesAvailable = GameObject.FindWithTag("NbBodiesTxt").GetComponent<TextMeshProUGUI>();
     }
 
     void Update()

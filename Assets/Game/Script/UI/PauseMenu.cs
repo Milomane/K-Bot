@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
 
     // Panel "PauseMenu"
     [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject optionsMenuUI;
     
     // Player
     private PlayerController playerController;
@@ -26,7 +27,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !optionsMenuUI.activeInHierarchy)
         {
             if (gameIsPaused)
             {

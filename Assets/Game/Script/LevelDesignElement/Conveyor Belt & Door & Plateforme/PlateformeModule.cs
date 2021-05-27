@@ -7,7 +7,7 @@ public class PlateformeModule : MonoBehaviour
 {
     public bool plateformeActivation;
     public bool automatic;
-    public bool playerDetection;
+    public bool playerDetection, blocageBool;
 
     public float speed;
     public float pointHeight, valueHeight, value;
@@ -41,18 +41,21 @@ public class PlateformeModule : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (playerDetection)
+        if (blocageBool)
         {
-            valueHeight -= value * Time.deltaTime;
-            currentTarget.y = valueHeight;
-            if (currentTarget.y <= 0.5f)
+            if (playerDetection)
             {
-                currentTarget.y = 0.5f;
+                valueHeight -= value * Time.deltaTime;
+                currentTarget.y = valueHeight;
+                if (currentTarget.y <= 0.5f)
+                {
+                    currentTarget.y = 0.5f;
+                }
             }
-        }
-        else if (!playerDetection)
-        {
-            currentTarget.y = pointHeight;
+            else if (!playerDetection)
+            {
+                currentTarget.y = pointHeight;
+            } 
         }
         
         if (plateformeActivation)

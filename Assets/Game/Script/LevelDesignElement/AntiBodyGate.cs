@@ -5,19 +5,7 @@ using UnityEngine;
 
 public class AntiBodyGate : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // destroy all body when collide
     {
         if (other.CompareTag("Player"))
         {

@@ -3606,6 +3606,7 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 7566020c04dbc75478fcb0812821a8aa, type: 2}
   resolutionDropdown: {fileID: 7493376470680065317}
   timerSoundHoverButton: 0.5
+  pauseMenuUI: {fileID: 489938407}
 --- !u!1 &3989114928593904844
 GameObject:
   m_ObjectHideFlags: 0
@@ -4836,7 +4837,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 489938407}
+  optionsMenuUI: {fileID: 3857804621848652685}
   timerSoundHoverButton: 0.2
+  canPlaySound: 1
 --- !u!1 &7058914160508946455
 GameObject:
   m_ObjectHideFlags: 0

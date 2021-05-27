@@ -18,6 +18,9 @@ using UnityEngine.Audio;
     // Timer
     [SerializeField] private float timerSoundHoverButton = 0.5f;
     private float timerValueInit;
+    
+    // Panel "PauseMenu"
+    [SerializeField] private GameObject pauseMenuUI;
 
     void Start()
     {
@@ -55,6 +58,12 @@ using UnityEngine.Audio;
         if (timerSoundHoverButton > 0f)
         {
             timerSoundHoverButton -= Time.deltaTime;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenuUI.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
     

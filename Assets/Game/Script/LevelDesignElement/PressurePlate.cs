@@ -9,40 +9,36 @@ public class PressurePlate : MonoBehaviour
     public List<GameObject> onPlate = new List<GameObject>();
     public int limit;
     public bool defineOpen;
-
     public GameObject player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame 
     void Update()
     {
-        if (player.GetComponent<PlayerDeathHandler>().dieing)
+        if (player.GetComponent<PlayerDeathHandler>().dieing )// player.GetComponent<PlayerMovement>().isGrounded == false ) // remove player when suicide
         {
-            
             onPlate.Remove(player);
         }
 
-        foreach (GameObject obj in onPlate)
+        for (int i = 0; i < onPlate.Count; i++) // remove destroy object from list
         {
-            if (obj == null)
+            if (onPlate[i] == null)
             {
-                onPlate.Remove(obj);
-            }
-        }
+                onPlate.Remove(onPlate[i]);
+            }  
+        } 
+       
         
-        if (onPlate.Count < limit + 1)
+        if (onPlate.Count < limit + 1) // close door
         {
             lockedObject.GetComponent<LockedDoor>().isActivated = !defineOpen;
         }
 
-        if (onPlate.Count >= limit + 1)
+        if (onPlate.Count >= limit + 1) // open door
         {
             lockedObject.GetComponent<LockedDoor>().isActivated = defineOpen; 
         }
+
+        
 
        
     }

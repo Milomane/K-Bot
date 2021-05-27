@@ -248,11 +248,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2739104149832183296, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008486471
+      value: 0.00000000848647
       objectReference: {fileID: 0}
     - target: {fileID: 2739104149832183296, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000014123421
+      value: -0.000000001412342
       objectReference: {fileID: 0}
     - target: {fileID: 2739104150438956282, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -288,11 +288,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2739104150639852782, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008486472
+      value: 0.000000008486471
       objectReference: {fileID: 0}
     - target: {fileID: 2739104150639852782, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000014123422
+      value: -0.000000001412342
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
@@ -810,6 +810,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 152810303, guid: ad00efb3f7efebb43934667b04d616d1, type: 3}
+      propertyPath: m_TagString
+      value: NbBodiesTxt
+      objectReference: {fileID: 0}
     - target: {fileID: 7058914160037887241, guid: ad00efb3f7efebb43934667b04d616d1, type: 3}
       propertyPath: m_Name
       value: Canvas
