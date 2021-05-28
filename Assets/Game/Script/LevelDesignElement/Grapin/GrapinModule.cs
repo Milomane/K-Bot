@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class GrapinModule : MonoBehaviour
 {
-    public Transform initialPoint, finalPointZ, finalPointX, upPoint, downPoint;
+    public Transform initialPoint, finalPointZ, finalPointX;
+    public Vector3 upPoint, downPoint;
     
     public bool horizontalMoveZ, horizontalMoveX;
 
-    private bool readyMoveZ, readyMoveX, readyMoveHorizontal;
+    public bool readyMoveZ, readyMoveX, readyMoveHorizontal, finalVerticalMove;
 
     public float speedMovement;
 
@@ -20,13 +21,15 @@ public class GrapinModule : MonoBehaviour
     void Start()
     {
         transform.position = initialPoint.transform.position;
+        readyMoveHorizontal = true;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (transform.position == upPoint.position)
+        if (transform.position == upPoint)
         {
+            finalVerticalMove = false;
             readyMoveHorizontal = true;
         }
         if (transform.position == initialPoint.position)
@@ -57,8 +60,8 @@ public class GrapinModule : MonoBehaviour
                 horizontalMoveZ = true;
             }
         }
-
-        if (!DownOn)
+        
+        if (!DownOn && finalVerticalMove)
         {
             Up();
         }
@@ -129,17 +132,20 @@ public class GrapinModule : MonoBehaviour
 
     public void Up()
     {
-        transform.position = Vector3.MoveTowards(transform.position, upPoint.position,
+        upPoint = new Vector3(transform.position.x, initialPoint.position.y, transform.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, upPoint,
             speedMovement * Time.deltaTime);
         //grappin close bite
     }
 
     public void Down()
     {
+        downPoint = new Vector3(transform.position.x, initialPoint.position.y -5f, transform.position.z);
         DownOn = true;
-        transform.position = Vector3.MoveTowards(transform.position, downPoint.position,
+        transform.position = Vector3.MoveTowards(transform.position, downPoint,
             speedMovement * Time.deltaTime);
         readyMoveHorizontal = false;
+        finalVerticalMove = true;
         //grappin open bite
     }
 
@@ -154,6 +160,8 @@ public class GrapinModule : MonoBehaviour
         recupObjet = false;
         if (objet != null)
         {
+            objet.GetComponent<Rigidbody>().useGravity = true;
+            objet.GetComponent<Rigidbody>().isKinematic = false;
             objet.transform.parent = null;
         }
         
@@ -163,7 +171,10 @@ public class GrapinModule : MonoBehaviour
     {
         if (recupObjet)
         {
+            Debug.Log("collision objet");
             objet = other.gameObject;
+            objet.GetComponent<Rigidbody>().useGravity = false;
+            objet.GetComponent<Rigidbody>().isKinematic = true;
             objet.transform.parent = transform;
 
         }
