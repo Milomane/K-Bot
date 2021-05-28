@@ -11,11 +11,12 @@ public class Laser : MonoBehaviour
     public bool itKilled;
     public GameObject player;
 
+    public LayerMask layer;
     // Update is called once per frame
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position,transform.forward, out hit ))
+        if (Physics.Raycast(transform.position,transform.forward, out hit, layer ))
         {
             if (hit.collider.gameObject.CompareTag("Target")) // verify if touch a target and activate 
             {
