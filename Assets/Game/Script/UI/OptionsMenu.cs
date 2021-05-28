@@ -21,6 +21,9 @@ using UnityEngine.Audio;
     
     // Panel "PauseMenu"
     [SerializeField] private GameObject pauseMenuUI;
+    
+    // Index
+    private int currentResolutionIndex;
 
     void Start()
     {
@@ -30,7 +33,7 @@ using UnityEngine.Audio;
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
-        int currentResolutionIndex = 0;
+        currentResolutionIndex = 0;
         
         // Loop to change Resolution in string
         for (int i = 0; i < resolutions.Length; i++)
@@ -59,12 +62,16 @@ using UnityEngine.Audio;
         {
             timerSoundHoverButton -= Time.deltaTime;
         }
-        
-        if (Input.GetKeyDown(KeyCode.Escape))
+
+        if (pauseMenuUI != null)
         {
-            pauseMenuUI.SetActive(true);
-            gameObject.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pauseMenuUI.SetActive(true);
+                gameObject.SetActive(false);
+            }
         }
+        
     }
     
     // Volume

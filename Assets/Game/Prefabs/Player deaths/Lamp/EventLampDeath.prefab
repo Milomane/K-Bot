@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 790990199253141410}
   - component: {fileID: 242579299940143242}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 8826686786844748622}
   - component: {fileID: 5312099237410893396}
   - component: {fileID: 1587622217911836138}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,7 +761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2904319733779538177}
   - component: {fileID: 3429951806723260316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EventLampDeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 9171041163229601457}
   - component: {fileID: 1734772859760461729}
   - component: {fileID: 5161660796422804982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1590,7 +1590,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3990281496346274253}
   - component: {fileID: 1637903488915458387}
-  m_Layer: 0
+  - component: {fileID: 5841203247183136617}
+  m_Layer: 8
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1626,6 +1627,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5841203247183136617
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3749500450438981627}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4150012967157612163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,7 +1655,7 @@ GameObject:
   - component: {fileID: 6115289562798696139}
   - component: {fileID: 4262603006765218645}
   - component: {fileID: 1071008780324429985}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2296,7 +2313,7 @@ GameObject:
   - component: {fileID: 224084910220045854}
   - component: {fileID: 6420994640915266281}
   - component: {fileID: 5147427708921778391}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3074,7 +3091,7 @@ GameObject:
   - component: {fileID: 3414111902295857573}
   - component: {fileID: 7348873712335727665}
   - component: {fileID: 4024985401463579530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
