@@ -109,8 +109,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 434dcb84771a9b047bcc68053a8e0ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeDiameter: 1
+  maxHeightOnEdge: 0.9
   springForce: 15
   testAnimator: {fileID: 892194939089967689}
+  layer:
+    serializedVersion: 2
+    m_Bits: 1
+  terminalSpeed: 20
 --- !u!1 &2904319733779538178
 GameObject:
   m_ObjectHideFlags: 0
