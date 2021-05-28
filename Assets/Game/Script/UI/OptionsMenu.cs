@@ -63,11 +63,15 @@ using UnityEngine.Audio;
             timerSoundHoverButton -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (pauseMenuUI != null)
         {
-            pauseMenuUI.SetActive(true);
-            gameObject.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pauseMenuUI.SetActive(true);
+                gameObject.SetActive(false);
+            }
         }
+        
     }
     
     // Volume
