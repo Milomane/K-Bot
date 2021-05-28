@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using Cinemachine;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class PlayerDeathHandler : MonoBehaviour
     public static PlayerDeathHandler instance;
 
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private CinemachineFreeLook cinemachineFreeLook;
 
     [SerializeField] private Death[] deaths;
 
@@ -168,19 +170,25 @@ public class PlayerDeathHandler : MonoBehaviour
         // Teleport player camera back
         GetComponent<CharacterController>().enabled = false;
         transform.position = repairStation.transform.position;
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, repairStation.transform.eulerAngles.y, transform.eulerAngles.z);
+        cinemachineFreeLook.m_XAxis.Value = repairStation.transform.eulerAngles.y - 90;
+        repairStation.GetComponent<Animator>().SetBool("Open", false);
         GetComponent<CharacterController>().enabled = true;
         
+
         // Make player visible again
+        yield return null;
+        yield return new WaitForSeconds(repairStation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length +.1f);
         model.SetActive(true);
-
-        // Rebuild animation
-        model.GetComponent<Renderer>().material.color = Color.green;
-
+        repairStation.GetComponent<Animator>().SetBool("Open", true);
+        
         // Wait for rebuild animation to end
-        yield return new WaitForSeconds(1);
+        yield return null;
+        yield return new WaitForSeconds(repairStation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length +.1f);
         
         // Retake control
         model.GetComponent<Renderer>().material.color = Color.red;
+        cinemachineFreeLook.m_XAxis.Value = repairStation.transform.eulerAngles.y;
         
         playerController.stopMovement = false;
         playerController.brutStopMovement = false;
