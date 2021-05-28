@@ -77,7 +77,7 @@ using UnityEngine.Audio;
     // Volume
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("Volume", volume);
+        audioMixer.SetFloat("Volume", Mathf.Log10(volume) * 40);
     }
 
     //Resolution
