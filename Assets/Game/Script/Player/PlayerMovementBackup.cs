@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -34,6 +35,7 @@ public class PlayerMovementBackup : MonoBehaviour
     [SerializeField] private Transform fallDirection;
 
     public bool stopMovement;
+    public bool brutStopMovement;
 
     //Movement
     private float turnSmoothVelocity;
@@ -53,13 +55,15 @@ public class PlayerMovementBackup : MonoBehaviour
     private float springCd;
     
 
-    //Ground
-    private Vector3 forwardDirection, collisionPoint;
-    private float slopeAngle, forwardAngle;
+    //Ground and wall
+    private Vector3 forwardDirection, collisionPoint, wallCollisionPoint;
+    private float slopeAngle, forwardAngle, wallAngle;
     private float forwardMult;
     private float fallMult;
-    private Ray groundRay;
+    private Ray groundRay, wallRay;
     private RaycastHit groundHit;
+    private RaycastHit wallHit;
+    public bool isHittingWall;
     
     //Debug
     [Header("Debug")] 
@@ -67,6 +71,7 @@ public class PlayerMovementBackup : MonoBehaviour
     public bool showFallNormal;
     public bool isGrounded;
     public float realSpeed;
+    
 
     void Update()
     {
@@ -78,13 +83,14 @@ public class PlayerMovementBackup : MonoBehaviour
     void Locomotion()
     {
         GroundDirection();
-        
+
         // INPUTS
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         inputNormalized = new Vector3(horizontal, 0f, vertical).normalized;
         
-        if (controller.isGrounded && slopeAngle <= controller.slopeLimit && !stopMovement)
+        
+        if (controller.isGrounded && slopeAngle <= controller.slopeLimit)
         {
             if (inputNormalized != Vector3.zero)
             {
@@ -108,6 +114,8 @@ public class PlayerMovementBackup : MonoBehaviour
         }
         else if (!controller.isGrounded || slopeAngle > controller.slopeLimit)
         {
+            WallDirection();
+            
             // Decrease input and current speed with air friction if in air
             //inputNormalized = Vector2.Lerp(inputNormalized, Vector2.zero, (1/airFriction)*Time.deltaTime);
             currentSpeed = inAirSpeed;
@@ -125,7 +133,7 @@ public class PlayerMovementBackup : MonoBehaviour
         }
             
         
-        if (inputNormalized.magnitude >= .1f)
+        if (inputNormalized.magnitude >= .1f && !stopMovement)
         {
             // Smooth player angle and define moveDirection and DEFINE TARGET ANGLE
             targetAngle = Mathf.Atan2(inputNormalized.x, inputNormalized.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
@@ -141,7 +149,7 @@ public class PlayerMovementBackup : MonoBehaviour
                 moveDirection = Vector3.zero;                    HERE*/
         }
 
-        if (inputNormalized.magnitude > .1f && Time.deltaTime != 0)
+        if (inputNormalized.magnitude > .1f && Time.deltaTime != 0 && !stopMovement)
         {
             float changeApplied = currentAcceleration;
             float vectorDistance = Vector3.Distance(moveSpeed, moveDirection);
@@ -151,11 +159,23 @@ public class PlayerMovementBackup : MonoBehaviour
         {
             moveSpeed = Vector3.Lerp(moveSpeed, Vector3.zero, Mathf.Clamp(currentDeceleration * Time.deltaTime / moveSpeed.magnitude, 0, 1));
         }
+
+        if (isHittingWall)
+        {
+            /*float alpha = Vector3.Angle(Vector3.forward, wallDirectionInVector3);*/
+            
+            Vector3 wallDirectionVector = new Vector3(Mathf.Cos(Mathf.Deg2Rad * wallAngle), 0, Mathf.Cos(Mathf.Deg2Rad * wallAngle));
+
+            moveSpeed = Vector3.Scale(moveSpeed, wallDirectionVector);
+            isHittingWall = false;
+        }
         moveSpeed = Vector3.ClampMagnitude(moveSpeed, sprintSpeed);
 
         realSpeed = moveSpeed.magnitude;
+        
         // MOVE CHARACTER CONTROLLER 
-        controller.Move(moveSpeed * forwardMult * Time.deltaTime);
+        if (!brutStopMovement)
+            controller.Move(moveSpeed * forwardMult * Time.deltaTime);
 
         // Calc vertical velocity with gravity
         if (!isGrounded && verticalVelocity > terminalVelocity)
@@ -179,7 +199,8 @@ public class PlayerMovementBackup : MonoBehaviour
         }
         
         // Move Character controller down
-        controller.Move(fallVector * Time.deltaTime);
+        if (!brutStopMovement)
+            controller.Move(fallVector * Time.deltaTime);
         
         // Enter if grounded and the slope is not to sharp
         // Also check for
@@ -193,7 +214,7 @@ public class PlayerMovementBackup : MonoBehaviour
         
         // Jump
         // Start jump if player is on ground and he press jump
-        if (controller.isGrounded && Input.GetButtonDown("Jump") && jumpCd <= 0)
+        if (controller.isGrounded && Input.GetButtonDown("Jump") && jumpCd <= 0 && !stopMovement)
             Jump();
         
         // Decrease both timer
@@ -273,6 +294,24 @@ public class PlayerMovementBackup : MonoBehaviour
         }
     }
 
+    void WallDirection()
+    {
+        wallRay.origin = wallCollisionPoint - moveDirection.normalized * 0.05f;
+        wallRay.direction = moveDirection;
+
+        if (Physics.Raycast(wallRay, out wallHit, 0.15f))
+        {
+            wallAngle = Vector3.Angle(moveDirection.normalized, wallHit.normal) - 90;
+
+
+            float wallDistance = Vector3.Distance(wallRay.origin, wallHit.point);
+            if (wallDistance <= .1f)
+            {
+                Vector3 wallCross = Vector3.Cross(wallHit.normal, moveDirection.normalized);
+            }
+        }
+    }
+
     void DebugGround()
     {
         groundDirection.GetChild(0).gameObject.SetActive(showGroundNormal);
@@ -281,18 +320,22 @@ public class PlayerMovementBackup : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        collisionPoint = hit.point;
+        
         // Handle Springs
-        if (hit.collider.tag == "Spring")
-        {
-            Debug.Log(hit.normal);
-        }
         if (hit.collider.tag == "Spring" && hit.normal.y > .4f && hit.normal.x < .5f && hit.normal.z < .5f && jumping)
         {
             SpringJump(hit.collider.GetComponent<Spring>().springForce);
             
             hit.collider.GetComponent<Spring>().UseSpring();
+        } else if (!isGrounded)
+        {
+            wallCollisionPoint = hit.point;
+            isHittingWall = true;
         }
-            
-        collisionPoint = hit.point;
+        else
+        {
+            isHittingWall = false;
+        }
     }
 }

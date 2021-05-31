@@ -69,7 +69,7 @@ public class CanvasEventManager : MonoBehaviour
                 case PlayerDeathHandler.DeathType.lamp:
                     powerUpText.text = "Lamp";
                     break;
-                case PlayerDeathHandler.DeathType.glue:
+                case PlayerDeathHandler.DeathType.accelerator:
                     powerUpText.text = "Glue";
                     break;
                 default :

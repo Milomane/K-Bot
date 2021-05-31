@@ -11,21 +11,6 @@ public class Generator : MonoBehaviour
     public void Start()
     {
         sphereRangeTransform.localScale = new Vector3(radius, radius, radius);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "ElectricalCapteur")
-        {
-            
-        }
-    }
-    
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "ElectricalCapteur")
-        {
-            
-        }
+        sphereRangeTransform.gameObject.AddComponent<GeneratorSphereRange>();
     }
 }
