@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,10 @@ public class Piston : MonoBehaviour
     private Vector3 velocity = Vector3.one;
 
     public Rigidbody rb;
+
+    private CharacterController playerCharacterController;
+    private bool pushingPlayer;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -55,5 +60,27 @@ public class Piston : MonoBehaviour
         rb.velocity = Vector3.zero; 
         yield return new  WaitForSeconds(2);
         activeUp = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            playerCharacterController = other.GetComponent<CharacterController>();
+            pushingPlayer = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            pushingPlayer = false;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (pushingPlayer)
+            playerCharacterController.Move(rb.velocity * Time.fixedDeltaTime);
     }
 }

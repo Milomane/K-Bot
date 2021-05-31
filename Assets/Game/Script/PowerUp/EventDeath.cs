@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EventDeath : MonoBehaviour
 {
     [SerializeField] private bool doParticleAtDestruction;
     [SerializeField] private GameObject particleAtDestruction;
     public GameObject body;
+    public UnityEvent eventsToActiveAtDestruction;
 
     public void DestroyBody()
     {
@@ -21,6 +23,8 @@ public class EventDeath : MonoBehaviour
             else
                 Debug.LogError("Error in DestroyBody, particleAtDestruction is null");
         }
+
+        eventsToActiveAtDestruction.Invoke();
         
         Destroy(gameObject);
     }

@@ -7,13 +7,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Refs")]
+    [Header("Refs")] [SerializeField] 
+    private PlayerController playerController;
     [SerializeField] private CharacterController controller;
     [SerializeField] private Transform cameraTransform;
 
     [Header("Movements")]
     [SerializeField] private float baseSpeed = 6f;
     [SerializeField] private float sprintSpeed = 10f;
+    [SerializeField] private float superSprintSpeed = 20f;
+    [SerializeField] private float superSprintTime = 5f;
     [SerializeField] private float inAirSpeed = 3f;
     [SerializeField] private float turnSmoothTime = .1f;
     [SerializeField] private float gravity = -9.81f;
@@ -48,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
     private float currentDeceleration;
     private Vector3 moveDirection;
     private Vector3 moveSpeed;
+    
+    // Super sprint
+    public bool superSprint;
 
     //Jump
     
@@ -83,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         inputNormalized = new Vector3(horizontal, 0f, vertical).normalized;
+
         
         // Jump
         // Start jump if player is on ground and he press jump
@@ -109,7 +116,13 @@ public class PlayerMovement : MonoBehaviour
             if (inputNormalized != Vector3.zero)
             {
                 // Check for sprint
-                if (Input.GetButton("Sprint"))
+                if (superSprint)
+                {
+                    // Set speed for super sprint
+                    currentSpeed = superSprintSpeed;
+                    currentAcceleration = sprintSpeedAcceleration;
+                }
+                else if (Input.GetButton("Sprint"))
                 {
                     // Set speed to sprint speed
                     currentSpeed = sprintSpeed;
@@ -147,11 +160,25 @@ public class PlayerMovement : MonoBehaviour
         }
             
         
-        if (inputNormalized.magnitude >= .1f && !stopMovement)
+        if ((inputNormalized.magnitude >= .1f || superSprint) && !stopMovement)
         {
             // Smooth player angle and define moveDirection and DEFINE TARGET ANGLE
-            targetAngle = Mathf.Atan2(inputNormalized.x, inputNormalized.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            if (inputNormalized.magnitude >= .1f)
+            {
+                targetAngle = Mathf.Atan2(inputNormalized.x, inputNormalized.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
+            }
+            
+            float angleForRotation = Mathf.Atan2(inputNormalized.x, inputNormalized.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
+
+            // In Case the user is not moving while super sprinting
+            if (superSprint && inputNormalized.magnitude < .1f)
+            {
+                angleForRotation = Mathf.Atan2(groundDirection.forward.x, groundDirection.forward.z) * Mathf.Rad2Deg;
+                
+            }
+                
+            
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, angleForRotation, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             moveDirection = groundDirection.forward;
@@ -163,14 +190,16 @@ public class PlayerMovement : MonoBehaviour
                 moveDirection = Vector3.zero;                    HERE*/
         }
 
-        if (inputNormalized.magnitude > .1f && Time.fixedDeltaTime != 0 && !stopMovement)
+        if ((inputNormalized.magnitude > .1f || superSprint) && !stopMovement && Time.deltaTime != 0)
         {
+            playerController.animator.SetBool("Walk", true);
             float changeApplied = currentAcceleration;
             float vectorDistance = Vector3.Distance(moveSpeed, moveDirection);
             moveSpeed = Vector3.Lerp(moveSpeed, moveDirection * currentSpeed, Mathf.Clamp(changeApplied * Time.fixedDeltaTime / vectorDistance, 0, 1));
         }
         else if (Time.fixedDeltaTime != 0)
         {
+            playerController.animator.SetBool("Walk", false);
             moveSpeed = Vector3.Lerp(moveSpeed, Vector3.zero, Mathf.Clamp(currentDeceleration * Time.fixedDeltaTime / moveSpeed.magnitude, 0, 1));
         }
 
@@ -183,7 +212,7 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = Vector3.Scale(moveSpeed, wallDirectionVector);
             isHittingWall = false;
         }
-        moveSpeed = Vector3.ClampMagnitude(moveSpeed, sprintSpeed);
+        moveSpeed = Vector3.ClampMagnitude(moveSpeed, superSprintSpeed);
 
         realSpeed = moveSpeed.magnitude;
         
@@ -240,6 +269,19 @@ public class PlayerMovement : MonoBehaviour
         jumpCd = secureJumpCd;
     }
 
+    public void SuperSprint()
+    {
+        if (!superSprint && !playerController.dying)
+            StartCoroutine(SuperSprintCoroutine());
+    }
+
+    IEnumerator SuperSprintCoroutine()
+    {
+        superSprint = true;
+        yield return new WaitForSeconds(superSprintTime);
+        superSprint = false;
+    }
+
     public void SpringJump(float springForce)
     {
         jumping = true;
@@ -255,7 +297,7 @@ public class PlayerMovement : MonoBehaviour
         //Setting forward direction
         forwardDirection = transform.position;
         
-        if (inputNormalized.magnitude > 0)
+        if (inputNormalized.magnitude > 0 || superSprint)
             forwardDirection += new Vector3(Mathf.Sin(Mathf.Deg2Rad * targetAngle), 0, Mathf.Cos(Mathf.Deg2Rad * targetAngle));
         else
             forwardDirection += transform.forward;
