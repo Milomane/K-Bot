@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class RecupPowerUp : MonoBehaviour
 {
-    
+    public GameObject player;
+
+    public int powerUpIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class RecupPowerUp : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("test");
+            player.GetComponent<PlayerDeathHandler>().NewPowerUp(powerUpIndex);
         }
         
     }
