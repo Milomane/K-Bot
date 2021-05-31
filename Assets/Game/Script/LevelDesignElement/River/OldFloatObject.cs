@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Floatingobject : MonoBehaviour
+public class OldFloatObject : MonoBehaviour
 {
     public float level = 4f;
 

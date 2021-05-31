@@ -10,7 +10,7 @@ public class GrapinModule : MonoBehaviour
     
     public bool horizontalMoveZ, horizontalMoveX;
 
-    public bool readyMoveZ, readyMoveX, readyMoveHorizontal, finalVerticalMove;
+    public bool readyMoveZ, readyMoveX, readyMoveHorizontal, finalVerticalMove, verouillage;
 
     public float speedMovement;
 
@@ -32,12 +32,16 @@ public class GrapinModule : MonoBehaviour
             finalVerticalMove = false;
             readyMoveHorizontal = true;
         }
-        if (transform.position == initialPoint.position)
-        {
-            readyMoveX = true;
-            readyMoveZ = true;
-        }
 
+        if (!verouillage)
+        {
+            if (transform.position == initialPoint.position)
+            {
+                readyMoveX = true;
+                readyMoveZ = true;
+            } 
+        }
+        
         if (transform.position == finalPointX.position)
         {
             if (horizontalMoveX)

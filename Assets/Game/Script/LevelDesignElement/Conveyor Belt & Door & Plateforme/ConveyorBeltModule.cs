@@ -11,8 +11,10 @@ public class ConveyorBeltModule : MonoBehaviour
 
     public List<GameObject> onBelt;
     public GameObject player;
+    public Transform playerGroup;
 
     public bool conveyorActivation;
+    public bool x, z, mx, mz;
     
     // Start is called before the first frame update
     void Start()
@@ -32,10 +34,31 @@ public class ConveyorBeltModule : MonoBehaviour
 
             if (player != null)
             {
+                Debug.Log("le joueur bouge putain");
+                if (x)
+                {
+                    player.transform.Translate(Vector3.right * speed * Time.deltaTime, Space.World);
+                }
+                else if (mx)
+                {
+                    player.transform.Translate(-Vector3.right * speed * Time.deltaTime, Space.World);
+                    Debug.Log("aller bordel fils de pute bouge");
+                }
+                else if (mz)
+                {
+                    player.transform.Translate(-Vector3.forward * speed * Time.deltaTime, Space.World);
+                }
+                else if (z)
+                {
+                    player.transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
+                }
+                
                 //Vector3 movDiff = endPoint.position - transform.position;
                 //Vector3 movDir = movDiff.normalized * speed * Time.deltaTime;
                 //player.GetComponent<CharacterController>().Move(movDir);
-                player.transform.position = Vector3.MoveTowards(player.transform.position, endPoint.position, speed * Time.deltaTime);
+                
+                //player.transform.position = Vector3.MoveTowards(player.transform.position, endPoint.position, speed * Time.deltaTime);
+                
             }
         }
     }
@@ -46,6 +69,9 @@ public class ConveyorBeltModule : MonoBehaviour
         {
             Debug.Log("oui");
             player = other.gameObject;
+            //playerGroup = player.transform.parent;
+            //playerGroup.transform.parent = transform;
+            //onBelt.Add(other.gameObject);
         }
         else
         {
@@ -58,11 +84,16 @@ public class ConveyorBeltModule : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("non");
+            //playerGroup.transform.parent = null;
             player = null;
+            //playerGroup = null;
+            
+            //onBelt.Remove(other.gameObject);
         }
         else
         {
             onBelt.Remove(other.gameObject);
+            
         }
     }
 
