@@ -14,6 +14,7 @@ public class PlayerDeathHandler : MonoBehaviour
     public static PlayerDeathHandler instance;
 
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private PlayerModel playerModel;
     [SerializeField] private CinemachineFreeLook cinemachineFreeLook;
 
     [SerializeField] private Death[] deaths;
@@ -22,13 +23,13 @@ public class PlayerDeathHandler : MonoBehaviour
     public static DeathType selectedDeath = DeathType.normal;
     private TextMeshProUGUI nbBodiesAvailable;
 
-    public GameObject model;
     public GameObject repairStation;
     public bool canDie = true;
 
     public bool dieing;
     public Queue<GameObject> bodys;
 
+    private DeathType previousSelectedDeath;
     private Rigidbody rbToStop;
    
 
@@ -40,7 +41,7 @@ public class PlayerDeathHandler : MonoBehaviour
         spring,
         generator,
         lamp,
-        glue,
+        accelerator,
         crunshed
     }
     
@@ -74,6 +75,12 @@ public class PlayerDeathHandler : MonoBehaviour
         {
             DestroyAllBody();
         }
+
+        if (previousSelectedDeath != selectedDeath)
+        {
+            previousSelectedDeath = selectedDeath;
+            ChangeBackModel();
+        }
     }
 
     public void StartDeath(DeathType deathType)
@@ -87,7 +94,6 @@ public class PlayerDeathHandler : MonoBehaviour
         playerController.stopMovement = true;
         
         // Animation player
-        model.GetComponent<Renderer>().material.color = Color.magenta;
         
         // Wait for the player animation to end
         yield return new WaitForSeconds(1);
@@ -123,7 +129,7 @@ public class PlayerDeathHandler : MonoBehaviour
             case DeathType.lamp:
                 bodys.Enqueue(eventObject);
                 break;
-            case DeathType.glue:
+            case DeathType.accelerator:
                 break;
             case DeathType.crunshed:
                 break;
@@ -146,7 +152,7 @@ public class PlayerDeathHandler : MonoBehaviour
                 break;
             case DeathType.lamp:
                 break;
-            case DeathType.glue:
+            case DeathType.accelerator:
                 break;
             case DeathType.crunshed:
                 break;
@@ -162,7 +168,7 @@ public class PlayerDeathHandler : MonoBehaviour
         }
         
         // Make player invisible
-        model.SetActive(false);
+        playerModel.model.SetActive(false);
         
         // Wait a bit to let the player see what's happening
         yield return new WaitForSeconds(2);
@@ -178,16 +184,15 @@ public class PlayerDeathHandler : MonoBehaviour
 
         // Make player visible again
         yield return null;
-        yield return new WaitForSeconds(repairStation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length +.1f);
-        model.SetActive(true);
+        yield return new WaitForSeconds(repairStation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        playerModel.model.SetActive(true);
         repairStation.GetComponent<Animator>().SetBool("Open", true);
         
         // Wait for rebuild animation to end
         yield return null;
-        yield return new WaitForSeconds(repairStation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length +.1f);
+        yield return new WaitForSeconds(repairStation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
         
         // Retake control
-        model.GetComponent<Renderer>().material.color = Color.red;
         cinemachineFreeLook.m_XAxis.Value = repairStation.transform.eulerAngles.y;
         
         playerController.stopMovement = false;
@@ -225,7 +230,7 @@ public class PlayerDeathHandler : MonoBehaviour
                 selectedDeath = DeathType.lamp;
                 break;
             case 5:
-                selectedDeath = DeathType.glue;
+                selectedDeath = DeathType.accelerator;
                 break;
             case 6:
                 selectedDeath = DeathType.crunshed;
@@ -268,6 +273,14 @@ public class PlayerDeathHandler : MonoBehaviour
               bodys.Enqueue(corpse);
           
             }
+        }
+    }
+
+    void ChangeBackModel()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            playerModel.arrayBackModels[i].SetActive(i == (int)selectedDeath);
         }
     }
 }

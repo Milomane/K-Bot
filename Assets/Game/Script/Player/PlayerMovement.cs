@@ -76,18 +76,32 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
-        Locomotion();
+        
         DebugGround();
+        
+        // INPUTS
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        inputNormalized = new Vector3(horizontal, 0f, vertical).normalized;
+        
+        // Jump
+        // Start jump if player is on ground and he press jump
+        if (controller.isGrounded && Input.GetButtonDown("Jump") && jumpCd <= 0 && !stopMovement)
+            Jump();
+        
+        // Decrease both timer
+        jumpCd -= Time.deltaTime;
+        springCd -= Time.deltaTime;
+    }
+
+    private void FixedUpdate()
+    {
+        Locomotion();
     }
 
     void Locomotion()
     {
         GroundDirection();
-
-        // INPUTS
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        inputNormalized = new Vector3(horizontal, 0f, vertical).normalized;
         
         
         if (controller.isGrounded && slopeAngle <= controller.slopeLimit)
@@ -149,15 +163,15 @@ public class PlayerMovement : MonoBehaviour
                 moveDirection = Vector3.zero;                    HERE*/
         }
 
-        if (inputNormalized.magnitude > .1f && Time.deltaTime != 0 && !stopMovement)
+        if (inputNormalized.magnitude > .1f && Time.fixedDeltaTime != 0 && !stopMovement)
         {
             float changeApplied = currentAcceleration;
             float vectorDistance = Vector3.Distance(moveSpeed, moveDirection);
-            moveSpeed = Vector3.Lerp(moveSpeed, moveDirection * currentSpeed, Mathf.Clamp(changeApplied * Time.deltaTime / vectorDistance, 0, 1));
+            moveSpeed = Vector3.Lerp(moveSpeed, moveDirection * currentSpeed, Mathf.Clamp(changeApplied * Time.fixedDeltaTime / vectorDistance, 0, 1));
         }
-        else if (Time.deltaTime != 0)
+        else if (Time.fixedDeltaTime != 0)
         {
-            moveSpeed = Vector3.Lerp(moveSpeed, Vector3.zero, Mathf.Clamp(currentDeceleration * Time.deltaTime / moveSpeed.magnitude, 0, 1));
+            moveSpeed = Vector3.Lerp(moveSpeed, Vector3.zero, Mathf.Clamp(currentDeceleration * Time.fixedDeltaTime / moveSpeed.magnitude, 0, 1));
         }
 
         if (isHittingWall)
@@ -175,12 +189,12 @@ public class PlayerMovement : MonoBehaviour
         
         // MOVE CHARACTER CONTROLLER 
         if (!brutStopMovement)
-            controller.Move(moveSpeed * forwardMult * Time.deltaTime);
+            controller.Move(moveSpeed * forwardMult * Time.fixedDeltaTime);
 
         // Calc vertical velocity with gravity
         if (!isGrounded && verticalVelocity > terminalVelocity)
         {
-            verticalVelocity += gravity * Time.deltaTime;
+            verticalVelocity += gravity * Time.fixedDeltaTime;
         }
         else if (controller.isGrounded && slopeAngle > controller.slopeLimit)
         {
@@ -200,7 +214,7 @@ public class PlayerMovement : MonoBehaviour
         
         // Move Character controller down
         if (!brutStopMovement)
-            controller.Move(fallVector * Time.deltaTime);
+            controller.Move(fallVector * Time.fixedDeltaTime);
         
         // Enter if grounded and the slope is not to sharp
         // Also check for
@@ -211,15 +225,6 @@ public class PlayerMovement : MonoBehaviour
                 jumping = false;
             verticalVelocity = -2f;
         }
-        
-        // Jump
-        // Start jump if player is on ground and he press jump
-        if (controller.isGrounded && Input.GetButtonDown("Jump") && jumpCd <= 0 && !stopMovement)
-            Jump();
-        
-        // Decrease both timer
-        jumpCd -= Time.deltaTime;
-        springCd -= Time.deltaTime;
     }
 
     void Jump()
