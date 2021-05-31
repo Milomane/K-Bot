@@ -17,7 +17,8 @@ public class SpringableBody : MonoBehaviour
     [SerializeField] private float rayRadius = .35f;
     private bool playerOnRb;
 
-    private Transform playerCameraGroup = null;
+    private bool playerDetection;
+    private Transform playerGroup = null;
     private Transform player = null;
     
     void Start()
@@ -48,9 +49,7 @@ public class SpringableBody : MonoBehaviour
                     {
                         if (!playerOnRb)
                         {
-                            playerCameraGroup = hit.collider.transform.parent;
-                            player = hit.collider.transform;
-                            hit.collider.transform.SetParent(transform);
+                            PlayerEnterCast(hit.collider.gameObject);
                         }
                             
                         playerHere = true;
@@ -61,7 +60,6 @@ public class SpringableBody : MonoBehaviour
             if (!playerHere && playerOnRb)
             {
                 Debug.Log("Quit platform");
-                player.SetParent(playerCameraGroup);
             }
             playerOnRb = playerHere;
         }
@@ -69,8 +67,8 @@ public class SpringableBody : MonoBehaviour
     
     private void PlayerEnterCast(GameObject player)
     {
+        player = player;
         playerDetection = true;
-        player = other.gameObject;
         playerGroup = player.transform.parent;
         playerGroup.transform.parent = transform;
     }
