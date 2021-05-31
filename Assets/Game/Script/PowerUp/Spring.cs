@@ -29,6 +29,10 @@ public class Spring : MonoBehaviour
     private float speed;
     public float terminalSpeed = 20f;
 
+    public GameObject bouncingCube;
+    public Transform bouncingCubeTransform;
+    private GameObject oldFrame;
+
 
 
     public void UseSpring()
@@ -39,6 +43,18 @@ public class Spring : MonoBehaviour
     public void Start()
     {
         CheckHeight();
+    }
+
+    public void ActiveBouncingCube(GameObject oldFrame)
+    {
+        bouncingCube.SetActive(true);
+        this.oldFrame = oldFrame;
+    }
+
+    public void RestoreFrame()
+    {
+        oldFrame.SetActive(true);
+        oldFrame.transform.position = bouncingCubeTransform.position;
     }
 
     public void CheckHeight()
