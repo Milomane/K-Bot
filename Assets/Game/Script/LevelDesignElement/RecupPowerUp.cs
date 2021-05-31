@@ -8,6 +8,8 @@ public class RecupPowerUp : MonoBehaviour
     public GameObject player;
 
     public int powerUpIndex;
+
+    private bool _stopDo;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +22,12 @@ public class RecupPowerUp : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && Input.GetButton("Submit") && _stopDo == false)
         {
             player.GetComponent<PlayerDeathHandler>().NewPowerUp(powerUpIndex);
+            _stopDo = true;
         }
         
     }
