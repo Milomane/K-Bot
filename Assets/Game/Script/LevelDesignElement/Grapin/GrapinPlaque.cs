@@ -47,6 +47,7 @@ public class GrapinPlaque : MonoBehaviour
                 if (other.gameObject.CompareTag("Player"))
                 {
                     module.ObjectRecup();
+                    module.verouillage = false;
                 }
             }
             else if (moveX)
@@ -54,6 +55,7 @@ public class GrapinPlaque : MonoBehaviour
                 if (other.gameObject.CompareTag("Player"))
                 {
                     module.LeavePlate();
+                    module.verouillage = false;
                 }
             }
             else if (moveZ)
@@ -61,6 +63,7 @@ public class GrapinPlaque : MonoBehaviour
                 if (other.gameObject.CompareTag("Player"))
                 {
                     module.LeavePlate();
+                    module.verouillage = false;
                 }
             }
         }
@@ -75,6 +78,7 @@ public class GrapinPlaque : MonoBehaviour
                 if (other.gameObject.CompareTag("Player"))
                 {
                     module.DropObject();
+                    module.verouillage = true;
                 }
             }
             else if (moveX)
@@ -82,6 +86,7 @@ public class GrapinPlaque : MonoBehaviour
                 if (other.gameObject.CompareTag("Player"))
                 {
                     module.MoveXEnter();
+                    module.verouillage = true;
                 }
             }
             else if (moveZ)
@@ -89,6 +94,7 @@ public class GrapinPlaque : MonoBehaviour
                 if (other.gameObject.CompareTag("Player"))
                 {
                     module.MoveZEnter();
+                    module.verouillage = true;
                 }
             }
         }
