@@ -66,6 +66,22 @@ public class SpringableBody : MonoBehaviour
             playerOnRb = playerHere;
         }
     }
+    
+    private void PlayerEnterCast(GameObject player)
+    {
+        playerDetection = true;
+        player = other.gameObject;
+        playerGroup = player.transform.parent;
+        playerGroup.transform.parent = transform;
+    }
+
+    private void PlayerExitCast(GameObject player)
+    {
+        playerDetection = false;
+        playerGroup.transform.parent = null;
+        player = null;
+        playerGroup = null;
+    }
 
     private void OnCollisionEnter(Collision other)
     {

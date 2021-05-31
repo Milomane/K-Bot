@@ -207,7 +207,6 @@ public class PlayerDeathHandler : MonoBehaviour
             rbToStop.angularVelocity = Vector3.zero;
             rbToStop = null;
         }
-            
     }
 
     public static void ChangePowerUp(int powerUpId)
@@ -241,6 +240,40 @@ public class PlayerDeathHandler : MonoBehaviour
         }
         
         CanvasEventManager.instance.deathTypeSelected = selectedDeath;
+    }
+
+    public void NewPowerUp(int powerUpId)
+    {
+        switch (powerUpId)
+        {
+            case 0:
+                selectedDeath = DeathType.normal;
+                Debug.Log("Normal PowerUp Added");
+                break;
+            case 1:
+                selectedDeath = DeathType.explosion;
+                Debug.Log("Explosion PowerUp Added");
+                break;
+            case 2:
+                selectedDeath = DeathType.spring;
+                Debug.Log("Spring PowerUp Added");
+                break;
+            case 3:
+                selectedDeath = DeathType.generator;
+                Debug.Log("Generator PowerUp Added");
+                break;
+            case 4:
+                selectedDeath = DeathType.lamp;
+                Debug.Log("Lamp PowerUp Added");
+                break;
+            case 5:
+                selectedDeath = DeathType.accelerator;
+                Debug.Log("Accelerator PowerUp Added");
+                break;
+            default:
+                Debug.LogError("Error in change power up, not a valid ID");
+                return;
+        }
     }
 
     public void DestroyOldestBody()
