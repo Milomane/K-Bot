@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     public Animator transition;
-
+    
     public string sceneName;
     // Start is called before the first frame update
     void Start()
     {
-        
+        transition.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
