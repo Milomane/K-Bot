@@ -26,7 +26,7 @@ public class PlayerDeathHandler : MonoBehaviour
     public GameObject repairStation;
     public bool canDie = true;
 
-    public bool dieing;
+    public bool dying;
     public Queue<GameObject> bodys;
 
     private DeathType previousSelectedDeath;
@@ -61,17 +61,19 @@ public class PlayerDeathHandler : MonoBehaviour
 
     void Update()
     {
+        playerController.dying = dying;
+        
         if (nbBodiesAvailable != null)
         {
             nbBodiesAvailable.text = (maxBody - bodys.Count).ToString();
         }
         
-        if (Input.GetButtonDown("Kill") && canDie && !dieing)
+        if (Input.GetButtonDown("Kill") && canDie && !dying)
         {
             StartDeath(selectedDeath);
         }
 
-        if (Input.GetButtonDown("ResetRobot") && !dieing)
+        if (Input.GetButtonDown("ResetRobot") && !dying)
         {
             DestroyAllBody();
         }
@@ -90,7 +92,7 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public IEnumerator DeathEnumerator(DeathType deathType)
     {
-        dieing = true;
+        dying = true;
         playerController.stopMovement = true;
         
         // Animation player
@@ -197,7 +199,7 @@ public class PlayerDeathHandler : MonoBehaviour
         
         playerController.stopMovement = false;
         playerController.brutStopMovement = false;
-        dieing = false;
+        dying = false;
     }
 
     private void FixedUpdate()

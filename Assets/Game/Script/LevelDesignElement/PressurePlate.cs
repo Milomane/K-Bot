@@ -14,7 +14,7 @@ public class PressurePlate : MonoBehaviour
     // Update is called once per frame 
     void Update()
     {
-        if (player.GetComponent<PlayerDeathHandler>().dieing )// player.GetComponent<PlayerMovement>().isGrounded == false ) // remove player when suicide
+        if (player.GetComponent<PlayerDeathHandler>().dying )// player.GetComponent<PlayerMovement>().isGrounded == false ) // remove player when suicide
         {
             onPlate.Remove(player);
         }
@@ -37,10 +37,6 @@ public class PressurePlate : MonoBehaviour
         {
             lockedObject.GetComponent<LockedDoor>().isActivated = defineOpen; 
         }
-
-        
-
-       
     }
 
     private void OnTriggerEnter(Collider other)

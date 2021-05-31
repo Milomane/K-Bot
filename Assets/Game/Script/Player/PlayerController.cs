@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
     
     [SerializeField] private CinemachineFreeLook cinemachineFreeLookCamera;
+    public Animator animator;
     [SerializeField] private PlayerMovement playerMovement;
     
     private bool lockCamera;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public bool stopMovement;
     public bool brutStopMovement;
     public bool controlCursor;
+
+    public bool dying = false;
 
     void Awake()
     {
