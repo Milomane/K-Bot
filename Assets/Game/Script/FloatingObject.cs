@@ -15,6 +15,8 @@ public class FloatingObject : MonoBehaviour
 
     public float rotationSpeed = 10;
 
+    public Rigidbody rb;
+
     private float forceFactor;
     private Vector3 floatForce;
     private Quaternion targetRotation;
@@ -40,7 +42,14 @@ public class FloatingObject : MonoBehaviour
             }
             
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         }
+        else
+        {
+            rb.constraints = RigidbodyConstraints.None;
+        }
+        
         
         randomPointer += Time.deltaTime;
     }
