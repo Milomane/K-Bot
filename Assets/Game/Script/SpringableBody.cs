@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class SpringableBody : MonoBehaviour
 {
+    /*
     [SerializeField] private Rigidbody rb;
     [SerializeField] private bool alignWithWorldUp;
     private Vector2 targetDir;
@@ -49,9 +50,9 @@ public class SpringableBody : MonoBehaviour
                     {
                         if (!playerOnRb)
                         {
-                            PlayerEnterCast(hit.collider.gameObject);
+                            Debug.Log("Enter platform");
+                            PlayerEnterCast(hit.collider.transform);
                         }
-                            
                         playerHere = true;
                     }
                 }
@@ -60,24 +61,23 @@ public class SpringableBody : MonoBehaviour
             if (!playerHere && playerOnRb)
             {
                 Debug.Log("Quit platform");
+                PlayerExitCast(player);
             }
             playerOnRb = playerHere;
         }
     }
     
-    private void PlayerEnterCast(GameObject player)
+    private void PlayerEnterCast(Transform player)
     {
-        player = player;
-        playerDetection = true;
+        this.player = player;
         playerGroup = player.transform.parent;
         playerGroup.transform.parent = transform;
     }
 
-    private void PlayerExitCast(GameObject player)
+    private void PlayerExitCast(Transform player)
     {
-        playerDetection = false;
         playerGroup.transform.parent = null;
-        player = null;
+        this.player = null;
         playerGroup = null;
     }
 
@@ -101,5 +101,15 @@ public class SpringableBody : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position + Vector3.up * distanceAboveCube, new Vector3(rayRadius, rayRadius, rayRadius));
+    }
+    */
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.collider.tag == "Spring" && other.contacts[0].normal.y > .4f && other.contacts[0].normal.x < .5f && other.contacts[0].normal.z < .5f)
+        {
+            other.collider.GetComponent<Spring>().ActiveBouncingCube(gameObject);
+            gameObject.SetActive(false);
+        }
     }
 }
