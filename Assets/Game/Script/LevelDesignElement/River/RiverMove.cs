@@ -70,10 +70,5 @@ public class RiverMove : MonoBehaviour
             Vector3 xmzVector = new Vector3(0.5f,0,-0.5f);
             other.transform.Translate(xmzVector * speed * Time.deltaTime, Space.World);
         }
-
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("detection player dans river");
-        }
     }
 }
