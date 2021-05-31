@@ -11,76 +11,81 @@ public class Piston : MonoBehaviour
 
     public Rigidbody rb;
 
+
+    private Transform playerCameraGroup;
     private CharacterController playerCharacterController;
     private bool pushingPlayer;
+    private bool pushing;
+
+    private Vector3 lastPos;
+    public Transform animatedTransform;
+    public Transform pistonObject;
+
     
-    // Start is called before the first frame update
     void Start()
     {
-        
-      //  StartCoroutine(Up());
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        if (activeUp)
-        {
-            StartCoroutine(Up());
-            
-        }
-
-        if (activeDown )
-        {
-            StartCoroutine(Down());
-            
-        }
     }
 
-    private IEnumerator Up()
+    public void PistonEndMovement()
     {
-        activeUp = false;
-        rb.AddForce(Vector3.left*200,ForceMode.Impulse);
         
-        yield return new WaitForSeconds(0.25f);
-        
-        rb.velocity = Vector3.zero;
-        yield return new WaitForSeconds(0.5f);
-        activeDown = true;
-
+        //if (pushingPlayer)
+        //    playerCameraGroup.transform.parent = null;
+            
+        pushing = false;
     }
-    
-    private IEnumerator Down()
+
+    public void PistonStartMovement()
     {
-        activeDown = false;
+        //if (pushingPlayer)
+        //    playerCameraGroup.transform.parent = pistonObject;
         
-        rb.AddForce(Vector3.left*-50,ForceMode.Impulse);
-        
-        yield return new WaitForSeconds(1);
-        rb.velocity = Vector3.zero; 
-        yield return new  WaitForSeconds(2);
-        activeUp = true;
+        pushing = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void TriggerEnterFromPiston(Collider other)
     {
         if (other.tag == "Player")
         {
+            
             playerCharacterController = other.GetComponent<CharacterController>();
+            //playerCameraGroup = playerCharacterController.transform.parent;
+            
             pushingPlayer = true;
+            /*
+            if (pushing)
+                playerCameraGroup.transform.parent = pistonObject;
+            */
         }
     }
-    private void OnTriggerExit(Collider other)
+    public void TriggerExitFromPiston(Collider other)
     {
         if (other.tag == "Player")
         {
             pushingPlayer = false;
+            //playerCameraGroup.transform.parent = null;
         }
     }
 
     private void FixedUpdate()
     {
-        if (pushingPlayer)
+        rb.MovePosition(animatedTransform.position);
+
+        if (pushingPlayer && pushing)
+        {
             playerCharacterController.Move(rb.velocity * Time.fixedDeltaTime);
+            Debug.Log(rb.velocity);
+        }
+        else
+        {
+            //playerCameraGroup.parent = null;
+        }
+        
+        lastPos = rb.position;
     }
 }
