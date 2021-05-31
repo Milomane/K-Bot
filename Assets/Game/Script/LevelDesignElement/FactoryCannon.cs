@@ -6,6 +6,7 @@ public class FactoryCannon : MonoBehaviour
 {
     // Projectile compartment
     [SerializeField] private Transform projectileCompartment;
+    [SerializeField] private GameObject cannon;
     
     // Fire power of the cannon
     [SerializeField] private float firePower = 2f;
@@ -23,7 +24,7 @@ public class FactoryCannon : MonoBehaviour
             // Fire the corpseKbot
             Debug.Log("Fire !!!");
             corpseKbot.GetComponent<Rigidbody>().isKinematic = false;
-            corpseKbot.GetComponent<Rigidbody>().velocity = firePower * corpseKbot.transform.forward;
+            corpseKbot.GetComponent<Rigidbody>().velocity = firePower * projectileCompartment.forward;
             isCannonLoaded = false;
             // Play VFX (smoke, explosion, ...)
         }
@@ -34,7 +35,7 @@ public class FactoryCannon : MonoBehaviour
         if (other.gameObject.CompareTag("Corpse") && !isCannonLoaded)
         {
             corpseKbot = other.gameObject;
-            corpseKbot.transform.rotation = transform.rotation;
+            //corpseKbot.transform.rotation = gameObject.GetComponentInParent<Transform>().rotation;
             
             // Cannon loading
             corpseKbot.transform.position = projectileCompartment.position;
