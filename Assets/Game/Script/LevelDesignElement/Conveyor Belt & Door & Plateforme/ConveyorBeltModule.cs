@@ -28,32 +28,30 @@ public class ConveyorBeltModule : MonoBehaviour
         {
             for (int i = 0; i <= onBelt.Count -1; i++)
             {
-                onBelt[i].transform.position = Vector3.MoveTowards(onBelt[i].transform.position, endPoint.position, speed * Time.deltaTime);
+                onBelt[i].transform.position = Vector3.MoveTowards(onBelt[i].transform.position, endPoint.position, speed * Time.fixedDeltaTime);
             }
 
             if (player != null)
             {
-                Debug.Log("le joueur bouge putain");
                 if (x)
                 {
                     Vector3 direction = new Vector3(1,0,0);
-                    player.GetComponent<CharacterController>().Move(direction * speed * Time.deltaTime);
+                    player.GetComponent<CharacterController>().Move(direction * speed * Time.fixedDeltaTime);
                 }
                 else if (mx)
                 {
                     Vector3 direction = new Vector3(-1,0,0);
-                    player.GetComponent<CharacterController>().Move(direction * speed * Time.deltaTime);
-                    Debug.Log("aller bordel fils de pute bouge");
+                    player.GetComponent<CharacterController>().Move(direction * speed * Time.fixedDeltaTime);
                 }
                 else if (mz)
                 {
                     Vector3 direction = new Vector3(0,0,-1);
-                    player.GetComponent<CharacterController>().Move(direction * speed * Time.deltaTime);
+                    player.GetComponent<CharacterController>().Move(direction * speed * Time.fixedDeltaTime);
                 }
                 else if (z)
                 {
                     Vector3 direction = new Vector3(0,0,1);
-                    player.GetComponent<CharacterController>().Move(direction * speed * Time.deltaTime);
+                    player.GetComponent<CharacterController>().Move(direction * speed * Time.fixedDeltaTime);
                 }
             }
         }

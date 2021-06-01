@@ -36,39 +36,39 @@ public class RiverMove : MonoBehaviour
     {
         if (x)
         {
-            other.transform.Translate(Vector3.right * speed * Time.deltaTime, Space.World);
+            other.transform.Translate(Vector3.right * speed * Time.fixedDeltaTime, Space.World);
         }
         else if (mx)
         {
-            other.transform.Translate(-Vector3.right * speed * Time.deltaTime, Space.World);
+            other.transform.Translate(-Vector3.right * speed * Time.fixedDeltaTime, Space.World);
         }
         else if (mz)
         {
-            other.transform.Translate(-Vector3.forward * speed * Time.deltaTime, Space.World);
+            other.transform.Translate(-Vector3.forward * speed * Time.fixedDeltaTime, Space.World);
         }
         else if (mxmz)
         {
             Vector3 mxmzVector = new Vector3(-0.5f,0,-0.5f);
-            other.transform.Translate(mxmzVector * speed * Time.deltaTime, Space.World);
+            other.transform.Translate(mxmzVector * speed * Time.fixedDeltaTime, Space.World);
         }
         else if (xz)
         {
             Vector3 xzVector = new Vector3(0.5f,0,0.5f);
-            other.transform.Translate(xzVector * speed * Time.deltaTime, Space.World);
+            other.transform.Translate(xzVector * speed * Time.fixedDeltaTime, Space.World);
         }
         else if (z)
         {
-            other.transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
+            other.transform.Translate(Vector3.forward * speed * Time.fixedDeltaTime, Space.World);
         }
         else if (mxz)
         {
             Vector3 mxzVector = new Vector3(-0.5f,0,0.5f);
-            other.transform.Translate(mxzVector * speed * Time.deltaTime, Space.World);
+            other.transform.Translate(mxzVector * speed * Time.fixedDeltaTime, Space.World);
         }
         else if (xmz)
         {
             Vector3 xmzVector = new Vector3(0.5f,0,-0.5f);
-            other.transform.Translate(xmzVector * speed * Time.deltaTime, Space.World);
+            other.transform.Translate(xmzVector * speed * Time.fixedDeltaTime, Space.World);
         }
     }
 }
