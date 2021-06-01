@@ -31,6 +31,7 @@ public class Piston : MonoBehaviour
     {
     }
 
+    /*
     public void PistonEndMovement()
     {
         
@@ -57,10 +58,9 @@ public class Piston : MonoBehaviour
             //playerCameraGroup = playerCharacterController.transform.parent;
             
             pushingPlayer = true;
-            /*
+            
             if (pushing)
                 playerCameraGroup.transform.parent = pistonObject;
-            */
         }
     }
     public void TriggerExitFromPiston(Collider other)
@@ -70,7 +70,7 @@ public class Piston : MonoBehaviour
             pushingPlayer = false;
             //playerCameraGroup.transform.parent = null;
         }
-    }
+    }*/
 
     private void FixedUpdate()
     {
@@ -78,8 +78,8 @@ public class Piston : MonoBehaviour
 
         if (pushingPlayer && pushing)
         {
-            playerCharacterController.Move(rb.velocity * Time.fixedDeltaTime);
-            Debug.Log(rb.velocity);
+            //playerCharacterController.Move(rb.velocity * Time.fixedDeltaTime);
+            //Debug.Log(rb.velocity);
         }
         else
         {
