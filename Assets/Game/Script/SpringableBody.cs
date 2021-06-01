@@ -108,6 +108,7 @@ public class SpringableBody : MonoBehaviour
     {
         if (other.collider.tag == "Spring" && other.contacts[0].normal.y > .4f && other.contacts[0].normal.x < .5f && other.contacts[0].normal.z < .5f)
         {
+            Debug.Log(gameObject.name);
             other.collider.GetComponent<Spring>().ActiveBouncingCube(gameObject);
             gameObject.SetActive(false);
         }

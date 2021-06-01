@@ -82,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
+        playerController.animator.SetBool("InAir", !isGrounded);
+        playerController.animator.SetBool("Jumping", jumping);
         
         DebugGround();
         
