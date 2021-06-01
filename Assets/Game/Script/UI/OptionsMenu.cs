@@ -42,12 +42,6 @@ public class OptionsMenu : MonoBehaviour
         {
             string option = resolutions[i].width + "x" + resolutions[i].height + " " + resolutions[i].refreshRate + "Hz";
             options.Add(option);
-            // Avoid duplicates in the options
-            /*if (!options.Contains(option))
-            {
-                options.Add(option);
-            }*/
-            // options = options.Distinct().ToList(); -> work but fucked up any way
 
             // Update the current resolution
             if (resolutions[i].width == Screen.currentResolution.width

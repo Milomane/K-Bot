@@ -29,6 +29,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !optionsMenuUI.activeInHierarchy)
         {
+            Debug.Log("caca");
             if (gameIsPaused)
             {
                 Resume();
@@ -44,7 +45,10 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         playerController.controlCursor = false;
-        pauseMenuUI.SetActive(false);
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(false);
+        }
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
@@ -53,7 +57,10 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         playerController.controlCursor = true;
-        pauseMenuUI.SetActive(true);
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(true);
+        }
         Time.timeScale = 0f;
         gameIsPaused = true;
     }
