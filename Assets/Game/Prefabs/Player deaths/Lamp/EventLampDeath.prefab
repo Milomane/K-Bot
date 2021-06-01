@@ -798,6 +798,9 @@ MonoBehaviour:
   doParticleAtDestruction: 1
   particleAtDestruction: {fileID: 7043752475002646823, guid: 53b3b2dc9f8b2644c8eddf6a2af56b57, type: 3}
   body: {fileID: 3749500450438981627}
+  eventsToActiveAtDestruction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2945996869563926262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,7 +1596,7 @@ GameObject:
   - component: {fileID: 5841203247183136617}
   m_Layer: 8
   m_Name: Lamp
-  m_TagString: Untagged
+  m_TagString: Lamp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
