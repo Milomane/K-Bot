@@ -31,21 +31,13 @@ public class Piston : MonoBehaviour
     {
     }
 
-    /*
     public void PistonEndMovement()
-    {
-        
-        //if (pushingPlayer)
-        //    playerCameraGroup.transform.parent = null;
-            
+    {   
         pushing = false;
     }
 
     public void PistonStartMovement()
     {
-        //if (pushingPlayer)
-        //    playerCameraGroup.transform.parent = pistonObject;
-        
         pushing = true;
     }
 
@@ -55,12 +47,9 @@ public class Piston : MonoBehaviour
         {
             
             playerCharacterController = other.GetComponent<CharacterController>();
-            //playerCameraGroup = playerCharacterController.transform.parent;
             
             pushingPlayer = true;
             
-            if (pushing)
-                playerCameraGroup.transform.parent = pistonObject;
         }
     }
     public void TriggerExitFromPiston(Collider other)
@@ -68,17 +57,18 @@ public class Piston : MonoBehaviour
         if (other.tag == "Player")
         {
             pushingPlayer = false;
-            //playerCameraGroup.transform.parent = null;
         }
-    }*/
+    }
 
     private void FixedUpdate()
     {
+        Vector3 movement = rb.position - lastPos;
+        
         rb.MovePosition(animatedTransform.position);
 
         if (pushingPlayer && pushing)
         {
-            //playerCharacterController.Move(rb.velocity * Time.fixedDeltaTime);
+            playerCharacterController.Move(rb.velocity * Time.fixedDeltaTime);
             //Debug.Log(rb.velocity);
         }
         else

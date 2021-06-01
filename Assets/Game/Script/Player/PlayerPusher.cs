@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class PlayerPusher : MonoBehaviour
     public float hitForce = 2.5f; // impact "force" when hit by rigidbody 
     private Vector3 impact = Vector3.zero; // character momentum 
     private CharacterController character;
+
+    private Vector3 movement;
  
     void Start()
     {
@@ -23,19 +26,19 @@ public class PlayerPusher : MonoBehaviour
  
     void Update()
     {
+        /*
         if (impact.magnitude > 0.2)
         { 
             // if momentum > 0.2...
-            character.Move(impact * Time.deltaTime); // move character
+            character.Move(impact * Time.fixedDeltaTime); // move character
         }
         // impact vanishes to zero over time
         impact = Vector3.Lerp(impact, Vector3.zero, 5*Time.deltaTime);
+        */
     }
- 
+
     void OnControllerColliderHit (ControllerColliderHit hit)
-    { 
-        // collision adds impact
-        if (hit.rigidbody != null)
-            AddImpact(hit.rigidbody.velocity * hitForce);
+    {
+        //AddImpact(hit.rigidbody.velocity * hitForce);
     }
 }

@@ -21,23 +21,23 @@ AnimationClip:
       - serializedVersion: 3
         time: 0
         value: {x: 0, y: 0, z: 0}
-        inSlope: {x: -17.81536, y: 0, z: 0}
-        outSlope: {x: -17.81536, y: 0, z: 0}
+        inSlope: {x: -2.1419551, y: 0, z: 0}
+        outSlope: {x: -2.1419551, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.10563089, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.17047533, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 0.5
-        value: {x: -8.372734, y: 0, z: 0}
-        inSlope: {x: -8.0866165, y: 0, z: 0}
+        time: 2.8666666
+        value: {x: -8.229877, y: 0, z: 0}
+        inSlope: {x: -1.942178, y: 0, z: 0}
         outSlope: {x: 1.4492165, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.08348036, y: 0.33333334, z: 0.33333334}
+        inWeight: {x: 0.40917647, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.012504118, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 4
+        time: 7
         value: {x: 0, y: 0, z: 0}
         inSlope: {x: -1.2246407, y: 0, z: 0}
         outSlope: {x: -1.2246407, y: 0, z: 0}
@@ -72,7 +72,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 4
+    m_StopTime: 7
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -94,23 +94,23 @@ AnimationClip:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: -17.81536
-        outSlope: -17.81536
+        inSlope: -2.1419551
+        outSlope: -2.1419551
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.10563089
+        outWeight: 0.17047533
       - serializedVersion: 3
-        time: 0.5
-        value: -8.372734
-        inSlope: -8.0866165
+        time: 2.8666666
+        value: -8.229877
+        inSlope: -1.942178
         outSlope: 1.4492165
         tangentMode: 1
         weightedMode: 0
-        inWeight: 0.08348036
+        inWeight: 0.40917647
         outWeight: 0.012504118
       - serializedVersion: 3
-        time: 4
+        time: 7
         value: 0
         inSlope: -1.2246407
         outSlope: -1.2246407
@@ -138,16 +138,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 4
+        time: 7
         value: 0
         inSlope: 0
         outSlope: 0
@@ -175,16 +166,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 4
+        time: 7
         value: 0
         inSlope: 0
         outSlope: 0
@@ -202,4 +184,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: PistonStartMovement
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.8666666
+    functionName: PistonEndMovement
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

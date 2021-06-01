@@ -290,13 +290,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3549030263433869159}
     m_Modifications:
+    - target: {fileID: 5461626898097358731, guid: c28503147ed312a41b04183e232c8972, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5461626898808369981, guid: c28503147ed312a41b04183e232c8972, type: 3}
       propertyPath: m_Name
       value: BoundingCube
       objectReference: {fileID: 0}
     - target: {fileID: 5461626898808369981, guid: c28503147ed312a41b04183e232c8972, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5461626898808370118, guid: c28503147ed312a41b04183e232c8972, type: 3}
       propertyPath: m_RootOrder
