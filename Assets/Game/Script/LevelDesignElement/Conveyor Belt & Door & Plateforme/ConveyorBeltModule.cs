@@ -11,7 +11,6 @@ public class ConveyorBeltModule : MonoBehaviour
 
     public List<GameObject> onBelt;
     public GameObject player;
-    public Transform playerGroup;
 
     public bool conveyorActivation;
     public bool x, z, mx, mz;
@@ -37,28 +36,25 @@ public class ConveyorBeltModule : MonoBehaviour
                 Debug.Log("le joueur bouge putain");
                 if (x)
                 {
-                    player.transform.Translate(Vector3.right * speed * Time.deltaTime, Space.World);
+                    Vector3 direction = new Vector3(1,0,0);
+                    player.GetComponent<CharacterController>().Move(direction * speed * Time.deltaTime);
                 }
                 else if (mx)
                 {
-                    player.transform.Translate(-Vector3.right * speed * Time.deltaTime, Space.World);
+                    Vector3 direction = new Vector3(-1,0,0);
+                    player.GetComponent<CharacterController>().Move(direction * speed * Time.deltaTime);
                     Debug.Log("aller bordel fils de pute bouge");
                 }
                 else if (mz)
                 {
-                    player.transform.Translate(-Vector3.forward * speed * Time.deltaTime, Space.World);
+                    Vector3 direction = new Vector3(0,0,-1);
+                    player.GetComponent<CharacterController>().Move(direction * speed * Time.deltaTime);
                 }
                 else if (z)
                 {
-                    player.transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
+                    Vector3 direction = new Vector3(0,0,1);
+                    player.GetComponent<CharacterController>().Move(direction * speed * Time.deltaTime);
                 }
-                
-                //Vector3 movDiff = endPoint.position - transform.position;
-                //Vector3 movDir = movDiff.normalized * speed * Time.deltaTime;
-                //player.GetComponent<CharacterController>().Move(movDir);
-                
-                //player.transform.position = Vector3.MoveTowards(player.transform.position, endPoint.position, speed * Time.deltaTime);
-                
             }
         }
     }

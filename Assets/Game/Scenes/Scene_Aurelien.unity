@@ -1595,11 +1595,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2739104149248625834, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.8697222
+      value: 0.86972225
       objectReference: {fileID: 0}
     - target: {fileID: 2739104149248625834, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.04228819
+      value: -0.0422882
       objectReference: {fileID: 0}
     - target: {fileID: 2739104149832183296, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1762,11 +1762,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458228410}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &526920008 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2582458356134351201, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
-  m_PrefabInstance: {fileID: 949687940}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &558156119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,8 +2442,11 @@ MonoBehaviour:
   endPoint: {fileID: 1232398134}
   onBelt: []
   player: {fileID: 0}
-  playerGroup: {fileID: 0}
   conveyorActivation: 0
+  x: 0
+  z: 0
+  mx: 0
+  mz: 0
 --- !u!65 &811267932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2733,8 +2731,11 @@ MonoBehaviour:
   endPoint: {fileID: 1610178360}
   onBelt: []
   player: {fileID: 0}
-  playerGroup: {fileID: 0}
   conveyorActivation: 0
+  x: 0
+  z: 0
+  mx: 0
+  mz: 0
 --- !u!65 &899472107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2768,25 +2769,9 @@ PrefabInstance:
       value: ConveyorPrefabActivator (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2582458355474754500, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
-      propertyPath: speed
-      value: 2
+      propertyPath: conveyorActivation
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2582458355474754500, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
-      propertyPath: endPoint
-      value: 
-      objectReference: {fileID: 526920008}
-    - target: {fileID: 2582458356412733781, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
-      propertyPath: imagePressCanvas
-      value: 
-      objectReference: {fileID: 1178487921}
-    - target: {fileID: 2582458356412733781, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
-      propertyPath: objectsList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2582458356412733781, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
-      propertyPath: objectsList.Array.data[0]
-      value: 
-      objectReference: {fileID: 333969241}
     - target: {fileID: 7410974608897477138, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2912,8 +2897,11 @@ MonoBehaviour:
   endPoint: {fileID: 102617204}
   onBelt: []
   player: {fileID: 0}
-  playerGroup: {fileID: 0}
   conveyorActivation: 0
+  x: 0
+  z: 0
+  mx: 0
+  mz: 0
 --- !u!65 &1021736885
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3287,11 +3275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672ed20baa967ad4baa733a207f0b9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1178487921 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2582458356736978939, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
-  m_PrefabInstance: {fileID: 949687940}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1232398133
 GameObject:
   m_ObjectHideFlags: 0
@@ -3371,8 +3354,11 @@ MonoBehaviour:
   endPoint: {fileID: 1063586699}
   onBelt: []
   player: {fileID: 0}
-  playerGroup: {fileID: 0}
   conveyorActivation: 0
+  x: 0
+  z: 0
+  mx: 0
+  mz: 0
 --- !u!65 &1236712560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4151,8 +4137,11 @@ MonoBehaviour:
   endPoint: {fileID: 235561011}
   onBelt: []
   player: {fileID: 0}
-  playerGroup: {fileID: 0}
   conveyorActivation: 0
+  x: 0
+  z: 0
+  mx: 0
+  mz: 0
 --- !u!65 &1792135182
 BoxCollider:
   m_ObjectHideFlags: 0
