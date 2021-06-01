@@ -110,10 +110,12 @@ public class PlayerMovement : MonoBehaviour
         GroundDirection();
         
         
-        if (controller.isGrounded && slopeAngle <= controller.slopeLimit)
+        if (isGrounded && slopeAngle <= controller.slopeLimit)
         {
+            Debug.Log("qzlkjhgfcxbcnghj;hkljkhjgfxbg enculé");
             if (inputNormalized != Vector3.zero)
             {
+                Debug.Log("debug test player tapis");
                 // Check for sprint
                 if (superSprint)
                 {
