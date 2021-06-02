@@ -53,8 +53,12 @@ public class Spring : MonoBehaviour
 
     public void RestoreFrame()
     {
-        oldFrame.SetActive(true);
-        oldFrame.transform.position = bouncingCubeTransform.position;
+        if (oldFrame != null)
+        {
+            oldFrame.SetActive(true);
+            oldFrame.transform.position = bouncingCubeTransform.position;
+        }
+            
     }
 
     public void CheckHeight()

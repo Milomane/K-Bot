@@ -121,7 +121,6 @@ GameObject:
   - component: {fileID: 2739104149046315133}
   - component: {fileID: 5780706471577894423}
   - component: {fileID: 2739104149046315132}
-  - component: {fileID: 3785593035499754418}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -239,7 +238,7 @@ MonoBehaviour:
   isHittingWall: 0
   showGroundNormal: 0
   showFallNormal: 0
-  isGrounded: 0
+  isGrounded: 1
   realSpeed: 0
 --- !u!114 &5780706471577894423
 MonoBehaviour:
@@ -285,20 +284,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &3785593035499754418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2739104149046315105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a6610e60c756894a9f0245acff499f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mass: 1
-  hitForce: 1
 --- !u!1 &2739104149104317181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,6 +1844,10 @@ PrefabInstance:
     - target: {fileID: 301873103443740390, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
       propertyPath: m_Name
       value: PlayerModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 908207634901473618, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3924861137149670632, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
       propertyPath: m_RootOrder

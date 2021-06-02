@@ -78,10 +78,10 @@ public class PlayerDeathHandler : MonoBehaviour
             DestroyAllBody();
         }
 
+        // Change back model
         if (previousSelectedDeath != selectedDeath)
         {
-            previousSelectedDeath = selectedDeath;
-            ChangeBackModel();
+            StartCoroutine(ChangeBackModel());
         }
     }
 
@@ -306,16 +306,20 @@ public class PlayerDeathHandler : MonoBehaviour
             else
             {
               bodys.Enqueue(corpse);
-          
             }
         }
     }
 
-    void ChangeBackModel()
+    IEnumerator ChangeBackModel()
     {
-        for (int i = 0; i < 6; i++)
-        {
-            playerModel.arrayBackModels[i].SetActive(i == (int)selectedDeath);
-        }
+        Transform previousModel = playerModel.arrayBackModels[(int) previousSelectedDeath].transform;
+        GameObject newModel = playerModel.arrayBackModels[(int) selectedDeath];
+
+        yield return null;
+        
+        previousModel.gameObject.SetActive(false);
+        newModel.SetActive(true);
+        
+        previousSelectedDeath = selectedDeath;
     }
 }

@@ -82,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
+        playerController.animator.SetBool("InAir", !isGrounded);
+        playerController.animator.SetBool("Jumping", jumping);
         
         DebugGround();
         
@@ -112,10 +114,8 @@ public class PlayerMovement : MonoBehaviour
         
         if (isGrounded && slopeAngle <= controller.slopeLimit)
         {
-            Debug.Log("qzlkjhgfcxbcnghj;hkljkhjgfxbg enculé");
             if (inputNormalized != Vector3.zero)
             {
-                Debug.Log("debug test player tapis");
                 // Check for sprint
                 if (superSprint)
                 {
