@@ -9,11 +9,11 @@ public class FloatingObject : MonoBehaviour
 {
     public bool isInLiquid;
     public float liquidHeight = 0f;
-    public float floatThreshold = 2.0f;
-    public float liquidDensity = .125f;
+    public float floatThreshold = .3f;
+    public float liquidDensity = .5f;
     public float downForce = 4f;
 
-    public float rotationSpeed = 10;
+    public float rotationSpeed = 20;
 
     public Rigidbody rb;
 
