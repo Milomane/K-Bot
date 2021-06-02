@@ -35,7 +35,7 @@ public class PlateformeModule : MonoBehaviour
             currentTarget = points[0];
         }
 
-        tolerance = speed * Time.deltaTime;
+        tolerance = speed * Time.fixedDeltaTime;
     }
 
     // Update is called once per frame
@@ -78,7 +78,7 @@ public class PlateformeModule : MonoBehaviour
     {
         heading = currentTarget - transform.position;
         
-        transform.position += (heading / heading.magnitude) * speed * Time.deltaTime;
+        transform.position += (heading / heading.magnitude) * speed * Time.fixedDeltaTime;
 
         if (heading.magnitude < tolerance)
         {

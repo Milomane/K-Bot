@@ -66,13 +66,6 @@ public class ConveyorBeltModule : MonoBehaviour
         {
             detectionPlayer = true;
         }
-        else
-        {
-            detectionPlayer = false;
-            player = null;
-        }
-        
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -94,8 +87,9 @@ public class ConveyorBeltModule : MonoBehaviour
             Debug.Log("non");
             //playerGroup.transform.parent = null;
             player = null;
+            detectionPlayer = false;
             //playerGroup = null;
-            
+
             //onBelt.Remove(other.gameObject);
         }
         else
