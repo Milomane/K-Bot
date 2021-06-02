@@ -29,7 +29,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !optionsMenuUI.activeInHierarchy)
         {
-            Debug.Log("caca");
             if (gameIsPaused)
             {
                 Resume();
