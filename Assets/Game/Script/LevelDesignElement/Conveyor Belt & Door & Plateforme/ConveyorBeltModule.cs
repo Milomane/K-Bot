@@ -12,7 +12,7 @@ public class ConveyorBeltModule : MonoBehaviour
     public List<GameObject> onBelt;
     public GameObject player;
 
-    public bool conveyorActivation;
+    public bool conveyorActivation, detectionPlayer;
     public bool x, z, mx, mz;
     
     // Start is called before the first frame update
@@ -31,29 +31,40 @@ public class ConveyorBeltModule : MonoBehaviour
                 onBelt[i].transform.position = Vector3.MoveTowards(onBelt[i].transform.position, endPoint.position, speed * Time.fixedDeltaTime);
             }
 
-            if (player != null)
+            if (detectionPlayer)
             {
-                if (x)
+                if (player != null)
                 {
-                    Vector3 direction = new Vector3(1,0,0);
-                    player.GetComponent<CharacterController>().Move(direction * speed * Time.fixedDeltaTime);
-                }
-                else if (mx)
-                {
-                    Vector3 direction = new Vector3(-1,0,0);
-                    player.GetComponent<CharacterController>().Move(direction * speed * Time.fixedDeltaTime);
-                }
-                else if (mz)
-                {
-                    Vector3 direction = new Vector3(0,0,-1);
-                    player.GetComponent<CharacterController>().Move(direction * speed * Time.fixedDeltaTime);
-                }
-                else if (z)
-                {
-                    Vector3 direction = new Vector3(0,0,1);
-                    player.GetComponent<CharacterController>().Move(direction * speed * Time.fixedDeltaTime);
+                    if (x)
+                    {
+                        Vector3 direction = new Vector3(1,0,0);
+                        player.GetComponent<CharacterController>().Move(direction * speed * Time.fixedDeltaTime);
+                    }
+                    else if (mx)
+                    {
+                        Vector3 direction = new Vector3(-1,0,0);
+                        player.GetComponent<CharacterController>().Move(direction * speed * Time.fixedDeltaTime);
+                    }
+                    else if (mz)
+                    {
+                        Vector3 direction = new Vector3(0,0,-1);
+                        player.GetComponent<CharacterController>().Move(direction * speed * Time.fixedDeltaTime);
+                    }
+                    else if (z)
+                    {
+                        Vector3 direction = new Vector3(0,0,1);
+                        player.GetComponent<CharacterController>().Move(direction * speed * Time.fixedDeltaTime);
+                    }
                 }
             }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            detectionPlayer = true;
         }
     }
 
@@ -61,11 +72,7 @@ public class ConveyorBeltModule : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("oui");
             player = other.gameObject;
-            //playerGroup = player.transform.parent;
-            //playerGroup.transform.parent = transform;
-            //onBelt.Add(other.gameObject);
         }
         else
         {
@@ -80,8 +87,9 @@ public class ConveyorBeltModule : MonoBehaviour
             Debug.Log("non");
             //playerGroup.transform.parent = null;
             player = null;
+            detectionPlayer = false;
             //playerGroup = null;
-            
+
             //onBelt.Remove(other.gameObject);
         }
         else
