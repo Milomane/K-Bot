@@ -376,7 +376,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ReturnOnGround()
     {
-        
+        // GetComponentInChildren<PlayerSounds>().Land(); TODO : résoudre le problème de son
     }
 
     void DebugGround()

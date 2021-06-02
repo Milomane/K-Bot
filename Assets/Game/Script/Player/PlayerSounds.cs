@@ -53,7 +53,7 @@ public class PlayerSounds : MonoBehaviour
         audioSource.PlayOneShot(jumpClip);
     }
 
-    private void Land()
+    public void Land()
     {
         audioSource.PlayOneShot(landClip);
     }
