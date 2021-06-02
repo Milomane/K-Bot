@@ -113,29 +113,20 @@ public class Spring : MonoBehaviour
 
         if (highestYPoint - lowestYPoint > maxHeightOnEdge && highestYPoint - lowestYPoint < 1)
         {
-            Debug.Log("First");
             endYCoord = highestYPoint + .5f;
         }
         else if (highestYPoint - lowestYPoint < 1.5f && highestYPoint - lowestYPoint >= 1)
         {
-            Debug.Log("Second");
             endYCoord = highestYPoint - .5f;
         }
         else if (highestYPoint - lowestYPoint > maxHeightOnEdge)
         {
-            Debug.Log("Third");
             endYCoord = highestYPoint + .5f;
         }
         else
         {
-            Debug.Log("Four");
             endYCoord = lowestYPoint + .5f;
         }
-            
-            
-        
-        Debug.Log("High : " + highestYPoint);
-        Debug.Log("Low : " + lowestYPoint);
 
         canStartMoving = true;
     }
