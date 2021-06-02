@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7352129738344276812}
   - component: {fileID: 7352129738344276813}
   - component: {fileID: 7352129738344276802}
-  - component: {fileID: 7352129738344276803}
   - component: {fileID: 7352129738344276809}
+  - component: {fileID: 4257070755163410117}
   m_Layer: 0
   m_Name: laser
   m_TagString: Untagged
@@ -114,24 +114,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7352129738344276803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7352129738344276800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f3fa9282181cd042b106a8e80fc84f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laser: {fileID: 7352129738344276809}
-  distance: 360
-  defineOpen: 1
-  lockedObject: {fileID: 0}
-  itKilled: 1
-  player: {fileID: 0}
 --- !u!120 &7352129738344276809
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -230,3 +212,24 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &4257070755163410117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7352129738344276800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e53c91d400300c4cbdb8718ff1cfa84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laser: {fileID: 7352129738344276809}
+  distance: 0
+  defineOpen: 0
+  lockedObject: {fileID: 0}
+  itKilled: 0
+  player: {fileID: 0}
+  layer:
+    serializedVersion: 2
+    m_Bits: 1

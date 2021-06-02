@@ -78,11 +78,24 @@ public class PlayerMovement : MonoBehaviour
     public bool showFallNormal;
     public bool isGrounded;
     public float realSpeed;
+
+    private bool wasGrounded;
     
 
     void Update()
     {
         isGrounded = controller.isGrounded;
+
+        if (wasGrounded && !isGrounded)
+        {
+            // Go off ground
+        }
+        else if (!wasGrounded && isGrounded)
+        {
+            // Back on Ground
+            ReturnOnGround();
+        }
+        
         playerController.animator.SetBool("InAir", !isGrounded);
         playerController.animator.SetBool("Jumping", jumping);
         
@@ -359,6 +372,11 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 wallCross = Vector3.Cross(wallHit.normal, moveDirection.normalized);
             }
         }
+    }
+
+    public void ReturnOnGround()
+    {
+        // GetComponentInChildren<PlayerSounds>().Land(); TODO : résoudre le problème de son
     }
 
     void DebugGround()

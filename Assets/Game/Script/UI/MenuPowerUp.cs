@@ -53,13 +53,13 @@ public class MenuPowerUp : MonoBehaviour
         switch (idPowerUp)
         {
             case 0 :
-                description.text = "Default death";
+                description.text = "Default";
                 break;
             case 1 :
                 description.text = "Explosion";
                 break;
             case 2 :
-                description.text = "Boing";
+                description.text = "Spring";
                 break;
             case 3 :
                 description.text = "Generator";
@@ -68,7 +68,7 @@ public class MenuPowerUp : MonoBehaviour
                 description.text = "Light";
                 break;
             case 5 :
-                description.text = "Loading...";
+                description.text = "Accelerator";
                 break;
         }
     }

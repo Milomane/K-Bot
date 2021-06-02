@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
     // Play
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Scene_Exposition_Mecanics");
     }
     
     // Options
