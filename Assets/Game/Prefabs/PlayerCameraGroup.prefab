@@ -151,8 +151,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2739104148891114723}
-  m_LocalRotation: {x: 0.06302852, y: -0.7962311, z: 0.08423525, w: 0.5957751}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.030483726, y: 0.8690749, z: -0.053980608, w: -0.4907807}
+  m_LocalPosition: {x: 1.6773368, y: 0, z: 2.9702291}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2739104149447934992}
@@ -484,8 +484,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2739104149248625836}
-  m_LocalRotation: {x: 0.03256665, y: -0.7994898, z: 0.043523993, w: 0.598215}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.00067024, y: 0.87074894, z: -0.0011868615, w: -0.49172604}
+  m_LocalPosition: {x: 1.6773368, y: 0, z: 2.9702291}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2739104150084068009}
@@ -673,7 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2.5996592, z: -6.1518817}
+  m_FollowOffset: {x: 0, y: 2.111444, z: -5.0767794}
   m_XDamping: 1.5
   m_YDamping: 1.5
   m_ZDamping: 1.5
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2.5996592, z: -6.1518817}
+  m_FollowOffset: {x: 0, y: 2.111444, z: -5.0767794}
   m_XDamping: 1.5
   m_YDamping: 1.5
   m_ZDamping: 1.5
@@ -1036,8 +1036,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2739104149832183298}
-  m_LocalRotation: {x: 0.021680046, y: -0.8001492, z: 0.02897449, w: 0.5987084}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.008274121, y: 0.87062645, z: 0.014651821, w: -0.49165687}
+  m_LocalPosition: {x: 1.6773368, y: 0, z: 2.9702291}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2739104149789048371}
@@ -1387,7 +1387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2.5996592, z: -6.1518817}
+  m_FollowOffset: {x: 0, y: 2.111444, z: -5.0767794}
   m_XDamping: 1.5
   m_YDamping: 1.5
   m_ZDamping: 1.5
@@ -1481,7 +1481,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2739104150438956287}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.378109, y: -0.1503408, z: 13.986894}
+  m_LocalPosition: {x: -0.21988262, y: -0.638556, z: 10.461471}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2739104149248625834}
@@ -1648,8 +1648,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2739104150639852690}
-  m_LocalRotation: {x: 0.038075157, y: -0.79905534, z: 0.050885946, w: 0.5978892}
-  m_LocalPosition: {x: 2.3781092, y: -0.1503408, z: 12.359391}
+  m_LocalRotation: {x: 0.020657422, y: -0.19436145, z: 0.0040940065, w: 0.98070395}
+  m_LocalPosition: {x: 0.17989132, y: 2.0321875, z: -4.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 480502239169160283}
@@ -2058,7 +2058,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 163907225016664750, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 301873103443740390, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
       propertyPath: m_Name
@@ -2344,13 +2344,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 80.33733
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2641225460240813425, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
-    - {fileID: 244176288115592771, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
-    - {fileID: 4095725259491603908, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
-    - {fileID: 5321371987581889183, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
-    - {fileID: 9110712379389237798, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
-    - {fileID: 168156309910131444, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
 --- !u!95 &4046346975923791382 stripped
 Animator:
