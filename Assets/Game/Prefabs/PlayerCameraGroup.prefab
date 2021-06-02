@@ -1614,7 +1614,7 @@ MonoBehaviour:
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
   m_CameraRadius: 0.1
-  m_Strategy: 1
+  m_Strategy: 0
   m_MaximumEffort: 4
   m_SmoothingTime: 0
   m_Damping: 0
@@ -1946,6 +1946,15 @@ MonoBehaviour:
   walkSoundclips:
   - {fileID: 8300000, guid: 8938be7ff7b75324fae37e06aa0092ae, type: 3}
   - {fileID: 8300000, guid: 5614d3b9d70d5f046a2e3778d273fa18, type: 3}
+  jumpClip: {fileID: 0}
+  landClip: {fileID: 0}
+  carcassSoundClip: {fileID: 0}
+  detonationNeutralClip: {fileID: 0}
+  powerUpExplosionClip: {fileID: 0}
+  generatorClip: {fileID: 0}
+  lampClip: {fileID: 0}
+  springClip: {fileID: 0}
+  respawnClip: {fileID: 0}
 --- !u!1 &4223114074513590112
 GameObject:
   m_ObjectHideFlags: 0
