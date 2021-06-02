@@ -152,16 +152,13 @@ public class PlayerMovement : MonoBehaviour
             currentDeceleration = airDeceleration;
             controller.stepOffset = 0f;
         }
-        
-        
 
         if (jumping)
         {
             // Apply jump direction to move direction while jumping
             moveDirection = jumpDirection;
         }
-            
-        
+
         if ((inputNormalized.magnitude >= .1f || superSprint) && !stopMovement)
         {
             // Smooth player angle and define moveDirection and DEFINE TARGET ANGLE
@@ -241,6 +238,11 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             fallVector = fallDirection.up * verticalVelocity;
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position + controller.center + Vector3.up * (1.85f / 2), Vector3.up, .1f))
+            {
+                verticalVelocity = 0;
+            }
         }
         
         // Move Character controller down
