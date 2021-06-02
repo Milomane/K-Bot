@@ -70,7 +70,7 @@ public class CanvasEventManager : MonoBehaviour
                     powerUpText.text = "Lamp";
                     break;
                 case PlayerDeathHandler.DeathType.accelerator:
-                    powerUpText.text = "Glue";
+                    powerUpText.text = "Accelerator";
                     break;
                 default :
                     Debug.LogError("Error in UpdateInGameUi, wrong value for deathTypeSelected");

@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 6882463665852067636}
   - component: {fileID: 3632203939632277867}
   - component: {fileID: 2697007388584491078}
+  - component: {fileID: 8412985942137137082}
   m_Layer: 10
   m_Name: Frame
   m_TagString: Corpse
@@ -195,3 +196,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8412985942137137082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070900260757224921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc8263aa2a226340bbf14f8adbcfb90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInLiquid: 0
+  liquidHeight: 0
+  floatThreshold: 0.3
+  liquidDensity: 0.5
+  downForce: 4
+  rotationSpeed: 20
+  rb: {fileID: 6882463665852067636}
