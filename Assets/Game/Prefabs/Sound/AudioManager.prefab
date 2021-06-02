@@ -44,22 +44,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: HoverButton
-    clip: {fileID: 8300000, guid: fd1d86c5ba20a2d4694c181c3a2b12b7, type: 3}
-    volume: 1
-    pitch: 1
-    isLoop: 0
-    source: {fileID: 0}
-  - name: ClickButton
-    clip: {fileID: 8300000, guid: 4fa59063985d2db418a9ebac5278beb3, type: 3}
-    volume: 1
-    pitch: 1
-    isLoop: 0
-    source: {fileID: 0}
   - name: Music
     clip: {fileID: 8300000, guid: f65fd6d3394aedf42ae9abc4a934375b, type: 3}
     volume: 0.1
     pitch: 1.2
     isLoop: 1
+    source: {fileID: 0}
+  - name: HoverButton
+    clip: {fileID: 8300000, guid: 5d9c04c1b253f4a4b80ae9e37147ffed, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: ClickButton
+    clip: {fileID: 8300000, guid: 1058c42b6959b144e92992f5ce9c08dd, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: Cancel
+    clip: {fileID: 8300000, guid: 438cea6bd2455074ea7548004724facd, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
     source: {fileID: 0}
   audioMixerGroup: {fileID: 24300002, guid: 7566020c04dbc75478fcb0812821a8aa, type: 2}
