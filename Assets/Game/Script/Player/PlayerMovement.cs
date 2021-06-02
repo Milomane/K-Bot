@@ -238,7 +238,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             fallVector = fallDirection.up * verticalVelocity;
-            RaycastHit hit;
             if (Physics.Raycast(transform.position + controller.center + Vector3.up * (1.85f / 2), Vector3.up, .1f))
             {
                 verticalVelocity = 0;
@@ -373,7 +372,7 @@ public class PlayerMovement : MonoBehaviour
         collisionPoint = hit.point;
         
         // Handle Springs
-        if (hit.collider.tag == "Spring" && hit.normal.y > .4f && hit.normal.x < .5f && hit.normal.z < .5f && jumping)
+        if (hit.collider.tag == "Spring" && hit.normal.y > .4f && hit.normal.x < .5f && hit.normal.z < .5f && verticalVelocity < 0)
         {
             SpringJump(hit.collider.GetComponent<Spring>().springForce);
             

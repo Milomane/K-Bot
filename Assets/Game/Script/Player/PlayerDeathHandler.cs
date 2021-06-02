@@ -14,6 +14,7 @@ public class PlayerDeathHandler : MonoBehaviour
     public static PlayerDeathHandler instance;
 
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private CharacterController controller;
     [SerializeField] private PlayerModel playerModel;
     [SerializeField] private CinemachineFreeLook cinemachineFreeLook;
 
@@ -101,7 +102,12 @@ public class PlayerDeathHandler : MonoBehaviour
         // Wait for the player animation to end
         if (deathType != DeathType.crunshed)
             yield return new WaitForSeconds(1);
+        
+        
         playerController.brutStopMovement = true;
+        yield return null;
+        controller.enabled = false;
+        
 
         GameObject eventObject = null;
         GameObject particleObject = null;
@@ -113,6 +119,8 @@ public class PlayerDeathHandler : MonoBehaviour
             particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, transform.rotation);
 
         float maxRbAngular = 1;
+        
+        Destroy(particleObject, 10f);
         
         // Switch for special event if needed
         switch (deathType)
@@ -205,6 +213,7 @@ public class PlayerDeathHandler : MonoBehaviour
         // Retake control
         cinemachineFreeLook.m_XAxis.Value = repairStation.transform.eulerAngles.y;
         
+        controller.enabled = true;
         playerController.stopMovement = false;
         playerController.brutStopMovement = false;
         dying = false;
