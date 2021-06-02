@@ -9,9 +9,11 @@ public class RouageScript : MonoBehaviour
 
     public float speedRotation;
     public GameObject player;
+    private MeshCollider _meshCollider;
 
     private void Start()
     {
+        _meshCollider = GetComponent<MeshCollider>();
         rotationOn = true;
     }
     
@@ -22,7 +24,25 @@ public class RouageScript : MonoBehaviour
             if (rotationOn)
             {
                 transform.Rotate(0,speedRotation * Time.deltaTime ,0);
+                _meshCollider.convex = true;
+                _meshCollider.isTrigger = true;
             } 
+        }
+
+        if (corpDetection)
+        {
+            _meshCollider.convex = false;
+            _meshCollider.isTrigger = false;
+        }
+        else if (!rotationOn)
+        {
+            _meshCollider.convex = false;
+            _meshCollider.isTrigger = false;
+        }
+        else if (corpDetection && !rotationOn)
+        {
+            _meshCollider.convex = false;
+            _meshCollider.isTrigger = false;
         }
     }
 
@@ -30,7 +50,7 @@ public class RouageScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (rotationOn)
+            if (rotationOn && !corpDetection)
             {
                 Debug.Log("contact rouage player");
                 player = other.gameObject;
