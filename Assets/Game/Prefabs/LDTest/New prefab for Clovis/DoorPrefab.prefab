@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 6963075961918207794}
   - component: {fileID: 6963075961918207795}
   - component: {fileID: 6963075961918207792}
+  - component: {fileID: 8227727723742217334}
   m_Layer: 0
   m_Name: door3
   m_TagString: Untagged
@@ -144,6 +145,20 @@ MonoBehaviour:
   endPoint: {fileID: 6963075963797485907}
   goInitialPosition: {fileID: 0}
   doorActivation: 0
+  crushValueToKill: 2
+--- !u!65 &8227727723742217334
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963075961918207822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.66, y: 1, z: 0.05748161}
+  m_Center: {x: 0, y: 0, z: -0.5344461}
 --- !u!1 &6963075962046954514
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +599,7 @@ GameObject:
   - component: {fileID: 6963075962558277239}
   - component: {fileID: 6963075962558277236}
   - component: {fileID: 6963075962558277237}
+  - component: {fileID: 5611910377339140789}
   m_Layer: 0
   m_Name: door6
   m_TagString: Untagged
@@ -683,6 +699,20 @@ MonoBehaviour:
   endPoint: {fileID: 6963075963712177540}
   goInitialPosition: {fileID: 0}
   doorActivation: 0
+  crushValueToKill: 2
+--- !u!65 &5611910377339140789
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963075962558277234}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.66, y: 1, z: 0.05748161}
+  m_Center: {x: 0, y: 0, z: 0.5344461}
 --- !u!1 &6963075962581073103
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +756,7 @@ GameObject:
   - component: {fileID: 6963075962747154213}
   - component: {fileID: 6963075962747154210}
   - component: {fileID: 6963075962747154211}
+  - component: {fileID: 5885450618752024513}
   m_Layer: 0
   m_Name: door2
   m_TagString: Untagged
@@ -825,6 +856,20 @@ MonoBehaviour:
   endPoint: {fileID: 6963075963685735503}
   goInitialPosition: {fileID: 0}
   doorActivation: 0
+  crushValueToKill: 2
+--- !u!65 &5885450618752024513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963075962747154209}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.66, y: 1, z: 0.05748161}
+  m_Center: {x: 0, y: 0, z: -0.5344461}
 --- !u!1 &6963075962884342888
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,6 +1013,7 @@ GameObject:
   - component: {fileID: 6963075963004761164}
   - component: {fileID: 6963075963004761165}
   - component: {fileID: 6963075963004761162}
+  - component: {fileID: 2439378875521289814}
   m_Layer: 0
   m_Name: Door1
   m_TagString: Untagged
@@ -1067,6 +1113,20 @@ MonoBehaviour:
   endPoint: {fileID: 6963075963556373457}
   goInitialPosition: {fileID: 0}
   doorActivation: 0
+  crushValueToKill: 2
+--- !u!65 &2439378875521289814
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963075963004761160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.66, y: 1, z: 0.05748161}
+  m_Center: {x: 0, y: 0, z: -0.5344461}
 --- !u!1 &6963075963106237644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,6 +1325,7 @@ GameObject:
   - component: {fileID: 6963075963303435549}
   - component: {fileID: 6963075963303435546}
   - component: {fileID: 6963075963303435547}
+  - component: {fileID: 3686353457681898941}
   m_Layer: 0
   m_Name: door5
   m_TagString: Untagged
@@ -1364,6 +1425,20 @@ MonoBehaviour:
   endPoint: {fileID: 6963075962581073102}
   goInitialPosition: {fileID: 0}
   doorActivation: 0
+  crushValueToKill: 2
+--- !u!65 &3686353457681898941
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963075963303435545}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.66, y: 1, z: 0.05748161}
+  m_Center: {x: 0, y: 0, z: 0.5344461}
 --- !u!1 &6963075963305611458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,6 +1830,7 @@ GameObject:
   - component: {fileID: 6963075963891082059}
   - component: {fileID: 6963075963891082056}
   - component: {fileID: 6963075963891082057}
+  - component: {fileID: 3788541967916419649}
   m_Layer: 0
   m_Name: door4
   m_TagString: Untagged
@@ -1854,3 +1930,17 @@ MonoBehaviour:
   endPoint: {fileID: 6963075962552896595}
   goInitialPosition: {fileID: 0}
   doorActivation: 0
+  crushValueToKill: 2
+--- !u!65 &3788541967916419649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963075963891082055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.66, y: 1, z: 0.05748161}
+  m_Center: {x: 0, y: 0, z: 0.5344461}

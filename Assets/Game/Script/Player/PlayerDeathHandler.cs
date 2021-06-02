@@ -31,6 +31,7 @@ public class PlayerDeathHandler : MonoBehaviour
 
     private DeathType previousSelectedDeath;
     private Rigidbody rbToStop;
+    private int crushCounter = 0;
    
 
 
@@ -98,7 +99,8 @@ public class PlayerDeathHandler : MonoBehaviour
         // Animation player
         
         // Wait for the player animation to end
-        yield return new WaitForSeconds(1);
+        if (deathType != DeathType.crunshed)
+            yield return new WaitForSeconds(1);
         playerController.brutStopMovement = true;
 
         GameObject eventObject = null;
@@ -127,9 +129,13 @@ public class PlayerDeathHandler : MonoBehaviour
                 break;
             case DeathType.generator:
                 bodys.Enqueue(eventObject);
+                maxRbAngular = eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity;
+                eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity = 0;
                 break;
             case DeathType.lamp:
                 bodys.Enqueue(eventObject);
+                maxRbAngular = eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity;
+                eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity = 0;
                 break;
             case DeathType.accelerator:
                 break;
@@ -151,8 +157,10 @@ public class PlayerDeathHandler : MonoBehaviour
             case DeathType.spring:
                 break;
             case DeathType.generator:
+                eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity = maxRbAngular;
                 break;
             case DeathType.lamp:
+                eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity = maxRbAngular;
                 break;
             case DeathType.accelerator:
                 break;
@@ -312,14 +320,24 @@ public class PlayerDeathHandler : MonoBehaviour
 
     IEnumerator ChangeBackModel()
     {
-        Transform previousModel = playerModel.arrayBackModels[(int) previousSelectedDeath].transform;
-        GameObject newModel = playerModel.arrayBackModels[(int) selectedDeath];
-
+        for (int i = 0; i < 6; i++)
+        {
+            playerModel.arrayBackModels[i].SetActive(i == (int)selectedDeath);
+        }
+        
         yield return null;
         
-        previousModel.gameObject.SetActive(false);
-        newModel.SetActive(true);
-        
         previousSelectedDeath = selectedDeath;
+    }
+
+    public void IncrementCrushCounter(int destroyAtValue)
+    {
+        crushCounter++;
+        if (crushCounter >= destroyAtValue && !dying)
+            StartDeath(DeathType.crunshed);
+    }
+    public void DecrementCrushCounter()
+    {
+        crushCounter--;
     }
 }

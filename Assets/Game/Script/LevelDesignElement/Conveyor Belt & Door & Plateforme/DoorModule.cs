@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,10 @@ public class DoorModule : MonoBehaviour
     public GameObject goInitialPosition;
     
     public bool doorActivation;
+
+    public int crushValueToKill = 2;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -38,5 +43,20 @@ public class DoorModule : MonoBehaviour
     public void ActivationBoard()
     {
         doorActivation = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            PlayerDeathHandler.instance.IncrementCrushCounter(crushValueToKill);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            PlayerDeathHandler.instance.DecrementCrushCounter();
+        }
     }
 }
