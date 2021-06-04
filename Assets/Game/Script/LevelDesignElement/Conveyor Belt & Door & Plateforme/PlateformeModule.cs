@@ -28,8 +28,6 @@ public class PlateformeModule : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pointHeight = 10f;
-
         if (points.Length > 0)
         {
             currentTarget = points[0];
