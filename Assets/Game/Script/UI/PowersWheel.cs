@@ -25,13 +25,14 @@ public class PowersWheel : MonoBehaviour
     {
         // Get Mouse Position
         normalisedMousePosition = new Vector2(Input.mousePosition.x - Screen.width/2, Input.mousePosition.y - Screen.height/2);
+        
         // Current angle (in radian)
         currentAngle = Mathf.Atan2(normalisedMousePosition.y, normalisedMousePosition.x) * Mathf.Rad2Deg - 30;
         
-        currentAngle = (currentAngle + 360) % 360;
+        currentAngle = (currentAngle + 360) % 360; 
         // Selection (number)
-        selection = (int)currentAngle / 60;
-
+        selection = (int)currentAngle / 60; // TODO : résoudre le problème de sélection forcé du dernier power up (quand selection == 1)
+        Debug.Log("selection : " + selection);
         if (selection != previousSelection)
         {
             previousMenuPowerUp = menuItems[previousSelection].GetComponent<MenuPowerUp>();
