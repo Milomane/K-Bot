@@ -96,7 +96,7 @@ public class PlayerDeathHandler : MonoBehaviour
     {
         dying = true;
         playerController.stopMovement = true;
-        
+
         // Animation player
         
         // Wait for the player animation to end
@@ -121,7 +121,7 @@ public class PlayerDeathHandler : MonoBehaviour
         float maxRbAngular = 1;
         
         Destroy(particleObject, 10f);
-        
+
         // Switch for special event if needed
         switch (deathType)
         {
@@ -154,6 +154,7 @@ public class PlayerDeathHandler : MonoBehaviour
                 yield break;
         }
         
+        
         yield return new WaitForSeconds(.1f);
         switch (deathType)
         {
@@ -178,7 +179,7 @@ public class PlayerDeathHandler : MonoBehaviour
                 Debug.LogError("Error in StartDeath, wrong value for death");
                 yield break;
         }
-        
+
         // Destroy other event if needed
         if (bodys.Count > maxBody)
         {
