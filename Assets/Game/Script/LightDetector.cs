@@ -29,7 +29,7 @@ public class LightDetector : MonoBehaviour
                 if (test <= distance)
                 {
                     activate = true;
-                    lockedObj.GetComponent<LockedDoor>().isActivated = activate;
+                    lockedObj.GetComponent<LockedDoor>().Open();
                 }
               
             }
