@@ -41,14 +41,14 @@ public class PlayerSounds : MonoBehaviour
     }
 
     // Call from event animation
-    private void Step()
+    public void Step()
     {
         AudioClip clip = GetRandomWalkClip();
 
         audioSource.PlayOneShot(clip);
     }
 
-    private void Jump()
+    public void Jump()
     {
         audioSource.PlayOneShot(jumpClip);
     }
@@ -56,6 +56,16 @@ public class PlayerSounds : MonoBehaviour
     public void Land()
     {
         audioSource.PlayOneShot(landClip);
+    }
+
+    public void Carcass()
+    {
+        audioSource.PlayOneShot(carcassSoundClip);
+    }
+
+    public void DetonationNeutral()
+    {
+        audioSource.PlayOneShot(detonationNeutralClip);
     }
 
     // Get random sound of walk
