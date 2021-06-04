@@ -13,13 +13,17 @@ public class LockedDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isActivated)
-        {
-           transform.rotation = Quaternion.Euler(open);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(closed);
-        }
+      
+    }
+
+
+    public void Open()
+    {
+        transform.rotation = Quaternion.Euler(open);
+    }
+
+    public void Close()
+    {
+        transform.rotation = Quaternion.Euler(closed); 
     }
 }

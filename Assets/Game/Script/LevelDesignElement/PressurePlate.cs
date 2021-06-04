@@ -30,12 +30,12 @@ public class PressurePlate : MonoBehaviour
         
         if (onPlate.Count < limit + 1) // close door
         {
-            lockedObject.GetComponent<LockedDoor>().isActivated = !defineOpen;
+            lockedObject.GetComponent<LockedDoor>().Close();
         }
 
         if (onPlate.Count >= limit + 1) // open door
         {
-            lockedObject.GetComponent<LockedDoor>().isActivated = defineOpen; 
+            lockedObject.GetComponent<LockedDoor>().Open(); 
         }
     }
 

@@ -20,11 +20,11 @@ public class Laser : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Target")) // verify if touch a target and activate 
             {
                 
-                lockedObject.GetComponent<LockedDoor>().isActivated = defineOpen;
+                lockedObject.GetComponent<LockedDoor>().Open();
             }
             else
             {
-                lockedObject.GetComponent<LockedDoor>().isActivated = !defineOpen;
+                lockedObject.GetComponent<LockedDoor>().Close();
             }
 
             if (itKilled && hit.collider.gameObject.CompareTag("Player") && player.GetComponent<PlayerDeathHandler>().dying == false) // kill the player
