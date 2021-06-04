@@ -19,9 +19,9 @@ public class Button : MonoBehaviour
         float distance = Vector3.Distance(transform.position, GameObject.FindWithTag("Player").transform.position);
         Debug.Log(distance);
 
-        if (distance >= distRequired && Input.GetButton("Jump"))
+        if (distance >= distRequired && Input.GetButton("Interaction"))
         {
-            lockedObject.GetComponent<LockedDoor>().isActivated = true;
+            lockedObject.GetComponent<LockedDoor>().Open();
         }
     }
 }
