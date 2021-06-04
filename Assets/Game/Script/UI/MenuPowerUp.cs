@@ -38,6 +38,7 @@ public class MenuPowerUp : MonoBehaviour
             background.color = hoverColor;
             UpdateDescription();
             PlayerDeathHandler.ChangePowerUp(idPowerUp);
+            FindObjectOfType<AudioManager>().Play("ClickButton2");
         }
         // description.SetActive(true);
     }
