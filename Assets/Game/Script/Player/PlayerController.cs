@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private CinemachineFreeLook cinemachineFreeLookCamera;
     public Animator animator;
-    [SerializeField] private PlayerMovement playerMovement;
+    public PlayerMovement playerMovement;
     
     private bool lockCamera;
     private bool lockMovement;
