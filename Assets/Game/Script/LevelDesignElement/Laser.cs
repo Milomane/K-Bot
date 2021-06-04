@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser1 : MonoBehaviour
+public class Laser : MonoBehaviour
 {
     public LineRenderer laser;
     public float distance;
