@@ -33,7 +33,7 @@ public class PlayerDeathHandler : MonoBehaviour
     private DeathType previousSelectedDeath;
     private Rigidbody rbToStop;
     private int crushCounter = 0;
-   
+    private int crushBodyCounter = 0;
 
 
     public enum DeathType
@@ -350,4 +350,19 @@ public class PlayerDeathHandler : MonoBehaviour
     {
         crushCounter--;
     }
+
+    public void IncrementBodyCounter(int destroyAtValue, GameObject obj)
+    {
+        crushBodyCounter++;
+        Debug.Log(crushBodyCounter);
+        Debug.Log(destroyAtValue);
+        if (crushBodyCounter >= destroyAtValue)
+            DestroySelectedBody(obj);
+    }
+
+    public void DecrementBodyCounter()
+    {
+        crushBodyCounter--;
+    }
+    
 }
