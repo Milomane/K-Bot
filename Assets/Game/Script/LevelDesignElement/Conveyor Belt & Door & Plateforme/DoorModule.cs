@@ -5,17 +5,16 @@ using UnityEngine;
 
 public class DoorModule : MonoBehaviour
 {
-    [SerializeField]
-    private float speed;
-    
+    [SerializeField] private float speed;
+
     public Transform endPoint;
     public GameObject goInitialPosition;
-    
+
     public bool doorActivation;
 
     public int crushValueToKill = 2;
-    
-    
+
+    public GameObject test;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,9 +31,11 @@ public class DoorModule : MonoBehaviour
         }
         else if (!doorActivation)
         {
-            transform.position = Vector3.MoveTowards(transform.position, goInitialPosition.transform.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, goInitialPosition.transform.position,
+                speed * Time.deltaTime);
         }
     }
+
     public void DesactivationBoard()
     {
         doorActivation = false;
@@ -51,12 +52,29 @@ public class DoorModule : MonoBehaviour
         {
             PlayerDeathHandler.instance.IncrementCrushCounter(crushValueToKill);
         }
+
+        if (other.CompareTag("Corpse"))
+        {
+            Debug.Log("testing");
+            GameObject parentToDestroy = other.transform.parent.gameObject;
+            if (doorActivation == false)
+            {
+                PlayerDeathHandler.instance.IncrementBodyCounter(crushValueToKill, parentToDestroy);
+            }
+        }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
             PlayerDeathHandler.instance.DecrementCrushCounter();
+        }
+
+        if (other.CompareTag("Corpse"))
+        {
+           
+            Debug.Log("moretet");
         }
     }
 }

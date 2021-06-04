@@ -12,16 +12,6 @@ public class PlayerSounds : MonoBehaviour
 
     [SerializeField] private AudioClip landClip;
 
-    [SerializeField] private AudioClip carcassSoundClip;
-
-    [SerializeField] private AudioClip detonationNeutralClip;
-
-    [SerializeField] private AudioClip powerUpExplosionClip;
-
-    [SerializeField] private AudioClip generatorClip;
-
-    [SerializeField] private AudioClip lampClip;
-
     [SerializeField] private AudioClip springClip;
 
     [SerializeField] private AudioClip respawnClip;
@@ -56,16 +46,6 @@ public class PlayerSounds : MonoBehaviour
     public void Land()
     {
         audioSource.PlayOneShot(landClip);
-    }
-
-    public void Carcass()
-    {
-        audioSource.PlayOneShot(carcassSoundClip);
-    }
-
-    public void DetonationNeutral()
-    {
-        audioSource.PlayOneShot(detonationNeutralClip);
     }
 
     // Get random sound of walk
