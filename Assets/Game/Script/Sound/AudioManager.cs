@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // Find a sound
-    private Sound GetSoundFromAudioManager(string name) 
+    public Sound GetSoundFromAudioManager(string name) 
     { 
         // Find a sound with the name 
         Sound s = Array.Find(sounds, sound => sound.name == name); // Lambda expression ( ... => ...) 
