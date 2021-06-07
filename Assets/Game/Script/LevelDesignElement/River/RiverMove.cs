@@ -28,7 +28,7 @@ public class RiverMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // il faut tuer le player la
+            other.gameObject.GetComponent<PlayerDeathHandler>().StartDeath(PlayerDeathHandler.DeathType.normal);
         }
     }
 

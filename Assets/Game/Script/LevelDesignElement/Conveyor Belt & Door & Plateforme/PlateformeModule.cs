@@ -43,7 +43,7 @@ public class PlateformeModule : MonoBehaviour
         {
             if (playerDetection)
             {
-                valueHeight -= value * Time.deltaTime;
+                valueHeight -= value * Time.fixedDeltaTime;
                 currentTarget.y = valueHeight;
                 if (currentTarget.y <= 0.5f)
                 {
@@ -77,6 +77,7 @@ public class PlateformeModule : MonoBehaviour
         heading = currentTarget - transform.position;
         
         transform.position += (heading / heading.magnitude) * speed * Time.fixedDeltaTime;
+        //transform.position = Vector3.MoveTowards(transform.position, currentTarget, speed * Time.fixedDeltaTime);
 
         if (heading.magnitude < tolerance)
         {
@@ -123,8 +124,8 @@ public class PlateformeModule : MonoBehaviour
             Debug.Log("oui");
             playerDetection = true;
             player = other.gameObject;
+            player.transform.parent = transform;
             playerGroup = player.transform.parent;
-            playerGroup.transform.parent = transform;
         }
     }
 
@@ -134,7 +135,7 @@ public class PlateformeModule : MonoBehaviour
         {
             Debug.Log("non");
             playerDetection = false;
-            playerGroup.transform.parent = null;
+            player.transform.parent = playerGroup.transform;
             player = null;
             playerGroup = null;
         }
