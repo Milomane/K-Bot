@@ -38,7 +38,7 @@ public class ControlerDesk : MonoBehaviour
         }
         if (ActivationOn)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("Interaction"))
             {
                 Debug.Log("press E");
                 for (int i = 0; i <= objectsList.Count -1; i++)
