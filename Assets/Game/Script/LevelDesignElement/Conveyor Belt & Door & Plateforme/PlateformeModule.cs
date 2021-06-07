@@ -124,8 +124,8 @@ public class PlateformeModule : MonoBehaviour
             Debug.Log("oui");
             playerDetection = true;
             player = other.gameObject;
-            player.transform.parent = transform;
             playerGroup = player.transform.parent;
+            playerGroup.transform.parent = transform;
         }
     }
 
@@ -135,7 +135,7 @@ public class PlateformeModule : MonoBehaviour
         {
             Debug.Log("non");
             playerDetection = false;
-            player.transform.parent = playerGroup.transform;
+            playerGroup.transform.parent = null;
             player = null;
             playerGroup = null;
         }
