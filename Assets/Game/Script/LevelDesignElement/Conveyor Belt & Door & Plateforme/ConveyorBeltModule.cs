@@ -74,6 +74,12 @@ public class ConveyorBeltModule : MonoBehaviour
         {
             player = other.gameObject;
         }
+        else if (other.gameObject.CompareTag("Corpse"))
+        {
+            detectionPlayer = false;
+            player = null;
+            onBelt.Add(other.gameObject);
+        }
         else
         {
             onBelt.Add(other.gameObject);
@@ -84,18 +90,14 @@ public class ConveyorBeltModule : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("non");
-            //playerGroup.transform.parent = null;
             player = null;
             detectionPlayer = false;
-            //playerGroup = null;
-
-            //onBelt.Remove(other.gameObject);
+            Debug.Log("player quitte tapis");
+            
         }
         else
         {
             onBelt.Remove(other.gameObject);
-            
         }
     }
 
