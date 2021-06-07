@@ -782,10 +782,13 @@ MonoBehaviour:
   readyMoveX: 0
   readyMoveHorizontal: 0
   finalVerticalMove: 0
+  verouillage: 0
   speedMovement: 2
   DownOn: 0
   recupObjet: 0
   objet: {fileID: 0}
+  parentObjet: {fileID: 0}
+  initialParent: {fileID: 0}
 --- !u!65 &4706995809210647207
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -797,8 +800,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.07133399, z: 1}
-  m_Center: {x: 0, y: -0.5441762, z: 0}
+  m_Size: {x: 0.7388501, y: 0.028071508, z: 0.6863823}
+  m_Center: {x: -0.010682821, y: -0.51856816, z: -0.04559517}
 --- !u!1 &4706995809321741583
 GameObject:
   m_ObjectHideFlags: 0

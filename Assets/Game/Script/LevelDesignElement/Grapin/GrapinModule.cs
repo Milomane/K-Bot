@@ -17,11 +17,14 @@ public class GrapinModule : MonoBehaviour
     public bool DownOn, recupObjet;
 
     public GameObject objet;
+
+    public Transform parentObjet, initialParent;
     // Start is called before the first frame update
     void Start()
     {
         transform.position = initialPoint.transform.position;
         readyMoveHorizontal = true;
+        initialParent = gameObject.transform.parent;
     }
 
     // Update is called once per frame
@@ -136,6 +139,7 @@ public class GrapinModule : MonoBehaviour
 
     public void Up()
     {
+        gameObject.transform.parent = initialParent.transform;
         upPoint = new Vector3(transform.position.x, initialPoint.position.y, transform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, upPoint,
             speedMovement * Time.deltaTime);
@@ -144,6 +148,7 @@ public class GrapinModule : MonoBehaviour
 
     public void Down()
     {
+        gameObject.transform.parent = initialParent.transform;
         downPoint = new Vector3(transform.position.x, initialPoint.position.y -5f, transform.position.z);
         DownOn = true;
         transform.position = Vector3.MoveTowards(transform.position, downPoint,
@@ -164,9 +169,16 @@ public class GrapinModule : MonoBehaviour
         recupObjet = false;
         if (objet != null)
         {
+            if (objet.transform.parent != gameObject.transform)
+            {
+                parentObjet.transform.parent = null;
+            }
+            else
+            {
+                objet.transform.parent = null;
+            }
             objet.GetComponent<Rigidbody>().useGravity = true;
             objet.GetComponent<Rigidbody>().isKinematic = false;
-            objet.transform.parent = null;
         }
         
     }
@@ -179,8 +191,15 @@ public class GrapinModule : MonoBehaviour
             objet = other.gameObject;
             objet.GetComponent<Rigidbody>().useGravity = false;
             objet.GetComponent<Rigidbody>().isKinematic = true;
-            objet.transform.parent = transform;
-
+            if (objet.transform.parent != null)
+            {
+                parentObjet = objet.transform.parent;
+                parentObjet.transform.parent = transform;
+            }
+            else
+            {
+                objet.transform.parent = transform;
+            }
         }
     }
 }

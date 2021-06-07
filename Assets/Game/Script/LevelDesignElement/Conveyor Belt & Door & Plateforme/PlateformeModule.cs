@@ -43,7 +43,7 @@ public class PlateformeModule : MonoBehaviour
         {
             if (playerDetection)
             {
-                valueHeight -= value * Time.deltaTime;
+                valueHeight -= value * Time.fixedDeltaTime;
                 currentTarget.y = valueHeight;
                 if (currentTarget.y <= 0.5f)
                 {
@@ -77,6 +77,7 @@ public class PlateformeModule : MonoBehaviour
         heading = currentTarget - transform.position;
         
         transform.position += (heading / heading.magnitude) * speed * Time.fixedDeltaTime;
+        //transform.position = Vector3.MoveTowards(transform.position, currentTarget, speed * Time.fixedDeltaTime);
 
         if (heading.magnitude < tolerance)
         {
