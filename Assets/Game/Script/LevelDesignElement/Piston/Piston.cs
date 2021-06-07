@@ -45,11 +45,9 @@ public class Piston : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            
             playerCharacterController = other.GetComponent<CharacterController>();
             
             pushingPlayer = true;
-            
         }
     }
     public void TriggerExitFromPiston(Collider other)

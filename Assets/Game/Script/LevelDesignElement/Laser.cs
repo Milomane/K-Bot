@@ -9,7 +9,6 @@ public class Laser : MonoBehaviour
     public bool defineOpen;
     public GameObject lockedObject;
     public bool itKilled;
-    public GameObject player;
     public LayerMask layer;
     // Update is called once per frame
     void Update()
@@ -27,15 +26,15 @@ public class Laser : MonoBehaviour
                 lockedObject.GetComponent<LockedDoor>().Close();
             }
 
-            if (itKilled && hit.collider.gameObject.CompareTag("Player") && player.GetComponent<PlayerDeathHandler>().dying == false) // kill the player
+            if (itKilled && hit.collider.gameObject.CompareTag("Player") && PlayerDeathHandler.instance.dying == false) // kill the player
             {
-                player.GetComponent<PlayerDeathHandler>().StartDeath(PlayerDeathHandler.DeathType.crunshed);
+                PlayerDeathHandler.instance.StartDeath(PlayerDeathHandler.DeathType.crunshed);
             }
 
             if (itKilled && hit.collider.gameObject.CompareTag("Corpse")) // destroy the player body
             {
                 Transform test = hit.collider.gameObject.transform.parent;
-                player.GetComponent<PlayerDeathHandler>().DestroySelectedBody(test.gameObject);
+                PlayerDeathHandler.instance.DestroySelectedBody(test.gameObject);
             }
             
             DrawRay(transform.position,hit.point);
