@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     public bool dying = false;
 
+    private bool grabbing = false;
+
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -29,6 +31,11 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.M))
+            grabbing = !grabbing;
+        
+        animator.SetBool("Grab", grabbing);
+        
         playerMovement.stopMovement = stopMovement;
         playerMovement.brutStopMovement = brutStopMovement;
         
