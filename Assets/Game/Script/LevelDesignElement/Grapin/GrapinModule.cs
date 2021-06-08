@@ -5,152 +5,79 @@ using UnityEngine;
 
 public class GrapinModule : MonoBehaviour
 {
-    public Transform initialPoint, finalPointZ, finalPointX;
+    public Transform initialPoint;
     public Vector3 upPoint, downPoint;
-    
-    public bool horizontalMoveZ, horizontalMoveX;
 
-    public bool readyMoveZ, readyMoveX, readyMoveHorizontal, finalVerticalMove, verouillage;
+    public bool finalVerticalMove, verouillage;
 
     public float speedMovement;
 
     public bool DownOn, recupObjet;
 
-    public GameObject objet;
+    public GameObject objet, barreOn, barreTwo;
 
     public Transform parentObjet, initialParent;
+    public Transform x, mX, z, mZ;
+
+    public Vector3 inputNormalized;
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = initialPoint.transform.position;
-        readyMoveHorizontal = true;
+        
+        
         initialParent = gameObject.transform.parent;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (transform.position == upPoint)
+        if (transform.position.x >= x.position.x)
         {
-            finalVerticalMove = false;
-            readyMoveHorizontal = true;
+            transform.position = new Vector3(x.position.x, transform.position.y, transform.position.z);
         }
-
-        if (!verouillage)
+        if (transform.position.x <= mX.position.x)
         {
-            if (transform.position == initialPoint.position)
-            {
-                readyMoveX = true;
-                readyMoveZ = true;
-            } 
+            transform.position = new Vector3(mX.position.x, transform.position.y, transform.position.z);
         }
-        
-        if (transform.position == finalPointX.position)
+        if (transform.position.z >= z.position.z)
         {
-            if (horizontalMoveX)
-            {
-                horizontalMoveX = false;
-            }
-            else if (!horizontalMoveX)
-            {
-                horizontalMoveX = true;
-            }
+            transform.position = new Vector3(transform.position.x, transform.position.y, z.position.z);
         }
-        if (transform.position == finalPointZ.position)
+        if (transform.position.z <= mZ.position.z)
         {
-            if (horizontalMoveZ)
-            {
-                horizontalMoveZ = false;
-            }
-            else if (!horizontalMoveZ)
-            {
-                horizontalMoveZ = true;
-            }
+            transform.position = new Vector3(transform.position.x, transform.position.y, mZ.position.z);
         }
-        
+        if (barreOn != null && barreTwo != null)
+        {
+            barreOn.transform.position = new Vector3(transform.position.x, barreOn.transform.position.y,
+                barreOn.transform.position.z);
+            barreTwo.transform.position = new Vector3(barreTwo.transform.position.x, barreTwo.transform.position.y,
+                transform.position.z);
+        }
+        if (inputNormalized != Vector3.zero)
+        {
+            gameObject.transform.Translate(inputNormalized * speedMovement * Time.fixedDeltaTime);
+        }
         if (!DownOn && finalVerticalMove)
         {
             Up();
         }
     }
 
-    public void LeavePlate()
+    public void InputMove(float horizontal, float vertical)
     {
-        if (transform.position == initialPoint.position)
-        {
-            horizontalMoveX = false;
-            horizontalMoveZ = false;
-        }
+        inputNormalized = new Vector3(horizontal, 0f, vertical).normalized;
+        Debug.Log(inputNormalized);
     }
+    
 
-    public void MoveXEnter()
-    {
-        if (readyMoveZ && readyMoveX)
-        {
-            readyMoveZ = false;
-        }
-        
-        
-    }
-    
-    public void MoveZEnter()
-    {
-        if (readyMoveX && readyMoveZ)
-        {
-            readyMoveX = false;
-        }
-    }
 
-    public void MoveZ()
-    {
-        if (readyMoveZ && readyMoveHorizontal)
-        {
-            if (horizontalMoveZ)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, initialPoint.position,
-                    speedMovement * Time.deltaTime);
-            }
-            else if (!horizontalMoveZ)
-            {
-                
-                transform.position = Vector3.MoveTowards(transform.position, finalPointZ.position,
-                    speedMovement * Time.deltaTime);
-            }
-        }
-        
-    }
-    public void MoveX()
-    {
-        if (readyMoveX && readyMoveHorizontal)
-        {
-            if (horizontalMoveX)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, initialPoint.position,
-                    speedMovement * Time.deltaTime);
-            }
-            else if (!horizontalMoveX)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, finalPointX.position,
-                    speedMovement * Time.deltaTime);
-            }
-        }
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 
     public void Up()
     {
@@ -168,7 +95,6 @@ public class GrapinModule : MonoBehaviour
         DownOn = true;
         transform.position = Vector3.MoveTowards(transform.position, downPoint,
             speedMovement * Time.deltaTime);
-        readyMoveHorizontal = false;
         finalVerticalMove = true;
         //grappin open bite
     }
