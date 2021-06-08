@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GrapinPlaque : MonoBehaviour
 {
-    public bool grappin, move;
+    public bool grappin, move, verouillage;
 
     public GrapinModule module;
     public GameObject imagePressCanvas, player;
@@ -32,17 +32,28 @@ public class GrapinPlaque : MonoBehaviour
                     {
                         player.gameObject.GetComponent<PlayerController>().stopMovement = true;
                         Debug.Log("press e pour true");
+                        verouillage = true;
                     }
                     else if(player.gameObject.GetComponent<PlayerController>().stopMovement)
                     {
                         player.gameObject.GetComponent<PlayerController>().stopMovement = false;
                         Debug.Log("press e pour false");
+                        verouillage = false;
                     }
                     else
                     {
                         Debug.Log("flute c'est un bug la");
                     }
                 }
+
+                if (verouillage)
+                {
+                    float horizontal = Input.GetAxisRaw("Horizontal");
+                    float vertical = Input.GetAxisRaw("Vertical");
+                    module.InputMove(horizontal,vertical);
+                    
+                }
+                
             }
         }
     }
