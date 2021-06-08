@@ -116,7 +116,7 @@ public class PlayerDeathHandler : MonoBehaviour
         if (deaths[(int)deathType].eventPrefab != null)
             eventObject = Instantiate(deaths[(int)deathType].eventPrefab, transform.position, transform.rotation);
         if (deaths[(int)deathType].particlePrefab != null)
-            particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, transform.rotation);
+            particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, quaternion.Euler(-90,0,0));
 
         float maxRbAngular = 1;
         
@@ -175,7 +175,7 @@ public class PlayerDeathHandler : MonoBehaviour
         yield return new WaitForSeconds(repairStation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
         playerModel.model.SetActive(true);
         repairStation.GetComponent<Animator>().SetBool("Open", true);
-        
+        FindObjectOfType<PlayerSounds>().Respawn();
         // Wait for rebuild animation to end
         yield return null;
         yield return new WaitForSeconds(repairStation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);

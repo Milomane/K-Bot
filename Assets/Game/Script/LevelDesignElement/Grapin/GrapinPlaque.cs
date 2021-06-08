@@ -5,10 +5,47 @@ using UnityEngine;
 
 public class GrapinPlaque : MonoBehaviour
 {
-    public bool grappin, moveX, moveZ;
+    public bool grappin, move;
 
     public GrapinModule module;
-    
+    public GameObject imagePressCanvas, player;
+    private bool ActivationOn;
+
+    public void Start()
+    {
+        if (move)
+        {
+            imagePressCanvas.SetActive(false);
+        }
+        
+    }
+
+    private void Update()
+    {
+        if (move && ActivationOn)
+        {
+            if (player.gameObject.CompareTag("Player"))
+            {
+                if (Input.GetButtonDown("Interaction"))
+                {
+                    if (!player.gameObject.GetComponent<PlayerController>().stopMovement)
+                    {
+                        player.gameObject.GetComponent<PlayerController>().stopMovement = true;
+                        Debug.Log("press e pour true");
+                    }
+                    else if(player.gameObject.GetComponent<PlayerController>().stopMovement)
+                    {
+                        player.gameObject.GetComponent<PlayerController>().stopMovement = false;
+                        Debug.Log("press e pour false");
+                    }
+                    else
+                    {
+                        Debug.Log("flute c'est un bug la");
+                    }
+                }
+            }
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -19,20 +56,6 @@ public class GrapinPlaque : MonoBehaviour
                 if (other.gameObject.CompareTag("Player"))
                 {
                     module.Down();
-                }
-            }
-            else if (moveX)
-            {
-                if (other.gameObject.CompareTag("Player"))
-                {
-                    module.MoveX();
-                }
-            }
-            else if (moveZ)
-            {
-                if (other.gameObject.CompareTag("Player"))
-                {
-                    module.MoveZ();
                 }
             }
         }
@@ -50,20 +73,13 @@ public class GrapinPlaque : MonoBehaviour
                     module.verouillage = false;
                 }
             }
-            else if (moveX)
+            else if (move)
             {
                 if (other.gameObject.CompareTag("Player"))
                 {
-                    module.LeavePlate();
-                    module.verouillage = false;
-                }
-            }
-            else if (moveZ)
-            {
-                if (other.gameObject.CompareTag("Player"))
-                {
-                    module.LeavePlate();
-                    module.verouillage = false;
+                    imagePressCanvas.SetActive(false);
+                    ActivationOn = false;
+                    player = null;
                 }
             }
         }
@@ -81,20 +97,13 @@ public class GrapinPlaque : MonoBehaviour
                     module.verouillage = true;
                 }
             }
-            else if (moveX)
+            else if (move)
             {
                 if (other.gameObject.CompareTag("Player"))
                 {
-                    module.MoveXEnter();
-                    module.verouillage = true;
-                }
-            }
-            else if (moveZ)
-            {
-                if (other.gameObject.CompareTag("Player"))
-                {
-                    module.MoveZEnter();
-                    module.verouillage = true;
+                    imagePressCanvas.SetActive(true);
+                    ActivationOn = true;
+                    player = other.gameObject;
                 }
             }
         }

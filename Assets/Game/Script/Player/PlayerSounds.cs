@@ -48,6 +48,16 @@ public class PlayerSounds : MonoBehaviour
         audioSource.PlayOneShot(landClip);
     }
 
+    public void Spring()
+    {
+        audioSource.PlayOneShot(springClip);
+    }
+
+    public void Respawn()
+    {
+        audioSource.PlayOneShot(respawnClip);
+    }
+
     // Get random sound of walk
     private AudioClip GetRandomWalkClip()
     {
