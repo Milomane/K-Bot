@@ -127,8 +127,6 @@ public class PlayerDeathHandler : MonoBehaviour
         {
             case DeathType.normal:
                 bodys.Enqueue(eventObject);
-                maxRbAngular = eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity;
-                eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity = 0;
                 break;
             case DeathType.explosion:
                 break;
@@ -137,41 +135,12 @@ public class PlayerDeathHandler : MonoBehaviour
                 break;
             case DeathType.generator:
                 bodys.Enqueue(eventObject);
-                maxRbAngular = eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity;
-                eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity = 0;
                 break;
             case DeathType.lamp:
                 bodys.Enqueue(eventObject);
-                maxRbAngular = eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity;
-                eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity = 0;
                 break;
             case DeathType.accelerator:
-                break;
-            case DeathType.crunshed:
-                break;
-            default :
-                Debug.LogError("Error in StartDeath, wrong value for death");
-                yield break;
-        }
-        
-        
-        yield return new WaitForSeconds(.1f);
-        switch (deathType)
-        {
-            case DeathType.normal:
-                eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity = maxRbAngular;
-                break;
-            case DeathType.explosion:
-                break;
-            case DeathType.spring:
-                break;
-            case DeathType.generator:
-                eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity = maxRbAngular;
-                break;
-            case DeathType.lamp:
-                eventObject.GetComponent<EventDeath>().body.GetComponent<Rigidbody>().maxAngularVelocity = maxRbAngular;
-                break;
-            case DeathType.accelerator:
+                bodys.Enqueue(eventObject);
                 break;
             case DeathType.crunshed:
                 break;
