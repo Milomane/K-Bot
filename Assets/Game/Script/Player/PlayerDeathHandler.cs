@@ -175,7 +175,7 @@ public class PlayerDeathHandler : MonoBehaviour
         yield return new WaitForSeconds(repairStation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
         playerModel.model.SetActive(true);
         repairStation.GetComponent<Animator>().SetBool("Open", true);
-        
+        FindObjectOfType<PlayerSounds>().Respawn();
         // Wait for rebuild animation to end
         yield return null;
         yield return new WaitForSeconds(repairStation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
