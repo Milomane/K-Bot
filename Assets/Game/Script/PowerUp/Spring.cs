@@ -37,6 +37,7 @@ public class Spring : MonoBehaviour
 
     public void UseSpring()
     {
+        FindObjectOfType<PlayerSounds>().Spring();
         testAnimator.SetTrigger("Use");
     }
 
