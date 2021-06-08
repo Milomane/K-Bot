@@ -13,6 +13,8 @@ public class EventDeath : MonoBehaviour
 
     public void DestroyBody()
     {
+        Debug.Log("Hello?");
+        
         if (doParticleAtDestruction)
         {
             if (particleAtDestruction != null)
