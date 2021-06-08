@@ -8,6 +8,7 @@ public class EventExplosion : MonoBehaviour
     [SerializeField] private LayerMask breakableLayer;
     [SerializeField] private LayerMask cannonLayer;
     [SerializeField] private float explosionRadius;
+    [SerializeField] private AudioClip explosionClip;
     
     void Start()
     {
@@ -32,8 +33,7 @@ public class EventExplosion : MonoBehaviour
             
         }
         
-        
-        
+        AudioSource.PlayClipAtPoint(explosionClip, gameObject.transform.position);
         
         Destroy(gameObject);
     }
