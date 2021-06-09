@@ -19,7 +19,7 @@ public class EventDeath : MonoBehaviour
         {
             if (particleAtDestruction != null)
                 if (body != null)
-                    Instantiate(particleAtDestruction, body.transform.position, quaternion.identity);
+                    Instantiate(particleAtDestruction, body.transform.position, quaternion.Euler(-90,0,0));
                 else
                     Debug.LogError("Error in DestroyBody, body is null");
             else

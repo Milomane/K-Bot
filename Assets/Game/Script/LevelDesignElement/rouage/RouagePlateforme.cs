@@ -5,6 +5,8 @@ using UnityEngine;
 public class RouagePlateforme : MonoBehaviour
 {
     public bool rouageActivation, playerDetection;
+    public float speedRotation;
+    public bool rotationHoraire;
 
     public GameObject player;
 
@@ -16,9 +18,20 @@ public class RouagePlateforme : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (rouageActivation)
+        {
+            if (rotationHoraire)
+            {
+                transform.Rotate(0,speedRotation * Time.fixedDeltaTime ,0);
+            }
+            else
+            {
+                transform.Rotate(0,-speedRotation * Time.fixedDeltaTime ,0);
+            }
+            
+        }
     }
     public void DesactivationBoard()
     {
