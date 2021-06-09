@@ -24,7 +24,7 @@ public class RecupPowerUp : MonoBehaviour
         
     }
     
-    public void endAnim()
+    public void EndAnim()
     {
         player.GetComponent<PlayerDeathHandler>().NewPowerUp(powerUpIndex);
     }
@@ -36,8 +36,5 @@ public class RecupPowerUp : MonoBehaviour
             animator.Play("PowerUpRecup");
             _stopDo = true;
         }
-        
     }
-    
-    
 }

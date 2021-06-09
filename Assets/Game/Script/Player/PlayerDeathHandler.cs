@@ -21,7 +21,8 @@ public class PlayerDeathHandler : MonoBehaviour
     [SerializeField] private Death[] deaths;
 
     [SerializeField] private int maxBody = 3;
-    public static DeathType selectedDeath = DeathType.normal;
+    public static DeathType selectedDeath = DeathType.crunshed;
+    public List<DeathType> unlockedDeath;
     private TextMeshProUGUI nbBodiesAvailable;
 
     public GameObject repairStation;
@@ -59,6 +60,22 @@ public class PlayerDeathHandler : MonoBehaviour
         instance = this;
         bodys = new Queue<GameObject>();
         nbBodiesAvailable = GameObject.FindWithTag("NbBodiesTxt").GetComponent<TextMeshProUGUI>();
+
+        if (unlockedDeath.Count == 0)
+        {
+            unlockedDeath = new List<DeathType>();
+            foreach (var backModel in playerModel.arrayBackModels)
+            {
+                backModel.SetActive(false);
+            }
+        }
+        else
+        {
+            ChangePowerUp((int)unlockedDeath[0]);
+            StartCoroutine(ChangeBackModel());
+        }
+        CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
+        CanvasEventManager.instance.deathTypeSelected = selectedDeath;
     }
 
     void Update()
@@ -94,6 +111,13 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public IEnumerator DeathEnumerator(DeathType deathType)
     {
+        if (selectedDeath == DeathType.crunshed)
+        {
+            // NO POWER UP SELECTED
+            yield break;
+        }
+            
+        
         dying = true;
         playerController.stopMovement = true;
 
@@ -236,33 +260,37 @@ public class PlayerDeathHandler : MonoBehaviour
         switch (powerUpId)
         {
             case 0:
-                selectedDeath = DeathType.normal;
+                unlockedDeath.Add(DeathType.normal);
                 Debug.Log("Normal PowerUp Added");
                 break;
             case 1:
-                selectedDeath = DeathType.explosion;
+                unlockedDeath.Add(DeathType.explosion);
                 Debug.Log("Explosion PowerUp Added");
                 break;
             case 2:
-                selectedDeath = DeathType.spring;
+                unlockedDeath.Add(DeathType.spring);
                 Debug.Log("Spring PowerUp Added");
                 break;
             case 3:
-                selectedDeath = DeathType.generator;
+                unlockedDeath.Add(DeathType.generator);
                 Debug.Log("Generator PowerUp Added");
                 break;
             case 4:
-                selectedDeath = DeathType.lamp;
+                unlockedDeath.Add(DeathType.lamp);
                 Debug.Log("Lamp PowerUp Added");
                 break;
             case 5:
-                selectedDeath = DeathType.accelerator;
+                unlockedDeath.Add(DeathType.accelerator);
                 Debug.Log("Accelerator PowerUp Added");
                 break;
             default:
                 Debug.LogError("Error in change power up, not a valid ID");
                 return;
         }
+        
+        CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
+        
+        ChangePowerUp(powerUpId);
     }
 
     public void DestroyOldestBody()

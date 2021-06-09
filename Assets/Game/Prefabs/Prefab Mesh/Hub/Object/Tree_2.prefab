@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7852487071093194440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tree_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +31,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &3972171104555533936
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5424446296436842047}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4632512108745288291, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
+--- !u!64 &8003008936844350275
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8551066336171128909}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2659368817513917671, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
 --- !u!1001 &8921995272373961279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98,26 +126,56 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e99a2a35defad1640983e4ef8f5ae760, type: 2}
+    - target: {fileID: -8252222984059127182, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -6840605818660238359, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6f750841b9567914ebaa20aa60bd1b85, type: 2}
+    - target: {fileID: -3390561632281495008, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
       propertyPath: m_Name
       value: Arbre2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 940547714820640359, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 478671c6b5ff6724e95f38192d88bf64, type: 2}
+    - target: {fileID: 3501208168159878144, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4142464487865239074, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: af86c15f462769d40a34ee5acf721138, type: 2}
+    - target: {fileID: 5224808763192195311, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
 --- !u!4 &8961022036519282132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
+  m_PrefabInstance: {fileID: 8921995272373961279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5424446296436842047 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3501208168159878144, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
+  m_PrefabInstance: {fileID: 8921995272373961279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8551066336171128909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8252222984059127182, guid: 68f0eb55d22730b499d5178da34f3137, type: 3}
   m_PrefabInstance: {fileID: 8921995272373961279}
   m_PrefabAsset: {fileID: 0}

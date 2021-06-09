@@ -51,7 +51,6 @@ public class PressurePlate : MonoBehaviour
         onPlate.Add(other.gameObject);
         if (other.CompareTag("Player"))
             playerOnPlate = true;
-        Debug.Log(other.gameObject.name);
     }
     
 
