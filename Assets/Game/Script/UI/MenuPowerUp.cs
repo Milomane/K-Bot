@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class MenuPowerUp : MonoBehaviour
 {
     public Color hoverColor;
-
     public Color baseColor;
+    public Color lockedColor;
 
     public Image background;
 
@@ -20,11 +20,13 @@ public class MenuPowerUp : MonoBehaviour
     public bool canBeSelect;
     
     private bool lastCant;
+    private bool locked;
     
     // Start is called before the first frame update
     void Start()
     {
-        background.color = baseColor;
+        if (!locked) 
+            background.color = baseColor;
     }
 
     public void Select()
@@ -33,7 +35,7 @@ public class MenuPowerUp : MonoBehaviour
         UpdateDescription();
         PlayerDeathHandler.ChangePowerUp(idPowerUp);*/
         
-        if (canBeSelect)
+        if (canBeSelect && !locked)
         {
             background.color = hoverColor;
             UpdateDescription();
@@ -45,8 +47,22 @@ public class MenuPowerUp : MonoBehaviour
 
     public void Deselect()
     {
-        background.color = baseColor;
+        if (!locked)
+        {
+            background.color = baseColor;
+        }
         // description.SetActive(false);
+    }
+
+    public void Lock()
+    {
+        locked = true;
+        background.color = lockedColor;
+    }
+    public void Unlock()
+    {
+        locked = false;
+        background.color = baseColor;
     }
 
     void UpdateDescription()

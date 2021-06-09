@@ -291,6 +291,7 @@ MonoBehaviour:
   - particlePrefab: {fileID: 7043752475002646823, guid: 53b3b2dc9f8b2644c8eddf6a2af56b57, type: 3}
     eventPrefab: {fileID: 0}
   maxBody: 3
+  unlockedDeath: 
   repairStation: {fileID: 0}
   canDie: 1
   dying: 0
@@ -1951,7 +1952,6 @@ MonoBehaviour:
   landClip: {fileID: 8300000, guid: c9db3dea0b782ce4bb4a9bcf6f9902d8, type: 3}
   springClip: {fileID: 8300000, guid: 0b1495ad8c55fd84aa2af3fbba1bdb37, type: 3}
   respawnClip: {fileID: 8300000, guid: 0ba7fe6820d07234fabf133bcabb730c, type: 3}
-  explosionClip: {fileID: 8300000, guid: a0a410f4c69b3e747955f444d9cc6733, type: 3}
 --- !u!1 &4223114074513590112
 GameObject:
   m_ObjectHideFlags: 0

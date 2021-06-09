@@ -10,6 +10,7 @@ public class PowersWheel : MonoBehaviour
     private int previousSelection;
 
     public GameObject[] menuItems;
+    public GameObject[] menuItemsLogicOrder;
 
     private MenuPowerUp menuPowerUp;
     private MenuPowerUp previousMenuPowerUp;
@@ -32,7 +33,7 @@ public class PowersWheel : MonoBehaviour
         currentAngle = (currentAngle + 360) % 360; 
         // Selection (number)
         selection = (int)currentAngle / 60; // TODO : résoudre le problème de sélection forcé du dernier power up (quand selection == 1)
-        Debug.Log("selection : " + selection);
+        
         if (selection != previousSelection)
         {
             previousMenuPowerUp = menuItems[previousSelection].GetComponent<MenuPowerUp>();
