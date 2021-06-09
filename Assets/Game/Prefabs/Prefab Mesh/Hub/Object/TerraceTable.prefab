@@ -1,5 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &4489963033261858306
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619314297945714649}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8838624379618268784, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
+--- !u!64 &1377349280543537292
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128657029806779345}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5365693042712592065, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
 --- !u!1 &2714210458209062696
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5103432414826703385}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TerraceTable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +59,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &4904137296949112110
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6938853669292089062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7321224295854117969, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
 --- !u!1001 &2005317562408007240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38,6 +80,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5103432414826703385}
     m_Modifications:
+    - target: {fileID: -8764334760170676839, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -98,6 +144,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cdd507432cb0cd14ea116aecc4d1be5c, type: 2}
+    - target: {fileID: -315371731500111698, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -228626443530622696, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -105,6 +155,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
       propertyPath: m_Name
       value: Terrace tables and chairs
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1390608019841194385, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4866881952751295243, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -115,5 +173,20 @@ PrefabInstance:
 --- !u!4 &2044327259708527011 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
+  m_PrefabInstance: {fileID: 2005317562408007240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &619314297945714649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1390608019841194385, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
+  m_PrefabInstance: {fileID: 2005317562408007240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2128657029806779345 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8764334760170676839, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
+  m_PrefabInstance: {fileID: 2005317562408007240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6938853669292089062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -315371731500111698, guid: e5b7f0f495ab72a40adbca132da051ae, type: 3}
   m_PrefabInstance: {fileID: 2005317562408007240}
   m_PrefabAsset: {fileID: 0}

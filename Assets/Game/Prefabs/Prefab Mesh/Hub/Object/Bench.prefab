@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &5038530544203128375
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197201867384007984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.91146314, y: 2.4000008, z: 0.7796981}
+  m_Center: {x: -0.005731067, y: 0.00000010452148, z: -0.065315604}
 --- !u!1 &5485645522073535475
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +22,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3224901989357033785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 5485645522073535475}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.134, y: 1.134, z: 1.134}
   m_Children:
   - {fileID: 4314726771014690109}
   m_Father: {fileID: 0}
@@ -94,10 +107,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bench
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93188fed4e856ef488ff55cb98e61749, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892482914806886629, guid: 93188fed4e856ef488ff55cb98e61749, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379633003552583654, guid: 93188fed4e856ef488ff55cb98e61749, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93188fed4e856ef488ff55cb98e61749, type: 3}
 --- !u!4 &4314726771014690109 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 93188fed4e856ef488ff55cb98e61749, type: 3}
+  m_PrefabInstance: {fileID: 4353367161256772310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5197201867384007984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8379633003552583654, guid: 93188fed4e856ef488ff55cb98e61749, type: 3}
   m_PrefabInstance: {fileID: 4353367161256772310}
   m_PrefabAsset: {fileID: 0}
