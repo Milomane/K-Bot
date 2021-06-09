@@ -21,7 +21,7 @@ namespace Game.Script
             }
             
             // Play Music
-            // FindObjectOfType<AudioManager>().Play("Music");
+            FindObjectOfType<AudioManager>().Play("Music");
         }
 
         // Update is called once per frame
