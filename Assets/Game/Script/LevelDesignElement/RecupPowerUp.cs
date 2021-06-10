@@ -31,7 +31,7 @@ public class RecupPowerUp : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && Input.GetButton("Submit") && _stopDo == false)
+        if (other.gameObject.CompareTag("Player") && Input.GetButton("Interaction") && _stopDo == false)
         {
             animator.Play("PowerUpRecup");
             _stopDo = true;

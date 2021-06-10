@@ -87,7 +87,7 @@ public class PlayerDeathHandler : MonoBehaviour
             nbBodiesAvailable.text = (maxBody - bodys.Count).ToString();
         }
         
-        if (Input.GetButtonDown("Kill") && canDie && !dying)
+        if (Input.GetButtonDown("Kill") && canDie && !dying && selectedDeath != DeathType.crunshed)
         {
             StartDeath(selectedDeath);
         }
@@ -111,13 +111,6 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public IEnumerator DeathEnumerator(DeathType deathType)
     {
-        if (selectedDeath == DeathType.crunshed)
-        {
-            // NO POWER UP SELECTED
-            yield break;
-        }
-            
-        
         dying = true;
         playerController.stopMovement = true;
 

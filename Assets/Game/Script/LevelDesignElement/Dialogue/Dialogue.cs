@@ -25,7 +25,7 @@ public class Dialogue : MonoBehaviour
 
         if ( dist <= distNeed) // verify if the player is close enogh to talk to a pnj
         {
-            if (Input.GetButtonDown("Submit") && running == false) 
+            if (Input.GetButtonDown("Interaction") && running == false) 
             {
                 if (_actualLine <= dialogue.Length-1) // change the text line
                 {
