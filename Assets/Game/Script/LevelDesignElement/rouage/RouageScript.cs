@@ -2,14 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RouageScript : MonoBehaviour
 {
-    public bool rotationOn, corpDetection;
+    public bool rotationOn, shutdown;
 
     public float speedRotation;
     public GameObject player;
     private MeshCollider _meshCollider;
+    public UnityEvent eventShutDown;
 
     private void Start()
     {
@@ -19,30 +21,21 @@ public class RouageScript : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (!corpDetection)
+        
+        if (rotationOn)
         {
-            if (rotationOn)
-            {
-                transform.Rotate(0,speedRotation * Time.deltaTime ,0);
-                _meshCollider.convex = true;
-                _meshCollider.isTrigger = true;
-            } 
-        }
-
-        if (corpDetection)
+            transform.Rotate(0,speedRotation * Time.deltaTime ,0);
+            _meshCollider.convex = true;
+            _meshCollider.isTrigger = true;
+        } 
+        
+        
+        if (!rotationOn && !shutdown)
         {
-            _meshCollider.convex = false;
+            eventShutDown.Invoke();
             _meshCollider.isTrigger = false;
-        }
-        else if (!rotationOn)
-        {
             _meshCollider.convex = false;
-            _meshCollider.isTrigger = false;
-        }
-        else if (corpDetection && !rotationOn)
-        {
-            _meshCollider.convex = false;
-            _meshCollider.isTrigger = false;
+            shutdown = true;
         }
     }
 
@@ -50,24 +43,29 @@ public class RouageScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (rotationOn && !corpDetection)
+            if (rotationOn)
             {
-                Debug.Log("contact rouage player");
                 player = other.gameObject;
                 KillPlayer();
             }
         }
         if (other.gameObject.CompareTag("Corpse"))
         {
-            corpDetection = true;
+            if (rotationOn)
+            {
+                rotationOn = false;
+                Transform parentTransformCorp = other.gameObject.transform.parent;
+                GameObject parentCorp = parentTransformCorp.gameObject;
+                FindObjectOfType<PlayerDeathHandler>().DestroySelectedBody(parentCorp);
+            }
         }
     }
 
     private void KillPlayer()
     {
-        Debug.Log("kill rouage player");
         player.GetComponent<PlayerDeathHandler>().StartDeath(PlayerDeathHandler.DeathType.crunshed);
         player = null;
+        rotationOn = false;
     }
 
     public void Activator()
