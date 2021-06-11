@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,15 @@ public class RouagePlateforme : MonoBehaviour
     public bool rotationHoraire;
 
     public GameObject player;
+    public GameObject cylindreParent;
+    public Transform cylindreTransformParent;
 
     public Transform playerGroup;
     // Start is called before the first frame update
     void Start()
     {
-        
+        cylindreTransformParent = gameObject.transform.parent;
+        cylindreParent = cylindreTransformParent.gameObject;
     }
 
     // Update is called once per frame
@@ -24,11 +28,11 @@ public class RouagePlateforme : MonoBehaviour
         {
             if (rotationHoraire)
             {
-                transform.Rotate(0,speedRotation * Time.fixedDeltaTime ,0);
+                cylindreParent.transform.Rotate(0,speedRotation * Time.fixedDeltaTime ,0);
             }
             else
             {
-                transform.Rotate(0,-speedRotation * Time.fixedDeltaTime ,0);
+                cylindreParent.transform.Rotate(0,-speedRotation * Time.fixedDeltaTime ,0);
             }
             
         }
