@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PressurePlate : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PressurePlate : MonoBehaviour
     public List<GameObject> onPlate = new List<GameObject>();
     public int limit;
     public bool defineOpen;
+    public UnityEvent openSystem, closeSystem;
+    public bool verouillage;
 
     private bool playerOnPlate;
     private bool playerInAir;
@@ -35,14 +38,18 @@ public class PressurePlate : MonoBehaviour
             playerCount = -1;
         
 
-        if (onPlate.Count + playerCount < limit + 1) // close door
+        if (onPlate.Count + playerCount < limit + 1 && verouillage) // close door
         {
-            lockedObject.GetComponent<LockedDoor>().Close();
+            //lockedObject.GetComponent<LockedDoor>().Close();
+            closeSystem.Invoke();
+            verouillage = false;
         }
 
-        if (onPlate.Count + playerCount >= limit + 1) // open door
+        if (onPlate.Count + playerCount >= limit + 1 && !verouillage) // open door
         {
-            lockedObject.GetComponent<LockedDoor>().Open(); 
+            //lockedObject.GetComponent<LockedDoor>().Open();
+            openSystem.Invoke();
+            verouillage = true;
         }
     }
 
