@@ -7,6 +7,8 @@ using Cinemachine;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
+using Component = UnityEngine.Component;
 using Object = UnityEngine.Object;
 
 public class PlayerDeathHandler : MonoBehaviour
@@ -21,9 +23,10 @@ public class PlayerDeathHandler : MonoBehaviour
     [SerializeField] private Death[] deaths;
 
     [SerializeField] private int maxBody = 3;
+    private int bodyToPrint;
     public static DeathType selectedDeath = DeathType.crunshed;
     public List<DeathType> unlockedDeath;
-    private TextMeshProUGUI nbBodiesAvailable;
+    private GameObject nbBodiesAvailable;
 
     public GameObject repairStation;
     public bool canDie = true;
@@ -47,19 +50,19 @@ public class PlayerDeathHandler : MonoBehaviour
         accelerator,
         crunshed
     }
-    
+
     [System.Serializable]
     public class Death
     {
         public GameObject particlePrefab;
         public GameObject eventPrefab;
     }
-    
+
     void Start()
     {
         instance = this;
         bodys = new Queue<GameObject>();
-        nbBodiesAvailable = GameObject.FindWithTag("NbBodiesTxt").GetComponent<TextMeshProUGUI>();
+        nbBodiesAvailable = GameObject.FindWithTag("NbBodies");
 
         if (unlockedDeath.Count == 0)
         {
@@ -71,9 +74,10 @@ public class PlayerDeathHandler : MonoBehaviour
         }
         else
         {
-            ChangePowerUp((int)unlockedDeath[0]);
+            ChangePowerUp((int) unlockedDeath[0]);
             StartCoroutine(ChangeBackModel());
         }
+
         CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
         CanvasEventManager.instance.deathTypeSelected = selectedDeath;
     }
@@ -81,12 +85,12 @@ public class PlayerDeathHandler : MonoBehaviour
     void Update()
     {
         playerController.dying = dying;
-        
+
         if (nbBodiesAvailable != null)
         {
-            nbBodiesAvailable.text = (maxBody - bodys.Count).ToString();
+            UpdateUiCarcasse();
         }
-        
+
         if (Input.GetButtonDown("Kill") && canDie && !dying && selectedDeath != DeathType.crunshed)
         {
             StartDeath(selectedDeath);
@@ -104,6 +108,36 @@ public class PlayerDeathHandler : MonoBehaviour
         }
     }
 
+    private void UpdateUiCarcasse()
+    {
+        bodyToPrint = maxBody - bodys.Count;
+
+
+        switch (bodyToPrint)
+        {
+            case 0:
+                nbBodiesAvailable.GetComponentsInChildren<Image>()[0].gameObject.SetActive(false);
+                nbBodiesAvailable.GetComponentsInChildren<Image>()[1].gameObject.SetActive(false);
+                nbBodiesAvailable.GetComponentsInChildren<Image>()[2].gameObject.SetActive(false);
+                break;
+            case 1:
+                nbBodiesAvailable.GetComponentsInChildren<Image>()[0].gameObject.SetActive(true);
+                nbBodiesAvailable.GetComponentsInChildren<Image>()[1].gameObject.SetActive(false);
+                nbBodiesAvailable.GetComponentsInChildren<Image>()[2].gameObject.SetActive(false);
+                break;
+            case 2:
+                nbBodiesAvailable.GetComponentsInChildren<Image>()[0].gameObject.SetActive(true);
+                nbBodiesAvailable.GetComponentsInChildren<Image>()[1].gameObject.SetActive(true);
+                nbBodiesAvailable.GetComponentsInChildren<Image>()[2].gameObject.SetActive(false);
+                break;
+            case 3:
+                nbBodiesAvailable.GetComponentsInChildren<Image>()[0].gameObject.SetActive(true);
+                nbBodiesAvailable.GetComponentsInChildren<Image>()[1].gameObject.SetActive(true);
+                nbBodiesAvailable.GetComponentsInChildren<Image>()[2].gameObject.SetActive(true);
+                break;
+        }
+    }
+
     public void StartDeath(DeathType deathType)
     {
         StartCoroutine(DeathEnumerator(deathType));
@@ -115,28 +149,29 @@ public class PlayerDeathHandler : MonoBehaviour
         playerController.stopMovement = true;
 
         // Animation player
-        
+
         // Wait for the player animation to end
         if (deathType != DeathType.crunshed)
             yield return new WaitForSeconds(1);
-        
-        
+
+
         playerController.brutStopMovement = true;
         yield return null;
         controller.enabled = false;
-        
+
 
         GameObject eventObject = null;
         GameObject particleObject = null;
-        
+
         // Instantiate what's handle the effect after death
-        if (deaths[(int)deathType].eventPrefab != null)
-            eventObject = Instantiate(deaths[(int)deathType].eventPrefab, transform.position, transform.rotation);
-        if (deaths[(int)deathType].particlePrefab != null)
-            particleObject = Instantiate(deaths[(int)deathType].particlePrefab, transform.position, quaternion.Euler(-90,0,0));
+        if (deaths[(int) deathType].eventPrefab != null)
+            eventObject = Instantiate(deaths[(int) deathType].eventPrefab, transform.position, transform.rotation);
+        if (deaths[(int) deathType].particlePrefab != null)
+            particleObject = Instantiate(deaths[(int) deathType].particlePrefab, transform.position,
+                quaternion.Euler(-90, 0, 0));
 
         float maxRbAngular = 1;
-        
+
         Destroy(particleObject, 10f);
 
         // Switch for special event if needed
@@ -161,7 +196,7 @@ public class PlayerDeathHandler : MonoBehaviour
                 break;
             case DeathType.crunshed:
                 break;
-            default :
+            default:
                 Debug.LogError("Error in StartDeath, wrong value for death");
                 yield break;
         }
@@ -171,21 +206,22 @@ public class PlayerDeathHandler : MonoBehaviour
         {
             DestroyOldestBody();
         }
-        
+
         // Make player invisible
         playerModel.model.SetActive(false);
-        
+
         // Wait a bit to let the player see what's happening
         yield return new WaitForSeconds(2);
-        
+
         // Teleport player camera back
         GetComponent<CharacterController>().enabled = false;
         transform.position = repairStation.transform.position;
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, repairStation.transform.eulerAngles.y, transform.eulerAngles.z);
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, repairStation.transform.eulerAngles.y,
+            transform.eulerAngles.z);
         cinemachineFreeLook.m_XAxis.Value = repairStation.transform.eulerAngles.y - 90;
         repairStation.GetComponent<Animator>().SetBool("Open", false);
         GetComponent<CharacterController>().enabled = true;
-        
+
 
         // Make player visible again
         yield return null;
@@ -196,10 +232,10 @@ public class PlayerDeathHandler : MonoBehaviour
         // Wait for rebuild animation to end
         yield return null;
         yield return new WaitForSeconds(repairStation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-        
+
         // Retake control
         cinemachineFreeLook.m_XAxis.Value = repairStation.transform.eulerAngles.y;
-        
+
         controller.enabled = true;
         playerController.stopMovement = false;
         playerController.brutStopMovement = false;
@@ -244,7 +280,7 @@ public class PlayerDeathHandler : MonoBehaviour
                 Debug.LogError("Error in change power up, not a valid ID");
                 return;
         }
-        
+
         CanvasEventManager.instance.deathTypeSelected = selectedDeath;
     }
 
@@ -280,9 +316,9 @@ public class PlayerDeathHandler : MonoBehaviour
                 Debug.LogError("Error in change power up, not a valid ID");
                 return;
         }
-        
+
         CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
-        
+
         ChangePowerUp(powerUpId);
     }
 
@@ -301,19 +337,18 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public void DestroySelectedBody(GameObject target)
     {
-      
         for (int i = 0; i < bodys.Count; i++)
         {
             GameObject corpse = bodys.Dequeue();
-            
+
             if (corpse == target)
             {
-               corpse.GetComponent<EventDeath>().DestroyBody();
-               Debug.Log(bodys.Count);
+                corpse.GetComponent<EventDeath>().DestroyBody();
+                Debug.Log(bodys.Count);
             }
             else
             {
-              bodys.Enqueue(corpse);
+                bodys.Enqueue(corpse);
             }
         }
     }
@@ -322,11 +357,11 @@ public class PlayerDeathHandler : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            playerModel.arrayBackModels[i].SetActive(i == (int)selectedDeath);
+            playerModel.arrayBackModels[i].SetActive(i == (int) selectedDeath);
         }
-        
+
         yield return null;
-        
+
         previousSelectedDeath = selectedDeath;
     }
 
@@ -336,6 +371,7 @@ public class PlayerDeathHandler : MonoBehaviour
         if (crushCounter >= destroyAtValue && !dying)
             StartDeath(DeathType.crunshed);
     }
+
     public void DecrementCrushCounter()
     {
         crushCounter--;
@@ -354,5 +390,4 @@ public class PlayerDeathHandler : MonoBehaviour
     {
         crushBodyCounter--;
     }
-    
 }
