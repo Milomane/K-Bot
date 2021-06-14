@@ -23,7 +23,8 @@ public class PlayerDeathHandler : MonoBehaviour
     [SerializeField] private Death[] deaths;
 
     [SerializeField] private int maxBody = 3;
-    private int bodyToPrint;
+    // Nb body available
+    private int nbBodyAvailable;
     public static DeathType selectedDeath = DeathType.crunshed;
     public List<DeathType> unlockedDeath;
     private GameObject nbBodiesAvailable;
@@ -85,11 +86,8 @@ public class PlayerDeathHandler : MonoBehaviour
     void Update()
     {
         playerController.dying = dying;
-
-        if (nbBodiesAvailable != null)
-        {
-            UpdateUiCarcasse();
-        }
+        
+        nbBodyAvailable = maxBody - bodys.Count;
 
         if (Input.GetButtonDown("Kill") && canDie && !dying && selectedDeath != DeathType.crunshed)
         {
@@ -105,36 +103,6 @@ public class PlayerDeathHandler : MonoBehaviour
         if (previousSelectedDeath != selectedDeath)
         {
             StartCoroutine(ChangeBackModel());
-        }
-    }
-
-    private void UpdateUiCarcasse()
-    {
-        bodyToPrint = maxBody - bodys.Count;
-
-
-        switch (bodyToPrint)
-        {
-            case 0:
-                nbBodiesAvailable.GetComponentsInChildren<Image>()[0].gameObject.SetActive(false);
-                nbBodiesAvailable.GetComponentsInChildren<Image>()[1].gameObject.SetActive(false);
-                nbBodiesAvailable.GetComponentsInChildren<Image>()[2].gameObject.SetActive(false);
-                break;
-            case 1:
-                nbBodiesAvailable.GetComponentsInChildren<Image>()[0].gameObject.SetActive(true);
-                nbBodiesAvailable.GetComponentsInChildren<Image>()[1].gameObject.SetActive(false);
-                nbBodiesAvailable.GetComponentsInChildren<Image>()[2].gameObject.SetActive(false);
-                break;
-            case 2:
-                nbBodiesAvailable.GetComponentsInChildren<Image>()[0].gameObject.SetActive(true);
-                nbBodiesAvailable.GetComponentsInChildren<Image>()[1].gameObject.SetActive(true);
-                nbBodiesAvailable.GetComponentsInChildren<Image>()[2].gameObject.SetActive(false);
-                break;
-            case 3:
-                nbBodiesAvailable.GetComponentsInChildren<Image>()[0].gameObject.SetActive(true);
-                nbBodiesAvailable.GetComponentsInChildren<Image>()[1].gameObject.SetActive(true);
-                nbBodiesAvailable.GetComponentsInChildren<Image>()[2].gameObject.SetActive(true);
-                break;
         }
     }
 
@@ -389,5 +357,10 @@ public class PlayerDeathHandler : MonoBehaviour
     public void DecrementBodyCounter()
     {
         crushBodyCounter--;
+    }
+
+    public int GetNbBodyAvailable()
+    {
+        return nbBodyAvailable;
     }
 }
