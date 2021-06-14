@@ -9,7 +9,6 @@ public class RouageScript : MonoBehaviour
     public bool rotationOn, shutdown;
 
     public float speedRotation;
-    public GameObject player;
     private MeshCollider _meshCollider;
     public UnityEvent eventShutDown;
 
@@ -45,7 +44,6 @@ public class RouageScript : MonoBehaviour
         {
             if (rotationOn)
             {
-                player = other.gameObject;
                 KillPlayer();
             }
         }
@@ -63,8 +61,7 @@ public class RouageScript : MonoBehaviour
 
     private void KillPlayer()
     {
-        player.GetComponent<PlayerDeathHandler>().StartDeath(PlayerDeathHandler.DeathType.crunshed);
-        player = null;
+        PlayerDeathHandler.instance.StartDeath(PlayerDeathHandler.DeathType.crunshed);
         rotationOn = false;
     }
 
