@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasEventManager : MonoBehaviour
 {
@@ -13,13 +14,16 @@ public class CanvasEventManager : MonoBehaviour
     [SerializeField] private Animator selectorAnimator;
     [SerializeField] private PowersWheel powerWheel;
     private bool selectorIsClosing;
-
+    
     [Header("InGameUi")] 
     public bool inGameUiActive = true;
     [SerializeField] private GameObject inGameUiObject;
     [SerializeField] private TextMeshProUGUI powerUpText;
     public PlayerDeathHandler.DeathType deathTypeSelected = PlayerDeathHandler.DeathType.crunshed;
     
+    [SerializeField] private PlayerDeathHandler playerDeathHandler;
+    [SerializeField] private Image[] kbotHeads;
+    [SerializeField] private Sprite kbotHead;
 
 
 
@@ -32,6 +36,21 @@ public class CanvasEventManager : MonoBehaviour
     {
         UpdateSelectorUi();
         UpdateInGameUi();
+        for (int i = 0; i < kbotHeads.Length; i++)
+        {
+            if (i < playerDeathHandler.GetNbBodyAvailable())
+            {
+                if (!kbotHeads[i].IsActive())
+                {
+                    kbotHeads[i].gameObject.SetActive(true);
+                }
+                kbotHeads[i].sprite = kbotHead;
+            }
+            else
+            {
+                kbotHeads[i].gameObject.SetActive(false);
+            }
+        }
     }
 
     void UpdateSelectorUi()
