@@ -5,20 +5,16 @@ using UnityEngine;
 
 public class RecupPowerUp : MonoBehaviour
 {
-    public GameObject player;
-
     public int powerUpIndex;
 
     private bool _stopDo;
 
     public Animator animator;
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -26,7 +22,7 @@ public class RecupPowerUp : MonoBehaviour
     
     public void EndAnim()
     {
-        player.GetComponent<PlayerDeathHandler>().NewPowerUp(powerUpIndex);
+        PlayerDeathHandler.instance.NewPowerUp(powerUpIndex);
     }
 
     private void OnTriggerStay(Collider other)

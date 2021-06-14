@@ -128,8 +128,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockedObject: {fileID: 0}
   onPlate: []
-  limit: 3
+  limit: 1
   defineOpen: 0
+  openSystem:
+    m_PersistentCalls:
+      m_Calls: []
+  closeSystem:
+    m_PersistentCalls:
+      m_Calls: []
+  verouillage: 0
 --- !u!1 &5943207535227127871
 GameObject:
   m_ObjectHideFlags: 0

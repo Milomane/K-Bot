@@ -21,7 +21,6 @@ public class CanvasEventManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI powerUpText;
     public PlayerDeathHandler.DeathType deathTypeSelected = PlayerDeathHandler.DeathType.crunshed;
     
-    [SerializeField] private PlayerDeathHandler playerDeathHandler;
     [SerializeField] private Image[] kbotHeads;
     [SerializeField] private Sprite kbotHead;
 
@@ -38,7 +37,7 @@ public class CanvasEventManager : MonoBehaviour
         UpdateInGameUi();
         for (int i = 0; i < kbotHeads.Length; i++)
         {
-            if (i < playerDeathHandler.GetNbBodyAvailable())
+            if (i < PlayerDeathHandler.instance.GetNbBodyAvailable())
             {
                 if (!kbotHeads[i].IsActive())
                 {
