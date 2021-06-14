@@ -9,6 +9,7 @@ public class RepairStation : MonoBehaviour
 {
     [SerializeField] private Color activeColor;
     [SerializeField] private Renderer[] modelRenderers;
+    [SerializeField] private GameObject particleFeedback;
     public static UnityEvent resetRepairStation;
 
     private bool activeStation;
@@ -60,6 +61,8 @@ public class RepairStation : MonoBehaviour
         if (other.tag == "Player")
         {
             other.GetComponent<PlayerDeathHandler>().repairStation = gameObject;
+            if (!activeStation)
+                Instantiate(particleFeedback, other.transform.position + Vector3.up * 1.9f, Quaternion.identity);
             activeStation = true;
             secureTime = 1f;
             resetRepairStation.Invoke();
