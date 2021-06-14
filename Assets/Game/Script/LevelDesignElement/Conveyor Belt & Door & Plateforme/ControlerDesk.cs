@@ -2,15 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ControlerDesk : MonoBehaviour
 {
     public GameObject imagePressCanvas;
     private bool ActivationOn;
-    public bool timerDoorOn, activationTimer;
+    public bool timerDoorOn, activationTimer, verouillage;
     public float timerDoor, timer;
-    
-    public List<GameObject> objectsList;
+    public UnityEvent activationEvent, desactivationEvent;
     
     // Start is called before the first frame update
     void Start()
@@ -21,76 +21,38 @@ public class ControlerDesk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (activationTimer)
+        if (activationTimer && timerDoorOn)
         {
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                for (int i = 0; i <= objectsList.Count - 1; i++)
-                {
-                    objectsList[i].GetComponent<DoorModule>().doorActivation = false;
-                    objectsList[i].GetComponent<DoorModule>().DesactivationBoard();
-                }
-
+                desactivationEvent.Invoke();
+                verouillage = false;
                 activationTimer = false;
-
+                
             }
         }
         if (ActivationOn)
         {
             if (Input.GetButtonDown("Interaction"))
             {
-                Debug.Log("press E");
-                for (int i = 0; i <= objectsList.Count -1; i++)
+                if (!verouillage)
                 {
-                    if (objectsList[i].GetComponent<ConveyorBeltModule>() == true)
+                    activationEvent.Invoke();
+                    verouillage = true;
+                    if (timerDoorOn) 
                     {
-                        if (objectsList[i].GetComponent<ConveyorBeltModule>().conveyorActivation == true)
-                        {
-                            objectsList[i].GetComponent<ConveyorBeltModule>().DesactivationBoard();
-                        }
-                        else
-                        {
-                            objectsList[i].GetComponent<ConveyorBeltModule>().ActivationBoard();
-                        }
+                        Debug.Log("timer");
+                        timer = timerDoor;
+                        activationTimer = true;
                     }
-                    else if (objectsList[i].GetComponent<ConveyorRotator>() == true)
-                    {
-                        
-                    }
-                    else if (objectsList[i].GetComponent<DoorModule>() == true)
-                    {
-                        if (objectsList[i].GetComponent<DoorModule>().doorActivation == true)
-                        {
-                            objectsList[i].GetComponent<DoorModule>().DesactivationBoard();
-                        }
-                        else
-                        {
-                            objectsList[i].GetComponent<DoorModule>().ActivationBoard();
-                            if (timerDoorOn)
-                            {
-                                Debug.Log("timer");
-                                timer = timerDoor;
-                                activationTimer = true;
-                            }
-                        }
-                    }
-                    else if (objectsList[i].GetComponent<PlateformeModule>() == true)
-                    {
-                        if (objectsList[i].GetComponent<PlateformeModule>().plateformeActivation == true)
-                        {
-                            objectsList[i].GetComponent<PlateformeModule>().DesactivationBoard();
-                        }
-                        else
-                        {
-                            objectsList[i].GetComponent<PlateformeModule>().ActivationBoard();
-                            
-                        }
-                    }
-                    else
-                    {
-                        Debug.Log("error module");
-                    }
+                    Debug.Log("activation");
+                }
+                else if (verouillage)
+                {
+                    desactivationEvent.Invoke();
+                    verouillage = false;
+                    Debug.Log("desactivation");
                 }
             }
         }
