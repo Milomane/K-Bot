@@ -1407,11 +1407,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2739104149832183296, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.18959539
+      value: -0.18959536
       objectReference: {fileID: 0}
     - target: {fileID: 2739104149832183296, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0023236668
+      value: -0.0023236661
       objectReference: {fileID: 0}
     - target: {fileID: 2739104150438956282, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1447,11 +1447,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2739104150639852782, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.18957186
+      value: -0.18957181
       objectReference: {fileID: 0}
     - target: {fileID: 2739104150639852782, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00378493
+      value: 0.0037849294
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
@@ -2109,10 +2109,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  listOffset: []
   onBelt: []
   player: {fileID: 0}
   conveyorActivation: 0
   detectionPlayer: 0
+  blocageOffset: 0
 --- !u!65 &811267932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2409,10 +2411,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  listOffset: []
   onBelt: []
   player: {fileID: 0}
   conveyorActivation: 1
   detectionPlayer: 0
+  blocageOffset: 0
 --- !u!65 &899472107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2571,10 +2575,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  listOffset: []
   onBelt: []
   player: {fileID: 0}
   conveyorActivation: 1
   detectionPlayer: 0
+  blocageOffset: 0
 --- !u!65 &1021736885
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3277,10 +3283,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  listOffset: []
   onBelt: []
   player: {fileID: 0}
   conveyorActivation: 1
   detectionPlayer: 0
+  blocageOffset: 0
 --- !u!65 &1236712560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4224,10 +4232,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  listOffset: []
   onBelt: []
   player: {fileID: 0}
   conveyorActivation: 1
   detectionPlayer: 0
+  blocageOffset: 0
 --- !u!65 &1792135182
 BoxCollider:
   m_ObjectHideFlags: 0

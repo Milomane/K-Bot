@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ConveyorOffset : MonoBehaviour
 {
+    public bool activationOffset;
+    
     // Start is called before the first frame update
     float scrollSpeed = 0.5f;
     public Renderer rend;
@@ -15,7 +17,10 @@ public class ConveyorOffset : MonoBehaviour
 
     void Update()
     {
-        float offset = Time.time * -scrollSpeed;
-        rend.material.mainTextureOffset = new Vector2(offset, 0);
+        if (activationOffset)
+        {
+            float offset = Time.time * -scrollSpeed;
+            rend.material.mainTextureOffset = new Vector2(offset, 0);
+        }
     }
 }

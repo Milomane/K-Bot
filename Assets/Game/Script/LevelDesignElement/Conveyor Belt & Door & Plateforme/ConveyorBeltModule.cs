@@ -6,10 +6,10 @@ using UnityEngine;
 public class ConveyorBeltModule : MonoBehaviour
 {
     public float speed;
-    
+    public List<ConveyorOffset> listOffset;
     public List<GameObject> onBelt;
     public GameObject player;
-    public bool conveyorActivation, detectionPlayer;
+    public bool conveyorActivation, detectionPlayer, blocageOffset;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +27,35 @@ public class ConveyorBeltModule : MonoBehaviour
                 onBelt[i].transform.position = Vector3.MoveTowards(onBelt[i].transform.position, onBelt[i].transform.position + -transform.right, speed * Time.fixedDeltaTime);
             }
 
+            if (!blocageOffset)
+            {
+                for (int i = 0; i < listOffset.Count ; i++)
+                {
+                    listOffset[i].activationOffset = true;
+                }
+
+                blocageOffset = true;
+            }
+
             if (detectionPlayer)
             {
                 if (player != null)
                 {
                     player.GetComponent<CharacterController>().Move(-transform.right * speed * Time.fixedDeltaTime);
                 }
+            }
+        }
+
+        if (!conveyorActivation)
+        {
+            if (blocageOffset)
+            {
+                for (int i = 0; i < listOffset.Count ; i++)
+                {
+                    listOffset[i].activationOffset = false;
+                }
+
+                blocageOffset = false;
             }
         }
     }
