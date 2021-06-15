@@ -7,7 +7,7 @@ public class ConveyorOffset : MonoBehaviour
     public bool activationOffset;
     
     // Start is called before the first frame update
-    float scrollSpeed = 1f;
+    public float scrollSpeed;
     public Renderer rend;
 
     void Start()

@@ -14,7 +14,12 @@ public class ConveyorBeltModule : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        float valueoffset;
+        valueoffset = speed / 2;
+        for (int i = 0; i < listOffset.Count; i++)
+        {
+            listOffset[i].scrollSpeed = valueoffset;
+        }
     }
 
     // Update is called once per frame
