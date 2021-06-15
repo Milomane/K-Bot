@@ -136,7 +136,7 @@ public class PlayerDeathHandler : MonoBehaviour
             eventObject = Instantiate(deaths[(int) deathType].eventPrefab, transform.position, transform.rotation);
         if (deaths[(int) deathType].particlePrefab != null)
             particleObject = Instantiate(deaths[(int) deathType].particlePrefab, transform.position,
-                quaternion.Euler(-90, 0, 0));
+                Quaternion.Euler(-90, 0, 0));
 
         float maxRbAngular = 1;
 
