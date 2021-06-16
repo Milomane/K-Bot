@@ -39,14 +39,14 @@ public class PressurePlate : MonoBehaviour
             playerCount = -1;
         
 
-        if (onPlate.Count + playerCount < limit + 1 && verouillage) // close door
+        if (onPlate.Count + playerCount < limit && verouillage) // close door
         {
             //lockedObject.GetComponent<LockedDoor>().Close();
             closeSystem.Invoke();
             verouillage = false;
         }
 
-        if (onPlate.Count + playerCount >= limit + 1 && !verouillage) // open door
+        if (onPlate.Count + playerCount >= limit && !verouillage) // open door
         {
             //lockedObject.GetComponent<LockedDoor>().Open();
             openSystem.Invoke();
