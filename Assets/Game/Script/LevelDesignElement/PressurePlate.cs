@@ -12,6 +12,7 @@ public class PressurePlate : MonoBehaviour
     public bool defineOpen;
     public UnityEvent openSystem, closeSystem;
     public bool verouillage;
+    public LayerMask transparentForCamera;
 
     private bool playerOnPlate;
     private bool playerInAir;
@@ -55,7 +56,8 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        onPlate.Add(other.gameObject);
+        if (other.CompareTag("Player") || other.CompareTag("Corpse"))
+            onPlate.Add(other.gameObject);
         if (other.CompareTag("Player"))
             playerOnPlate = true;
     }

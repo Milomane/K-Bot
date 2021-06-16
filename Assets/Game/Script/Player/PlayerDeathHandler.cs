@@ -79,6 +79,12 @@ public class PlayerDeathHandler : MonoBehaviour
             StartCoroutine(ChangeBackModel());
         }
 
+        StartCoroutine(Safe());
+    }
+
+    IEnumerator Safe()
+    {
+        yield return new WaitForSeconds(.1f);
         CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
         CanvasEventManager.instance.deathTypeSelected = selectedDeath;
     }
