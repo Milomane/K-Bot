@@ -14,7 +14,7 @@ public class GrapinModule : MonoBehaviour
 
     public bool DownOn, recupObjet;
 
-    public GameObject objet, barreOn, barreTwo;
+    public GameObject objet, barreOn, barreTwo, machine;
 
     public Transform parentObjet, initialParent;
     public Transform x, mX, z, mZ;
@@ -31,6 +31,10 @@ public class GrapinModule : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (objet != null)
+        {
+            objet.transform.position = new Vector3(transform.position.x, objet.transform.position.y, transform.position.z);
+        }
         if (transform.position.x >= x.position.x)
         {
             transform.position = new Vector3(x.position.x, transform.position.y, transform.position.z);
@@ -53,6 +57,7 @@ public class GrapinModule : MonoBehaviour
                 barreOn.transform.position.z);
             barreTwo.transform.position = new Vector3(barreTwo.transform.position.x, barreTwo.transform.position.y,
                 transform.position.z);
+            machine.transform.position = new Vector3(transform.position.x -1.059f, machine.transform.position.y,transform.position.z-0.082f);
         }
         if (inputNormalized != Vector3.zero)
         {
@@ -91,7 +96,7 @@ public class GrapinModule : MonoBehaviour
     public void Down()
     {
         gameObject.transform.parent = initialParent.transform;
-        downPoint = new Vector3(transform.position.x, initialPoint.position.y -5f, transform.position.z);
+        downPoint = new Vector3(transform.position.x, initialPoint.position.y - 5f, transform.position.z);
         DownOn = true;
         transform.position = Vector3.MoveTowards(transform.position, downPoint,
             speedMovement * Time.deltaTime);
