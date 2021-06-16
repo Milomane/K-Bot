@@ -11,7 +11,7 @@ public class RotorGrindeur : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 70f;
+        
     }
 
     // Update is called once per frame
@@ -21,11 +21,11 @@ public class RotorGrindeur : MonoBehaviour
         {
             if (left)
             {
-                transform.RotateAround(transform.position,Vector3.up, -speed * Time.deltaTime);
+                transform.Rotate(0,0,speed * Time.fixedDeltaTime);
             }
             else
             {
-                
+                transform.Rotate(0,0,-speed * Time.fixedDeltaTime);
             }
         }
     }

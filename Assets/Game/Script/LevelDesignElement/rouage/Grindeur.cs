@@ -8,8 +8,7 @@ public class Grindeur : MonoBehaviour
     public bool activation, blocage;
     public List<GameObject> rotorGauche;
     public List<GameObject> rotorDroite;
-    public float speed;
-    
+
     public GameObject destroyParticle;
 
     private void FixedUpdate()
