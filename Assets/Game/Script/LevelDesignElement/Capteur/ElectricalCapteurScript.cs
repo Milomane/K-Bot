@@ -23,13 +23,13 @@ public class ElectricalCapteurScript : MonoBehaviour
     {
         if (alimOn && !moduleConnect)
         {
-            alimEvent.Invoke();
             moduleConnect = true;
+            alimEvent.Invoke();
         }
         if (!alimOn && moduleConnect)
         {
-            shutDownEvent.Invoke();
             moduleConnect = false;
+            shutDownEvent.Invoke();
         }
     }
 }
