@@ -8,6 +8,8 @@ public class ElectricalCapteurScript : MonoBehaviour
 {
     public bool alimOn;
     private bool moduleConnect;
+    public GameObject[] light;
+    public Material blue, red;
 
     public UnityEvent alimEvent;
 
@@ -23,13 +25,23 @@ public class ElectricalCapteurScript : MonoBehaviour
     {
         if (alimOn && !moduleConnect)
         {
-            moduleConnect = true;
             alimEvent.Invoke();
+            light[0].GetComponent<MeshRenderer>().material = blue;
+            light[1].GetComponent<MeshRenderer>().material = blue;
+            light[2].GetComponent<MeshRenderer>().material = blue;
+            light[3].GetComponent<MeshRenderer>().material = blue;
+            light[4].GetComponent<MeshRenderer>().material = blue;
+            moduleConnect = true;
         }
         if (!alimOn && moduleConnect)
         {
-            moduleConnect = false;
             shutDownEvent.Invoke();
+            light[0].GetComponent<MeshRenderer>().material = red;
+            light[1].GetComponent<MeshRenderer>().material = red;
+            light[2].GetComponent<MeshRenderer>().material = red;
+            light[3].GetComponent<MeshRenderer>().material = red;
+            light[4].GetComponent<MeshRenderer>().material = red;
+            moduleConnect = false;
         }
     }
 }
