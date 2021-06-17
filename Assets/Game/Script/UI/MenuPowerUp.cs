@@ -29,6 +29,11 @@ public class MenuPowerUp : MonoBehaviour
             background.color = baseColor;
     }
 
+    void Update()
+    {
+        Debug.Log("background : " + background);
+    }
+
     public void Select()
     {
         /*background.color = hoverColor;
@@ -70,22 +75,22 @@ public class MenuPowerUp : MonoBehaviour
         switch (idPowerUp)
         {
             case 0 :
-                description.text = "Default";
+                description.text = "NORMAL";
                 break;
             case 1 :
-                description.text = "Explosion";
+                description.text = "EXPLOSION";
                 break;
             case 2 :
-                description.text = "Spring";
+                description.text = "SPRING";
                 break;
             case 3 :
-                description.text = "Generator";
+                description.text = "GENERATOR";
                 break;
             case 4 :
-                description.text = "Light";
+                description.text = "LIGHT";
                 break;
             case 5 :
-                description.text = "Accelerator";
+                description.text = "ACCELERATOR";
                 break;
         }
     }

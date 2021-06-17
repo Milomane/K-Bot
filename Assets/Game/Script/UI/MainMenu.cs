@@ -24,8 +24,8 @@ public class MainMenu : MonoBehaviour
     // Play
     public void PlayGame()
     {
-        SceneManager.LoadScene("Scene_Exposition_Mecanics");
-        // SceneManager.LoadScene("Intro");
+        //SceneManager.LoadScene("Scene_Exposition_Mecanics");
+        SceneManager.LoadScene("HubIntro");
     }
     
     // Options
