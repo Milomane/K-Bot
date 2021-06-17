@@ -29,6 +29,11 @@ public class MenuPowerUp : MonoBehaviour
             background.color = baseColor;
     }
 
+    void Update()
+    {
+        Debug.Log("background : " + background);
+    }
+
     public void Select()
     {
         /*background.color = hoverColor;
