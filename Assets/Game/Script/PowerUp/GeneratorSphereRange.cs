@@ -11,9 +11,9 @@ public class GeneratorSphereRange : MonoBehaviour
     {
         if (other.tag == "ElectricalCapteur")
         {
-            Debug.Log("Marche");
             other.GetComponent<ElectricalCapteurScript>().alimOn = true;
             allCaptorInRange.Add(other.GetComponent<ElectricalCapteurScript>());
+            Debug.Log("Marche");
         }
     }
     
@@ -21,7 +21,6 @@ public class GeneratorSphereRange : MonoBehaviour
     {
         if (other.tag == "ElectricalCapteur")
         {
-            Debug.Log("Marche mais a l'envers");
             other.GetComponent<ElectricalCapteurScript>().alimOn = false;
             if (allCaptorInRange.Contains(other.GetComponent<ElectricalCapteurScript>()))
             {
@@ -30,11 +29,12 @@ public class GeneratorSphereRange : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    public void AtDestruction()
     {
-        foreach (var captor in allCaptorInRange)
-        {
-            captor.alimOn = false;
-        }
+        if (allCaptorInRange.Count > 0)
+            foreach (var captor in allCaptorInRange)
+            {
+                captor.alimOn = false;
+            }
     }
 }
