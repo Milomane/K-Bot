@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Laser : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Laser : MonoBehaviour
     public GameObject lockedObject;
     public bool itKilled;
     public LayerMask layer;
+
+    public UnityEvent eventActive, eventDesactive;
     // Update is called once per frame
     void Update()
     {
@@ -19,11 +22,13 @@ public class Laser : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Target")) // verify if touch a target and activate 
             {
                 
-                lockedObject.GetComponent<LockedDoor>().Open();
+                eventActive.Invoke();
+                Debug.Log("a");
             }
             else
             {
-                lockedObject.GetComponent<LockedDoor>().Close();
+                eventDesactive.Invoke();
+                Debug.Log("b");
             }
 
             if (itKilled && hit.collider.gameObject.CompareTag("Player") && PlayerDeathHandler.instance.dying == false) // kill the player
@@ -42,8 +47,10 @@ public class Laser : MonoBehaviour
         else
         {
             DrawRay(transform.position, transform.forward * distance);
-            lockedObject.GetComponent<LockedDoor>().isActivated = !defineOpen;  
+            eventDesactive.Invoke();
+            Debug.Log("c");
         }
+    
     }
 
     void DrawRay(Vector3 startPos, Vector3 endPos)
