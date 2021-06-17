@@ -18,10 +18,14 @@ namespace Game.Script
             {
                 // Set the volume 
                 audioMixer.SetFloat("Volume", 0);
+                // Play Music
+                FindObjectOfType<AudioManager>().Play("MusicMainMenu");
             }
-            
-            // Play Music
-            FindObjectOfType<AudioManager>().Play("Music");
+            else
+            {
+                // Play Music
+                FindObjectOfType<AudioManager>().Stop("MusicMainMenu");
+            }
         }
 
         // Update is called once per frame
