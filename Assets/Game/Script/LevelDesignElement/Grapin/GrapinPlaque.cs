@@ -10,9 +10,17 @@ public class GrapinPlaque : MonoBehaviour
     public GrapinModule module;
     public GameObject imagePressCanvas, player;
     private bool ActivationOn;
+    
+    // Audio source
+    private AudioSource audioSource;
+
+    [SerializeField] private AudioClip pressureOn;
+    [SerializeField] private AudioClip pressureOff;
 
     public void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.pitch = 0.7f;
         if (move)
         {
             imagePressCanvas.SetActive(false);
@@ -82,6 +90,7 @@ public class GrapinPlaque : MonoBehaviour
                 {
                     module.ObjectRecup();
                     module.verouillage = false;
+                    audioSource.PlayOneShot(pressureOff, 1f);
                 }
             }
             else if (move)
@@ -106,6 +115,7 @@ public class GrapinPlaque : MonoBehaviour
                 {
                     module.DropObject();
                     module.verouillage = true;
+                    audioSource.PlayOneShot(pressureOn, 1f);
                 }
             }
             else if (move)
