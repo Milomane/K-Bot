@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4841997455930226763}
   - component: {fileID: 2853767826239455655}
   - component: {fileID: 4420891760102675347}
+  - component: {fileID: 8321685396451042927}
   m_Layer: 0
   m_Name: tube_usine9
   m_TagString: Untagged
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8321685396451042927
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497778708253112432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2607065465053803630, guid: a223c068c316d0b48b290e885c9d2bd8, type: 3}
 --- !u!1 &3125151380387665021
 GameObject:
   m_ObjectHideFlags: 0
