@@ -11,9 +11,11 @@ public class RouageScript : MonoBehaviour
     public float speedRotation;
     private MeshCollider _meshCollider;
     public UnityEvent eventShutDown;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         _meshCollider = GetComponent<MeshCollider>();
         rotationOn = true;
     }
@@ -45,6 +47,7 @@ public class RouageScript : MonoBehaviour
             if (rotationOn)
             {
                 KillPlayer();
+                audioSource.Stop();
             }
         }
         if (other.gameObject.CompareTag("Corpse"))
