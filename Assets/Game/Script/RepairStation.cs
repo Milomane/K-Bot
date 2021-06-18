@@ -14,6 +14,8 @@ public class RepairStation : MonoBehaviour
 
     private bool activeStation;
     private float secureTime;
+
+    public bool lookRight;
     
     
     void Start()
