@@ -124,16 +124,11 @@ public class PlayerDeathHandler : MonoBehaviour
 
         // Animation player
 
-        // Wait for the player animation to end
-        if (deathType != DeathType.crunshed)
-            yield return new WaitForSeconds(1);
-
 
         playerController.brutStopMovement = true;
         yield return null;
         controller.enabled = false;
-
-
+        
         GameObject eventObject = null;
         GameObject particleObject = null;
 
@@ -190,9 +185,15 @@ public class PlayerDeathHandler : MonoBehaviour
         // Teleport player camera back
         GetComponent<CharacterController>().enabled = false;
         transform.position = repairStation.transform.position;
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, repairStation.transform.eulerAngles.y,
+
+        float angleOffset = 0f;
+        if (repairStation.GetComponent<RepairStation>())
+            if (repairStation.GetComponent<RepairStation>().lookRight)
+                angleOffset = 180;
+        
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, repairStation.transform.eulerAngles.y + angleOffset,
             transform.eulerAngles.z);
-        cinemachineFreeLook.m_XAxis.Value = repairStation.transform.eulerAngles.y - 90;
+        cinemachineFreeLook.m_XAxis.Value = repairStation.transform.eulerAngles.y + angleOffset;
         repairStation.GetComponent<Animator>().SetBool("Open", false);
         GetComponent<CharacterController>().enabled = true;
 
@@ -208,7 +209,6 @@ public class PlayerDeathHandler : MonoBehaviour
         yield return new WaitForSeconds(repairStation.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
         // Retake control
-        cinemachineFreeLook.m_XAxis.Value = repairStation.transform.eulerAngles.y;
 
         controller.enabled = true;
         playerController.stopMovement = false;

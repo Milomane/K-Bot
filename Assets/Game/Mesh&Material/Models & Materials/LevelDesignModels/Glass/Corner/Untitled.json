@@ -1,0 +1,54 @@
+{
+    "format": {
+        "version": "1.0"
+    },
+    "shaders": {
+        "Main shader": {
+            "displacementTessellation": {
+                "displacement": {
+                    "scale": 0,
+                    "source_channel": 0
+                },
+                "enable": true,
+                "tessellation": {
+                    "max_length": 64,
+                    "subdiv_count": 1,
+                    "subdiv_mode": 0
+                }
+            },
+            "parameters": {
+                "Common Parameters": {
+                    "ao_intensity": 0.75,
+                    "emissive_intensity": 1,
+                    "horizonFade": 1.2999999523162842,
+                    "nbSamples": 16
+                },
+                "DebugAcesToneMapping": false,
+                "DebugAlbedo": false,
+                "DebugAo": false,
+                "DebugDirectDiffuse": 1,
+                "DebugDirectSpecular": 1,
+                "DebugFringelessMetallic": true,
+                "DebugIndirectDiffuse": 1,
+                "DebugIndirectSpecular": 1,
+                "DebugLinearToneMapping": true,
+                "DebugNormal": false,
+                "DebugRoughness": false,
+                "DebugSpecColor": false,
+                "Parallax Occlusion Mapping": {
+                    "maxPOMSamples": 16,
+                    "minPOMSamples": 4,
+                    "pomStrength": 1,
+                    "usePOM": false
+                }
+            },
+            "shader": "lens-studio",
+            "shaderInstance": "Main shader"
+        }
+    },
+    "texturesets": {
+        "DefaultMaterial": {
+            "shader": "Main shader"
+        }
+    }
+}

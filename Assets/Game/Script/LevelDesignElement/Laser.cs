@@ -21,14 +21,11 @@ public class Laser : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Target")) // verify if touch a target and activate 
             {
-                
                 eventActive.Invoke();
-                Debug.Log("a");
             }
             else
             {
                 eventDesactive.Invoke();
-                Debug.Log("b");
             }
 
             if (itKilled && hit.collider.gameObject.CompareTag("Player") && PlayerDeathHandler.instance.dying == false) // kill the player
