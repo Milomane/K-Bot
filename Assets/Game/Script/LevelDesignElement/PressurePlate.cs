@@ -16,6 +16,19 @@ public class PressurePlate : MonoBehaviour
 
     private bool playerOnPlate;
     private bool playerInAir;
+    
+    // Audio source
+    private AudioSource audioSource;
+
+    // Audio clip
+    [SerializeField] private AudioClip pressureOn;
+    [SerializeField] private AudioClip pressureOff;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.pitch = 0.7f;
+    }
 
     // Update is called once per frame 
     void Update()
@@ -57,7 +70,11 @@ public class PressurePlate : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Corpse"))
+        {
             onPlate.Add(other.gameObject);
+            audioSource.PlayOneShot(pressureOn, 1f); 
+        }
+            
         if (other.CompareTag("Player"))
             playerOnPlate = true;
     }
@@ -67,6 +84,10 @@ public class PressurePlate : MonoBehaviour
     {
         onPlate.Remove(other.gameObject);
         if (other.CompareTag("Player"))
+        {
             playerOnPlate = false;
+            audioSource.PlayOneShot(pressureOff, 1f);
+        }
+            
     }
 }

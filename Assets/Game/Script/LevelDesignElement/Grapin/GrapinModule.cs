@@ -24,8 +24,12 @@ public class GrapinModule : MonoBehaviour
 
     public Vector3 inputNormalized;
 
-    private bool isGrappleMoving;
     private bool isGrappleJustStop;
+    private bool canDoSound;
+    
+    private Vector3 lastUpdatePosition = Vector3.zero;
+    private Vector3 distance;
+    private float currentSpeed;
 
     // Audio source
     private AudioSource audioSource;
@@ -84,17 +88,36 @@ public class GrapinModule : MonoBehaviour
         if (inputNormalized != Vector3.zero)
         {
             gameObject.transform.Translate(inputNormalized * speedMovement * Time.fixedDeltaTime);
-            
+
+            canDoSound = true;
+        }
+        else
+        {
+            canDoSound = false;
+        }
+        
+        // Check if grapple is moving
+        distance = transform.position - lastUpdatePosition;
+        currentSpeed = distance.magnitude / Time.deltaTime;
+        lastUpdatePosition = transform.position;
+
+        if (currentSpeed > 0f && canDoSound)
+        {
             if (!audioSource.isPlaying)
             {
                 audioSource.clip = grappleMove;
                 audioSource.Play();
+                isGrappleJustStop = true;
             }
         }
         else
         {
+            if (isGrappleJustStop)
+            {
+                AudioSource.PlayClipAtPoint(grappleStop, transform.position);
+                isGrappleJustStop = false;
+            }
             audioSource.Stop();
-            // TODO : Play grappleStop when grapple stop move
         }
 
         if (!DownOn && finalVerticalMove)
