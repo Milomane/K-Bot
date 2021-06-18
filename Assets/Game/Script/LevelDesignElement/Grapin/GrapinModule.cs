@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class GrapinModule : MonoBehaviour
 {
+    // Grapple initial point
     public Transform initialPoint;
+    
+    // Points (Up and down)
     public Vector3 upPoint, downPoint;
 
     public bool finalVerticalMove, verouillage;
@@ -20,49 +23,103 @@ public class GrapinModule : MonoBehaviour
     public Transform x, mX, z, mZ;
 
     public Vector3 inputNormalized;
+
+    private bool isGrappleMoving;
+    private bool isGrappleJustStop;
+    
+    private Vector3 lastUpdatePosition = Vector3.zero;
+    private Vector3 distance;
+    private float currentSpeed;
+
+    // Audio source
+    private AudioSource audioSource;
+
+    // Audio clip
+    [SerializeField] private AudioClip grappleMove;
+    [SerializeField] private AudioClip grappleStop;
+        
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+        audioSource = GetComponent<AudioSource>();
         initialParent = gameObject.transform.parent;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        // Check if no null
         if (objet != null)
         {
             objet.transform.position = new Vector3(transform.position.x, objet.transform.position.y, transform.position.z);
         }
+        
         if (transform.position.x >= x.position.x)
         {
             transform.position = new Vector3(x.position.x, transform.position.y, transform.position.z);
         }
+        
         if (transform.position.x <= mX.position.x)
         {
             transform.position = new Vector3(mX.position.x, transform.position.y, transform.position.z);
         }
+        
         if (transform.position.z >= z.position.z)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, z.position.z);
         }
+        
         if (transform.position.z <= mZ.position.z)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, mZ.position.z);
         }
+        
         if (barreOn != null && barreTwo != null)
         {
             barreOn.transform.position = new Vector3(transform.position.x, barreOn.transform.position.y,
                 barreOn.transform.position.z);
+            
             barreTwo.transform.position = new Vector3(barreTwo.transform.position.x, barreTwo.transform.position.y,
                 transform.position.z);
+            
             machine.transform.position = new Vector3(transform.position.x -1.059f, machine.transform.position.y,transform.position.z-0.082f);
         }
+        
         if (inputNormalized != Vector3.zero)
         {
             gameObject.transform.Translate(inputNormalized * speedMovement * Time.fixedDeltaTime);
+            
+            /*if (!audioSource.isPlaying)
+            {
+                audioSource.clip = grappleMove;
+                audioSource.Play();
+            }*/
         }
+        
+        // Check if grapple is moving
+        distance = transform.position - lastUpdatePosition;
+        currentSpeed = distance.magnitude / Time.deltaTime;
+        lastUpdatePosition = transform.position;
+
+        if (currentSpeed > 0f)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = grappleMove;
+                audioSource.Play();
+                isGrappleJustStop = true;
+            }
+        }
+        else
+        {
+            if (isGrappleJustStop)
+            {
+                AudioSource.PlayClipAtPoint(grappleStop, transform.position);
+                isGrappleJustStop = false;
+            }
+            audioSource.Stop();
+        }
+
         if (!DownOn && finalVerticalMove)
         {
             Up();
@@ -74,15 +131,6 @@ public class GrapinModule : MonoBehaviour
         inputNormalized = new Vector3(horizontal, 0f, vertical).normalized;
         Debug.Log(inputNormalized);
     }
-    
-
-
-
-
-
-
-
-
 
     public void Up()
     {
