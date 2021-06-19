@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4912903012059813261}
   - component: {fileID: 4912903012059813260}
-  - component: {fileID: 4912903012059813251}
   - component: {fileID: 4912903012059813250}
+  - component: {fileID: 2866895676653769515}
   m_Layer: 0
   m_Name: Prefab_Platforme_Ascenseur
   m_TagString: Untagged
@@ -42,20 +42,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4912903012059813249}
   m_Mesh: {fileID: 89712945287117100, guid: db0b144700714a64d98e00b23705852d, type: 3}
---- !u!64 &4912903012059813251
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4912903012059813249}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 89712945287117100, guid: db0b144700714a64d98e00b23705852d, type: 3}
 --- !u!114 &4912903012059813250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,6 +71,20 @@ MonoBehaviour:
   delayTime: 0.01
   player: {fileID: 0}
   playerGroup: {fileID: 0}
+--- !u!64 &2866895676653769515
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4912903012059813249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 89712945287117100, guid: db0b144700714a64d98e00b23705852d, type: 3}
 --- !u!64 &4912903012166850741
 MeshCollider:
   m_ObjectHideFlags: 0
