@@ -24,6 +24,9 @@ public class GrapinModule : MonoBehaviour
 
     public Vector3 inputNormalized;
 
+    public bool invertHorizontal;
+    public bool invertVertical;
+
     private bool isGrappleJustStop;
     private bool canDoSound;
     
@@ -128,7 +131,14 @@ public class GrapinModule : MonoBehaviour
 
     public void InputMove(float horizontal, float vertical)
     {
-        inputNormalized = new Vector3(horizontal, 0f, vertical).normalized;
+        float hor = 1f;
+        if (invertHorizontal)
+            hor = -1;
+        float vert = 1f;
+        if (invertVertical)
+            vert = -1;
+
+        inputNormalized = new Vector3(horizontal * hor, 0f, vertical * vert).normalized;
         Debug.Log(inputNormalized);
     }
 

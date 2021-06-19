@@ -10,7 +10,6 @@ public class Breakable : MonoBehaviour
 
     public void BreakObject()
     {
-        Debug.Log("Break object");
         eventToInvoke.Invoke();
     }
 }

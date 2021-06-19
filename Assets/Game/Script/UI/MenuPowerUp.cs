@@ -31,7 +31,6 @@ public class MenuPowerUp : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("background : " + background);
     }
 
     public void Select()
