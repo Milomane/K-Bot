@@ -13,6 +13,19 @@ public class Laser : MonoBehaviour
     public LayerMask layer;
 
     public UnityEvent eventActive, eventDesactive;
+
+    private AudioSource audioSource;
+    private bool isJustBlocking;
+
+    [SerializeField] private AudioClip laserOn;
+    [SerializeField] private AudioClip laserOff;
+    [SerializeField] private AudioClip laserContinuous;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        // audioSource.Play();
+    }
     
     // Update is called once per frame
     void Update()
@@ -22,11 +35,22 @@ public class Laser : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Target")) // verify if touch a target and activate 
             {
+                if (isJustBlocking)
+                {
+                    audioSource.PlayOneShot(laserOn);
+                    isJustBlocking = false;
+                }
                 eventActive.Invoke();
             }
             else
             {
+                if (!isJustBlocking)
+                {
+                    audioSource.PlayOneShot(laserOff);
+                    isJustBlocking = true;
+                }
                 eventDesactive.Invoke();
+                
             }
 
             if (itKilled && hit.collider.gameObject.CompareTag("Player") && PlayerDeathHandler.instance.dying == false) // kill the player
