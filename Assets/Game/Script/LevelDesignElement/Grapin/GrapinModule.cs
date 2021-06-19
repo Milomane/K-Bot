@@ -183,6 +183,8 @@ public class GrapinModule : MonoBehaviour
             }
             objet.GetComponent<Rigidbody>().useGravity = true;
             objet.GetComponent<Rigidbody>().isKinematic = false;
+
+            objet = null;
         }
         
     }
