@@ -13,6 +13,7 @@ public class Laser : MonoBehaviour
     public LayerMask layer;
 
     public UnityEvent eventActive, eventDesactive;
+    
     // Update is called once per frame
     void Update()
     {
