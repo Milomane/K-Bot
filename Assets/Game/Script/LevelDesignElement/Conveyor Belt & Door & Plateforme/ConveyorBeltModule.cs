@@ -18,7 +18,7 @@ public class ConveyorBeltModule : MonoBehaviour
         valueoffset = speed / 2;
         for (int i = 0; i < listOffset.Count; i++)
         {
-            listOffset[i].scrollSpeed = valueoffset;
+            //listOffset[i].scrollSpeed = valueoffset;
         }
     }
 
@@ -34,10 +34,11 @@ public class ConveyorBeltModule : MonoBehaviour
 
             if (!blocageOffset)
             {
+                /*
                 for (int i = 0; i < listOffset.Count ; i++)
                 {
                     listOffset[i].activationOffset = true;
-                }
+                }*/
 
                 blocageOffset = true;
             }
