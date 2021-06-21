@@ -43,6 +43,11 @@ public class FloatingObject : MonoBehaviour
             
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
+            if (GetComponent<Rigidbody>().velocity.x != 0 || GetComponent<Rigidbody>().velocity.z != 0)
+                GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Lerp(GetComponent<Rigidbody>().velocity.x, 0, .1f), GetComponent<Rigidbody>().velocity.y, Mathf.Lerp(GetComponent<Rigidbody>().velocity.z, 0, .1f));
+            
+            
+
             rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         }
         else
