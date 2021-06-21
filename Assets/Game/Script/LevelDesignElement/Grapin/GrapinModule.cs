@@ -34,6 +34,7 @@ public class GrapinModule : MonoBehaviour
     private Vector3 distance;
     private float currentSpeed;
 
+    public float hauteurGrappin;
     // Audio source
     private AudioSource audioSource;
 
@@ -154,7 +155,7 @@ public class GrapinModule : MonoBehaviour
     public void Down()
     {
         gameObject.transform.parent = initialParent.transform;
-        downPoint = new Vector3(transform.position.x, initialPoint.position.y - 5f, transform.position.z);
+        downPoint = new Vector3(transform.position.x, initialPoint.position.y - hauteurGrappin, transform.position.z);
         DownOn = true;
         transform.position = Vector3.MoveTowards(transform.position, downPoint,
             speedMovement * Time.deltaTime);
