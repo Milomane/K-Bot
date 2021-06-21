@@ -200,6 +200,8 @@ public class PlayerMovement : MonoBehaviour
             // If the player is not moving and grounded, the move direction reset
             /*if (controller.isGrounded)
                 moveDirection = Vector3.zero;                    HERE*/
+            
+            moveDirection = Vector3.zero;
         }
 
         if ((inputNormalized.magnitude > .1f || superSprint) && !stopMovement && Time.deltaTime != 0)
