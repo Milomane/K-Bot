@@ -1418,7 +1418,6 @@ GameObject:
   - component: {fileID: 4995761511227059959}
   - component: {fileID: 1736072249402852326}
   - component: {fileID: 9082304072695872435}
-  - component: {fileID: 3463794433686093162}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -1484,22 +1483,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.07
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &3463794433686093162
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5629308273580684365}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 122
-  m_CollisionDetection: 0
 --- !u!1 &5925034476859206810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2097,6 +2080,7 @@ GameObject:
   - component: {fileID: 480798020379750148}
   - component: {fileID: 4089938964900658433}
   - component: {fileID: 2475846042868057301}
+  - component: {fileID: 3681542048819154599}
   m_Layer: 0
   m_Name: polySurface1
   m_TagString: Untagged
@@ -2167,6 +2151,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3681542048819154599
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7747718470813445786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6329158148709259305, guid: e25d86b80389c06429704332c21b9c7e, type: 3}
 --- !u!1 &7990573256004561495
 GameObject:
   m_ObjectHideFlags: 0
