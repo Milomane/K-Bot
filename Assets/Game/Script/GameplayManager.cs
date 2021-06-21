@@ -14,7 +14,7 @@ namespace Game.Script
             Time.timeScale = 1f;
             
             // If we are in main menu
-            if (SceneManager.GetActiveScene().buildIndex.Equals(0))
+            if (SceneManager.GetActiveScene().name.Equals("MainMenu"))
             {
                 // Set the volume 
                 audioMixer.SetFloat("Volume", 0);
@@ -23,8 +23,36 @@ namespace Game.Script
             }
             else
             {
-                // Play Music
+                // Stop Music
                 FindObjectOfType<AudioManager>().Stop("MusicMainMenu");
+            }
+            
+            // If we are in Hub
+            if (SceneManager.GetActiveScene().name.Equals("HubIntro"))
+            {
+                // Set the volume 
+                audioMixer.SetFloat("Volume", 0);
+                // Play Music
+                FindObjectOfType<AudioManager>().Play("MusicHub");
+            }
+            else
+            {
+                // Stop Music
+                FindObjectOfType<AudioManager>().Stop("MusicHub");
+            }
+            
+            // If we are in Factory
+            if (SceneManager.GetActiveScene().name.Equals("Factory"))
+            {
+                // Set the volume 
+                audioMixer.SetFloat("Volume", 0);
+                // Play Music
+                FindObjectOfType<AudioManager>().Play("MusicFactory");
+            }
+            else
+            {
+                // Stop Music
+                FindObjectOfType<AudioManager>().Stop("MusicFactory");
             }
         }
 

@@ -774,9 +774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lamp: []
-  activate: 0
   distance: 0
-  lockedObj: {fileID: 0}
   eventActive:
     m_PersistentCalls:
       m_Calls: []
@@ -1553,7 +1551,7 @@ GameObject:
   - component: {fileID: 8914276180331448764}
   - component: {fileID: 6537597452455798160}
   m_Layer: 0
-  m_Name: Laght capteur
+  m_Name: Light capteur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1602,9 +1600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lamp: []
-  activate: 0
-  distance: 0
-  lockedObj: {fileID: 0}
+  distance: 5
   eventActive:
     m_PersistentCalls:
       m_Calls: []
