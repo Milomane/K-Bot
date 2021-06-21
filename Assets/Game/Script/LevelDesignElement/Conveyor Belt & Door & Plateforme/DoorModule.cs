@@ -15,9 +15,17 @@ public class DoorModule : MonoBehaviour
     public int crushValueToKill = 2;
 
     public GameObject test;
+
+    private bool canDoOpenSound;
+    private bool canDoCloseSound;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip doorOpen;
+    [SerializeField] private AudioClip doorClose;
+    
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         goInitialPosition = new GameObject();
         goInitialPosition.transform.position = gameObject.transform.position;
     }
@@ -28,11 +36,24 @@ public class DoorModule : MonoBehaviour
         if (doorActivation)
         {
             transform.position = Vector3.MoveTowards(transform.position, endPoint.position, speed * Time.deltaTime);
+            if (canDoOpenSound)
+            {
+                audioSource.PlayOneShot(doorOpen);
+                canDoOpenSound = false;
+                canDoCloseSound = true;
+            }
+            
         }
         else if (!doorActivation)
         {
             transform.position = Vector3.MoveTowards(transform.position, goInitialPosition.transform.position,
                 speed * Time.deltaTime);
+            if (canDoCloseSound)
+            {
+                audioSource.PlayOneShot(doorClose);
+                canDoCloseSound = false;
+                canDoOpenSound = true;
+            }
         }
     }
 
