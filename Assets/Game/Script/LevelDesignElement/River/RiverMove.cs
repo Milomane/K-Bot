@@ -9,6 +9,11 @@ public class RiverMove : MonoBehaviour
     public bool x, z, mx, mz, mxz, xmz, mxmz, xz;
 
     public float speed;
+
+    [SerializeField] private AudioClip lavaDeath;
+
+    [SerializeField] private float volumeLavaDeath = 0.5f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +33,7 @@ public class RiverMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            AudioSource.PlayClipAtPoint(lavaDeath, other.gameObject.transform.position, volumeLavaDeath);
             other.gameObject.GetComponent<PlayerDeathHandler>().StartDeath(PlayerDeathHandler.DeathType.normal);
         }
     }
