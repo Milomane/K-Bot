@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float airDeceleration = 2f;
 
     [Header("Ground")] 
+    [SerializeField] private float minAirTime = .05f;
+    private float airTime;
     [SerializeField] private Transform groundDirection;
     [SerializeField] private Transform fallDirection;
 
@@ -95,8 +97,13 @@ public class PlayerMovement : MonoBehaviour
             // Back on Ground
             ReturnOnGround();
         }
+
+        if (!isGrounded)
+            airTime += Time.deltaTime;
+        else
+            airTime = 0;
         
-        playerController.animator.SetBool("InAir", !isGrounded);
+        playerController.animator.SetBool("InAir", !isGrounded && airTime > minAirTime);
         playerController.animator.SetBool("Jumping", jumping);
         
         DebugGround();

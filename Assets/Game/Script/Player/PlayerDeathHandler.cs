@@ -26,7 +26,8 @@ public class PlayerDeathHandler : MonoBehaviour
     // Nb body available
     private int nbBodyAvailable;
     public static DeathType selectedDeath = DeathType.crunshed;
-    public List<DeathType> unlockedDeath;
+    public List<DeathType> unlockeDeathAtStart;
+    private List<DeathType> unlockedDeath;
     private GameObject nbBodiesAvailable;
 
     public GameObject repairStation;
@@ -65,28 +66,23 @@ public class PlayerDeathHandler : MonoBehaviour
         bodys = new Queue<GameObject>();
         nbBodiesAvailable = GameObject.FindWithTag("NbBodies");
 
-        if (unlockedDeath.Count == 0)
-        {
-            unlockedDeath = new List<DeathType>();
-            foreach (var backModel in playerModel.arrayBackModels)
-            {
-                backModel.SetActive(false);
-            }
-        }
-        else
-        {
-            ChangePowerUp((int) unlockedDeath[0]);
-            StartCoroutine(ChangeBackModel());
-        }
-
+        unlockedDeath = new List<DeathType>();
+        
         StartCoroutine(Safe());
     }
 
     IEnumerator Safe()
     {
-        yield return new WaitForSeconds(.1f);
-        CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
-        CanvasEventManager.instance.deathTypeSelected = selectedDeath;
+        foreach (var deathType in unlockeDeathAtStart)
+        {
+            NewPowerUp((int)deathType);
+            
+            yield return new WaitForSeconds(.1f);
+            CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
+        }
+        
+        if (unlockeDeathAtStart.Count == 0)
+            CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
     }
 
     void Update()
@@ -290,7 +286,6 @@ public class PlayerDeathHandler : MonoBehaviour
                 Debug.LogError("Error in change power up, not a valid ID");
                 return;
         }
-
         CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
 
         ChangePowerUp(powerUpId);

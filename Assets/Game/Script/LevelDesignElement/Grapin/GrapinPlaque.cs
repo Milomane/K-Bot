@@ -25,7 +25,6 @@ public class GrapinPlaque : MonoBehaviour
         {
             imagePressCanvas.SetActive(false);
         }
-        
     }
 
     private void Update()
