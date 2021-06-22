@@ -81,6 +81,8 @@ public class PlayerDeathHandler : MonoBehaviour
             CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
         }
         
+        yield return new WaitForSeconds(.05f);
+        
         if (unlockeDeathAtStart.Count == 0)
             CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
     }
