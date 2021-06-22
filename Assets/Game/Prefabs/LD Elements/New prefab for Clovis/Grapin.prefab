@@ -52,6 +52,7 @@ MonoBehaviour:
   module: {fileID: 1286874492}
   imagePressCanvas: {fileID: 1348600006}
   player: {fileID: 0}
+  audioSource: {fileID: 0}
   pressureOn: {fileID: 8300000, guid: 62833a1f346da39478fbe369e1f51b2d, type: 3}
   pressureOff: {fileID: 8300000, guid: 6a095b6bd3477844e80c81f1ce325cb8, type: 3}
 --- !u!135 &487690781
@@ -927,6 +928,7 @@ MonoBehaviour:
   module: {fileID: 1286874492}
   imagePressCanvas: {fileID: 0}
   player: {fileID: 0}
+  audioSource: {fileID: 2012990612}
   pressureOn: {fileID: 8300000, guid: 62833a1f346da39478fbe369e1f51b2d, type: 3}
   pressureOff: {fileID: 8300000, guid: 6a095b6bd3477844e80c81f1ce325cb8, type: 3}
 --- !u!82 &2012990612
@@ -941,7 +943,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 7566020c04dbc75478fcb0812821a8aa, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1325,6 +1327,9 @@ MonoBehaviour:
   z: {fileID: 4792835714947833258}
   mZ: {fileID: 4164906782494026729}
   inputNormalized: {x: 0, y: 0, z: 0}
+  invertHorizontal: 0
+  invertVertical: 0
+  hauteurGrappin: 0
   grappleMove: {fileID: 8300000, guid: da4cd565e879eb7479ecc332919bbd77, type: 3}
   grappleStop: {fileID: 8300000, guid: 16a36cd876ca67a4a98a5f46c9e4bae4, type: 3}
 --- !u!64 &4391029063929588518

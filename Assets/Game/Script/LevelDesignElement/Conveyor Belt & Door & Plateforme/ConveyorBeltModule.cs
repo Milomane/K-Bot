@@ -20,6 +20,8 @@ public class ConveyorBeltModule : MonoBehaviour
         {
             listOffset[i].scrollSpeed = valueoffset;
         }
+        
+        InvokeRepeating("checkMissingObject",2f,1f);
     }
 
     // Update is called once per frame
@@ -63,6 +65,15 @@ public class ConveyorBeltModule : MonoBehaviour
                 blocageOffset = false;
             }
         }
+        if (onBelt.Count > 0)
+        {
+            Debug.Log(onBelt.Count + " compteur");
+        }
+
+        if(onBelt.Count >= 1)
+        {
+            onBelt.RemoveAll(GameObject => gameObject == null);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -83,10 +94,6 @@ public class ConveyorBeltModule : MonoBehaviour
         {
             detectionPlayer = false;
             player = null;
-            onBelt.Add(other.gameObject);
-        }
-        else
-        {
             onBelt.Add(other.gameObject);
         }
     }
@@ -114,5 +121,16 @@ public class ConveyorBeltModule : MonoBehaviour
     public void ActivationBoard()
     {
         conveyorActivation = true;
+    }
+
+    void checkMissingObject()
+    {
+        for (int i = 0; i <= onBelt.Count -1; i++)
+        {
+            if (onBelt[i] == null)
+            {
+                onBelt.RemoveAt(i);
+            }
+        }
     }
 }
