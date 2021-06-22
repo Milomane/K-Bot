@@ -59,9 +59,9 @@ public class PlayerMovement : MonoBehaviour
     public bool superSprint;
 
     //Jump
-    
     private Vector3 jumpDirection;
     private float springCd;
+    private bool wasGrounded;
     
 
     //Ground and wall
@@ -74,6 +74,11 @@ public class PlayerMovement : MonoBehaviour
     private RaycastHit wallHit;
     public bool isHittingWall;
     
+    // Audio
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip landSound;
+    private bool doOneSound;
+    
     //Debug
     [Header("Debug")] 
     public bool showGroundNormal;
@@ -81,8 +86,13 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
     public float realSpeed;
 
-    private bool wasGrounded;
-    
+    void Start()
+    {
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+    }
 
     void Update()
     {
@@ -96,6 +106,10 @@ public class PlayerMovement : MonoBehaviour
         {
             // Back on Ground
             ReturnOnGround();
+        }
+        else
+        {
+            doOneSound = true;
         }
 
         if (!isGrounded)
@@ -386,6 +400,12 @@ public class PlayerMovement : MonoBehaviour
     public void ReturnOnGround()
     {
         // GetComponentInChildren<PlayerSounds>().Land(); TODO : résoudre le problème de son
+        if (doOneSound)
+        {
+            audioSource.PlayOneShot(landSound);
+            doOneSound = false;
+        }
+        
     }
 
     void DebugGround()
