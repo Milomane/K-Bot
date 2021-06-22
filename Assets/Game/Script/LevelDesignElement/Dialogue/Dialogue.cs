@@ -9,15 +9,16 @@ public class Dialogue : MonoBehaviour
     public string[] dialogue;
     [SerializeField]  private int _actualLine;
     public float speed;
-    public GameObject player;
+    private GameObject player;
     public float distNeed;
     public bool running;
-
-    public Animation anim;
+    [SerializeField] private bool keepIdle;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        textBox.gameObject.SetActive(false);
+        textBox.transform.parent.gameObject.SetActive(false);
+        player = PlayerController.instance.gameObject;
     }
 
     // Update is called once per frame
@@ -27,15 +28,18 @@ public class Dialogue : MonoBehaviour
 
         if ( dist <= distNeed) // verify if the player is close enogh to talk to a pnj
         {
-            
+          
             
             if (Input.GetButtonDown("Interaction") && running == false) 
             {
+                anim.SetBool("Idle",true);
+                GameObject textObj = textBox.gameObject;
+                textObj.transform.parent.GetComponent<lookPlayer>().target = gameObject;
                 if (_actualLine <= dialogue.Length-1) // change the text line
                 {
                     PlayerController.instance.stopMovement = true;
                     NextLine();
-                    textBox.gameObject.SetActive(true);
+                    textBox.transform.parent.gameObject.SetActive(true);
                 }
                 else // close text box
                 {
@@ -44,7 +48,11 @@ public class Dialogue : MonoBehaviour
                     textBox.text = null;
                     _actualLine = 0;
                     running = false;
-                    textBox.gameObject.SetActive(false);
+                    textBox.transform.parent.gameObject.SetActive(false);
+                    if (keepIdle == false)
+                    {
+                        anim.SetBool("Idle", false);
+                    }
                 }
             }
         }
