@@ -10,9 +10,13 @@ public class RecupPowerUp : MonoBehaviour
     private bool _stopDo;
 
     public Animator animator;
+
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip newPowerUpSound;
+    
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -30,6 +34,7 @@ public class RecupPowerUp : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && Input.GetButton("Interaction") && _stopDo == false)
         {
             animator.Play("PowerUpRecup");
+            audioSource.PlayOneShot(newPowerUpSound);
             _stopDo = true;
         }
     }

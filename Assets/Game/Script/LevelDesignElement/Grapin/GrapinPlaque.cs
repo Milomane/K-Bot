@@ -12,20 +12,23 @@ public class GrapinPlaque : MonoBehaviour
     private bool ActivationOn;
     
     // Audio source
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
 
     [SerializeField] private AudioClip pressureOn;
     [SerializeField] private AudioClip pressureOff;
 
     public void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.pitch = 0.7f;
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+        
+        audioSource.pitch = 0.8f;
         if (move)
         {
             imagePressCanvas.SetActive(false);
         }
-        
     }
 
     private void Update()

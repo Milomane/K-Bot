@@ -11,10 +11,17 @@ public class ControlerDesk : MonoBehaviour
     public bool timerDoorOn, activationTimer, verouillage;
     public float timerDoor, timer;
     public UnityEvent activationEvent, desactivationEvent;
+
+    // Audio
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip buttonOn;
+    [SerializeField] private AudioClip buttonOff;
+    
     
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         imagePressCanvas.SetActive(false);
     }
 
@@ -36,6 +43,7 @@ public class ControlerDesk : MonoBehaviour
         {
             if (Input.GetButtonDown("Interaction"))
             {
+                audioSource.PlayOneShot(buttonOn);
                 if (!verouillage)
                 {
                     activationEvent.Invoke();
@@ -50,6 +58,7 @@ public class ControlerDesk : MonoBehaviour
                 }
                 else if (verouillage)
                 {
+                    audioSource.PlayOneShot(buttonOff);
                     desactivationEvent.Invoke();
                     verouillage = false;
                     Debug.Log("desactivation");

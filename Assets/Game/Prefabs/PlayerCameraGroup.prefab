@@ -291,7 +291,7 @@ MonoBehaviour:
   - particlePrefab: {fileID: 657781067375631079, guid: de9a0ac52b740284a8054f21c71492d6, type: 3}
     eventPrefab: {fileID: 0}
   maxBody: 3
-  unlockedDeath: 
+  unlockeDeathAtStart: 
   repairStation: {fileID: 0}
   canDie: 1
   dying: 0
@@ -326,6 +326,7 @@ MonoBehaviour:
   inAirSpeedAcceleration: 5
   groundDeceleration: 18
   airDeceleration: 0.5
+  minAirTime: 0.05
   groundDirection: {fileID: 2739104149709233275}
   fallDirection: {fileID: 2739104150749100573}
   stopMovement: 0
@@ -2307,6 +2308,10 @@ PrefabInstance:
     - target: {fileID: 7379833647640045433, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -45.04964
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675584382000803982, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.035
       objectReference: {fileID: 0}
     - target: {fileID: 7850041173949748710, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
