@@ -3280,7 +3280,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-10310
+  m_Name: pb_Mesh-10346
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4178,7 +4178,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7906
+  m_Name: pb_Mesh-7940
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4751,7 +4751,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21012
+  m_Name: pb_Mesh21018
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9179,6 +9179,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConveyorPrefabActivator
       objectReference: {fileID: 0}
+    - target: {fileID: 2582458356285395539, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582458356285395540, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
+      propertyPath: m_Name
+      value: CanvasBouttonPress
+      objectReference: {fileID: 0}
     - target: {fileID: 2582458356412733781, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
       propertyPath: objectsList.Array.size
       value: 2
@@ -9187,6 +9195,18 @@ PrefabInstance:
       propertyPath: objectsList.Array.data[1]
       value: 
       objectReference: {fileID: 333969241}
+    - target: {fileID: 2582458356477890082, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.2873368
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582458356477890082, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.2873368
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582458356477890082, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.2873368
+      objectReference: {fileID: 0}
     - target: {fileID: 7410974608897477138, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -9233,6 +9253,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49a4d22ddf346bb49a2605666788e397, type: 3}
+--- !u!1001 &2668055096816982135
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2668055096787757627, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668055096787757627, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668055096787757627, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.2762666
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668055096787757627, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 24.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668055096787757627, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668055096787757627, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668055096787757627, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668055096787757627, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668055096787757627, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668055096787757627, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668055096787757627, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668055096787757630, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
+      propertyPath: m_Name
+      value: ImageCanvas
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f05c39435acb9ba40bf184d4a3e039dd, type: 3}
 --- !u!1001 &2736255483644371337
 PrefabInstance:
   m_ObjectHideFlags: 0
