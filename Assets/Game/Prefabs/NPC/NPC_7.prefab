@@ -2765,6 +2765,7 @@ GameObject:
   - component: {fileID: 8809104068063335395}
   - component: {fileID: 2387440460096851381}
   - component: {fileID: 5027598376396544511}
+  - component: {fileID: 302023426624529559}
   m_Layer: 0
   m_Name: NPC_7
   m_TagString: Untagged
@@ -2823,11 +2824,23 @@ MonoBehaviour:
   dialogue: []
   _actualLine: 0
   speed: 0.05
-  player: {fileID: 0}
   distNeed: 3
   running: 0
   keepIdle: 0
-  anim: {fileID: 0}
+  anim: {fileID: 2387440460096851381}
+--- !u!65 &302023426624529559
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8145861459397396825}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.729187, y: 2.048719, z: 0.48765123}
+  m_Center: {x: -0.016784668, y: 1.029108, z: 0.016548455}
 --- !u!1 &8272972447612709378
 GameObject:
   m_ObjectHideFlags: 0

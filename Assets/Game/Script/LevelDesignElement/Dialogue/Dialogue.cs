@@ -9,7 +9,7 @@ public class Dialogue : MonoBehaviour
     public string[] dialogue;
     [SerializeField]  private int _actualLine;
     public float speed;
-    public GameObject player;
+    private GameObject player;
     public float distNeed;
     public bool running;
     [SerializeField] private bool keepIdle;
@@ -18,6 +18,7 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
         textBox.gameObject.SetActive(false);
+        player = PlayerController.instance.gameObject;
     }
 
     // Update is called once per frame
