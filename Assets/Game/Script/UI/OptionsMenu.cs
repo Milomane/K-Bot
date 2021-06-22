@@ -105,18 +105,18 @@ public class OptionsMenu : MonoBehaviour
     {
         if (timerSoundHoverButton <= 0f)
         {
-            FindObjectOfType<AudioManager>().Play("HoverButton");
+            FindObjectOfType<AudioManager>().Play("HoverButton2");
             timerSoundHoverButton = timerValueInit;
         }
     }
 
     public void PlayClickSound()
     {
-        FindObjectOfType<AudioManager>().Play("ClickButton");
+        FindObjectOfType<AudioManager>().Play("ClickButton2");
     }
 
     public void BackButton()
     {
-        FindObjectOfType<AudioManager>().PlayOneShot("ClickButton");
+        FindObjectOfType<AudioManager>().PlayOneShot("ClickButton2");
     }
 }

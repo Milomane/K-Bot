@@ -94,12 +94,12 @@ public class PauseMenu : MonoBehaviour
         if (canPlaySound)
         {
             StartCoroutine(WaitForSound());
-            FindObjectOfType<AudioManager>().Play("HoverButton");
+            FindObjectOfType<AudioManager>().Play("HoverButton2");
         }
     }
     
     public void PlayClickSound()
     {
-        FindObjectOfType<AudioManager>().Play("ClickButton");
+        FindObjectOfType<AudioManager>().Play("ClickButton2");
     }
 }
