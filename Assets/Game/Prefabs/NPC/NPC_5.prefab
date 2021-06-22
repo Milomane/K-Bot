@@ -1622,6 +1622,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4826690993546075167}
   - component: {fileID: 7423445375900164517}
+  - component: {fileID: 2331016188580176653}
+  - component: {fileID: 2217412564713310560}
   m_Layer: 0
   m_Name: NPC_5
   m_TagString: Untagged
@@ -1664,6 +1666,40 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2331016188580176653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5309754191891416741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a413a4fafb4b3774f9a0b2b7365f2b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBox: {fileID: 0}
+  dialogue: []
+  _actualLine: 0
+  speed: 0.05
+  player: {fileID: 0}
+  distNeed: 3
+  running: 0
+  keepIdle: 0
+  anim: {fileID: 0}
+--- !u!65 &2217412564713310560
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5309754191891416741}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.74405, y: 2.0399947, z: 0.40722463}
+  m_Center: {x: -0.004415989, y: 1.0249922, z: 0.022527799}
 --- !u!1 &5365018624123053566
 GameObject:
   m_ObjectHideFlags: 0

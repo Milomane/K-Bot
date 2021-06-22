@@ -2614,6 +2614,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7030885508800022263}
   - component: {fileID: 673813755007438634}
+  - component: {fileID: 2757173674452742946}
+  - component: {fileID: 1188559149177566223}
   m_Layer: 0
   m_Name: NPC_4
   m_TagString: Untagged
@@ -2656,6 +2658,40 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &2757173674452742946
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7699301254996417613}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.73361206, y: 1.9906006, z: 0.42654687}
+  m_Center: {x: 0.0007581711, y: 1.0027485, z: 0.0027415454}
+--- !u!114 &1188559149177566223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7699301254996417613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a413a4fafb4b3774f9a0b2b7365f2b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBox: {fileID: 0}
+  dialogue: []
+  _actualLine: 0
+  speed: 0.05
+  player: {fileID: 0}
+  distNeed: 3
+  running: 0
+  keepIdle: 0
+  anim: {fileID: 0}
 --- !u!1 &8203443645194637719
 GameObject:
   m_ObjectHideFlags: 0
