@@ -12,6 +12,8 @@ public class Dialogue : MonoBehaviour
     public GameObject player;
     public float distNeed;
     public bool running;
+
+    public Animation anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,17 +27,19 @@ public class Dialogue : MonoBehaviour
 
         if ( dist <= distNeed) // verify if the player is close enogh to talk to a pnj
         {
+            
+            
             if (Input.GetButtonDown("Interaction") && running == false) 
             {
                 if (_actualLine <= dialogue.Length-1) // change the text line
                 {
-                    player.GetComponent<PlayerController>().stopMovement = true;
+                    PlayerController.instance.stopMovement = true;
                     NextLine();
                     textBox.gameObject.SetActive(true);
                 }
                 else // close text box
                 {
-                    player.GetComponent<PlayerController>().stopMovement = false;
+                    PlayerController.instance.stopMovement = false;
                     StopCoroutine(TypeDialog());
                     textBox.text = null;
                     _actualLine = 0;
