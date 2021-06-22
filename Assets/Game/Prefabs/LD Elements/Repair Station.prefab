@@ -133,7 +133,6 @@ MonoBehaviour:
   activeColor: {r: 0.11764693, g: 1, b: 0, a: 1}
   modelRenderers:
   - {fileID: 8772936559679709038}
-  particleFeedback: {fileID: 3689822001213299575, guid: 79887552a2f3894449e4dbe7e5258339, type: 3}
   lookRight: 0
 --- !u!135 &7131958529793872024
 SphereCollider:
@@ -146,7 +145,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 5.73
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &7310824071989055295
 Animator:
