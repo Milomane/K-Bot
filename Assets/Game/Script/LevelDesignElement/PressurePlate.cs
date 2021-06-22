@@ -33,7 +33,7 @@ public class PressurePlate : MonoBehaviour
     // Update is called once per frame 
     void Update()
     {
-        if (PlayerDeathHandler.instance.dying )// player.GetComponent<PlayerMovement>().isGrounded == false ) // remove player when suicide
+        if (PlayerDeathHandler.instance.dying ) // remove player when suicide
         {
             onPlate.Remove(PlayerDeathHandler.instance.gameObject);
         }
