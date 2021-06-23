@@ -17,6 +17,7 @@ public class Dialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        textBox = GameObject.FindGameObjectWithTag("TextNpc").GetComponent<TMP_Text>();
         textBox.transform.parent.gameObject.SetActive(false);
         player = PlayerController.instance.gameObject;
     }
@@ -24,6 +25,9 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+            player = PlayerController.instance.gameObject;
+        
         float dist = Vector3.Distance(transform.position, player.transform.position);
 
         if ( dist <= distNeed) // verify if the player is close enogh to talk to a pnj
