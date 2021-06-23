@@ -16,6 +16,9 @@ public class JuckeBoxManager : MonoBehaviour
     // Previous song
     private AudioClip previousSong;
 
+    // Current song
+    private AudioClip currentSong;
+
     private bool canGetRandomNumber;
 
     void Awake()
@@ -30,9 +33,6 @@ public class JuckeBoxManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
-        // Keep the Audio Manager if we change the scene
-        DontDestroyOnLoad(gameObject);
     }
     
     // Start is called before the first frame update
@@ -57,7 +57,8 @@ public class JuckeBoxManager : MonoBehaviour
             if (!audioSource.isPlaying)
             {
                 // Play a random song
-                audioSource.clip = audioClips[randomSongNumber];
+                currentSong = audioClips[randomSongNumber];
+                audioSource.clip = currentSong;
             
                 /*if (audioSource.clip == previousSong)
                 {
@@ -86,5 +87,10 @@ public class JuckeBoxManager : MonoBehaviour
     public AudioSource[] GetAudioSources()
     {
         return audioSources;
+    }
+
+    public AudioClip GetPreviousSong()
+    {
+        return previousSong;
     }
 }

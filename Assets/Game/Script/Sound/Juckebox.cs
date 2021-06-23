@@ -8,6 +8,7 @@ public class Juckebox : MonoBehaviour
     private int randomSongNumber;
     private AudioClip previousSong;
     
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +17,18 @@ public class Juckebox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && Input.GetButton("Interaction"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            foreach (AudioSource audioSource in JuckeBoxManager.instance.GetAudioSources())
+            if (Input.GetButton("Interaction"))
             {
-                if (audioSource.clip == previousSong)
+                Debug.Log("Interaction with " + name);
+                foreach (AudioSource audioSource in JuckeBoxManager.instance.GetAudioSources())
                 {
-                    // Play an another song if it's the same song
-                    audioSource.clip = audioSource.clip = audioClips[randomSongNumber + 1];
+                    if (audioSource.clip == JuckeBoxManager.instance.GetPreviousSong())
+                    {
+                        // Play an another song if it's the same song
+                        audioSource.clip = audioSource.clip = audioClips[randomSongNumber + 1];
+                    }
                 }
             }
         }
