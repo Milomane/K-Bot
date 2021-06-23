@@ -11,6 +11,7 @@ public class ControlerDesk : MonoBehaviour
     public bool timerDoorOn, activationTimer, verouillage;
     public float timerDoor, timer;
     public UnityEvent activationEvent, desactivationEvent;
+    public ControlerDesk[] shareState;
 
     // Audio
     private AudioSource audioSource;
@@ -62,6 +63,14 @@ public class ControlerDesk : MonoBehaviour
                     desactivationEvent.Invoke();
                     verouillage = false;
                     Debug.Log("desactivation");
+                }
+                
+                if (shareState.Length > 0)
+                {
+                    foreach (var desk in shareState)
+                    {
+                        desk.verouillage = verouillage;
+                    }
                 }
             }
         }
