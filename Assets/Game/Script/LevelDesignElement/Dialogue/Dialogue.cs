@@ -17,7 +17,7 @@ public class Dialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        textBox.gameObject.SetActive(false);
+        textBox.transform.parent.gameObject.SetActive(false);
         player = PlayerController.instance.gameObject;
     }
 
@@ -34,12 +34,12 @@ public class Dialogue : MonoBehaviour
             {
                 anim.SetBool("Idle",true);
                 GameObject textObj = textBox.gameObject;
-                textObj.GetComponent<lookPlayer>().target = gameObject;
+                textObj.transform.parent.GetComponent<lookPlayer>().target = gameObject;
                 if (_actualLine <= dialogue.Length-1) // change the text line
                 {
                     PlayerController.instance.stopMovement = true;
                     NextLine();
-                    textBox.gameObject.SetActive(true);
+                    textBox.transform.parent.gameObject.SetActive(true);
                 }
                 else // close text box
                 {
@@ -48,7 +48,7 @@ public class Dialogue : MonoBehaviour
                     textBox.text = null;
                     _actualLine = 0;
                     running = false;
-                    textBox.gameObject.SetActive(false);
+                    textBox.transform.parent.gameObject.SetActive(false);
                     if (keepIdle == false)
                     {
                         anim.SetBool("Idle", false);

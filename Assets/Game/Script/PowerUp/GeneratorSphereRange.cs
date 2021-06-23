@@ -6,7 +6,12 @@ using UnityEngine;
 public class GeneratorSphereRange : MonoBehaviour
 {
     public List<ElectricalCapteurScript> allCaptorInRange;
-    
+
+    public void Start()
+    {
+        allCaptorInRange = new List<ElectricalCapteurScript>();
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "ElectricalCapteur")
