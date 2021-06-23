@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     
     // Super sprint
     public bool superSprint;
+    private float superSprintTimer = 0;
 
     //Jump
     private Vector3 jumpDirection;
@@ -131,6 +132,14 @@ public class PlayerMovement : MonoBehaviour
         // Start jump if player is on ground and he press jump
         if (controller.isGrounded && Input.GetButtonDown("Jump") && jumpCd <= 0 && !stopMovement)
             Jump();
+
+        // Super sprint bar
+        if (superSprint)
+        {
+            superSprintTimer -= Time.deltaTime;
+            CanvasEventManager.instance.accBarPivot.localScale = new Vector3(superSprintTimer / superSprintTime, 1, 1);
+        }
+        
         
         // Decrease both timer
         jumpCd -= Time.deltaTime;
@@ -317,8 +326,11 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator SuperSprintCoroutine()
     {
         superSprint = true;
+        CanvasEventManager.instance.accBarObject.SetActive(true);
+        superSprintTimer = superSprintTime;
         yield return new WaitForSeconds(superSprintTime);
         superSprint = false;
+        CanvasEventManager.instance.accBarObject.SetActive(false);
     }
     public void SpringJump(float springForce)
     {

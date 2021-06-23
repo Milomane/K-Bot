@@ -24,6 +24,12 @@ public class CanvasEventManager : MonoBehaviour
     [SerializeField] private Image[] kbotHeads;
     [SerializeField] private Sprite kbotHead;
 
+    public LookPlayer dialogueLookPlayer;
+    public TMP_Text npcText;
+
+    public Transform accBarPivot;
+    public GameObject accBarObject;
+
 
 
     void Start()
