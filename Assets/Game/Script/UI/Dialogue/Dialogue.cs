@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
+    [TextArea(5,10)]
     public string[] dialogue;
     [SerializeField]  private int _actualLine;
     public float speed;
