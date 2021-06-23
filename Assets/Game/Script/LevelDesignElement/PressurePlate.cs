@@ -19,6 +19,7 @@ public class PressurePlate : MonoBehaviour
     
     // Audio source
     private AudioSource audioSource;
+    private bool safe;
 
     // Audio clip
     [SerializeField] private AudioClip pressureOn;
@@ -36,6 +37,8 @@ public class PressurePlate : MonoBehaviour
         if (PlayerDeathHandler.instance.dying ) // remove player when suicide
         {
             onPlate.Remove(PlayerDeathHandler.instance.gameObject);
+            playerOnPlate = false;
+            StartCoroutine(SafePlayerRemove());
         }
 
         for (int i = 0; i < onPlate.Count; i++) // remove destroy object from list
@@ -67,9 +70,20 @@ public class PressurePlate : MonoBehaviour
         }
     }
 
+    IEnumerator SafePlayerRemove()
+    {
+        safe = true;
+
+        yield return  new WaitForSeconds(5f);
+        onPlate.Remove(PlayerDeathHandler.instance.gameObject);
+        playerOnPlate = false;
+        
+        safe = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Corpse"))
+        if (other.CompareTag("Player") || other.CompareTag("Corpse") || other.gameObject.CompareTag("Lamp"))
         {
             onPlate.Add(other.gameObject);
             audioSource.PlayOneShot(pressureOn, 1f); 
