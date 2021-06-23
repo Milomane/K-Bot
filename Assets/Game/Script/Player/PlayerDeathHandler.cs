@@ -7,6 +7,7 @@ using Cinemachine;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 using Component = UnityEngine.Component;
 using Object = UnityEngine.Object;
@@ -35,11 +36,12 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public bool dying;
     public Queue<GameObject> bodys;
-
+    
     private DeathType previousSelectedDeath;
     private Rigidbody rbToStop;
     private int crushCounter = 0;
     private int crushBodyCounter = 0;
+    private Transform playerGroup;
 
 
     public enum DeathType
@@ -66,6 +68,8 @@ public class PlayerDeathHandler : MonoBehaviour
         bodys = new Queue<GameObject>();
         nbBodiesAvailable = GameObject.FindWithTag("NbBodies");
 
+        playerGroup = transform.parent;
+        
         unlockedDeath = new List<DeathType>();
         
         StartCoroutine(Safe());
@@ -73,6 +77,8 @@ public class PlayerDeathHandler : MonoBehaviour
 
     IEnumerator Safe()
     {
+        yield return new WaitForSeconds(.1f);
+        
         foreach (var deathType in unlockeDeathAtStart)
         {
             NewPowerUp((int)deathType);
@@ -80,8 +86,6 @@ public class PlayerDeathHandler : MonoBehaviour
             yield return new WaitForSeconds(.1f);
             CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
         }
-        
-        yield return new WaitForSeconds(.05f);
         
         if (unlockeDeathAtStart.Count == 0)
             CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
@@ -117,6 +121,9 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public IEnumerator DeathEnumerator(DeathType deathType)
     {
+        if (playerGroup.parent != null)
+            playerGroup.parent = null;
+        
         dying = true;
         playerController.stopMovement = true;
 

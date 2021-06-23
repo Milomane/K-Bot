@@ -14,6 +14,7 @@ public class GrapinModule : MonoBehaviour
     public bool finalVerticalMove, verouillage;
 
     public float speedMovement;
+    public float downSpeed = 2f;
 
     public bool DownOn, recupObjet;
 
@@ -148,7 +149,7 @@ public class GrapinModule : MonoBehaviour
         gameObject.transform.parent = initialParent.transform;
         upPoint = new Vector3(transform.position.x, initialPoint.position.y, transform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, upPoint,
-            speedMovement * Time.deltaTime);
+            downSpeed * Time.deltaTime);
         //grappin close bite
     }
 
@@ -158,7 +159,7 @@ public class GrapinModule : MonoBehaviour
         downPoint = new Vector3(transform.position.x, initialPoint.position.y - hauteurGrappin, transform.position.z);
         DownOn = true;
         transform.position = Vector3.MoveTowards(transform.position, downPoint,
-            speedMovement * Time.deltaTime);
+            downSpeed * Time.deltaTime);
         finalVerticalMove = true;
         //grappin open bite
     }
@@ -192,21 +193,31 @@ public class GrapinModule : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (recupObjet)
+        if (other.GetComponent<Rigidbody>())
         {
-            Debug.Log("collision objet");
-            objet = other.gameObject;
-            objet.GetComponent<Rigidbody>().useGravity = false;
-            objet.GetComponent<Rigidbody>().isKinematic = true;
-            if (objet.transform.parent != null)
+            if (other.CompareTag("Corpse"))
             {
-                parentObjet = objet.transform.parent;
-                parentObjet.transform.parent = transform;
+                if (recupObjet)
+                {
+                    Debug.Log("collision objet");
+                    objet = other.gameObject;
+                    objet.GetComponent<Rigidbody>().useGravity = false;
+                    objet.GetComponent<Rigidbody>().isKinematic = true;
+                    if (objet.transform.parent != null)
+                    {
+                        parentObjet = objet.transform.parent;
+                        parentObjet.transform.parent = transform;
+                    }
+                    else
+                    {
+                        objet.transform.parent = transform;
+                    }
+                }
             }
             else
-            {
-                objet.transform.parent = transform;
-            }
+                return;
         }
+        else
+            return;
     }
 }

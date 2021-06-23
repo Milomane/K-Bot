@@ -14,6 +14,6 @@ public class lookPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = cam.WorldToScreenPoint(target.transform.position + Vector3.up);
+        transform.position = cam.WorldToScreenPoint(target.transform.position + Vector3.up * 3) + test;
     }
 }

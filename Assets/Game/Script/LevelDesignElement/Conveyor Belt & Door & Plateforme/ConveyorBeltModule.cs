@@ -67,7 +67,6 @@ public class ConveyorBeltModule : MonoBehaviour
         }
         if (onBelt.Count > 0)
         {
-            Debug.Log(onBelt.Count + " compteur");
         }
 
         if(onBelt.Count >= 1)
