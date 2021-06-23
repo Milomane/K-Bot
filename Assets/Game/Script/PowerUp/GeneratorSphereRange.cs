@@ -42,4 +42,9 @@ public class GeneratorSphereRange : MonoBehaviour
                 captor.alimOn = false;
             }
     }
+
+    private void Update()
+    {
+        transform.localPosition = Vector3.zero;
+    }
 }
