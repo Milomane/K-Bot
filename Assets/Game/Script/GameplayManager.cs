@@ -27,19 +27,6 @@ namespace Game.Script
                 FindObjectOfType<AudioManager>().Stop("MusicMainMenu");
             }
             
-            // If we are in Hub
-            if (SceneManager.GetActiveScene().name.Equals("HubIntro"))
-            {
-                // Set the volume 
-                audioMixer.SetFloat("Volume", 0);
-                // Play Music
-                FindObjectOfType<AudioManager>().Play("MusicHub");
-            }
-            else
-            {
-                // Stop Music
-                FindObjectOfType<AudioManager>().Stop("MusicHub");
-            }
             
             // If we are in Factory
             if (SceneManager.GetActiveScene().name.Equals("Factory"))
