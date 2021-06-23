@@ -16,9 +16,6 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private bool keepIdle;
     public Animator anim;
 
-    private void Awake()
-    {
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -81,5 +78,11 @@ public class Dialogue : MonoBehaviour
             StartCoroutine(TypeDialog());
             _actualLine++;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, distNeed);
     }
 }
