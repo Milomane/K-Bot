@@ -27,6 +27,9 @@ public class CanvasEventManager : MonoBehaviour
     public LookPlayer dialogueLookPlayer;
     public TMP_Text npcText;
 
+    public Transform accBarPivot;
+    public GameObject accBarObject;
+
 
 
     void Start()
