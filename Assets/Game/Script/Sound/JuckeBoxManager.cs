@@ -10,6 +10,9 @@ public class JuckeBoxManager : MonoBehaviour
 
     [SerializeField] private AudioSource[] audioSources;
 
+    private float timerPlayNextMusic = 1f;
+    private float initValueTimerPlayNextMusic;
+
     // random number for random first song
     private int numberSong;
 
@@ -31,6 +34,7 @@ public class JuckeBoxManager : MonoBehaviour
     void Start()
     {
         numberSong = Random.Range(0, audioClips.Length);
+        initValueTimerPlayNextMusic = timerPlayNextMusic;
     }
 
     // Update is called once per frame
@@ -41,10 +45,14 @@ public class JuckeBoxManager : MonoBehaviour
             // If there is no song
             if (!audioSource.isPlaying)
             {
-                ChangeMusic(audioSource);
-
-                // Play
-                audioSource.Play();
+                timerPlayNextMusic -= Time.deltaTime;
+                if (timerPlayNextMusic <= 0f)
+                {
+                    ChangeMusic(audioSource);
+                    // Play
+                    audioSource.Play();
+                    timerPlayNextMusic = initValueTimerPlayNextMusic;
+                }
             }
         }
     }
@@ -63,11 +71,15 @@ public class JuckeBoxManager : MonoBehaviour
         // next number song
         numberSong++;
         
+        Debug.Log("numberSong : " + numberSong);
+        
         // CheckNumberSong -> Avoid IndexOutOfRangeException:
         CheckNumberSong();
 
         // Update the clip with the current song
         audioSource.clip = audioClips[numberSong]; // = currentSong
+        
+        audioSource.Play();
     }
 
     public AudioClip[] GetAudioClips()
