@@ -89,7 +89,7 @@ public class ConveyorBeltModule : MonoBehaviour
         {
             player = other.gameObject;
         }
-        else if (other.gameObject.CompareTag("Corpse"))
+        else if (other.gameObject.CompareTag("Corpse") || other.gameObject.CompareTag("Lamp"))
         {
             detectionPlayer = false;
             player = null;

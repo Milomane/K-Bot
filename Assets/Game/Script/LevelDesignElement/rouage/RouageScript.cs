@@ -7,35 +7,39 @@ using UnityEngine.Events;
 public class RouageScript : MonoBehaviour
 {
     public bool rotationOn, shutdown;
+    public GameObject particul1, particul2;
 
     public float speedRotation;
-    private MeshCollider _meshCollider;
+    
     public UnityEvent eventShutDown;
     private AudioSource audioSource;
+
+    private Animator anim;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        _meshCollider = GetComponent<MeshCollider>();
+        anim = GetComponent<Animator>();
+        particul1.SetActive(false);
+        particul2.SetActive(false);
+        
         rotationOn = true;
     }
     
     void FixedUpdate()
     {
-        
         if (rotationOn)
         {
-            transform.Rotate(0,speedRotation * Time.deltaTime ,0);
-            _meshCollider.convex = true;
-            _meshCollider.isTrigger = true;
-        } 
-        
+
+        }
         
         if (!rotationOn && !shutdown)
         {
             eventShutDown.Invoke();
-            _meshCollider.isTrigger = false;
-            _meshCollider.convex = false;
+            anim.SetFloat("modeOff", 1);
+            
+            particul1.SetActive(true);
+            particul2.SetActive(true);
             shutdown = true;
         }
     }
