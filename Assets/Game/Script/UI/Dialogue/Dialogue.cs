@@ -82,4 +82,10 @@ public class Dialogue : MonoBehaviour
             _actualLine++;
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, distNeed);
+    }
 }
