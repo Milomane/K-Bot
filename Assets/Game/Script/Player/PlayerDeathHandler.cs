@@ -24,6 +24,9 @@ public class PlayerDeathHandler : MonoBehaviour
     [SerializeField] private Death[] deaths;
 
     [SerializeField] private int maxBody = 3;
+
+    [SerializeField] private AudioClip crushedSound;
+    
     // Nb body available
     private int nbBodyAvailable;
     public static DeathType selectedDeath = DeathType.crunshed;
@@ -42,6 +45,7 @@ public class PlayerDeathHandler : MonoBehaviour
     private int crushCounter = 0;
     private int crushBodyCounter = 0;
     private Transform playerGroup;
+    
 
 
     public enum DeathType
@@ -169,6 +173,7 @@ public class PlayerDeathHandler : MonoBehaviour
                 bodys.Enqueue(eventObject);
                 break;
             case DeathType.crunshed:
+                AudioSource.PlayClipAtPoint(crushedSound, transform.position, 0.5f);
                 break;
             default:
                 Debug.LogError("Error in StartDeath, wrong value for death");

@@ -23864,11 +23864,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 349572107381487176, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
       propertyPath: dialogue.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 349572107381487176, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
       propertyPath: dialogue.Array.data[0]
-      value: "....Et euh....\xE7a va faire combien de temps que t'es ici ?"
+      value: Damnit, i'm stuck ! I fell here and now I can't get up.
+      objectReference: {fileID: 0}
+    - target: {fileID: 349572107381487176, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
+      propertyPath: dialogue.Array.data[1]
+      value: Who designed this place, seriously ? How long am I going to stay here
+        ?
       objectReference: {fileID: 0}
     - target: {fileID: 886095639180658488, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
       propertyPath: m_Controller
@@ -30484,12 +30489,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
       propertyPath: dialogue.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
       propertyPath: dialogue.Array.data[0]
-      value: "Boarf.... 5-6 semaines. Mais t'en fais pas, 1 fois par ans, ils viennent
-        voir ceux qui sont tomb\xE9s."
+      value: Hey, dude. Wassup ?
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: dialogue.Array.data[1]
+      value: Nah, i'm not too worried. They send people here once or twice a year.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: 'I''ve been here for 8 month, but I''m sure i''ll be out soon. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: dialogue.Array.data[3]
+      value: Until then, we have plenty of cookies !
       objectReference: {fileID: 0}
     - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
       propertyPath: m_RootOrder
