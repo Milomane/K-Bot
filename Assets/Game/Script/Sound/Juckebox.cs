@@ -4,33 +4,37 @@ using UnityEngine;
 
 public class Juckebox : MonoBehaviour
 {
-    private AudioClip[] audioClips;
-    private int randomSongNumber;
-    private AudioClip previousSong;
+    [SerializeField] private AudioClip changeMusicButton;
     
-    
+    private bool canInteract;
+
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-        audioClips = JuckeBoxManager.instance.GetAudioClips();
+        if (canInteract && Input.GetButtonDown("Interaction"))
+        {
+            Debug.Log("Interaction with " + name);
+            foreach (AudioSource audioSource in JuckeBoxManager.instance.GetAudioSources())
+            {
+                JuckeBoxManager.instance.ChangeMusic(audioSource);
+                AudioSource.PlayClipAtPoint(changeMusicButton, transform.position);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (Input.GetButton("Interaction"))
-            {
-                Debug.Log("Interaction with " + name);
-                foreach (AudioSource audioSource in JuckeBoxManager.instance.GetAudioSources())
-                {
-                    if (audioSource.clip == JuckeBoxManager.instance.GetPreviousSong())
-                    {
-                        // Play an another song if it's the same song
-                        audioSource.clip = audioSource.clip = audioClips[randomSongNumber + 1];
-                    }
-                }
-            }
+            canInteract = true;
+        }
+    }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            canInteract = false;
         }
     }
 }

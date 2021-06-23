@@ -5,21 +5,13 @@ using UnityEngine;
 public class JuckeBoxManager : MonoBehaviour
 {
     public static JuckeBoxManager instance;
-    
+
     [SerializeField] private AudioClip[] audioClips;
-    
+
     [SerializeField] private AudioSource[] audioSources;
-    
-    // random number for random song
-    private int randomSongNumber;
-    
-    // Previous song
-    private AudioClip previousSong;
 
-    // Current song
-    private AudioClip currentSong;
-
-    private bool canGetRandomNumber;
+    // random number for random first song
+    private int numberSong;
 
     void Awake()
     {
@@ -34,49 +26,48 @@ public class JuckeBoxManager : MonoBehaviour
             return;
         }
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        numberSong = Random.Range(0, audioClips.Length);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (canGetRandomNumber)
-        {
-            // Get a random int
-            randomSongNumber = Random.Range(0, audioClips.Length);
-            canGetRandomNumber = false;
-        }
-        
         foreach (AudioSource audioSource in audioSources)
         {
             // If there is no song
             if (!audioSource.isPlaying)
             {
-                // Play a random song
-                currentSong = audioClips[randomSongNumber];
-                audioSource.clip = currentSong;
-            
-                /*if (audioSource.clip == previousSong)
-                {
-                    // Play an another song if it's the same song
-                    audioSource.clip = audioSource.clip = audioClips[randomSongNumber + 1];
-                }
-            
-                // Update previousSong valor
-                previousSong = audioSource.clip;*/
-            
+                ChangeMusic(audioSource);
+
                 // Play
                 audioSource.Play();
             }
-            else
-            {
-                canGetRandomNumber = true;
-            }
         }
+    }
+
+    private void CheckNumberSong()
+    {
+        // Avoid IndexOutOfRangeException:
+        if (numberSong >= audioClips.Length)
+        {
+            numberSong = 0;
+        }
+    }
+
+    public void ChangeMusic(AudioSource audioSource)
+    {
+        // next number song
+        numberSong++;
+        
+        // CheckNumberSong -> Avoid IndexOutOfRangeException:
+        CheckNumberSong();
+
+        // Update the clip with the current song
+        audioSource.clip = audioClips[numberSong]; // = currentSong
     }
 
     public AudioClip[] GetAudioClips()
@@ -87,10 +78,5 @@ public class JuckeBoxManager : MonoBehaviour
     public AudioSource[] GetAudioSources()
     {
         return audioSources;
-    }
-
-    public AudioClip GetPreviousSong()
-    {
-        return previousSong;
     }
 }
