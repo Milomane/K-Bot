@@ -16,7 +16,7 @@ public class DoorModule : MonoBehaviour
 
     public GameObject test;
 
-    private bool canDoOpenSound;
+    private bool canDoOpenSound = true;
     private bool canDoCloseSound;
     private AudioSource audioSource;
     [SerializeField] private AudioClip doorOpen;
