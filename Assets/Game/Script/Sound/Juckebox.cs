@@ -5,8 +5,15 @@ using UnityEngine;
 public class Juckebox : MonoBehaviour
 {
     [SerializeField] private AudioClip changeMusicButton;
-    
+
     private bool canInteract;
+
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     // Start is called before the first frame update
     void Update()
@@ -14,11 +21,8 @@ public class Juckebox : MonoBehaviour
         if (canInteract && Input.GetButtonDown("Interaction"))
         {
             Debug.Log("Interaction with " + name);
-            foreach (AudioSource audioSource in JuckeBoxManager.instance.GetAudioSources())
-            {
-                JuckeBoxManager.instance.ChangeMusic(audioSource);
-                AudioSource.PlayClipAtPoint(changeMusicButton, transform.position);
-            }
+            JuckeBoxManager.instance.ChangeMusic(audioSource);
+            AudioSource.PlayClipAtPoint(changeMusicButton, transform.position);
         }
     }
 
@@ -29,7 +33,7 @@ public class Juckebox : MonoBehaviour
             canInteract = true;
         }
     }
-    
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
