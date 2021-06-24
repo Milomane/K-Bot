@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Dialogue : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Dialogue : MonoBehaviour
     public bool running;
     [SerializeField] private bool keepIdle;
     public Animator anim;
+
+    public AudioClip[] bipSounds;
+    public AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -65,6 +69,8 @@ public class Dialogue : MonoBehaviour
         foreach (char c in dialogue[_actualLine].ToCharArray())
         {
             CanvasEventManager.instance.npcText.text += c;
+            audioSource.clip = bipSounds[Random.Range(0, bipSounds.Length)];
+            audioSource.Play();
             yield return new WaitForSeconds(speed);
         }
         yield return 

@@ -62,6 +62,7 @@ public class RepairStation : MonoBehaviour
         if (other.tag == "Player")
         {
             other.GetComponent<PlayerDeathHandler>().repairStation = gameObject;
+            other.GetComponent<PlayerDeathHandler>().animatorBlink.SetTrigger("Blink");
             activeStation = true;
             secureTime = 1f;
             resetRepairStation.Invoke();

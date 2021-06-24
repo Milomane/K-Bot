@@ -45,6 +45,8 @@ public class PlayerDeathHandler : MonoBehaviour
     private int crushCounter = 0;
     private int crushBodyCounter = 0;
     private Transform playerGroup;
+
+    public Animator animatorBlink;
     
 
 
