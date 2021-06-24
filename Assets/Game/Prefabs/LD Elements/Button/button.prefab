@@ -232,7 +232,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040989319050591305}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0000044378203}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8137464328958378556}
@@ -240,7 +240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 43.801342, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1269733592021558563
@@ -513,15 +513,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678027709911180763}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0000078777}
+  m_LocalScale: {x: 2.320728, y: 2.320728, z: 2.320728}
   m_Children: []
   m_Father: {fileID: 8137464328958378556}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 32.999, y: 0.000039343002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9081234810592874132
@@ -552,7 +552,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c4f14a9bba6022e468fe24a0e0f25d0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d9b327f8ae3e01249b207455038872bd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -576,6 +576,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialPoint: {fileID: 5769799082127471110}
   endPoint: {fileID: 5540990368456477987}
+  player: {fileID: 0}
+  firstParent: {fileID: 0}
+  secondParent: {fileID: 0}
   speed: 0
 --- !u!1 &1726782863923348454
 GameObject:
@@ -1471,6 +1474,7 @@ MonoBehaviour:
   desactivationEvent:
     m_PersistentCalls:
       m_Calls: []
+  shareState: []
   buttonOn: {fileID: 8300000, guid: 99af64706738fd24d8cf73f55cd7d435, type: 3}
   buttonOff: {fileID: 8300000, guid: 8b5fefdd06955774a94138bf5d3a71f6, type: 3}
 --- !u!135 &9082304072695872435
@@ -2377,6 +2381,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 31}
+  m_AnchoredPosition: {x: 43.8, y: 52.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

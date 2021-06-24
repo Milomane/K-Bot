@@ -11,6 +11,8 @@ public class RepairStation : MonoBehaviour
     [SerializeField] private Renderer[] modelRenderers;
     public static UnityEvent resetRepairStation;
 
+    [SerializeField] private AudioSource audioSource;
+
     private bool activeStation;
     private float secureTime;
 
@@ -62,7 +64,12 @@ public class RepairStation : MonoBehaviour
         if (other.tag == "Player")
         {
             other.GetComponent<PlayerDeathHandler>().repairStation = gameObject;
-            other.GetComponent<PlayerDeathHandler>().animatorBlink.SetTrigger("Blink");
+            if (!activeStation)
+            {
+                other.GetComponent<PlayerDeathHandler>().animatorBlink.SetTrigger("Blink");
+                audioSource.Play();
+            }
+            
             activeStation = true;
             secureTime = 1f;
             resetRepairStation.Invoke();
