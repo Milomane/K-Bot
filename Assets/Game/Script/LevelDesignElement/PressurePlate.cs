@@ -34,7 +34,7 @@ public class PressurePlate : MonoBehaviour
     // Update is called once per frame 
     void Update()
     {
-        if (PlayerDeathHandler.instance.dying ) // remove player when suicide
+        if (PlayerDeathHandler.instance.dying && !safe ) // remove player when suicide
         {
             onPlate.Remove(PlayerDeathHandler.instance.gameObject);
             playerOnPlate = false;
@@ -46,6 +46,7 @@ public class PressurePlate : MonoBehaviour
             if (onPlate[i] == null)
             {
                 onPlate.Remove(onPlate[i]);
+                Debug.Log("R");
             }  
         }
 
@@ -74,19 +75,21 @@ public class PressurePlate : MonoBehaviour
     {
         safe = true;
 
-        yield return  new WaitForSeconds(5f);
+        yield return  new WaitForSeconds(1f);
         onPlate.Remove(PlayerDeathHandler.instance.gameObject);
         playerOnPlate = false;
-        
+        Debug.Log("Z");
         safe = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("test");
         if (other.CompareTag("Player") || other.CompareTag("Corpse") || other.gameObject.CompareTag("Lamp"))
         {
-            onPlate.Add(other.gameObject);
+            Debug.Log(other);
             audioSource.PlayOneShot(pressureOn, 1f); 
+            onPlate.Add(other.gameObject);
         }
             
         if (other.CompareTag("Player"))
@@ -96,6 +99,7 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("g");
         onPlate.Remove(other.gameObject);
         if (other.CompareTag("Player"))
         {
