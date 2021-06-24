@@ -2322,7 +2322,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
+    m_SubmeshIndex: 2
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -2492,7 +2492,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
+    m_SubmeshIndex: 1
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -2560,7 +2560,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
+    m_SubmeshIndex: 2
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -19449,7 +19449,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cc0431e391f7d1d4099fbdd643f12002, type: 2}
+  - {fileID: 2100000, guid: c2518313e7965ca44b0dac43ed74af4b, type: 2}
   - {fileID: 2100000, guid: 1869f97e2ecec8a4c917664b57308ae4, type: 2}
   - {fileID: 2100000, guid: c2518313e7965ca44b0dac43ed74af4b, type: 2}
   - {fileID: 2100000, guid: 11c72c4a861314c4b8574dcdb5de94b3, type: 2}
@@ -38896,7 +38896,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 349572107381487176, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
       propertyPath: dialogue.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 349572107381487176, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
       propertyPath: dialogue.Array.data[0]
@@ -38926,11 +38926,18 @@ PrefabInstance:
       propertyPath: dialogue.Array.data[4]
       value: 'Well, anyway, you can use the spring module right here.
 
-        I''m
-        a bit jealous, i wanted to use it myself...'
+        It
+        allows you to create springs, which can send you a few meters up in the air.'
       objectReference: {fileID: 0}
     - target: {fileID: 349572107381487176, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
       propertyPath: dialogue.Array.data[5]
+      value: 'They are very lightweight, though, and cannot be used to activate pressure
+        plates.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 349572107381487176, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
+      propertyPath: dialogue.Array.data[6]
       value: 'Good luck !
 
 '
