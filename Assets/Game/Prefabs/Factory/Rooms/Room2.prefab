@@ -412,6 +412,7 @@ Transform:
   - {fileID: 3585352177626998069}
   - {fileID: 8222632626263890601}
   - {fileID: 8108493575761247386}
+  - {fileID: 2979490623442831373}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29780,6 +29781,107 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5432105538010671649, guid: 3b9d1f459ef1e884cb5a9974a5ddef19, type: 3}
   m_PrefabInstance: {fileID: 5149852221069126480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5245567605407567610
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7083964167051330257}
+    m_Modifications:
+    - target: {fileID: 673813755007438634, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0333bce37dfa86549a27feee7f46ed1d, type: 2}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: dialogue.Array.data[0]
+      value: Hey there ! Before letting you near the lava, I must check your metal
+        composition.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: dialogue.Array.data[1]
+      value: Pure steel-tanium, right ? Well ! I don't think you could swim in that.
+        You wouldn't get destroyed, though.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: You would probably leave some kind of floating carcass.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: dialogue.Array.data[3]
+      value: We can't all be lava-proof like that swell guy Bro-bot ! Where has he
+        gone,by the way ? Any news ?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_RootOrder
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 33.17623
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.49999976
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 34.574276
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.35980535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.93302745
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -137.823
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7699301254996417613, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_Name
+      value: NPC_4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+--- !u!4 &2979490623442831373 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+  m_PrefabInstance: {fileID: 5245567605407567610}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5382666628033028731
 PrefabInstance:
