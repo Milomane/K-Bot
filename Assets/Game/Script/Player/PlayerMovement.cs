@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool stopMovement;
     public bool brutStopMovement;
+    public bool sprint;
 
     //Movement
     private float turnSmoothVelocity;
@@ -172,12 +173,14 @@ public class PlayerMovement : MonoBehaviour
                     // Set speed to sprint speed
                     currentSpeed = sprintSpeed;
                     currentAcceleration = sprintSpeedAcceleration;
+                    sprint = true;
                 }
                 else
                 {
                     // Set speed to base speed
                     currentSpeed = baseSpeed;
                     currentAcceleration = baseSpeedAcceleration;
+                    sprint = false;
                 }
             }
 
