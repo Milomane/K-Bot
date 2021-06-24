@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &6971510086180759920
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880276887800772294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009999999, y: 0.009999998, z: 0.0030727924}
+  m_Center: {x: -0.000000007450581, y: 0, z: 0.003463603}
 --- !u!1 &2493600560026604557
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,19 +57,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0084473975, y: 0.0070183566, z: 0.0080349445}
   m_Center: {x: -0.000000007916242, y: -0.0000000012805682, z: 0.008944288}
---- !u!65 &6971510086180759920
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1880276887800772294}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.009999999, y: 0.009999998, z: 0.0030727924}
-  m_Center: {x: -0.000000007450581, y: 0, z: 0.003463603}
 --- !u!1001 &8058859512460053332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120,10 +120,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4539032357378883131, guid: fd90666052a872b43a12eba4bcd8fad9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3452834966006250739, guid: fd90666052a872b43a12eba4bcd8fad9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a5d0a5a2cf906b44985af178b606003f, type: 2}
+    - target: {fileID: -734429952542737006, guid: fd90666052a872b43a12eba4bcd8fad9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fd90666052a872b43a12eba4bcd8fad9, type: 3}
       propertyPath: m_Name
       value: bush
@@ -136,6 +144,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2eb8189869b3a2e47b136d5947ee1f73, type: 2}
+    - target: {fileID: 5729973184415206345, guid: fd90666052a872b43a12eba4bcd8fad9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6034537643475390819, guid: fd90666052a872b43a12eba4bcd8fad9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6375883233762601881, guid: fd90666052a872b43a12eba4bcd8fad9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

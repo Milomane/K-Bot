@@ -329,7 +329,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190335
-  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -766,6 +766,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   test: {x: 20, y: 0, z: 0}
+  upBorder: 0
+  downBorder: 0
+  leftBorder: 0
+  rightBorder: 0
   target: {fileID: 0}
 --- !u!1 &973825950
 GameObject:
