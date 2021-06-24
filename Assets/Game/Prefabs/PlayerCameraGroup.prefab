@@ -297,6 +297,7 @@ MonoBehaviour:
   canDie: 1
   dying: 0
   animatorBlink: {fileID: 473789073059755788}
+  smokePof: {fileID: 7041757010701887762}
 --- !u!114 &2739104149046315133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2482,6 +2483,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
+--- !u!198 &7041757010701887762 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6332399838519751475, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
+  m_PrefabInstance: {fileID: 3915999357814790689}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &473789073059755788 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3515991954364394797, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}

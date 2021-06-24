@@ -27781,17 +27781,9 @@ MonoBehaviour:
   assetGuid: 
   m_Mesh: {fileID: 0}
   m_IsSelectable: 1
-  m_SelectedFaces: 27030000
-  m_SelectedEdges:
-  - a: 3224
-    b: 3225
-  - a: 3226
-    b: 3224
-  - a: 3225
-    b: 3227
-  - a: 3227
-    b: 3226
-  m_SelectedVertices: 980c0000990c00009a0c00009b0c0000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!23 &5330025928939315067
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28077,6 +28069,7 @@ Transform:
   - {fileID: 2824734951536692780}
   - {fileID: 802370291827367147}
   - {fileID: 2307802988802205617}
+  - {fileID: 7234100045447455914}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29327,7 +29320,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 349572107381487176, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
       propertyPath: dialogue.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 349572107381487176, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
       propertyPath: dialogue.Array.data[0]
@@ -29340,10 +29333,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 349572107381487176, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
       propertyPath: dialogue.Array.data[2]
-      value: I'm sure it has to do with some kind of secret agenda....
+      value: Acid doesn't even leave a single bolt or screw !
       objectReference: {fileID: 0}
     - target: {fileID: 349572107381487176, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
       propertyPath: dialogue.Array.data[3]
+      value: I'm sure it has to do with some kind of secret agenda....
+      objectReference: {fileID: 0}
+    - target: {fileID: 349572107381487176, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
+      propertyPath: dialogue.Array.data[4]
       value: Food for thoughts !
       objectReference: {fileID: 0}
     - target: {fileID: 886095639180658488, guid: 004ecd72e6e45c946b57e40490e4ede2, type: 3}
@@ -33246,6 +33243,106 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8418972165801375231, guid: 4501c09b7e0bc71409ba0b1ca805b0a3, type: 3}
   m_PrefabInstance: {fileID: 2781253529588659002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2783073160984819893
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5330025929700100435}
+    m_Modifications:
+    - target: {fileID: 2331016188580176653, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: keepIdle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331016188580176653, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331016188580176653, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: dialogue.Array.data[0]
+      value: 'Dude, I tell you: this accelerator machine is the best thing ever.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331016188580176653, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: dialogue.Array.data[1]
+      value: Whenever I walk on it, I just can't stop running ! I feel like the athlete
+        Usain Screw !
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331016188580176653, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: Just place it on the ground and walk on it for 5 seconds of intense
+        running action !
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_RootOrder
+      value: 193
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.732126
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.09483
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8767838
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.48088482
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -57.486
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309754191891416741, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_Name
+      value: NPC_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423445375900164517, guid: 00b6113986620604bb8df813102d6610, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0333bce37dfa86549a27feee7f46ed1d, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 00b6113986620604bb8df813102d6610, type: 3}
+--- !u!4 &7234100045447455914 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4826690993546075167, guid: 00b6113986620604bb8df813102d6610, type: 3}
+  m_PrefabInstance: {fileID: 2783073160984819893}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2784166308796783591
 PrefabInstance:

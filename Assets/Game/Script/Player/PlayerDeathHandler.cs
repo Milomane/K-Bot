@@ -47,6 +47,7 @@ public class PlayerDeathHandler : MonoBehaviour
     private Transform playerGroup;
 
     public Animator animatorBlink;
+    public ParticleSystem smokePof;
     
 
 
@@ -304,6 +305,8 @@ public class PlayerDeathHandler : MonoBehaviour
         }
         CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
 
+        smokePof.Play();
+        
         ChangePowerUp(powerUpId);
     }
 
