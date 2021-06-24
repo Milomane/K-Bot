@@ -27,6 +27,18 @@ public class ConveyorBeltModule : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (player != null)
+        {
+            if (detectionPlayer)
+            {
+                if (Input.GetButtonDown("Kill"))
+                {
+                    detectionPlayer = false;
+                    player = null;
+                }
+            }
+        }
+        
         if (conveyorActivation)
         {
             for (int i = 0; i <= onBelt.Count -1; i++)
