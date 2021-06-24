@@ -27,7 +27,7 @@ public class PlayerParticule : MonoBehaviour
     void Update()
     {
         
-        if (playerMov.sprint && playerMov.realSpeed > 0)
+        if (playerMov.sprint && playerMov.realSpeed > 4 && playerMov.isGrounded)
         {
             
             StartCoroutine(Lerp());
