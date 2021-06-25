@@ -20,6 +20,7 @@ public class LightDetector : MonoBehaviour
    
 
     public UnityEvent eventActive;
+    public UnityEvent eventDeactive;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +42,6 @@ public class LightDetector : MonoBehaviour
                 float test = Vector3.Distance(transform.position, obj.transform.position);
                 if (test <= distance)
                 {
-                    eventActive.Invoke();
                     active = true;
                 }
             }
@@ -50,10 +50,12 @@ public class LightDetector : MonoBehaviour
         if (active)
         {
             renderer.material.SetColor("_EmissionColor", activateColor);
+            eventActive.Invoke();
         }
         else
         {
             renderer.material.SetColor("_EmissionColor", deactivateColor);
+            eventDeactive.Invoke();
         }
     }
 }

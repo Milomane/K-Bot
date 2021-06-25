@@ -95996,6 +95996,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -96003,6 +96007,14 @@ PrefabInstance:
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3969031257913349421}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3969031256943400305}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -96012,11 +96024,27 @@ PrefabInstance:
       value: ActivationBoard
       objectReference: {fileID: 0}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DesactivationBoard
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DoorModule, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DoorModule, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8141960949009584902, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
@@ -96163,11 +96191,23 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3969031256119852911}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3969031256119852911}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
@@ -96179,11 +96219,27 @@ PrefabInstance:
       value: ActivationBoard
       objectReference: {fileID: 0}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DesactivationBoard
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DoorModule, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DoorModule, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8141960949009584902, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
@@ -96567,11 +96623,23 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3969031256943400305}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3969031256943400305}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
@@ -96583,11 +96651,27 @@ PrefabInstance:
       value: ActivationBoard
       objectReference: {fileID: 0}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DesactivationBoard
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DoorModule, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DoorModule, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: eventActive.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537597452455798160, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: eventDeactive.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8141960949009584902, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
