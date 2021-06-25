@@ -738,7 +738,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3426765938119958545}
-  - component: {fileID: 4594739442678275899}
   m_Layer: 0
   m_Name: camera1
   m_TagString: Untagged
@@ -761,23 +760,6 @@ Transform:
   m_Father: {fileID: 8914276180331448764}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4594739442678275899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4569116742332757195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f6d56dc90a4fd3478c54fe179d22210, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lamp: []
-  distance: 0
-  eventActive:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4724656263802871933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,6 +1583,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lamp: []
   distance: 5
+  deactivateColor: {r: 8, g: 0.03137255, b: 0, a: 1}
+  activateColor: {r: 0.13851158, g: 28.518957, b: 0, a: 1}
+  renderer: {fileID: 2979668247434323796}
   eventActive:
     m_PersistentCalls:
       m_Calls: []
