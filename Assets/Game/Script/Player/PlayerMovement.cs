@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float airDeceleration = 2f;
 
     [Header("Ground")] 
-    [SerializeField] private float minAirTime = .05f;
+    [SerializeField] private float minAirTime = .1f;
     private float airTime;
     [SerializeField] private Transform groundDirection;
     [SerializeField] private Transform fallDirection;

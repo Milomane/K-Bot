@@ -9,6 +9,14 @@ public class LightDetector : MonoBehaviour
 
     
     public float distance;
+    
+    [ColorUsage(true, true)]
+    public Color deactivateColor;
+    
+    [ColorUsage(true, true)]
+    public Color activateColor;
+
+    public MeshRenderer renderer;
    
 
     public UnityEvent eventActive;
@@ -24,6 +32,8 @@ public class LightDetector : MonoBehaviour
     {
         lamp = GameObject.FindGameObjectsWithTag("Lamp");
 
+        bool active = false;
+
         if (lamp != null)
         {
             foreach (GameObject obj in lamp)
@@ -32,9 +42,18 @@ public class LightDetector : MonoBehaviour
                 if (test <= distance)
                 {
                     eventActive.Invoke();
-                    
+                    active = true;
                 }
             }
+        }
+
+        if (active)
+        {
+            renderer.material.SetColor("_EmissionColor", activateColor);
+        }
+        else
+        {
+            renderer.material.SetColor("_EmissionColor", deactivateColor);
         }
     }
 }
