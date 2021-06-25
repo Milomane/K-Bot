@@ -27,13 +27,14 @@ public class PlayerParticule : MonoBehaviour
     void Update()
     {
         
-        if (playerMov.sprint && playerMov.realSpeed > 4)
+        if (playerMov.sprint && playerMov.realSpeed > 4 )
         {
             
             StartCoroutine(Lerp());
         }
         else
         {
+          
             particuleSpint.Stop();
             StopAllCoroutines();
             camera.m_Lens.FieldOfView -= 0.5f;
@@ -80,13 +81,13 @@ public class PlayerParticule : MonoBehaviour
         float lerp = 1;
         while (timeElapsed < lerp)
         {
-            camera.m_Lens.FieldOfView = Mathf.Lerp(40, 45, timeElapsed / lerp);
+            camera.m_Lens.FieldOfView = Mathf.Lerp(40, 43, timeElapsed / lerp);
             timeElapsed += Time.deltaTime;
 
             yield return null;
         }
 
-        camera.m_Lens.FieldOfView = 50;
+        camera.m_Lens.FieldOfView = 43;
        
     }
     
