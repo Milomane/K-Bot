@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Go off ground
         }
-        else if (!wasGrounded && isGrounded)
+        else if (!wasGrounded && isGrounded && airTime > minAirTime)
         {
             // Back on Ground
             ReturnOnGround();
