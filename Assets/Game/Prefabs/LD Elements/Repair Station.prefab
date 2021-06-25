@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeColor: {r: 0.11764693, g: 1, b: 0, a: 1}
   modelRenderers:
-  - {fileID: 0}
+  - {fileID: 5614340389502978297}
   audioSource: {fileID: 2918636971168717366}
   lookRight: 0
 --- !u!135 &7131958529793872024
@@ -98,7 +98,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 0d7f539b28491c34bbd3e09bdaec23e1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
-  m_Pitch: 1
+  m_Pitch: 0.38
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -269,6 +269,11 @@ PrefabInstance:
 --- !u!4 &3737749071090735875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd22e255f46e9c14ca8ffb0248c89bd8, type: 3}
+  m_PrefabInstance: {fileID: 3771095667164167400}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5614340389502978297 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -450435477336378351, guid: bd22e255f46e9c14ca8ffb0248c89bd8, type: 3}
   m_PrefabInstance: {fileID: 3771095667164167400}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5425550232964963356
