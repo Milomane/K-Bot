@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Script;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ControlsMenu : MonoBehaviour
 {
-    Transform menuPanel;
-	Event keyEvent;
-	Text buttonText;
-	KeyCode newKey;
+    private Transform menuPanel;
+    private Event keyEvent;
+    private TMP_Text buttonText;
+    private KeyCode newKey;
 
 	bool waitingForKey;
 
@@ -18,8 +19,8 @@ public class ControlsMenu : MonoBehaviour
 	{
 		//Assign menuPanel to the Panel object in our Canvas
 		//Make sure it's not active when the game starts
-		menuPanel = transform.Find("Panel");
-		menuPanel.gameObject.SetActive(false);
+		menuPanel = transform.Find("ScrollView");
+		//menuPanel.gameObject.SetActive(false);
 		waitingForKey = false;
 
 		/*iterate through each child of the panel and check
@@ -44,14 +45,13 @@ public class ControlsMenu : MonoBehaviour
 		}
 	}
 
-
 	void Update ()
 	{
 		//Escape key will open or close the panel
-		if(Input.GetKeyDown(KeyCode.Escape) && !menuPanel.gameObject.activeSelf)
+		/*if(Input.GetKeyDown(KeyCode.Escape) && !menuPanel.gameObject.activeSelf)
 			menuPanel.gameObject.SetActive(true);
 		else if(Input.GetKeyDown(KeyCode.Escape) && menuPanel.gameObject.activeSelf)
-			menuPanel.gameObject.SetActive(false);
+			menuPanel.gameObject.SetActive(false);*/
 	}
 
 	void OnGUI()
@@ -84,7 +84,7 @@ public class ControlsMenu : MonoBehaviour
 
 	//Assigns buttonText to the text component of
 	//the button that was pressed
-	public void SendText(Text text)
+	public void SendText(TMP_Text text)
 	{
 		buttonText = text;
 	}

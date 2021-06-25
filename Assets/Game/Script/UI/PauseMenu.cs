@@ -67,7 +67,7 @@ public class PauseMenu : MonoBehaviour
     // Options
     public void Options()
     {
-        Debug.Log("Options");
+        // Debug.Log("Options");
     }
 
     // Main menu
