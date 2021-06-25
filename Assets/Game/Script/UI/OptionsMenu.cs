@@ -115,6 +115,11 @@ public class OptionsMenu : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("ClickButton2");
     }
 
+    public void ControlsButton()
+    {
+        
+    }
+
     public void BackButton()
     {
         FindObjectOfType<AudioManager>().PlayOneShot("ClickButton2");
