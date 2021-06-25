@@ -11,15 +11,18 @@ public class ControlsMenu : MonoBehaviour
     private Event keyEvent;
     private TMP_Text buttonText;
     private KeyCode newKey;
+    
+    // Panel "PauseMenu"
+    [SerializeField] private GameObject optionsMenuUI;
 
 	bool waitingForKey;
-
 
 	void Start ()
 	{
 		//Assign menuPanel to the Panel object in our Canvas
 		//Make sure it's not active when the game starts
-		menuPanel = transform.Find("ScrollView");
+		menuPanel = transform.Find("Controls");
+
 		//menuPanel.gameObject.SetActive(false);
 		waitingForKey = false;
 
@@ -33,15 +36,15 @@ public class ControlsMenu : MonoBehaviour
 		for(int i = 0; i < menuPanel.childCount; i++)
 		{
 			if(menuPanel.GetChild(i).name == "ForwardKey")
-				menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameplayManager.instance.forward.ToString();
+				menuPanel.GetChild(i).GetComponentInChildren<TMP_Text>().text = GameplayManager.instance.forward.ToString();
 			else if(menuPanel.GetChild(i).name == "BackwardKey")
-				menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameplayManager.instance.backward.ToString();
+				menuPanel.GetChild(i).GetComponentInChildren<TMP_Text>().text = GameplayManager.instance.backward.ToString();
 			else if(menuPanel.GetChild(i).name == "LeftKey")
-				menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameplayManager.instance.left.ToString();
+				menuPanel.GetChild(i).GetComponentInChildren<TMP_Text>().text = GameplayManager.instance.left.ToString();
 			else if(menuPanel.GetChild(i).name == "RightKey")
-				menuPanel.GetChild(i).GetComponentInChildren<Text>().text = GameplayManager.instance.right.ToString();
+				menuPanel.GetChild(i).GetComponentInChildren<TMP_Text>().text = GameplayManager.instance.right.ToString();
 			else if(menuPanel.GetChild(i).name == "JumpKey")
-				menuPanel.GetChild(i).GetComponentInChildren<Text>().text =GameplayManager.instance.jump.ToString();
+				menuPanel.GetChild(i).GetComponentInChildren<TMP_Text>().text =GameplayManager.instance.jump.ToString();
 		}
 	}
 
@@ -52,6 +55,15 @@ public class ControlsMenu : MonoBehaviour
 			menuPanel.gameObject.SetActive(true);
 		else if(Input.GetKeyDown(KeyCode.Escape) && menuPanel.gameObject.activeSelf)
 			menuPanel.gameObject.SetActive(false);*/
+		
+		if (optionsMenuUI != null)
+		{
+			if (Input.GetKeyDown(KeyCode.Escape))
+			{
+				optionsMenuUI.SetActive(true);
+				gameObject.SetActive(false);
+			}
+		}
 	}
 
 	void OnGUI()
@@ -67,6 +79,7 @@ public class ControlsMenu : MonoBehaviour
 		if(keyEvent.isKey && waitingForKey)
 		{
 			newKey = keyEvent.keyCode; //Assigns newKey to the key user presses
+			
 			waitingForKey = false;
 		}
 	}
@@ -107,7 +120,7 @@ public class ControlsMenu : MonoBehaviour
 		waitingForKey = true;
 
 		yield return WaitForKey(); //Executes endlessly until user presses a key
-
+		Debug.Log("AssignKey : keyName = " + keyName);
 		switch(keyName)
 		{
 		case "forward":
