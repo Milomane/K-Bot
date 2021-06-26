@@ -134,13 +134,17 @@ public class PlayerMovement : MonoBehaviour
         if (controller.isGrounded && Input.GetButtonDown("Jump") && jumpCd <= 0 && !stopMovement)
             Jump();
 
+        bool eventSprint = sprint;
+        
         // Super sprint bar
         if (superSprint)
         {
             superSprintTimer -= Time.deltaTime;
             CanvasEventManager.instance.accBarPivot.localScale = new Vector3(superSprintTimer / superSprintTime, 1, 1);
+            eventSprint = true;
         }
         
+        playerController.animator.SetBool("Sprint", eventSprint);
         
         // Decrease both timer
         jumpCd -= Time.deltaTime;

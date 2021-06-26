@@ -7,7 +7,12 @@ using UnityEngine.Events;
 
 public class RepairStation : MonoBehaviour
 {
+    [ColorUsage(true, true)]
     [SerializeField] private Color activeColor;
+
+    [ColorUsage(true, true)] 
+    [SerializeField] private Color deactiveColor;
+    
     [SerializeField] private Renderer[] modelRenderers;
     public static UnityEvent resetRepairStation;
 
@@ -39,14 +44,14 @@ public class RepairStation : MonoBehaviour
         {
             foreach (var modelRenderer in modelRenderers)
             {
-                modelRenderer.material.color = activeColor;
+                modelRenderer.material.SetColor("_EmissionColor", activeColor);
             }
         }
         else
         {
             foreach (var modelRenderer in modelRenderers)
             {
-                modelRenderer.material.color = Color.white;
+                modelRenderer.material.SetColor("_EmissionColor", deactiveColor);
             }
         }
     }

@@ -991,7 +991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &165885755383329463
 Transform:
   m_ObjectHideFlags: 0
@@ -1438,7 +1438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &165885755766037490
 Transform:
   m_ObjectHideFlags: 0
@@ -1551,7 +1551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &165885755822612965
 Transform:
   m_ObjectHideFlags: 0
@@ -10102,7 +10102,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8409780904764423716
 Transform:
@@ -11264,7 +11264,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_StaticEditorFlags: 19
   m_IsActive: 1
 --- !u!4 &5127346831594528850
 Transform:
@@ -59055,15 +59055,15 @@ MonoBehaviour:
   - m_Vertices: 03000000
   m_SharedTextures: []
   m_Positions:
-  - {x: -47.750034, y: 0, z: 0.00006449212}
-  - {x: -47.750023, y: 0, z: 16.000067}
-  - {x: -8.750005, y: 0, z: -0.00003522641}
-  - {x: -8.749987, y: 0, z: 15.999967}
+  - {x: -47.750057, y: 0, z: 1.0000799}
+  - {x: -47.750034, y: 0, z: 17.000067}
+  - {x: -8.750015, y: 0, z: 0.99998015}
+  - {x: -8.7499895, y: 0, z: 16.999968}
   m_Textures0:
-  - {x: -47.750034, y: 0.00006449212}
-  - {x: -47.750023, y: 16.000067}
-  - {x: -8.750005, y: -0.00003522641}
-  - {x: -8.749987, y: 15.999967}
+  - {x: -47.750057, y: 1.0000799}
+  - {x: -47.750034, y: 17.000067}
+  - {x: -8.750015, y: 0.99998015}
+  - {x: -8.7499895, y: 16.999968}
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -59082,10 +59082,8 @@ MonoBehaviour:
   m_Mesh: {fileID: 0}
   m_IsSelectable: 1
   m_SelectedFaces: 
-  m_SelectedEdges:
-  - a: 2
-    b: 0
-  m_SelectedVertices: 0200000000000000
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!23 &5127346831943872462
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60218,7 +60216,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5127346832186558074}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -83, y: -1.5, z: 55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -68655,11 +68653,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432105538010671649, guid: 3b9d1f459ef1e884cb5a9974a5ddef19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.172
+      value: 1.08
       objectReference: {fileID: 0}
     - target: {fileID: 5432105538010671649, guid: 3b9d1f459ef1e884cb5a9974a5ddef19, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.676582
+      value: -20.940002
       objectReference: {fileID: 0}
     - target: {fileID: 5432105538010671649, guid: 3b9d1f459ef1e884cb5a9974a5ddef19, type: 3}
       propertyPath: m_LocalRotation.w
@@ -75763,6 +75761,10 @@ PrefabInstance:
     - target: {fileID: 8141960949009584902, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: m_Name
       value: Light capteur
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141960949009584902, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8914276180331448764, guid: 9796257a3a1a102408066d09c677b4a2, type: 3}
       propertyPath: m_RootOrder

@@ -69,12 +69,12 @@ public class DoorModule : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !doorActivation)
         {
             PlayerDeathHandler.instance.IncrementCrushCounter(crushValueToKill);
         }
 
-        if (other.CompareTag("Corpse"))
+        if (other.CompareTag("Corpse") && !doorActivation)
         {
             Debug.Log("testing");
             GameObject parentToDestroy = other.transform.parent.gameObject;

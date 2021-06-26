@@ -45,12 +45,14 @@ public class Spring : MonoBehaviour
     {
         CheckHeight();
     }
-
+    
+    /*
     public void ActiveBouncingCube(GameObject oldFrame)
     {
         bouncingCube.SetActive(true);
         this.oldFrame = oldFrame;
     }
+    */
 
     public void RestoreFrame()
     {

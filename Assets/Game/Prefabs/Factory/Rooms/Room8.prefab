@@ -1238,7 +1238,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_StaticEditorFlags: 19
   m_IsActive: 1
 --- !u!4 &9168650531043191371
 Transform:
@@ -23926,7 +23926,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9168650531650476410}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9, y: 0.5, z: 47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -34858,6 +34858,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9168650531650476411}
     m_Modifications:
+    - target: {fileID: 4412547813311012077, guid: ea8f4bf49301456499084f3eebc9a8b9, type: 3}
+      propertyPath: m_Color.b
+      value: 0.24870951
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412547813311012077, guid: ea8f4bf49301456499084f3eebc9a8b9, type: 3}
+      propertyPath: m_Color.g
+      value: 0.25866973
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412547813311012077, guid: ea8f4bf49301456499084f3eebc9a8b9, type: 3}
+      propertyPath: m_Color.r
+      value: 0.764151
+      objectReference: {fileID: 0}
     - target: {fileID: 7100550535361084340, guid: ea8f4bf49301456499084f3eebc9a8b9, type: 3}
       propertyPath: m_Name
       value: Light 1 (1)
@@ -36642,6 +36654,18 @@ PrefabInstance:
       propertyPath: eventDesactive.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6087700770415637365, guid: aa84994a74f41524ea00aee9e4833a50, type: 3}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087700770415637365, guid: aa84994a74f41524ea00aee9e4833a50, type: 3}
+      propertyPath: MaxDistance
+      value: 10.443998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087700770415637365, guid: aa84994a74f41524ea00aee9e4833a50, type: 3}
+      propertyPath: MinDistance
+      value: 1.9139986
+      objectReference: {fileID: 0}
     - target: {fileID: 6397027165438872875, guid: aa84994a74f41524ea00aee9e4833a50, type: 3}
       propertyPath: m_Name
       value: laser
@@ -36722,6 +36746,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9168650531650476411}
     m_Modifications:
+    - target: {fileID: 373199253980797312, guid: a4d2ad7a54c483b49889b82827195c50, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 740996776465501392, guid: a4d2ad7a54c483b49889b82827195c50, type: 3}
       propertyPath: openSystem.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -36785,6 +36813,14 @@ PrefabInstance:
     - target: {fileID: 740996776465501407, guid: a4d2ad7a54c483b49889b82827195c50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260259242116481742, guid: a4d2ad7a54c483b49889b82827195c50, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7106492614997710685, guid: a4d2ad7a54c483b49889b82827195c50, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4d2ad7a54c483b49889b82827195c50, type: 3}
@@ -36956,11 +36992,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7131958529793872027, guid: 1f53950b7501d334d9660aee8c8ea076, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.25
+      value: -19.5
       objectReference: {fileID: 0}
     - target: {fileID: 7131958529793872027, guid: 1f53950b7501d334d9660aee8c8ea076, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.988
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7131958529793872027, guid: 1f53950b7501d334d9660aee8c8ea076, type: 3}
       propertyPath: m_LocalPosition.z

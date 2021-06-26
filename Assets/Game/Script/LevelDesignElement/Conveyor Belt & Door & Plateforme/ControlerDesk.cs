@@ -13,6 +13,13 @@ public class ControlerDesk : MonoBehaviour
     public UnityEvent activationEvent, desactivationEvent;
     public ControlerDesk[] shareState;
 
+    [SerializeField] private bool oneTimeButton;
+    private bool clickedOneTime;
+
+    public MeshRenderer deskColorRenderer;
+    [ColorUsage(true, true)] [SerializeField] private Color activeColor;
+    [ColorUsage(true, true)] [SerializeField] private Color deactiveColor;
+
     // Audio
     private AudioSource audioSource;
     [SerializeField] private AudioClip buttonOn;
@@ -24,6 +31,11 @@ public class ControlerDesk : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         imagePressCanvas.SetActive(false);
+
+        if (verouillage)
+            deskColorRenderer.material.SetColor("_EmissionColor", activeColor);
+        else
+            deskColorRenderer.material.SetColor("_EmissionColor", deactiveColor);
     }
 
     // Update is called once per frame
@@ -42,11 +54,15 @@ public class ControlerDesk : MonoBehaviour
         }
         if (ActivationOn)
         {
-            if (Input.GetButtonDown("Interaction"))
+            if (Input.GetButtonDown("Interaction") && !clickedOneTime)
             {
+                if (oneTimeButton)
+                    clickedOneTime = true;
+                
                 audioSource.PlayOneShot(buttonOn);
                 if (!verouillage)
                 {
+                    deskColorRenderer.material.SetColor("_EmissionColor", activeColor);
                     activationEvent.Invoke();
                     verouillage = true;
                     if (timerDoorOn) 
@@ -59,6 +75,7 @@ public class ControlerDesk : MonoBehaviour
                 }
                 else if (verouillage)
                 {
+                    deskColorRenderer.material.SetColor("_EmissionColor", deactiveColor);
                     audioSource.PlayOneShot(buttonOff);
                     desactivationEvent.Invoke();
                     verouillage = false;
