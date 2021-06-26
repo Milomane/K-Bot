@@ -61,7 +61,7 @@ public class CanvasEventManager : MonoBehaviour
     void UpdateSelectorUi()
     {
         // Manage power up selector activation an animation
-        if (selectorActive && !selectorObject.activeInHierarchy)
+        if (selectorActive && !selectorObject.activeInHierarchy && PlayerDeathHandler.instance.initPowerUp)
         {
             selectorObject.SetActive(true);
             selectorAnimator.Play("OpenPowerUpSelector");

@@ -26,7 +26,7 @@ public class PlayerDeathHandler : MonoBehaviour
     [SerializeField] private int maxBody = 3;
 
     [SerializeField] private AudioClip crushedSound;
-    
+
     // Nb body available
     private int nbBodyAvailable;
     public static DeathType selectedDeath = DeathType.crunshed;
@@ -38,6 +38,7 @@ public class PlayerDeathHandler : MonoBehaviour
     public bool canDie = true;
 
     public bool dying;
+    public bool initPowerUp;
     public Queue<GameObject> bodys;
     
     private DeathType previousSelectedDeath;
@@ -96,6 +97,8 @@ public class PlayerDeathHandler : MonoBehaviour
         
         if (unlockeDeathAtStart.Count == 0)
             CanvasEventManager.instance.UpdateUnlockedDeath(unlockedDeath);
+
+        initPowerUp = true;
     }
 
     void Update()

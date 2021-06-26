@@ -14,6 +14,7 @@ public class Dialogue : MonoBehaviour
     private GameObject player;
     public float distNeed;
     public bool running;
+    private bool dialogueStarted;
     [SerializeField] private bool keepIdle;
     public Animator anim;
 
@@ -35,13 +36,14 @@ public class Dialogue : MonoBehaviour
         
         float dist = Vector3.Distance(transform.position, player.transform.position);
 
-        if ( dist <= distNeed) // verify if the player is close enogh to talk to a pnj
+        if ( dist <= distNeed || dialogueStarted) // verify if the player is close enogh to talk to a pnj
         {
             if (Input.GetButtonDown("Interaction") && running == false) 
             {
                 anim.SetBool("Idle",true);
                 if (_actualLine <= dialogue.Length-1) // change the text line
                 {
+                    dialogueStarted = true;
                     PlayerController.instance.stopMovement = true;
                     NextLine();
                     CanvasEventManager.instance.dialogueLookPlayer.gameObject.SetActive(true);
@@ -49,6 +51,7 @@ public class Dialogue : MonoBehaviour
                 }
                 else // close text box
                 {
+                    dialogueStarted = false;
                     PlayerController.instance.stopMovement = false;
                     StopCoroutine(TypeDialog());
                     CanvasEventManager.instance.npcText.text = null;
