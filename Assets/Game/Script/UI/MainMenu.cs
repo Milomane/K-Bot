@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
     {
         //SceneManager.LoadScene("Scene_Exposition_Mecanics");
         FindObjectOfType<AudioManager>().Stop("MusicMainMenu");
-        SceneManager.LoadScene("HubIntro");
+        SceneManager.LoadScene("intro_cinematic");
     }
     
     // Options
