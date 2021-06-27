@@ -30,6 +30,9 @@ public class CanvasEventManager : MonoBehaviour
     public Transform accBarPivot;
     public GameObject accBarObject;
 
+    public TMP_Text statueText;
+    public Animator animatorStatue;
+
 
 
     void Start()
@@ -137,5 +140,22 @@ public class CanvasEventManager : MonoBehaviour
         yield return new WaitForSeconds(selectorAnimator.GetCurrentAnimatorStateInfo(0).length);
         selectorObject.SetActive(false);
         selectorIsClosing = false;
+    }
+
+    public void UpdateStatueCount(int count)
+    {
+        StartCoroutine(UpdateAnimationStatueCount(count));
+    }
+
+    private IEnumerator UpdateAnimationStatueCount(int count)
+    {
+        animatorStatue.SetBool("Pop", true);
+        statueText.text = "" + count + "/7";
+        
+        yield return new WaitForSeconds(4f);
+        
+        animatorStatue.SetBool("Pop", false);
+        
+        
     }
 }
