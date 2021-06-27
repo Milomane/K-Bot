@@ -4998,6 +4998,9 @@ MonoBehaviour:
   particuleGround: {fileID: 951269260262079006}
   particuleJump: {fileID: 3472985776803170794}
   particuleFall: {fileID: 4963874907958242005}
+  particuleSpint: {fileID: 0}
+  playerMov: {fileID: 0}
+  camera: {fileID: 0}
 --- !u!1 &245105465684527162
 GameObject:
   m_ObjectHideFlags: 0
@@ -10031,6 +10034,9 @@ MonoBehaviour:
   particuleGround: {fileID: 951269260262079006}
   particuleJump: {fileID: 3472985776803170794}
   particuleFall: {fileID: 4963874907958242005}
+  particuleSpint: {fileID: 0}
+  playerMov: {fileID: 0}
+  camera: {fileID: 0}
 --- !u!114 &8820851074929027149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20555,6 +20561,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 92a8ad691ea78d14a99e31fa1033f325, type: 3}
       propertyPath: m_Name
       value: Player_T_Pose
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92a8ad691ea78d14a99e31fa1033f325, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1587054327479723237, guid: 92a8ad691ea78d14a99e31fa1033f325, type: 3}
       propertyPath: m_Materials.Array.data[0]
