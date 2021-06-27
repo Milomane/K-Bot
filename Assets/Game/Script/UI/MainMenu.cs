@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         //SceneManager.LoadScene("Scene_Exposition_Mecanics");
-        SceneManager.LoadScene("HubIntro");
+        SceneManager.LoadScene("intro_cinematic");
     }
     
     // Options
