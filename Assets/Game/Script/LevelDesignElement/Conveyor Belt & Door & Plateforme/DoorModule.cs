@@ -21,6 +21,13 @@ public class DoorModule : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip doorOpen;
     [SerializeField] private AudioClip doorClose;
+
+    public MeshRenderer renderer;
+    
+    [ColorUsage(true, true)]
+    public Color activeColor;
+    [ColorUsage(true, true)]
+    public Color deactiveColor;
     
     // Start is called before the first frame update
     void Start()
@@ -35,6 +42,7 @@ public class DoorModule : MonoBehaviour
     {
         if (doorActivation)
         {
+            renderer.material.SetColor("_EmissionColor", activeColor);
             transform.position = Vector3.MoveTowards(transform.position, endPoint.position, speed * Time.deltaTime);
             if (canDoOpenSound)
             {
@@ -44,8 +52,9 @@ public class DoorModule : MonoBehaviour
             }
             
         }
-        else if (!doorActivation)
+        else
         {
+            renderer.material.SetColor("_EmissionColor", deactiveColor);
             transform.position = Vector3.MoveTowards(transform.position, goInitialPosition.transform.position,
                 speed * Time.deltaTime);
             if (canDoCloseSound)

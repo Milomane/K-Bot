@@ -23,6 +23,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7357317598215046654}
+  - component: {fileID: 882460079834519843}
+  - component: {fileID: 5482412018809608304}
   m_Layer: 0
   m_Name: AdminStatue
   m_TagString: Untagged
@@ -45,6 +47,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &882460079834519843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065732206328493090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4022c9eb43d01dd4f98cbed4deeebb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectable: 1
+--- !u!136 &5482412018809608304
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065732206328493090}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 4.52
+  m_Height: 17.650938
+  m_Direction: 2
+  m_Center: {x: 0, y: 1.2294351e-14, z: -7.13486}
 --- !u!1001 &3694323892058867456
 PrefabInstance:
   m_ObjectHideFlags: 0

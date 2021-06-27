@@ -5112,6 +5112,7 @@ MonoBehaviour:
   brutStopMovement: 0
   controlCursor: 0
   dying: 0
+  cinemachineVirtualCamerasAdded: []
 --- !u!114 &547677056443778337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5149,6 +5150,7 @@ MonoBehaviour:
   repairStation: {fileID: 0}
   canDie: 1
   dying: 0
+  initPowerUp: 0
   animatorBlink: {fileID: 473789073059755788}
   smokePof: {fileID: 7041757010701887762}
 --- !u!114 &2739104149046315133
@@ -6619,7 +6621,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
