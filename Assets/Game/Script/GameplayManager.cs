@@ -49,20 +49,6 @@ namespace Game.Script
         void Start()
         {
             Time.timeScale = 1f;
-            
-            // If we are in main menu
-            if (SceneManager.GetActiveScene().name.Equals("MainMenu"))
-            {
-                // Set the volume 
-                audioMixer.SetFloat("Volume", 0);
-                // Play Music
-                FindObjectOfType<AudioManager>().Play("MusicMainMenu");
-            }
-            else
-            {
-                // Stop Music
-                FindObjectOfType<AudioManager>().Stop("MusicMainMenu");
-            }
         }
 
         // Update is called once per frame

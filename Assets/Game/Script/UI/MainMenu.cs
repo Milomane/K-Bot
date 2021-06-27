@@ -11,6 +11,10 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         timerValueInit = timerSoundHoverButton;
+        // Set the volume 
+        AudioManager.instance.audioMixerGroup.audioMixer.SetFloat("Volume", 0);
+        // Play Music
+        FindObjectOfType<AudioManager>().Play("MusicMainMenu");
     }
 
     void Update()
@@ -25,6 +29,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         //SceneManager.LoadScene("Scene_Exposition_Mecanics");
+        FindObjectOfType<AudioManager>().Stop("MusicMainMenu");
         SceneManager.LoadScene("HubIntro");
     }
     
