@@ -125,7 +125,6 @@ public class PlayerController : MonoBehaviour
         {
             // Transform to gold
         }
-        
-        
+        CanvasEventManager.instance.UpdateStatueCount(statueCount);
     }
 }
