@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
 
     public CinemachineVirtualCamera[] cinemachineVirtualCamerasAdded;
 
+    public Material goldMaterial;
+    public Renderer[] goldMeshRenderer;
+
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -124,6 +127,10 @@ public class PlayerController : MonoBehaviour
         if (statueCount >= maxStatue)
         {
             // Transform to gold
+            foreach (var rend in goldMeshRenderer)
+            {
+                rend.material = goldMaterial;
+            }
         }
         CanvasEventManager.instance.UpdateStatueCount(statueCount);
     }
