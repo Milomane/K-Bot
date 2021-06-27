@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 
 namespace Game.Script
@@ -36,26 +37,18 @@ namespace Game.Script
             backward = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("backwardKey", "S"));
             left = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("leftKey", "Q"));
             right = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("rightKey", "D"));
+
+            /*jump = KeyCode.Space;
+            forward = KeyCode.Z;
+            backward = KeyCode.S;
+            left = KeyCode.Q;
+            right = KeyCode.D;*/
         }
         
         // Start is called before the first frame update
         void Start()
         {
             Time.timeScale = 1f;
-            
-            // If we are in main menu
-            if (SceneManager.GetActiveScene().name.Equals("MainMenu"))
-            {
-                // Set the volume 
-                audioMixer.SetFloat("Volume", 0);
-                // Play Music
-                FindObjectOfType<AudioManager>().Play("MusicMainMenu");
-            }
-            else
-            {
-                // Stop Music
-                FindObjectOfType<AudioManager>().Stop("MusicMainMenu");
-            }
         }
 
         // Update is called once per frame

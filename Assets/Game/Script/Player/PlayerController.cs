@@ -22,7 +22,12 @@ public class PlayerController : MonoBehaviour
 
     public bool dying = false;
 
+    public int statueCount;
+    public int maxStatue = 7;
+
     private bool grabbing = false;
+
+    public CinemachineVirtualCamera[] cinemachineVirtualCamerasAdded;
 
     void Awake()
     {
@@ -81,5 +86,46 @@ public class PlayerController : MonoBehaviour
             cinemachineFreeLookCamera.m_YAxis.m_InputAxisName = "Mouse Y";
             cinemachineFreeLookCamera.m_XAxis.m_InputAxisName = "Mouse X";
         }
+    }
+
+    public void SwitchSceneCamera(int cameraId)
+    {
+        StartCoroutine(SwitchCamera(cameraId));
+    }
+
+    public IEnumerator SwitchCamera(int cameraId)
+    {
+        if (cameraId >= cinemachineVirtualCamerasAdded.Length)
+        {
+            Debug.LogError("CameraID not valid");
+            yield break;
+        }
+        
+        cinemachineFreeLookCamera.enabled = false;
+        cinemachineVirtualCamerasAdded[cameraId].enabled = true;
+        
+        lockCamera = true;
+        lockMovement = true;
+        
+        yield return new WaitForSeconds(4f);
+
+        cinemachineVirtualCamerasAdded[cameraId].enabled = true;
+        cinemachineFreeLookCamera.enabled = true;
+        
+        yield return new WaitForSeconds(1f);
+
+        lockCamera = false;
+        lockMovement = false;
+    }
+
+    public void IncrementStatue()
+    {
+        statueCount++;
+        if (statueCount >= maxStatue)
+        {
+            // Transform to gold
+        }
+        
+        
     }
 }

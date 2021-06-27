@@ -15,6 +15,7 @@ public class Laser : MonoBehaviour
     public UnityEvent eventActive, eventDesactive;
 
     private AudioSource audioSource;
+    private float volumeValue;
     private bool isJustBlocking;
 
     [SerializeField] private AudioClip laserOn;
@@ -24,12 +25,22 @@ public class Laser : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        volumeValue = audioSource.volume;
         // audioSource.Play();
     }
     
     // Update is called once per frame
     void Update()
     {
+        if (audioSource.clip == laserContinuous)
+        {
+            audioSource.volume = volumeValue / 2f;
+        }
+        else
+        {
+            audioSource.volume = volumeValue;
+        }
+        
         RaycastHit hit;
         if (Physics.Raycast(transform.position,transform.forward, out hit,1000, layer  ))
         {

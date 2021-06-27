@@ -78,13 +78,11 @@ public class PressurePlate : MonoBehaviour
         yield return  new WaitForSeconds(1f);
         onPlate.Remove(PlayerDeathHandler.instance.gameObject);
         playerOnPlate = false;
-        Debug.Log("Z");
         safe = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("test");
         if (other.CompareTag("Player") || other.CompareTag("Corpse") || other.gameObject.CompareTag("Lamp"))
         {
             Debug.Log(other);
@@ -99,7 +97,6 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("g");
         onPlate.Remove(other.gameObject);
         if (other.CompareTag("Player"))
         {
