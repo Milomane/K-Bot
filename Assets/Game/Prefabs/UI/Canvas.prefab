@@ -9572,7 +9572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverColor: {r: 1, g: 1, b: 1, a: 1}
   baseColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-  lockedColor: {r: 0.35686275, g: 0.35686275, b: 0.35686275, a: 1}
+  lockedColor: {r: 0, g: 0, b: 0, a: 1}
   background: {fileID: 6065990340424798669}
   description: {fileID: 6614935474038424710}
   idPowerUp: 0
@@ -12347,6 +12347,18 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 6614935474038424710}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: lockedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: lockedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: lockedColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3880122744608139720, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: m_FillAmount
       value: 0.1666
@@ -12510,18 +12522,6 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 6614935474038424710}
-    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
-      propertyPath: lockedColor.b
-      value: 0.3584906
-      objectReference: {fileID: 0}
-    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
-      propertyPath: lockedColor.g
-      value: 0.3584906
-      objectReference: {fileID: 0}
-    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
-      propertyPath: lockedColor.r
-      value: 0.3584906
-      objectReference: {fileID: 0}
     - target: {fileID: 3880122744608139720, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: m_FillAmount
       value: 0.1666
@@ -12724,6 +12724,18 @@ PrefabInstance:
       propertyPath: hoverColor.a
       value: 0.5882353
       objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: lockedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: lockedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: lockedColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3880122744608139720, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: m_FillAmount
       value: 0.1666
@@ -12922,6 +12934,18 @@ PrefabInstance:
       propertyPath: hoverColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: lockedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: lockedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: lockedColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3880122744608139720, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: m_FillAmount
       value: 0.16666667
@@ -13101,6 +13125,18 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 6614935474038424710}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: lockedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: lockedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514264041, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
+      propertyPath: lockedColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3880122744608139720, guid: 4532bbf5adfa39343ae415544810731f, type: 3}
       propertyPath: m_FillAmount
       value: 0.16666667
