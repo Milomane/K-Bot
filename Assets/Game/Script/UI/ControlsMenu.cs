@@ -12,13 +12,17 @@ public class ControlsMenu : MonoBehaviour
     private TMP_Text buttonText;
     private KeyCode newKey;
     
-    // Panel "PauseMenu"
+    // Panel "OptionsMenu"
     [SerializeField] private GameObject optionsMenuUI;
+    
+    // Panel "PauseMenu"
+    [SerializeField] private GameObject pauseMenuUI;
 
 	bool waitingForKey;
 
 	void Start ()
 	{
+		PauseMenu.isMenuPauseClosed = false;
 		//Assign menuPanel to the Panel object in our Canvas
 		//Make sure it's not active when the game starts
 		menuPanel = transform.Find("Controls");
@@ -56,11 +60,11 @@ public class ControlsMenu : MonoBehaviour
 		else if(Input.GetKeyDown(KeyCode.Escape) && menuPanel.gameObject.activeSelf)
 			menuPanel.gameObject.SetActive(false);*/
 		
-		if (optionsMenuUI != null)
+		if (pauseMenuUI != null)
 		{
-			if (Input.GetKeyDown(KeyCode.Escape))
+			if (Input.GetKeyDown(KeyCode.Escape) && gameObject.activeSelf)
 			{
-				optionsMenuUI.SetActive(true);
+				pauseMenuUI.SetActive(true);
 				gameObject.SetActive(false);
 			}
 		}
