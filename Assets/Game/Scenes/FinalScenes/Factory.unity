@@ -3023,7 +3023,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-291634
+  m_Name: pb_Mesh-1380024
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6193,8 +6193,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 398724500}
     - target: {fileID: 6891269233839563725, guid: a6fa048c211aba14891f60cc7c89f098, type: 3}
+      propertyPath: m_BoxSize.z
+      value: 24.050125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891269233839563725, guid: a6fa048c211aba14891f60cc7c89f098, type: 3}
       propertyPath: m_Importance
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891269233839563725, guid: a6fa048c211aba14891f60cc7c89f098, type: 3}
+      propertyPath: m_BoxOffset.z
+      value: -3.180359
       objectReference: {fileID: 0}
     - target: {fileID: 6955407365658266446, guid: a6fa048c211aba14891f60cc7c89f098, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7300,6 +7308,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -12.85847
       objectReference: {fileID: 0}
+    - target: {fileID: 6040166544646449091, guid: 3f4ea8250b109d744af0d5afced843f5, type: 3}
+      propertyPath: m_BoxSize.z
+      value: 36.746887
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040166544646449091, guid: 3f4ea8250b109d744af0d5afced843f5, type: 3}
+      propertyPath: m_BoxOffset.y
+      value: 4.0395737
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040166544646449091, guid: 3f4ea8250b109d744af0d5afced843f5, type: 3}
+      propertyPath: m_BoxOffset.z
+      value: -2.2761993
+      objectReference: {fileID: 0}
     - target: {fileID: 6944744793682931003, guid: 3f4ea8250b109d744af0d5afced843f5, type: 3}
       propertyPath: m_Name
       value: Room10
@@ -7360,6 +7380,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1050329455}
+    - target: {fileID: 8305546051760486349, guid: 3f4ea8250b109d744af0d5afced843f5, type: 3}
+      propertyPath: m_Importance
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f4ea8250b109d744af0d5afced843f5, type: 3}
 --- !u!1001 &7083964167551792227
