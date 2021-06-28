@@ -30,7 +30,7 @@ public class OptionsMenu : MonoBehaviour
     void Start()
     {
         timerValueInit = timerSoundHoverButton;
-
+        PauseMenu.isMenuPauseClosed = false;
         // Resolutions
         resolutions = Screen.resolutions.Where(resolution => resolution.refreshRate == 60 || resolution.refreshRate == 144).ToArray();
         resolutionDropdown.ClearOptions();
@@ -70,6 +70,7 @@ public class OptionsMenu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                Debug.Log("pauseMenuUI = " + pauseMenuUI);
                 pauseMenuUI.SetActive(true);
                 gameObject.SetActive(false);
             }
