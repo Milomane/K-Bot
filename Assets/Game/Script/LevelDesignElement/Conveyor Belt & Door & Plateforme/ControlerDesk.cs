@@ -62,7 +62,6 @@ public class ControlerDesk : MonoBehaviour
                 audioSource.PlayOneShot(buttonOn);
                 if (!verouillage)
                 {
-                    deskColorRenderer.material.SetColor("_EmissionColor", activeColor);
                     activationEvent.Invoke();
                     verouillage = true;
                     if (timerDoorOn) 
@@ -75,7 +74,6 @@ public class ControlerDesk : MonoBehaviour
                 }
                 else if (verouillage)
                 {
-                    deskColorRenderer.material.SetColor("_EmissionColor", deactiveColor);
                     audioSource.PlayOneShot(buttonOff);
                     desactivationEvent.Invoke();
                     verouillage = false;
@@ -90,6 +88,14 @@ public class ControlerDesk : MonoBehaviour
                     }
                 }
             }
+        }
+        if (!verouillage)
+        {
+            deskColorRenderer.material.SetColor("_EmissionColor", activeColor);
+        }
+        else
+        {
+            deskColorRenderer.material.SetColor("_EmissionColor", deactiveColor);
         }
     }
 
