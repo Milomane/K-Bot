@@ -169,7 +169,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &191754273
 GameObject:
@@ -861,7 +861,7 @@ RectTransform:
   m_Children:
   - {fileID: 736832811}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3082,11 +3082,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2739104148891114721, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000018583265
+      value: 0.000000018583268
       objectReference: {fileID: 0}
     - target: {fileID: 2739104148891114721, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000049735847
+      value: -0.0000000049735855
       objectReference: {fileID: 0}
     - target: {fileID: 2739104149046315133, guid: baa73e8bf454c2747ac6103648fba7c9, type: 3}
       propertyPath: jumpForce
@@ -3269,6 +3269,100 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1503967775846091978, guid: e09dac261854aae4a9a6a4c77a264e65, type: 3}
+--- !u!1001 &929880617
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 673813755007438634, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c141686fc423ce946b0e3837202b8d3e, type: 2}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: keepIdle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: dialogue.Array.data[0]
+      value: Hey ! I see you've got multiple upgrades now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: dialogue.Array.data[1]
+      value: It can be pretty confusing, but don't worry ! You can select precisely
+        the ability you want to use by holding TAB !
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188559149177566223, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: Just hover onto the stickers, and you're good to go !
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 51.03444
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.49990034
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 76.0923
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.28338513
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9590062
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 147.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030885508800022263, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7699301254996417613, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
+      propertyPath: m_Name
+      value: NPC_4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fda5dec9ba3d8743b63bd0842c27ad7, type: 3}
 --- !u!1001 &930908389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5205,7 +5299,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1588047550
 PrefabInstance:
@@ -5698,7 +5792,7 @@ Transform:
   - {fileID: 2028885158}
   - {fileID: 647779966}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: -15, z: 0}
 --- !u!43 &1911624699
 Mesh:
