@@ -10313,7 +10313,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -270, y: 0, z: 0}
 --- !u!1001 &1002106039
 PrefabInstance:
@@ -10918,15 +10918,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2100208608}
     m_Modifications:
     - target: {fileID: 5036993157545352606, guid: 24e89d715f1b77f478fd08a20b7cfabe, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 66
       objectReference: {fileID: 0}
     - target: {fileID: 5036993157545352606, guid: 24e89d715f1b77f478fd08a20b7cfabe, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.41655
+      value: 0.41655004
       objectReference: {fileID: 0}
     - target: {fileID: 5036993157545352606, guid: 24e89d715f1b77f478fd08a20b7cfabe, type: 3}
       propertyPath: m_LocalScale.y
@@ -10934,7 +10934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5036993157545352606, guid: 24e89d715f1b77f478fd08a20b7cfabe, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.41655
+      value: 0.41655004
       objectReference: {fileID: 0}
     - target: {fileID: 5036993157545352606, guid: 24e89d715f1b77f478fd08a20b7cfabe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10982,6 +10982,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24e89d715f1b77f478fd08a20b7cfabe, type: 3}
+--- !u!4 &1135098474 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5036993157545352606, guid: 24e89d715f1b77f478fd08a20b7cfabe, type: 3}
+  m_PrefabInstance: {fileID: 1135098473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1145625178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17256,7 +17261,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: -270, y: 0, z: 0}
 --- !u!1001 &1474846861
 PrefabInstance:
@@ -34163,6 +34168,7 @@ Transform:
   - {fileID: 1559851774}
   - {fileID: 2031246129}
   - {fileID: 639721222}
+  - {fileID: 1135098474}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

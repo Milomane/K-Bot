@@ -16,6 +16,8 @@ public class MainMenu : MonoBehaviour
         AudioManager.instance.audioMixerGroup.audioMixer.SetFloat("Volume", 0);
         // Play Music
         FindObjectOfType<AudioManager>().Play("MusicMainMenu");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     void Update()
