@@ -24,7 +24,8 @@ public class ControlerDesk : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip buttonOn;
     [SerializeField] private AudioClip buttonOff;
-    
+
+    public SphereCollider collider;
     
     // Start is called before the first frame update
     void Start()
@@ -96,6 +97,15 @@ public class ControlerDesk : MonoBehaviour
         else
         {
             deskColorRenderer.material.SetColor("_EmissionColor", deactiveColor);
+        }
+
+        if (ActivationOn)
+        {
+            if (Vector3.Distance(PlayerController.instance.transform.position, transform.position) > 3f)
+            {
+                ActivationOn = false;
+                imagePressCanvas.SetActive(false);
+            }
         }
     }
 
