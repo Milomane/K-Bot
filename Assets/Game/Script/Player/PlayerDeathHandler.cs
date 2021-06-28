@@ -107,7 +107,7 @@ public class PlayerDeathHandler : MonoBehaviour
         
         nbBodyAvailable = maxBody - bodys.Count;
 
-        if (Input.GetButtonDown("Kill") && canDie && !dying && selectedDeath != DeathType.crunshed)
+        if (Input.GetButtonDown("Kill") && canDie && !dying && selectedDeath != DeathType.crunshed && !playerController.stopMovement)
         {
             StartDeath(selectedDeath);
         }
