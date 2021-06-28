@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class ElectricalCapteurScript : MonoBehaviour
 {
-    public bool alimOn;
+    public int alimOn;
     private bool moduleConnect;
     public GameObject[] light;
     public Material blue, red;
@@ -23,7 +23,7 @@ public class ElectricalCapteurScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (alimOn && !moduleConnect)
+        if (alimOn > 0 && !moduleConnect)
         {
             alimEvent.Invoke();
             light[0].GetComponent<MeshRenderer>().material = blue;
@@ -33,7 +33,7 @@ public class ElectricalCapteurScript : MonoBehaviour
             light[4].GetComponent<MeshRenderer>().material = blue;
             moduleConnect = true;
         }
-        if (!alimOn && moduleConnect)
+        if (alimOn <= 0 && moduleConnect)
         {
             shutDownEvent.Invoke();
             light[0].GetComponent<MeshRenderer>().material = red;
