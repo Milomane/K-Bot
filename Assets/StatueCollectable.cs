@@ -6,24 +6,19 @@ using UnityEngine;
 public class StatueCollectable : MonoBehaviour
 {
     public bool collectable = true;
+    public AudioClip collectClip;
+    public float volume;
     
-    
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && collectable)
         {
             PlayerController.instance.IncrementStatue();
+            AudioSource.PlayClipAtPoint(collectClip, transform.position, volume);
             Destroy(gameObject);
         }
+        
+        
     }
 }
