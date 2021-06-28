@@ -89,7 +89,7 @@ public class ControlerDesk : MonoBehaviour
                 }
             }
         }
-        if (!verouillage)
+        if (verouillage)
         {
             deskColorRenderer.material.SetColor("_EmissionColor", activeColor);
         }

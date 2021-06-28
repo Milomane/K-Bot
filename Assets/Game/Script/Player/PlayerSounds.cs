@@ -15,6 +15,8 @@ public class PlayerSounds : MonoBehaviour
     [SerializeField] private AudioClip springClip;
 
     [SerializeField] private AudioClip respawnClip;
+    
+    [SerializeField] private AudioClip pickUpStatue;
 
     private float defaultVolume;
 
@@ -56,6 +58,11 @@ public class PlayerSounds : MonoBehaviour
     public void Respawn()
     {
         audioSource.PlayOneShot(respawnClip);
+    }
+
+    public void PickUpStatue()
+    {
+        audioSource.PlayOneShot(pickUpStatue);
     }
 
     // Get random sound of walk
