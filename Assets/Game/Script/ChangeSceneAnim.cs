@@ -6,16 +6,47 @@ using UnityEngine.Video;
 
 public class ChangeSceneAnim : MonoBehaviour
 {
+    public float time = 68f;
+    public string sceneToLoad = "HubIntro";
+    
     public VideoPlayer vid;
-    // Start is called before the first frame update
+
+    public bool check;
+    public GameObject skipText;
+    
     void Start()
     {
-        
+        StartCoroutine(WaitEndToChangeScene());
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-       Debug.Log("play");
+        if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump"))
+        {
+            if (!check)
+            {
+                StartCoroutine(CheckWait());
+            }
+            else
+            {
+                SceneManager.LoadScene(sceneToLoad);
+            }
+        }
+    }
+
+    public IEnumerator WaitEndToChangeScene()
+    {
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene(sceneToLoad);
+    }
+
+    public IEnumerator CheckWait()
+    {
+        check = true;
+        skipText.SetActive(true);
+        yield return new WaitForSeconds(5);
+        check = false;
+        skipText.SetActive(false);
     }
 }
