@@ -6828,6 +6828,7 @@ MonoBehaviour:
   landClip: {fileID: 8300000, guid: c9db3dea0b782ce4bb4a9bcf6f9902d8, type: 3}
   springClip: {fileID: 8300000, guid: 0b1495ad8c55fd84aa2af3fbba1bdb37, type: 3}
   respawnClip: {fileID: 8300000, guid: 0ba7fe6820d07234fabf133bcabb730c, type: 3}
+  pickUpStatue: {fileID: 0}
 --- !u!1001 &3915999357814790689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7639,6 +7640,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 8820851074929027149, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
+      propertyPath: pickUpStatue
+      value: 
+      objectReference: {fileID: 8300000, guid: 6448ce02157b57f4389c9b38b6ab56c9, type: 3}
     - target: {fileID: 8820851074929027149, guid: 6a141bb65ae2c914f8e0635ab2619335, type: 3}
       propertyPath: walkSoundclips.Array.size
       value: 4
