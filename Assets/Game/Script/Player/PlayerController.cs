@@ -123,6 +123,7 @@ public class PlayerController : MonoBehaviour
 
     public void IncrementStatue()
     {
+        FindObjectOfType<PlayerSounds>().PickUpStatue();
         statueCount++;
         if (statueCount >= maxStatue)
         {
