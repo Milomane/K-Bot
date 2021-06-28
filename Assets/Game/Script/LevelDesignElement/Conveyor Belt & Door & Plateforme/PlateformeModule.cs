@@ -25,6 +25,10 @@ public class PlateformeModule : MonoBehaviour
 
     public GameObject player;
     public Transform playerGroup;
+
+    public AudioSource soundPlatform;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +62,7 @@ public class PlateformeModule : MonoBehaviour
         
         if (plateformeActivation)
         {
+            soundPlatform.enabled = true;
             
             if (transform.position != currentTarget)
             {
@@ -67,6 +72,10 @@ public class PlateformeModule : MonoBehaviour
             {
                 UpdateTarget();
             }
+        }
+        else
+        {
+            soundPlatform.enabled = false;
         }
         
         
