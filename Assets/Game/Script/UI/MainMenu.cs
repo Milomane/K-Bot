@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         timerValueInit = timerSoundHoverButton;
         // Set the volume 
         AudioManager.instance.audioMixerGroup.audioMixer.SetFloat("Volume", 0);

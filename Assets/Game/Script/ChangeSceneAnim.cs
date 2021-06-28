@@ -16,12 +16,21 @@ public class ChangeSceneAnim : MonoBehaviour
     
     void Start()
     {
-        StartCoroutine(WaitEndToChangeScene());
+      //  StartCoroutine(WaitEndToChangeScene());
     }
 
     
     void Update()
     {
+        Debug.Log(Time.timeScale);
+        Debug.Log(Time.deltaTime);
+        Debug.Log(time);
+
+        time -= Time.deltaTime;
+        
+        if (time < 0)
+            SceneManager.LoadScene(sceneToLoad);
+        
         if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump"))
         {
             if (!check)
@@ -37,8 +46,13 @@ public class ChangeSceneAnim : MonoBehaviour
 
     public IEnumerator WaitEndToChangeScene()
     {
+        Debug.Log("A");
         yield return new WaitForSeconds(time);
-        SceneManager.LoadScene(sceneToLoad);
+        Debug.Log("b");
+       
+        
+        
+       Debug.Log("c");
     }
 
     public IEnumerator CheckWait()
